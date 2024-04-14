@@ -1,21 +1,15 @@
-
-import ImageGym from './components/ImageGym/ImageGym'
+import Card from './components/Card/Card'
+import Form from './components/Form/Form'
 
 export default function App() {
   return (
-    <section className="bg-gray-800 h-screen grid grid-cols-2" >
+    <section className="h-full grid grid-cols-2 bg-gym no-repeat bg-cover bg-center" >
 
       <section className="text-white flex justify-center items-center" >
 
         <div className="text-center" >
 
-          <h1 className="md:text-5xl font-bold">
-            Teste
-          </h1>
-
-          <p className="md:text-left">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vero, architecto!
-          </p>
+          <Card />
 
         </div>
 
@@ -25,9 +19,7 @@ export default function App() {
 
       <section className='flex justify-center items-center static'>
 
-        <div className='h-2/4 w-2/4 md:mb-40' >
-          <ImageGym />
-        </div>
+        <Form titulo="Cadastre-se aqui" />
 
       </section>
 

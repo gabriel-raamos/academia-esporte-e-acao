@@ -5,7 +5,11 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}"
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'gym': "url('./src/assets/images/invictus_go_Almaty_gym_zone_2022.jpeg')"
+      }
+    },
   },
   plugins: [],
 }
