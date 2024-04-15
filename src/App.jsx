@@ -1,25 +1,32 @@
 import Card from './components/Card/Card'
 import Form from './components/Form/Form'
+import NavBar from './components/NavBar/NavBar'
 
 export default function App() {
   return (
-    <section className="h-full grid grid-cols-2 bg-white" >
+    <section>
 
-      <section className="text-white flex justify-center items-center" >
+      <NavBar />
 
-        <div className="text-center" >
+      <section className="h-full grid grid-cols-2 bg-white " >
 
-          <Card />
+        <section className="text-white flex justify-center items-center" >
 
-        </div>
+          <div className="text-center" >
 
-      </section>
+            <Card />
+
+          </div>
+
+        </section>
 
 
 
-      <section className='flex justify-center items-center static'>
+        <section className='flex justify-center items-center static'>
 
-        <Form titulo="Cadastre-se aqui" />
+          <Form titulo="Cadastre-se aqui" />
+
+        </section>
 
       </section>
 
