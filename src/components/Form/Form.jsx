@@ -35,7 +35,7 @@ export default function Form(prop) {
     }
 
     return (
-        <form className="rounded-xl p-5 m-5 border-4 border-red-700" onSubmit={onSave} >
+        <form className="rounded-xl p-2 m-2 md:p-5 md:m-5 border-4 border-red-700" onSubmit={onSave} >
 
             <h1 className="text-center text-red-700 font-bold text-lg">{prop.titulo}</h1>
 
