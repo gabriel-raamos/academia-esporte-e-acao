@@ -2,21 +2,20 @@ import { useState } from "react";
 import Textbox from "../Textbox/Textbox";
 import Button from "../Button/Button";
 
-export default function Form(prop) {
+export default function Form2(prop) {
 
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
     const [date, setDate] = useState('')
+
     const [phone, setPhone] = useState('')
     const [cpf, setCpf] = useState('')
     const [cep, setCep] = useState('')
     const [height, setHeight] = useState('')
     const [weight, setWeight] = useState('')
-    const [objective, setObjective] = useState('')
 
-    
 
     const onSave = (e) => {
         e.preventDefault()
@@ -26,12 +25,12 @@ export default function Form(prop) {
         setPassword('')
         setConfirmPassword('')
         setDate('')
+
         setPhone('')
         setCpf('')
         setCep('')
         setHeight('')
         setWeight('')
-        setObjective('')
     }
 
     return (
@@ -39,10 +38,38 @@ export default function Form(prop) {
 
             <h1 className="text-center text-red-700 font-bold text-lg">{prop.titulo}</h1>
 
+            <FormBox1
+                name={name}
+                email={email}
+                password={password}
+                confirmPassword={confirmPassword}
+                date={date}
+                phone={phone}
+            />
+
+            <FormBox2
+                date={date}
+                phone={phone}
+                cpf={cpf}
+                cep={cep}
+                height={height}
+                weight={weight}
+            />
+
+            <Button />
+
+        </form>
+    )
+}
+
+function FormBox1(prop) {
+    return (
+
+        <div>
             <Textbox
                 obrigatorio={true}
                 placeholder="Nome"
-                valor={name}
+                valor={prop.name}
                 tipo={"text"}
                 whenChanged={valor => setName(valor)}
             />
@@ -50,7 +77,7 @@ export default function Form(prop) {
             <Textbox
                 obrigatorio={true}
                 placeholder={"Email"}
-                valor={email}
+                valor={prop.email}
                 tipo={"email"}
                 whenChanged={valor => setEmail(valor)}
             />
@@ -58,7 +85,7 @@ export default function Form(prop) {
             <Textbox
                 obrigatorio={true}
                 placeholder="Senha"
-                valor={password}
+                valor={prop.password}
                 tipo={"password"}
                 whenChanged={valor => setPassword(valor)}
             />
@@ -66,7 +93,7 @@ export default function Form(prop) {
             <Textbox
                 obrigatorio={true}
                 placeholder="Confirme a senha"
-                valor={confirmPassword}
+                valor={prop.confirmPassword}
                 tipo={"password"}
                 whenChanged={valor => setConfirmPassword(valor)}
             />
@@ -74,15 +101,25 @@ export default function Form(prop) {
             <Textbox
                 obrigatorio={true}
                 placeholder="Data de nascimento"
-                valor={date}
+                valor={prop.date}
                 tipo={"date"}
                 whenChanged={valor => setDate(valor)}
             />
 
+        </div>
+
+    )
+}
+
+function FormBox2(prop) {
+
+    return (
+
+        <div>
             <Textbox
                 obrigatorio={true}
                 placeholder="Celular"
-                valor={phone}
+                valor={prop.phone}
                 tipo={"number"}
                 whenChanged={valor => setPhone(valor)}
             />
@@ -90,7 +127,7 @@ export default function Form(prop) {
             <Textbox
                 obrigatorio={true}
                 placeholder="CPF"
-                valor={cpf}
+                valor={prop.cpf}
                 tipo={"number"}
                 whenChanged={valor => setCpf(valor)}
             />
@@ -98,7 +135,7 @@ export default function Form(prop) {
             <Textbox
                 obrigatorio={true}
                 placeholder="CEP"
-                valor={cep}
+                valor={prop.cep}
                 tipo={"number"}
                 whenChanged={valor => setCep(valor)}
             />
@@ -106,7 +143,7 @@ export default function Form(prop) {
             <Textbox
                 obrigatorio={true}
                 placeholder="Altura"
-                valor={height}
+                valor={prop.height}
                 tipo={"number"}
                 whenChanged={valor => setHeight(valor)}
             />
@@ -114,21 +151,12 @@ export default function Form(prop) {
             <Textbox
                 obrigatorio={true}
                 placeholder="Peso"
-                valor={weight}
+                valor={prop.weight}
                 tipo={"number"}
                 whenChanged={valor => setWeight(valor)}
             />
+        </div>
 
-            <Textbox
-                obrigatorio={true}
-                placeholder="Objetivo"
-                valor={objective}
-                tipo={"text"}
-                whenChanged={valor => setObjective(valor)}
-            />
-
-            <Button />
-
-        </form>
     )
+
 }
