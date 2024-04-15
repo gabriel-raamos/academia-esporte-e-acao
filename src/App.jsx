@@ -8,7 +8,7 @@ export default function App() {
 
       <NavBar />
 
-      <section className="h-full grid grid-cols-2 bg-white " >
+      <section className="h-full grid grid-row-2 md:grid-cols-2 bg-white " >
 
         <section className="text-white flex justify-center items-center" >
 
