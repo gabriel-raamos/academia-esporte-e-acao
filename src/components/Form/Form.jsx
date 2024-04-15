@@ -35,9 +35,9 @@ export default function Form(prop) {
     }
 
     return (
-        <form className="bg-red-700 rounded-xl p-5 m-5" onSubmit={onSave} >
+        <form className="rounded-xl p-5 m-5 border-4 border-red-700" onSubmit={onSave} >
 
-            <h1 className="text-center text-white font-bold text-lg">{prop.titulo}</h1>
+            <h1 className="text-center text-red-700 font-bold text-lg">{prop.titulo}</h1>
 
             <Textbox
                 obrigatorio={true}

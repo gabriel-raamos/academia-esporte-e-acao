@@ -7,7 +7,7 @@ export default function Textbox(prop) {
     }
 
     return (
-        <section className="m-6 md:mx-0 p-3 rounded-lg bg-white border border-gray-300 text-gray-800 flex" >
+        <section className="m-6 md:mx-0 p-3 rounded-lg bg-white border-4 border-red-700 text-gray-800 flex" >
             <input
                     required={prop.obrigatorio == true}
                     value={prop.valor}

@@ -3,7 +3,7 @@ import Form from './components/Form/Form'
 
 export default function App() {
   return (
-    <section className="h-full grid grid-cols-2 bg-gym no-repeat bg-cover bg-center" >
+    <section className="h-full grid grid-cols-2 bg-white" >
 
       <section className="text-white flex justify-center items-center" >
 
@@ -26,3 +26,5 @@ export default function App() {
     </section>
   )
 }
+
+// bg-gym no-repeat bg-cover bg-center bg-fixed
