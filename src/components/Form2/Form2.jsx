@@ -16,6 +16,8 @@ export default function Form2(prop) {
     const [height, setHeight] = useState('')
     const [weight, setWeight] = useState('')
 
+    const [currentPage, setCurrentPage] = useState(1)
+
 
     const onSave = (e) => {
         e.preventDefault()
@@ -35,40 +37,77 @@ export default function Form2(prop) {
         setWeight('')
     }
 
+    const nextPage = () => {
+        setCurrentPage(currentPage + 1);
+    };
+
+    const prevPage = () => {
+        setCurrentPage(currentPage - 1);
+    };
+
     return (
         <form className="rounded-xl p-2 md:p-5 mb-5  border-4 border-red-700" onSubmit={onSave} >
 
             <h1 className="text-center text-red-700 font-bold text-lg">{prop.titulo}</h1>
 
-            <FormBox1
-                name={name}
-                email={email}
-                password={password}
-                confirmPassword={confirmPassword}
-                date={date}
+            {currentPage === 1 && (
+                <FormBox1
+                    name={name}
+                    email={email}
+                    password={password}
+                    confirmPassword={confirmPassword}
+                    date={date}
 
-                setName={setName}
-                setEmail={setEmail}
-                setPassword={setPassword}
-                setConfirmPassword={setConfirmPassword}
-                setDate={setDate}
-            />
+                    setName={setName}
+                    setEmail={setEmail}
+                    setPassword={setPassword}
+                    setConfirmPassword={setConfirmPassword}
+                    setDate={setDate}
+                />
+            )}
 
-            <FormBox2
-                phone={phone}
-                cpf={cpf}
-                cep={cep}
-                height={height}
-                weight={weight}
+            {currentPage === 2 && (
+                <FormBox2
+                    phone={phone}
+                    cpf={cpf}
+                    cep={cep}
+                    height={height}
+                    weight={weight}
 
-                setPhone={setPhone}
-                setCpf={setCpf}
-                setCep={setCep}
-                setHeight={setHeight}
-                setWeight={setWeight}
-            />
+                    setPhone={setPhone}
+                    setCpf={setCpf}
+                    setCep={setCep}
+                    setHeight={setHeight}
+                    setWeight={setWeight}
+                />
+            )}
 
-            <Button />
+            <div className="justify-center items-center flex">
+
+                {currentPage === 1 && (
+                    <button
+                        onClick={nextPage}
+                        className="p-5 px-10 bg-red-700 m-3 text-white text-xl rounded-xl transition hover:bg-red-500 hover:-translate-y-3 duration-500"
+                    >
+                        Próximo
+                    </button>
+                )}
+
+                {currentPage === 2 && (
+                    <div className="flex" >
+                        <button
+                            onClick={prevPage}
+                            className="p-5 px-10 bg-red-700 m-3 text-white text-xl rounded-xl transition hover:bg-red-500 hover:-translate-y-3 duration-500"
+                        >
+                            Anterior
+                        </button>
+
+                        <Button />
+                    </div>
+
+                )}
+            </div>
+
 
         </form>
     )

@@ -10,7 +10,7 @@ export default function App() {
 
       <section className="h-full grid grid-row-2 md:grid-cols-2 bg-white " >
 
-        <section className="text-white flex justify-center items-center" >
+        <section className="text-white" >
 
           <div className="text-center" >
 
