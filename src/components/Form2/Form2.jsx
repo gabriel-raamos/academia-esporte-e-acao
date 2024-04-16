@@ -20,6 +20,8 @@ export default function Form2(prop) {
     const onSave = (e) => {
         e.preventDefault()
 
+        // alert(name+email+password+confirmPassword+date+phone+cpf+cep+height+weight)
+
         setName('')
         setEmail('')
         setPassword('')
@@ -34,7 +36,7 @@ export default function Form2(prop) {
     }
 
     return (
-        <form className="rounded-xl p-2 md:p-5  border-4 border-red-700" onSubmit={onSave} >
+        <form className="rounded-xl p-2 md:p-5 mb-5  border-4 border-red-700" onSubmit={onSave} >
 
             <h1 className="text-center text-red-700 font-bold text-lg">{prop.titulo}</h1>
 
@@ -44,16 +46,26 @@ export default function Form2(prop) {
                 password={password}
                 confirmPassword={confirmPassword}
                 date={date}
-                phone={phone}
+
+                setName={setName}
+                setEmail={setEmail}
+                setPassword={setPassword}
+                setConfirmPassword={setConfirmPassword}
+                setDate={setDate}
             />
 
             <FormBox2
-                date={date}
                 phone={phone}
                 cpf={cpf}
                 cep={cep}
                 height={height}
                 weight={weight}
+
+                setPhone={setPhone}
+                setCpf={setCpf}
+                setCep={setCep}
+                setHeight={setHeight}
+                setWeight={setWeight}
             />
 
             <Button />
@@ -71,7 +83,7 @@ function FormBox1(prop) {
                 placeholder="Nome"
                 valor={prop.name}
                 tipo={"text"}
-                whenChanged={valor => setName(valor)}
+                whenChanged={valor => prop.setName(valor)}
             />
 
             <Textbox
@@ -79,7 +91,7 @@ function FormBox1(prop) {
                 placeholder={"Email"}
                 valor={prop.email}
                 tipo={"email"}
-                whenChanged={valor => setEmail(valor)}
+                whenChanged={valor => prop.setEmail(valor)}
             />
 
             <Textbox
@@ -87,7 +99,7 @@ function FormBox1(prop) {
                 placeholder="Senha"
                 valor={prop.password}
                 tipo={"password"}
-                whenChanged={valor => setPassword(valor)}
+                whenChanged={valor => prop.setPassword(valor)}
             />
 
             <Textbox
@@ -95,7 +107,7 @@ function FormBox1(prop) {
                 placeholder="Confirme a senha"
                 valor={prop.confirmPassword}
                 tipo={"password"}
-                whenChanged={valor => setConfirmPassword(valor)}
+                whenChanged={valor => prop.setConfirmPassword(valor)}
             />
 
             <Textbox
@@ -103,7 +115,7 @@ function FormBox1(prop) {
                 placeholder="Data de nascimento"
                 valor={prop.date}
                 tipo={"date"}
-                whenChanged={valor => setDate(valor)}
+                whenChanged={valor => prop.setDate(valor)}
             />
 
         </div>
@@ -121,7 +133,7 @@ function FormBox2(prop) {
                 placeholder="Celular"
                 valor={prop.phone}
                 tipo={"number"}
-                whenChanged={valor => setPhone(valor)}
+                whenChanged={valor => prop.setPhone(valor)}
             />
 
             <Textbox
@@ -129,7 +141,7 @@ function FormBox2(prop) {
                 placeholder="CPF"
                 valor={prop.cpf}
                 tipo={"number"}
-                whenChanged={valor => setCpf(valor)}
+                whenChanged={valor => prop.setCpf(valor)}
             />
 
             <Textbox
@@ -137,7 +149,7 @@ function FormBox2(prop) {
                 placeholder="CEP"
                 valor={prop.cep}
                 tipo={"number"}
-                whenChanged={valor => setCep(valor)}
+                whenChanged={valor => prop.setCep(valor)}
             />
 
             <Textbox
@@ -145,7 +157,7 @@ function FormBox2(prop) {
                 placeholder="Altura"
                 valor={prop.height}
                 tipo={"number"}
-                whenChanged={valor => setHeight(valor)}
+                whenChanged={valor => prop.setHeight(valor)}
             />
 
             <Textbox
@@ -153,7 +165,7 @@ function FormBox2(prop) {
                 placeholder="Peso"
                 valor={prop.weight}
                 tipo={"number"}
-                whenChanged={valor => setWeight(valor)}
+                whenChanged={valor => prop.setWeight(valor)}
             />
         </div>
 

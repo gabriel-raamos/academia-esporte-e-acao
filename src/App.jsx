@@ -1,5 +1,5 @@
 import Card from './components/Card/Card'
-import Form from './components/Form/Form'
+import Form2 from './components/Form2/Form2'
 import NavBar from './components/NavBar/NavBar'
 
 export default function App() {
@@ -24,7 +24,7 @@ export default function App() {
 
         <section className='flex justify-center items-center static'>
 
-          <Form titulo="Cadastre-se aqui" />
+          <Form2 titulo="Cadastre-se aqui" />
 
         </section>
 

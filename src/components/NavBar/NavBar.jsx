@@ -5,10 +5,10 @@ import logo from '../../assets/2-removebg-preview.svg'
 export default function NavBar() {
     return (
 
-        <nav className="grid grid-cols-3 gap-5 md:gap-40" >
+        <nav className="md:flex md:flex-row md:space-x-2 md:space-y-5 grid grid-cols-3 gap-10   " >
 
-            <div className="flex items-center justify-center h-5/6 w-5/6 md:h-2/3 md:w-2/3" >
-                <img src={logo} className="w-4/6 h-4/6 py-3 cursor-pointer hover:bg-red-700 transition duration-500 rounded-full mt-2" />
+            <div className="flex items-center justify-center h-5/6 w-5/6 " >
+                <img src={logo} className="w-5/6 h-5/6 py-3 cursor-pointer hover:bg-red-700 transition duration-500 rounded-full mt-2 " />
                 {/* <LogoNoText /> */}
             </div>
 
