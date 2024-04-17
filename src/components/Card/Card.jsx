@@ -4,7 +4,7 @@ export default function Card() {
 
     return (
         <section className="bg-red-700 rounded-3xl p-5 m-5 overflow-hidden" >
-            <div className='' >
+            <div>
                 <h1 className="text-3xl m-5" >Nosso plano mais acessível</h1>
 
                 <p className="text-xl my-3" >Acesso às nossas instalações 5 vezes por semana</p>

@@ -46,7 +46,7 @@ export default function Form2(prop) {
     };
 
     return (
-        <form className="rounded-xl p-2 md:p-5 mb-5  border-4 border-red-700" onSubmit={onSave} >
+        <form className="rounded-xl p-2 md:p-5 my-5  border-4 border-red-700" onSubmit={onSave} >
 
             <h1 className="text-center text-red-700 font-bold text-lg">{prop.titulo}</h1>
 
@@ -94,7 +94,7 @@ export default function Form2(prop) {
                 )}
 
                 {currentPage === 2 && (
-                    <div className="flex" >
+                    <div className="flex justify-center items-center flex-col" >
                         <button
                             onClick={prevPage}
                             className="p-5 px-10 bg-red-700 m-3 text-white text-xl rounded-xl transition hover:bg-red-500 hover:-translate-y-3 duration-500"
