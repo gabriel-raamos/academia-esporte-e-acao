@@ -4,10 +4,12 @@ import Card3 from "../../components/Card3/Card3";
 
 export default function Planos() {
     return (
-        <div className="min-h-screen grid grid-row-3 md:grid-cols-3 justify-center" >
-            <Card1 />
-            <Card2 />
-            <Card3 />
+        <div className="min-h-screen">
+            <div className="flex flex-wrap justify-center" >
+                <Card1 />
+                <Card2 />
+                <Card3 />
+            </div>
         </div>
     )
 }

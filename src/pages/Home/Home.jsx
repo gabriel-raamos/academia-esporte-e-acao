@@ -3,14 +3,11 @@ import Form from "../../components/Form/Form";
 
 export default function Home() {
     return (
-        <section>
+        <section className="min-h-screen" >
 
             <div className="h-full grid grid-row-2 md:grid-cols-2 bg-white " >
 
-
                 <Card2 />
-
-
 
                 <div className='flex justify-center items-center static'>
 
