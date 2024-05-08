@@ -4,7 +4,7 @@ import Card3 from "../../components/Card3/Card3";
 
 export default function Planos() {
     return (
-        <div className="min-h-screen">
+        <div className="">
             <div className="flex flex-wrap justify-center" >
                 <Card1 />
                 <Card2 />

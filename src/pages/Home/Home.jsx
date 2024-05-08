@@ -3,7 +3,7 @@ import Form from "../../components/Form/Form";
 
 export default function Home() {
     return (
-        <section className="min-h-screen" >
+        <section className="" >
 
             <div className="h-full grid grid-row-2 md:grid-cols-2 bg-white " >
 
