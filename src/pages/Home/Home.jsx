@@ -5,7 +5,7 @@ export default function Home() {
     return (
         <section>
 
-            <div className="h-full grid grid-flow-row grid-row-2 md:grid-cols-2 bg-white " >
+            <div className="h-full grid grid-row-2 md:grid-cols-2 bg-white " >
 
 
                 <Card2 />
