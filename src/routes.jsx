@@ -11,7 +11,7 @@ export default function App() {
       <NavBar />
 
       <Routes>
-        <Route path="/" element={<PaginaPadrao/>} >
+        <Route path="/" element={<PaginaPadrao />} >
           <Route index element={<Home />} />
           <Route path=":planos" element={<Planos />} />
         </Route>
