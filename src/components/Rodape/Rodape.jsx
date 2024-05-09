@@ -1,11 +1,9 @@
 export default function Rodape() {
     return (
-        <div className="flex flex-col" >
-            <footer className="bg-red-700 text-center bottom-0">
-                <div className="p-4 text-center text-white">
+        <footer className="flex flex-col footer-new" >
+            <div className="bg-red-700 text-center bottom-0 p-4 text-white">
                     © 2023 Copyright
-                </div>
-            </footer>
-        </div>
+            </div>
+        </footer>
     );
 }

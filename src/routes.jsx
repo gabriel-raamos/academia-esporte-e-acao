@@ -7,7 +7,7 @@ import Rodape from './components/Rodape/Rodape'
 
 export default function App() {
   return (
-    <div className='min-h-screen' >
+    <div className='' >
       <BrowserRouter>
         <NavBar />
 
@@ -24,5 +24,3 @@ export default function App() {
     </div>
   )
 }
-
-// bg-gym no-repeat bg-cover bg-center bg-fixed
