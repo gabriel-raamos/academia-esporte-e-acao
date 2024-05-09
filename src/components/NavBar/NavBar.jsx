@@ -3,26 +3,43 @@ import NavButton from "../NavButton/NavButton";
 import logo from '../../assets/2-removebg-preview.svg'
 import { Link } from "react-router-dom";
 
+import login from '../../assets/user-login-button-svgrepo-com.svg'
+
 export default function NavBar() {
     return (
 
-        <nav className="md:flex md:flex-row md:space-x-2 md:space-y-5 grid grid-cols-3 gap-5 mb-5 justify-between" >
+        <nav className="md:grid md:grid-cols-3" >
 
-            <div className="flex items-center justify-center h-5/6 w-5/6 " >
-                <Link to="/" >
-                    <div>
-                        <img src={logo} className="h-16 w-16 py-3 cursor-pointer hover:bg-red-700 transition duration-500 rounded-full mt-3 md:mt-6 " />
-                    </div>
+            <div></div>
+
+            <div className="grid grid-cols-4 gap-5 space-y-5 mb-5 justify-between md:flex md:flex-row" >
+                <div className="flex items-center justify-center h-5/6 w-5/6 " >
+                    <Link to="/" >
+                        <div>
+                            <img src={logo} className="h-16 w-16 py-3 cursor-pointer hover:bg-red-700 transition duration-500 rounded-full mt-10 md:mt-0 " />
+                        </div>
+                    </Link>
+                </div>
+
+                <Link to="/Planos" >
+                    <NavButton title="Planos" />
                 </Link>
+
+                <Link to="/Planos" >
+                    <NavButton title="Fale conosco" />
+                </Link>
+
+
+                <div className="flex items-center justify-center h-5/6 w-5/6" >
+                    <Link to="/" >
+                        <div>
+                            <img src={login} className="h-16 w-16 py-3 cursor-pointer hover:bg-red-700 transition duration-500 rounded-full md:-mt-8" />
+                        </div>
+                    </Link>
+                </div>
             </div>
 
-            <Link to="/Planos" >
-                <div>
-                    <NavButton title="Planos" />
-                </div>
-            </Link>
-
-            <NavButton title="Fale conosco" />
+            <div></div>
 
         </nav>
 

@@ -9,8 +9,3 @@
 .radius-50 {
     border-radius: 50%;
 }
-
-.footer-new {
-    margin-top: 0; /* take available whitespace */
-    margin-bottom: -10px;      /* remove bottom whitespace */
-}

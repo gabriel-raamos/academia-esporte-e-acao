@@ -7,20 +7,20 @@ import Rodape from './components/Rodape/Rodape'
 
 export default function App() {
   return (
-    <div className='' >
       <BrowserRouter>
         <NavBar />
 
-        <Routes>
-          <Route path="/" element={<PaginaPadrao />} >
-            <Route index element={<Home />} />
-            <Route path=":planos" element={<Planos />} />
-          </Route>
-        </Routes>
+        <div className="min-height-83">
+          <Routes>
+            <Route path="/" element={<PaginaPadrao />} >
+              <Route index element={<Home />} />
+              <Route path=":planos" element={<Planos />} />
+            </Route>
+          </Routes>
+        </div>
 
         <Rodape />
 
       </BrowserRouter>
-    </div>
   )
 }
