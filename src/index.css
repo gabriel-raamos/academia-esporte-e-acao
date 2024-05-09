@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-.min-height-75 {
+.min-height-83 {
     min-height: 83vh;
 }
 
