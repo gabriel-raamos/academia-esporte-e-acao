@@ -12,28 +12,23 @@ export default function NavBar() {
 
             <div></div>
 
-            <div className="grid grid-cols-4 gap-5 space-y-5 mb-5 justify-between md:flex md:flex-row" >
+            <div className="grid grid-cols-4 space-y-5 mb-5 justify-between md:flex md:flex-row" >
                 <div className="flex items-center justify-center h-5/6 w-5/6 " >
                     <Link to="/" >
                         <div>
-                            <img src={logo} className="h-16 w-16 py-3 cursor-pointer hover:bg-red-700 transition duration-500 rounded-full mt-10 md:mt-0 " />
+                            <img src={logo} className="h-16 w-16 py-3 cursor-pointer hover:bg-red-700 transition duration-500 rounded-full mt-10 md:mt-5 " />
                         </div>
                     </Link>
                 </div>
 
-                <Link to="/Planos" >
-                    <NavButton title="Planos" />
-                </Link>
+                <NavButton title="Planos" link="Planos" />
 
-                <Link to="/Planos" >
-                    <NavButton title="Fale conosco" />
-                </Link>
-
+                <NavButton title="Fale conosco" link="Planos" />
 
                 <div className="flex items-center justify-center h-5/6 w-5/6" >
                     <Link to="/" >
                         <div>
-                            <img src={login} className="h-16 w-16 py-3 cursor-pointer hover:bg-red-700 transition duration-500 rounded-full md:-mt-8" />
+                            <img src={login} className="h-16 w-16 py-3 cursor-pointer hover:bg-red-700 transition duration-500 rounded-full md:-mt-4" />
                         </div>
                     </Link>
                 </div>
