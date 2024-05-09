@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .min-height-83 {
-    min-height: 83vh;
+    min-height: 80vh;
 }
 
 .radius-50 {
