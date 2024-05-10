@@ -94,7 +94,7 @@ export default function Form2() {
                 )}
 
                 {currentPage === 2 && (
-                    <div className="flex justify-center items-center flex-col" >
+                    <div className="flex justify-center items-center flex-row" >
                         <button
                             onClick={prevPage}
                             className="p-5 px-10 bg-red-700 m-3 text-white text-xl rounded-xl transition hover:bg-red-500 hover:-translate-y-3 duration-500"

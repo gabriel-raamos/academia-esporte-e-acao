@@ -14,19 +14,19 @@ export default function NavBar() {
 
             <div className="grid grid-cols-4 space-y-5 mb-5 justify-between md:flex md:flex-row" >
                 <div className="flex items-center justify-center h-5/6 w-5/6 " >
-                    <Link to="/" >
+                    <Link to="" >
                         <div>
                             <img src={logo} className="h-16 w-16 py-3 cursor-pointer hover:bg-red-700 transition duration-500 rounded-full mt-10 md:mt-5 " />
                         </div>
                     </Link>
                 </div>
 
-                <NavButton title="Planos" link="Planos" />
+                <NavButton title="Planos" link="planos" />
 
-                <NavButton title="Fale conosco" link="Planos" />
+                <NavButton title="Fale conosco" link="planos" />
 
                 <div className="flex items-center justify-center h-5/6 w-5/6" >
-                    <Link to="/" >
+                    <Link to="login" >
                         <div>
                             <img src={login} className="h-16 w-16 py-3 cursor-pointer hover:bg-red-700 transition duration-500 rounded-full md:-mt-4" />
                         </div>
