@@ -48,7 +48,7 @@ export default function Form2() {
     return (
         <form className="rounded-xl p-2 md:p-5 my-5  border-4 border-red-700" onSubmit={onSave} >
 
-            <h1 className="text-center text-red-700 font-bold text-lg">Ainda não tem uma conta? <br/> Cadastre-se aqui!</h1>
+            <h1 className="text-center text-red-700 font-bold text-lg">Ainda não tem uma conta? <br /> Cadastre-se aqui!</h1>
 
             {currentPage === 1 && (
                 <FormBox1
@@ -85,16 +85,25 @@ export default function Form2() {
             <div className="justify-center items-center flex">
 
                 {currentPage === 1 && (
-                    <button
-                        onClick={nextPage}
-                        className="p-5 px-10 bg-red-700 m-3 text-white text-xl rounded-xl transition hover:bg-red-500 hover:-translate-y-3 duration-500"
-                    >
-                        Próximo
-                    </button>
+                    <div className="flex flex-col md:flex-row justify-center items-center" >
+                        <button
+                            onClick={nextPage}
+                            className="p-5 px-10 bg-red-700 m-3 text-white text-xl rounded-xl transition hover:bg-red-500 hover:-translate-y-3 duration-500"
+                        >
+                            Próximo
+                        </button>
+
+                        <button
+                            disabled
+                            className="p-5 px-10 bg-red-400 m-3 text-white text-xl rounded-xl transition hover:bg-red-300 hover:-translate-y-3 duration-500"
+                        >
+                            Enviar
+                        </button>
+                    </div>
                 )}
 
                 {currentPage === 2 && (
-                    <div className="flex justify-center items-center flex-row" >
+                    <div className="flex flex-col md:flex-row justify-center items-center" >
                         <button
                             onClick={prevPage}
                             className="p-5 px-10 bg-red-700 m-3 text-white text-xl rounded-xl transition hover:bg-red-500 hover:-translate-y-3 duration-500"

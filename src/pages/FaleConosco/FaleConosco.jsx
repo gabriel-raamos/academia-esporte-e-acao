@@ -1,7 +1,7 @@
 export default function FaleConosco() {
     return (
         <div>
-            <h1>Fale conosco</h1>
+            <h1>WORK IN PROGRESS</h1>
         </div>
     )
 }

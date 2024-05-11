@@ -23,8 +23,9 @@ export default function NavBar() {
                 <NavButton title="Login" link="login" />
 
             </nav>
-
+            
             <div></div>
+
 
         </section>
 
@@ -49,3 +50,4 @@ export default function NavBar() {
 {/* <div className="flex items-center justify-center p-5 " >
     <button className="text-red-700 font-bold" >Home</button>
 </div> */}
+
