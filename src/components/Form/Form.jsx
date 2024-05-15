@@ -18,7 +18,6 @@ export default function Form2() {
 
     const [currentPage, setCurrentPage] = useState(1)
 
-
     const onSave = (e) => {
         e.preventDefault()
 
