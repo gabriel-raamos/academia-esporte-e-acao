@@ -1,15 +1,18 @@
 import PropTypes from 'prop-types'
 
+import './Mapa.css'
+
 import { GoogleApiWrapper, Map, Marker } from "google-maps-react";
 
 function Mapa({ google }) {
+
     return (
-        <div style={{ width: '50%', height: '50%', border: 'solid 4px rgb(185 28 28)' }} >
+        <div className='map-container flex' >
             <Map
                 google={google}
                 zoom={15}
                 initialCenter={{ lat: -22.790405430396863, lng: -45.183530760549445 }}
-                style={{ width: '50%', height: '50%', border: 'solid 4px rgb(185 28 28)' }}
+                style={{ maxHeight: '50%', maxWidth: '50%' }}
             >
                 <Marker position={{ lat: -22.790405430396863, lng: -45.183530760549445 }} />
             </Map>
