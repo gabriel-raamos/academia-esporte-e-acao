@@ -12,7 +12,7 @@ export default function NavBar() {
 
             <div></div>
 
-            <nav className="flex md:grid md:grid-cols-4 -space-x-5 items-center my-5" >
+            <nav className="flex md:grid md:grid-cols-4 -space-x-5 items-center mb-5 md:my-5" >
 
                 <NavButton title="Início" link="" />
 
