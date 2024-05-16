@@ -9,3 +9,15 @@
 .radius-50 {
     border-radius: 50%;
 }
+
+.custom-border {
+    border: 3px solid rgb(185, 28, 28);
+}
+
+.largura-50vw {
+    width: 50vw;
+}
+
+.largura-70vw {
+    width: 70vw;
+}

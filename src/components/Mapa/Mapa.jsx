@@ -6,8 +6,8 @@ export default function Mapa() {
             width="900"
             height="450"
             allowFullScreen=""
-            style={{ border: '3px solid rgb(185, 28, 28)', borderRadius: '25px' }}
-            className="w-96"
+            style={{borderRadius: '25px'}}
+            className="custom-border md:h-80 largura-70vw md:largura-50vw mb-5 md:mb-0"
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
         >
