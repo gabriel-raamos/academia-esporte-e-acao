@@ -12,7 +12,9 @@ export default function App() {
     <BrowserRouter>
       <NavBar />
 
-      <div className="min-height-80">
+      <div 
+        className="min-height-80"
+        >
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/planos" element={<Planos />} />
