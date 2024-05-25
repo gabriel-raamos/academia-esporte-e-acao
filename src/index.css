@@ -2,8 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+html,
+body,
+#root {
+    height: 100%;
+}
+
 .min-height-80 {
-    min-height: 80vh;
+    background: #ff0000;
 }
 
 .radius-50 {
@@ -11,13 +17,31 @@
 }
 
 .custom-border {
-    border: 3px solid rgb(185, 28, 28);
+    border: 3px solid rgb(185, 28, 28);    
 }
 
+.custom-border2 {
+    border: 3px solid rgb(59, 185, 28);
+}
 .largura-50vw {
     width: 50vw;
 }
 
 .largura-70vw {
     width: 70vw;
+}
+
+.app-container {
+    min-height: 80vh;
+    /* Ensure the container fills at least the height of the viewport */
+    display: flex;
+    flex-direction: column;
+    /* Ensure child elements stack vertically */
+}
+
+.footer { 
+    position: static; 
+    bottom: 0; 
+    left: 0; 
+    z-index: 10;
 }

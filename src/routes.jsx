@@ -12,9 +12,7 @@ export default function App() {
     <BrowserRouter>
       <NavBar />
 
-      <div 
-        className="min-height-80"
-        >
+      <div className='app-container custom-border2' >
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/planos" element={<Planos />} />
@@ -23,12 +21,10 @@ export default function App() {
         </Routes>
       </div>
 
-      <Rodape />
+      <div className='footer' >
+        <Rodape />
+      </div>
 
     </BrowserRouter>
   )
 }
-
-{/* <Route index element={<Home />} />
-<Route path=":planos" element={<Planos />} />
-<Route path=":login" element={<Login />} /> */}
