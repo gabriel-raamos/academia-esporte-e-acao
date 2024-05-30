@@ -12,7 +12,7 @@ export default function App() {
     <BrowserRouter>
       <NavBar />
 
-      <div className='app-container custom-border2' >
+      <div className='app-container' >
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/planos" element={<Planos />} />
