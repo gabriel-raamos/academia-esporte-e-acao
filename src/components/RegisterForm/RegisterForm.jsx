@@ -2,7 +2,7 @@ import { useState } from "react";
 import Textbox from "../Textbox/Textbox";
 import Button from "../Button/Button";
 
-export default function Form2() {
+export default function Form() {
 
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
