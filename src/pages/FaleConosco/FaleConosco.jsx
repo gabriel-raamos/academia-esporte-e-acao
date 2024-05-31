@@ -13,30 +13,30 @@ export default function FaleConosco() {
                 <div>
                     <h1 className="text-2xl font-bold" >Nos contate</h1>
 
-                    <div className="pt-5 md:text-xl" >
+                    <div className="mt-5 text-xl" >
 
-                        <div className="mb-10" >
-                            <div className="flex space-x-2" >
-                                <AiFillEnvironment className="translate-y-1" />
+                        <div className="mb-10 flex" >
+                            <AiFillEnvironment className="translate-y-2 mr-5 h-10 w-10" />
+                            <div>
                                 <h3 className="font-bold">Endereço</h3>
+                                <p>Rua tal tal tal</p>
                             </div>
-                            <p>Rua tal tal tal</p>
                         </div>
 
-                        <div className="mb-10" >
-                            <div className="flex space-x-2" >
-                                    <GiSmartphone className="translate-y-1" />
+                        <div className="mb-10 flex" >
+                            <GiSmartphone className="translate-y-2 mr-5 h-10 w-10" />
+                            <div>
                                 <h3 className="font-bold">Celular</h3>
+                                <p>12 99999-9999</p>
                             </div>
-                            <p>12 99999-9999</p>
                         </div>
 
-                        <div className="mb-10" >
-                            <div className="flex space-x-2" >
-                                <MdEmail className="translate-y-1" />
+                        <div className="mb-10 flex" >
+                            <MdEmail className="translate-y-2 mr-5 h-10 w-10" />
+                            <div>
                                 <h3 className="font-bold">Email</h3>
+                                <p>esporteeacao@gmail.com</p>
                             </div>
-                            <p>esporteeacao@gmail.com</p>
                         </div>
 
                     </div>
