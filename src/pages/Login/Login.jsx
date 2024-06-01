@@ -1,5 +1,5 @@
 import LoginForm from "../../components/LoginForm/LoginForm";
-import Form from "../../components/RegisterForm/RegisterForm";
+import RegisterForm from "../../components/RegisterForm/RegisterForm";
 
 export default function Login() {
     return (
@@ -10,7 +10,7 @@ export default function Login() {
             </div>
 
             <div className='flex justify-center items-center'>
-                <Form />
+                <RegisterForm />
             </div>
         </section>
     )
