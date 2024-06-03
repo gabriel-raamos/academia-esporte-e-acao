@@ -1,7 +1,9 @@
 import Card2 from "../../components/Card2/Card2";
 import Form from "../../components/RegisterForm/RegisterForm";
 
-// import { CgGym } from "react-icons/cg";
+import { CgGym } from "react-icons/cg";
+import { GiGymBag } from "react-icons/gi";
+import { MdOutlineDirectionsBike } from "react-icons/md";
 
 export default function Home() {
     return (
@@ -19,29 +21,36 @@ export default function Home() {
 
             </div>
 
-            <section className="justify-center items-center my-5 text-center" >
+            <section className="flex flex-col justify-center items-center mt-5 py-10 md:py-20 text-center bg-gray-900 text-white">
+                <h1 className="font-bold text-4xl">AUMENTE SEUS LIMITES!</h1>
 
-                <h1 className="font-bold justify-center flex text-4xl my-5" >AUMENTE SEUS LIMITES!</h1>
-
-                <div className="grid grid-rows-3 md:grid-cols-3">
-                    <div className="justify-center items-center my-5" >
-                        {/* <CgGym/> */}
-                        <h3 className="text-2xl" >Equipamentos modernos</h3>
-                        <p>Equipamentos novos, prontos para uso.</p>
+                <div className="grid gap-5 grid-rows-3 md:grid-cols-3 md:grid-rows-1 w-full max-w-4xl">
+                    <div className="flex flex-col justify-center items-center p-5 rounded">
+                        <div className="flex justify-center items-center">
+                            <CgGym className="size-20 bg-gray-400 text-white rounded-full p-3" />
+                        </div>
+                        <h3 className="text-2xl mt-3">Equipamentos modernos</h3>
+                        <p className="mt-2">Equipamentos novos, prontos para uso.</p>
                     </div>
 
-                    <div className="justify-center items-center my-5" >
-                        <h3 className="text-2xl" >Equipamentos modernos</h3>
-                        <p>Equipamentos novos, prontos para uso.</p>
+                    <div className="flex flex-col justify-center items-center p-5 rounded">
+                        <div className="flex justify-center items-center">
+                            <GiGymBag className="size-20 bg-gray-400 text-white rounded-full p-3" />
+                        </div>
+                        <h3 className="text-2xl mt-3">Equipamentos modernos</h3>
+                        <p className="mt-2">Equipamentos novos, prontos para uso.</p>
                     </div>
 
-                    <div className="justify-center items-center my-5" >
-                        <h3 className="text-2xl" >Equipamentos modernos</h3>
-                        <p>Equipamentos novos, prontos para uso.</p>
+                    <div className="flex flex-col justify-center items-center p-5 rounded">
+                        <div className="flex justify-center items-center">
+                            <MdOutlineDirectionsBike className="size-20 bg-gray-400 text-white rounded-full p-3" />
+                        </div>
+                        <h3 className="text-2xl mt-3">Equipamentos modernos</h3>
+                        <p className="mt-2">Equipamentos novos, prontos para uso.</p>
                     </div>
                 </div>
-
             </section>
+
 
         </section>
     )
