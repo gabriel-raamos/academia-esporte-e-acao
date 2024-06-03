@@ -13,6 +13,7 @@ export default function Card2() {
 
                 <p className="text-xl my-3" >Eventos especiais e Workshops</p>
 
+                <h3 className="text-5xl m-5 font-bold" >R$ 120,00</h3>
             </div>
         </section>
     )
