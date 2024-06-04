@@ -20,6 +20,11 @@ mongoose.connect(process.env.VITE_MONGO_URL,)
         console.error('Erro ao conectar ao MongoDB', err)
     })
 
+// test
+app.get('/test', (req,res) => {
+    res.send('test')
+})
+
 // registrar
 app.post('/register', async (req, res) => {
     const { name, email, password, date, phone, cpf, cep, height, weight } = req.body
