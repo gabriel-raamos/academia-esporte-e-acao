@@ -26,7 +26,7 @@ dist-ssr
 .env
 .vercel
 
-keys.json
-*.json
-.json
-vercel.json
+# keys.json
+# *.json
+# .json
+# vercel.json
