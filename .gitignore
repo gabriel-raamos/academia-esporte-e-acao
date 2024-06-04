@@ -28,3 +28,4 @@ dist-ssr
 
 keys.json
 *.json
+vercel.json
