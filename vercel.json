@@ -1,0 +1,5 @@
+{
+    "env": {
+        "VITE_MONGO_URL": "mongodb+srv://admin:admin@cluster0.jeqtdef.mongodb.net/"
+    }
+}
