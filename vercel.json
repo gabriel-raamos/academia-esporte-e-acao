@@ -1,15 +1,15 @@
 {
-  "name": "mongoose-api",
+  "version": 2,
   "builds": [
     {
-      "src": "/backend/server.js",
-      "use": "@now/node-server"
+      "src": "backend/server.js",
+      "use": "@vercel/node"
     }
   ],
   "routes": [
     {
-        "src": "/backend/server.js",
-        "dest": "server.js"
+      "src": "/(.*)",
+      "dest": "backend/server.js"
     }
   ]
 }
