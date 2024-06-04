@@ -8,7 +8,7 @@ import NavButton from "../NavButton/NavButton";
 export default function NavBar() {
     return (
 
-        <section className="md:flex md:justify-center" >
+        <section className="content-between md:flex md:justify-center" >
 
             {/* <div></div> */}
 
