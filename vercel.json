@@ -2,14 +2,14 @@
   "name": "mongoose-api",
   "builds": [
     {
-      "src": "backend/server.js",
+      "src": "/backend/server.js",
       "use": "@now/node-server"
     }
   ],
   "routes": [
     {
-        "src": "/(.*)",
-        "dest": "backend/server.js"
+        "src": "/backend/server.js",
+        "dest": "server.js"
     }
   ]
 }
