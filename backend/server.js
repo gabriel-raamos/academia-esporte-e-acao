@@ -37,6 +37,8 @@ app.post('/api/register', async (req, res) => {
 
     const { name, email, password, date, phone, cpf, cep, height, weight } = req.body
 
+    res.send(req.body)
+
     try {
         const newCliente = new Cliente({ name, email, password, date, phone, cpf, cep, height, weight })
 
