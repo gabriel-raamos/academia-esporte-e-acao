@@ -7,7 +7,13 @@ const connectDB = async () => {
     }
 
     catch (error) {
-        console.log("Conexão falhou: " + error)
+        console.error('Erro ao conectar ao MongoDB:', error);
+        if (error instanceof mongoose.Error) {
+            console.error('Mongoose-specific error:', error.message);
+        } else {
+            console.error('General error:', error.message);
+        }
+        process.exit(1); // Encerra o processo se a conexão falhar
     }
 }
 
