@@ -23,7 +23,6 @@ mongoose.connect(process.env.VITE_MONGO_URL,)
 // test
 app.get('/api/test', (req, res) => {
     res.send(process.env.VITE_MONGO_URL)
-    res.send(import.meta.env.VITE_MONGO_URL)
 })
 
 // test2
