@@ -26,7 +26,7 @@ app.get('/api/test', (req, res) => {
 })
 
 // test2
-app.get('/', (req, res) => {
+app.get('/api/', (req, res) => {
     res.send('test')
 })
 
