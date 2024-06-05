@@ -16,11 +16,11 @@ export default function LoginForm() {
 
     return (
         <form
-            className="rounded-xl p-5 my-5 border-4 text-red-700 border-red-700 font-bold"
+            className="rounded-xl p-5 my-5 border-4 text-red-700 border-red-700"
             onSubmit={onSave}
         >
 
-            <h1 className="text-center text-lg">Faça seu login aqui!</h1>
+            <h1 className="text-center text-lg font-bold">Faça seu login aqui!</h1>
 
             <Textbox
                 obrigatorio={true}

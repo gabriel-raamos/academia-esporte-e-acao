@@ -20,6 +20,7 @@ connectDB()
 // test
 app.get('/api/test', (req, res) => {
     res.send(process.env.MONGO_URL)
+    connectDB()
 })
 
 // test2
