@@ -97,9 +97,10 @@ app.get('/api/test-mongodb-connection', (req, res) => {
 });
 
 app.get('/api/whatsapp', async (req, res) => {
-    const response = await Cliente.findOne({ _id: '6660a0a55940f1ba33b9526e' });
+    const response = await Cliente.find({name: "gabriel"});
     console.log(response);
-    res.send("encontramos uma resposta com certeza");
+    // res.send("encontramos uma resposta com certeza");
+    res.send(response)
 })
 
 
