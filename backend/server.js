@@ -82,7 +82,7 @@ app.post('/api/login', async (req, res) => {
 })
 
 // Rota para testar a conexão com o MongoDB
-app.get('/test-mongodb-connection', (req, res) => {
+app.get('/api/test-mongodb-connection', (req, res) => {
     if (mongoose.connection.readyState === 1) {
         res.send('Conexão com o MongoDB estabelecida com sucesso');
     } else {
