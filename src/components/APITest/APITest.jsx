@@ -14,7 +14,7 @@ export default function APITest() {
     // Função fetch que irá buscar os dados da API
     const fetchData = async () => {
         try {
-            const response = await axios.get('http://pi-academia.vercel.app/api/whatsapp')
+            const response = await axios.get('https://pi-academia.vercel.app/api/whatsapp')
             setData(response.data)
             setLoading(false)
         }
@@ -30,7 +30,7 @@ export default function APITest() {
     }, [])
 
     if (loading) return <p>Carregando...</p>
-    if (error) return <p>Ocorreu um erro ao buscar os dados: {error}</p>
+    if (error) return <p>Ocorreu um erro ao buscar os dados: {error.message}</p>
 
     return (
         <div>
