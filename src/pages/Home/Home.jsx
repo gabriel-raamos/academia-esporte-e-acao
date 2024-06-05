@@ -4,12 +4,13 @@ import Form from "../../components/RegisterForm/RegisterForm";
 import { CgGym } from "react-icons/cg";
 import { GiGymBag } from "react-icons/gi";
 import { MdOutlineDirectionsBike } from "react-icons/md";
+import APITest from "../../components/APITest/APITest";
 
 export default function Home() {
     return (
         <section>
 
-            <div className="h-full grid md:grid-cols-2 bg-white " >
+            <section className="h-full grid md:grid-cols-2 bg-white " >
 
                 <Card2 />
 
@@ -19,7 +20,7 @@ export default function Home() {
 
                 </div>
 
-            </div>
+            </section>
 
             <section className="flex flex-col justify-center items-center mt-5 py-10 md:py-20 text-center bg-gray-900 text-white">
                 <h1 className="font-bold text-4xl">AUMENTE SEUS LIMITES!</h1>
@@ -51,6 +52,9 @@ export default function Home() {
                 </div>
             </section>
 
+            <section>
+                <APITest/>
+            </section>
 
         </section>
     )

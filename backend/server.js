@@ -65,9 +65,9 @@ app.post('/api/register', async (req, res) => {
 
 // login
 app.post('/api/login', async (req, res) => {
-    const { username, password } = req.body;
+    const { name, password } = req.body;
     try {
-        const cliente = await Cliente.findOne({ username });
+        const cliente = await Cliente.findOne({ name });
         if (!cliente) {
             return res.status(404).json({ message: 'User not found' });
         }
@@ -97,7 +97,7 @@ app.get('/api/test-mongodb-connection', (req, res) => {
 });
 
 app.get('/api/whatsapp', async (req, res) => {
-    const response = await Cliente.find({name: "gabriel"});
+    const response = await Cliente.find({name: ""});
     console.log(response);
     // res.send("encontramos uma resposta com certeza");
     res.send(response)
@@ -107,9 +107,3 @@ app.get('/api/whatsapp', async (req, res) => {
 app.listen(port, () => {
     console.log(`Server rodando na porta ${port}`)
 })
-
-// console.log(process.env.MONGO_URL)
-
-//   { "src": "", "use": "@vercel/static-build" },
-
-//   { "src": "/(.*)", "dest": "/frontend/$1" }
