@@ -33,13 +33,18 @@ export default function APITest() {
     if (error) return <p>Ocorreu um erro ao buscar os dados: {error.message}</p>
 
     return (
-        <div>
-            <h1>Dados da API</h1>
-            <ul>
-                {data.map((item) => (
-                    <li key={item.id}>{item.name} e {item.email}</li>
-                ))}
-            </ul>
+        <div className="grid grid-cols-1 justify-center items-center my-10" >
+            <div className="flex justify-center items-center" >
+                <h1 className="my-5 font-bold text-4xl" >Dados da API</h1>
+            </div>
+
+            <div className="flex justify-center items-center text-center">
+                <ul className="text-lg" >
+                    {data.map((item) => (
+                        <li key={item.id}>{item.name} e {item.email}</li>
+                    ))}
+                </ul>
+            </div>
         </div>
     )
 

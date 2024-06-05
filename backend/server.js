@@ -102,7 +102,6 @@ app.get('/api/whatsapp', async (req, res) => {
     res.send(response)
 })
 
-
 app.listen(port, () => {
     console.log(`Server rodando na porta ${port}`)
 })
