@@ -11,7 +11,9 @@ dotenv.config()
 const app = express()
 const port = 5000
 
-app.use(cors())
+app.use(cors({
+    origin: 'https://pi-academia.vercel.app' // Substitua pelo URL do seu frontend
+}));
 app.use(express.json())
 
 app.use(bodyParser.json())
@@ -96,10 +98,11 @@ app.get('/api/test-mongodb-connection', (req, res) => {
 });
 
 app.get('/api/whatsapp', async (req, res) => {
+    res.send(response)
     const response = await Cliente.find({});
+    
     // console.log(response);
     // res.send("encontramos uma resposta com certeza");
-    res.send(response)
 })
 
 
