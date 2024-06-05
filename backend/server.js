@@ -13,16 +13,16 @@ const port = 5000
 app.use(cors())
 app.use(express.json())
 
-import connectDB from './connectMongo.js'
+import db from './db.js'
 
-connectDB()
+db.connect() /*  pra conectar ao banco, ele abre o banco com esse código */
 
 // test
-app.get('/api/test', (req, res) => {
+app.get('/api/test', async (req, res) => {
     res.send(process.env.MONGO_URL)
 
     try {
-        mongoose.connect(process.env.MONGO_URL);
+        await mongoose.connect(process.env.MONGO_URL);
         console.log(`MongoDB conectado`);
       } catch (err) {
         console.error(`Error: ${err.message}`);
@@ -95,6 +95,8 @@ app.get('/api/test-mongodb-connection', (req, res) => {
         res.status(500).send('Erro ao conectar ao MongoDB');
     }
 });
+
+db.disconnect() /*  pra se desconectar do banco, ai tu pode fazer as pesquisas, os filtros e só fechar depois de tudo */
 
 app.listen(port, () => {
     console.log(`Server rodando na porta ${port}`)
