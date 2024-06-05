@@ -21,7 +21,7 @@ mongoose.connect(process.env.VITE_MONGO_URL,)
     })
 
 // test
-app.get('/test', (req,res) => {
+app.get('/test', (req, res) => {
     res.send('test')
 })
 
@@ -76,3 +76,7 @@ app.listen(port, () => {
 })
 
 console.log(process.env.VITE_MONGO_URL)
+
+//   { "src": "", "use": "@vercel/static-build" },
+
+//   { "src": "/(.*)", "dest": "/frontend/$1" }
