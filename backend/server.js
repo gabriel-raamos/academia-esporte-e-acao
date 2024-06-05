@@ -13,7 +13,7 @@ const port = 5000
 app.use(cors())
 app.use(express.json())
 
-import { connectDB } from './connectMongo.js'
+import connectDB from './connectMongo.js'
 
 connectDB()
 
