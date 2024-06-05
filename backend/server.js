@@ -31,7 +31,7 @@ app.get('/api/', (req, res) => {
 })
 
 // registrar
-app.post('/register', async (req, res) => {
+app.post('/api/register', async (req, res) => {
     const { name, email, password, date, phone, cpf, cep, height, weight } = req.body
 
     try {
@@ -53,7 +53,7 @@ app.post('/register', async (req, res) => {
 })
 
 // login
-app.post('/login', async (req, res) => {
+app.post('/api/login', async (req, res) => {
     const { username, password } = req.body;
     try {
         const cliente = await Cliente.findOne({ username });
