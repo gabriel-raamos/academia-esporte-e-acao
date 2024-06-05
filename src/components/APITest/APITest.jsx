@@ -30,7 +30,7 @@ export default function APITest() {
     }, [])
 
     if (loading) return <p>Carregando...</p>
-    if (error) return <p>Ocorreu um erro ao buscar os dados: {error.message}</p>
+    if (error) return <p>Ocorreu um erro ao buscar os dados: {error}</p>
 
     return (
         <div>
