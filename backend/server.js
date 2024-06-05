@@ -33,7 +33,7 @@ app.get('/api/', (req, res) => {
 // registrar
 app.post('/api/register', async (req, res) => {
 
-    res.send('test')
+    // res.send('test')
 
     const { name, email, password, date, phone, cpf, cep, height, weight } = req.body
 
