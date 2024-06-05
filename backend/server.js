@@ -94,7 +94,7 @@ app.listen(port, () => {
     console.log(`Server rodando na porta ${port}`)
 })
 
-console.log(process.env.VITE_MONGO_URL)
+console.log(process.env.MONGO_URL)
 
 //   { "src": "", "use": "@vercel/static-build" },
 
