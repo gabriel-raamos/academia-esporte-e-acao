@@ -25,6 +25,11 @@ app.get('/test', (req, res) => {
     res.send('test')
 })
 
+// test2
+app.get('/', (req, res) => {
+    res.send('test')
+})
+
 // registrar
 app.post('/register', async (req, res) => {
     const { name, email, password, date, phone, cpf, cep, height, weight } = req.body
