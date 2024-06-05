@@ -7,9 +7,9 @@
     "dev": "vite",
 
     "client": "yarn dev",
-    "server": "node backend/server.js",
+    "start": "node backend/server.js",
 
-    "start": "concurrently \"yarn server\" \"yarn client\"",
+    "start-everything": "concurrently \"yarn server\" \"yarn client\"",
 
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
