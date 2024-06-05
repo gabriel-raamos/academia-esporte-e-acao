@@ -22,7 +22,7 @@ mongoose.connect(process.env.VITE_MONGO_URL,)
 
 // test
 app.get('/api/test', (req, res) => {
-    res.send('test')
+    res.send(process.env.VITE_MONGO_URL)
 })
 
 // test2
@@ -32,6 +32,9 @@ app.get('/api/', (req, res) => {
 
 // registrar
 app.post('/api/register', async (req, res) => {
+
+    res.send('test')
+
     const { name, email, password, date, phone, cpf, cep, height, weight } = req.body
 
     try {
