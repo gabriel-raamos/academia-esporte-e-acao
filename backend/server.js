@@ -13,7 +13,7 @@ const port = 5000
 app.use(cors())
 app.use(express.json())
 
-mongoose.connect(process.env.VITE_MONGO_URL,)
+mongoose.connect(process.env.MONGO_URL,)
     .then(() => {
         console.log('Conectado ao MongoDB')
     }).catch(err => {
@@ -22,7 +22,7 @@ mongoose.connect(process.env.VITE_MONGO_URL,)
 
 // test
 app.get('/api/test', (req, res) => {
-    res.send(process.env.VITE_MONGO_URL)
+    res.send(process.env.MONGO_URL)
 })
 
 // test2
