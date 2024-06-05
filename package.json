@@ -5,6 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+
+    "client": "yarn dev",
+    "server": "node backend/server.js",
+
+    "start": "concurrently \"yarn server\" \"yarn client\"",
+
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
@@ -15,8 +21,10 @@
     "autoprefixer": "^10.4.19",
     "axios": "^1.7.2",
     "bcryptjs": "^2.4.3",
+    "concurrently": "^8.2.2",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
+    "esm": "^3.2.25",
     "express": "^4.19.2",
     "google-maps-react": "^2.0.6",
     "mongoose": "^8.4.1",
