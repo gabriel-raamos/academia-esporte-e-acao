@@ -20,7 +20,15 @@ connectDB()
 // test
 app.get('/api/test', (req, res) => {
     res.send(process.env.MONGO_URL)
-    connectDB()
+
+    try {
+        mongoose.connect(process.env.MONGO_URL);
+        console.log(`MongoDB conectado`);
+      } catch (err) {
+        console.error(`Error: ${err.message}`);
+        process.exit(1); // Exit process with failure
+      }
+
 })
 
 // test2
@@ -92,7 +100,7 @@ app.listen(port, () => {
     console.log(`Server rodando na porta ${port}`)
 })
 
-console.log(process.env.MONGO_URL)
+// console.log(process.env.MONGO_URL)
 
 //   { "src": "", "use": "@vercel/static-build" },
 
