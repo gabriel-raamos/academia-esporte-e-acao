@@ -5,12 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-
     "client": "yarn dev",
     "start": "node backend/server.js",
-
     "start-everything": "concurrently \"yarn start\" \"yarn client\"",
-
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
@@ -48,4 +45,3 @@
     "vite": "^5.2.0"
   }
 }
-

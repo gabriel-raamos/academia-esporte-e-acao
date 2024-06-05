@@ -2,51 +2,15 @@ import mongoose from 'mongoose'
 import bcrypt from 'bcryptjs'
 
 const ClienteSchema = new mongoose.Schema({
-    name: {
-        type: String,
-        required: true
-    },
-
-    email: {
-        type: String,
-        required: true,
-        unique: true
-    },
-
-    password: {
-        type: String,
-        required: true
-    },
-
-    date: {
-        type: String,
-        required: true
-    },
-
-    phone: {
-        type: String,
-        required: true,
-    },
-
-    cpf: {
-        type: String,
-        required: true
-    },
-
-    cep: {
-        type: String,
-        required: true
-    },
-
-    height: {
-        type: String,
-        required: true
-    },
-
-    weight: {
-        type: String,
-        required: true
-    }
+    name: { type: String, required: true },
+    email: { type: String, required: true, unique: true },
+    password: { type: String, required: true },
+    date: { type: String, required: true },
+    phone: { type: String, required: true, },
+    cpf: { type: String, required: true },
+    cep: { type: String, required: true },
+    height: { type: String, required: true },
+    weight: { type: String, required: true }
 })
 
 ClienteSchema.pre('save', async function (next) {

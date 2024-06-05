@@ -13,9 +13,9 @@ const port = 5000
 app.use(cors())
 app.use(express.json())
 
-import db from './db.js'
+import connectDB from './connectMongo.js'
 
-db.connect() /*  pra conectar ao banco, ele abre o banco com esse código */
+connectDB()
 
 // test
 app.get('/api/test', async (req, res) => {
@@ -96,7 +96,12 @@ app.get('/api/test-mongodb-connection', (req, res) => {
     }
 });
 
-db.disconnect() /*  pra se desconectar do banco, ai tu pode fazer as pesquisas, os filtros e só fechar depois de tudo */
+app.get('/api/whatsapp', async (req, res) => {
+    const response = await Cliente.findOne({ _id: '6660a0a55940f1ba33b9526e' });
+    console.log(response);
+    res.send("encontramos uma resposta com certeza");
+})
+
 
 app.listen(port, () => {
     console.log(`Server rodando na porta ${port}`)
