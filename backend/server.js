@@ -13,12 +13,9 @@ const port = 5000
 app.use(cors())
 app.use(express.json())
 
-mongoose.connect(process.env.MONGO_URL,)
-    .then(() => {
-        console.log('Conectado ao MongoDB')
-    }).catch(err => {
-        console.error('Erro ao conectar ao MongoDB', err)
-    })
+import { connectDB } from './connectMongo.js'
+
+connectDB()
 
 // test
 app.get('/api/test', (req, res) => {
