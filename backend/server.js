@@ -13,7 +13,7 @@ const port = 5000
 app.use(cors())
 app.use(express.json())
 
-mongoose.connect("mongodb+srv://admin:admin@cluster0.oeflupm.mongodb.net/academia",)
+mongoose.connect(process.env.VITE_MONGO_URL,)
     .then(() => {
         console.log('Conectado ao MongoDB')
     }).catch(err => {
