@@ -21,7 +21,7 @@ mongoose.connect(process.env.VITE_MONGO_URL,)
     })
 
 // test
-app.get('/test', (req, res) => {
+app.get('/api/test', (req, res) => {
     res.send('test')
 })
 
