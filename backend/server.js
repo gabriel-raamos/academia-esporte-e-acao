@@ -3,6 +3,7 @@ import mongoose from 'mongoose'
 import cors from 'cors'
 import Cliente from './models/Cliente.js'
 import bcrypt from 'bcryptjs'
+import bodyParser from 'body-parser'
 
 import dotenv from 'dotenv'
 dotenv.config()
@@ -12,6 +13,8 @@ const port = 5000
 
 app.use(cors())
 app.use(express.json())
+
+app.use(bodyParser.json())
 
 import connectDB from './connectMongo.js'
 
@@ -39,11 +42,7 @@ app.get('/api/', (req, res) => {
 // registrar
 app.post('/api/register', async (req, res) => {
 
-    // res.send('test')
-
     const { name, email, password, date, phone, cpf, cep, height, weight } = req.body
-
-    res.send(req.body)
 
     try {
         const newCliente = new Cliente({ name, email, password, date, phone, cpf, cep, height, weight })
@@ -57,7 +56,7 @@ app.post('/api/register', async (req, res) => {
         res.status(400).json({
             message: 'Error registering user',
             error: error.message,
-            details: error
+            // details: error
         });
     }
 
@@ -98,7 +97,7 @@ app.get('/api/test-mongodb-connection', (req, res) => {
 
 app.get('/api/whatsapp', async (req, res) => {
     const response = await Cliente.find({});
-    console.log(response);
+    // console.log(response);
     // res.send("encontramos uma resposta com certeza");
     res.send(response)
 })
