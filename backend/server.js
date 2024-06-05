@@ -81,6 +81,15 @@ app.post('/api/login', async (req, res) => {
 
 })
 
+// Rota para testar a conexão com o MongoDB
+app.get('/test-mongodb-connection', (req, res) => {
+    if (mongoose.connection.readyState === 1) {
+        res.send('Conexão com o MongoDB estabelecida com sucesso');
+    } else {
+        res.status(500).send('Erro ao conectar ao MongoDB');
+    }
+});
+
 app.listen(port, () => {
     console.log(`Server rodando na porta ${port}`)
 })
