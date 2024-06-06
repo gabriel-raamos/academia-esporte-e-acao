@@ -16,7 +16,7 @@ export default function LoginForm() {
         };
 
         try {
-            await axios.post("https://pi-academia.vercel.app/api/login", userData);
+            await axios.post("https://pi-academia.vercel.app/api/logarcliente", userData);
             alert('Login efetuado com sucesso.');
 
             setEmail('');

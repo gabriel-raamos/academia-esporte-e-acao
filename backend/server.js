@@ -5,6 +5,8 @@ import Cliente from './models/Cliente.js'
 import bcrypt from 'bcryptjs'
 import bodyParser from 'body-parser'
 
+import jwt from 'jsonwebtoken'
+
 import dotenv from 'dotenv'
 dotenv.config()
 
@@ -27,10 +29,10 @@ app.get('/api/test', async (req, res) => {
     try {
         await mongoose.connect(process.env.MONGO_URL);
         console.log(`MongoDB conectado`);
-      } catch (err) {
+    } catch (err) {
         console.error(`Error: ${err.message}`);
         process.exit(1); // Exit process with failure
-      }
+    }
 
 })
 
@@ -100,6 +102,63 @@ app.get('/api/whatsapp', async (req, res) => {
     // console.log(response);
     // res.send("encontramos uma resposta com certeza");
     res.send(response)
+})
+
+app.post('/api/loginjwt', (req, res) => {
+
+    const cliente = req.body
+
+    const tokenAcesso = jwt.sign(cliente, process.env.ACCESS_TOKEN_SECRET)
+    res.json({ accessToken: tokenAcesso })
+
+})
+
+function authenticateToken(req, res, next) {
+    const authHeader = req.headers['Authorization']
+    const token = authHeader && authHeader.split(' ')[1]
+
+    if (token == null) {
+        return res.sendStatus(401)
+    }
+
+    jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
+        if (err) {
+            return res.sendStatus(403)
+        }
+
+        req.user = user
+
+        res.send(authHeader)
+
+        next()
+    })
+}
+
+app.post('/api/logarcliente', async (req, res) => {
+    const { email, password } = req.body;
+
+    try {
+        const cliente = await Cliente.findOne({ email });
+        if (!cliente) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+        const isMatch = await bcrypt.compare(password, cliente.password);
+        if (!isMatch) {
+            return res.status(400).json({ message: 'Invalid credentials' });
+        }
+
+        const accessToken = jwt.sign({ email: cliente.email, name: cliente.name }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1h' });
+        res.setHeader('Authorization', 'Bearer ' + accessToken);
+        console.log('Token gerado e adicionado ao cabeçalho:', accessToken);
+        return res.json({ message: 'Login successful', accessToken });
+    } catch (error) {
+        console.error('Erro ao fazer login:', error);
+        return res.status(500).json({ message: 'Internal server error' });
+    }
+});
+
+app.get('/api/protected', authenticateToken, (req, res) => {
+    res.send('Essa é uma rota protegida: ' + JSON.stringify(req.cliente))
 })
 
 app.listen(port, () => {
