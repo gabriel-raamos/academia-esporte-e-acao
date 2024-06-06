@@ -1,5 +1,5 @@
 import Card2 from "../../components/Card2/Card2";
-import Form from "../../components/RegisterForm/RegisterForm";
+import RegisterForm from "../../components/RegisterFormAPI/RegisterFormAPI";
 
 import { CgGym } from "react-icons/cg";
 import { GiGymBag } from "react-icons/gi";
@@ -16,7 +16,7 @@ export default function Home() {
 
                 <div className='flex justify-center items-center static'>
 
-                    <Form />
+                    <RegisterForm />
 
                 </div>
 
