@@ -41,10 +41,9 @@ export default function Form() {
         // alert(name+email+password+confirmPassword+date+phone+cpf+cep+height+weight)
 
         try {
-            const response = await axios.post("http://pi-academia.vercel.app/api/register", userData);
-            console.log('Response:', response.data);
+            await axios.post("https://pi-academia.vercel.app/api/register", userData);
             alert('Registro efetuado com sucesso.')
-            
+
             // Resetar os campos após o envio bem-sucedido
             setName('')
             setEmail('')
@@ -61,7 +60,7 @@ export default function Form() {
             setCurrentPage(1);  // Redefinir para a primeira página se necessário
 
         } catch (error) {
-            console.error('Error:', error);
+            alert('Error:', error);
         }
     }
 

@@ -64,9 +64,9 @@ app.post('/api/register', async (req, res) => {
 
 // login
 app.post('/api/login', async (req, res) => {
-    const { name, password } = req.body;
+    const { email, password } = req.body;
     try {
-        const cliente = await Cliente.findOne({ name });
+        const cliente = await Cliente.findOne({ email });
         if (!cliente) {
             return res.status(404).json({ message: 'User not found' });
         }
