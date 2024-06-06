@@ -38,7 +38,7 @@ export default function APITest() {
                 <h1 className="my-5 font-bold text-4xl" >Dados da API</h1>
             </div>
 
-            <div className="flex justify-center items-center text-center">
+            <div className="flex justify-center items-center text-center mx-5">
                 <ul className="text-lg" >
                     {data.map((item) => (
                         <li key={item.id}>{item.name} e {item.email}</li>
