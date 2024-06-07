@@ -6,11 +6,10 @@ import NavButton from "../NavButton/NavButton";
 // import login from '../../assets/user-login-button-svgrepo-com.svg'
 
 export default function NavBar() {
+
     return (
 
         <section className="content-between md:flex md:justify-center" >
-
-            {/* <div></div> */}
 
             <nav className="flex md:grid md:grid-cols-4 -space-x-5 md:space-x-5 items-center mb-5 md:my-5" >
 
@@ -22,10 +21,11 @@ export default function NavBar() {
 
                 <NavButton title="Login" link="login" />
 
-            </nav>
-            
-            {/* <div></div> */}
+                <div className="m-5 text-center flex" >
+                    {localStorage.getItem('authorization')}
+                </div>
 
+            </nav>
 
         </section>
 
