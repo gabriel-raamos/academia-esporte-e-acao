@@ -20,14 +20,11 @@ export default function LoginForm() {
             // alert(response.data.accessToken)
 
             localStorage.setItem('authorization', response.data.accessToken)
-            alert("Header -> authorization: " + localStorage.getItem('authorization'))
+            // alert("Header -> authorization: " + localStorage.getItem('authorization'))
 
             alert('Login efetuado com sucesso.');
 
             window.location.reload()
-
-            setEmail('');
-            setPassword('');
         } catch (error) {
             alert("Error: " + error.message);
         }
