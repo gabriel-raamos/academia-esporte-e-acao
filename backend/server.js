@@ -99,8 +99,6 @@ app.get('/api/test-mongodb-connection', (req, res) => {
 
 app.get('/api/whatsapp', async (req, res) => {
     const response = await Cliente.find({});
-    // console.log(response);
-    // res.send("encontramos uma resposta com certeza");
     res.send(response)
 })
 
@@ -112,27 +110,6 @@ app.post('/api/loginjwt', (req, res) => {
     res.json({ accessToken: tokenAcesso })
 
 })
-
-function authenticateToken(req, res, next) {
-    const authHeader = req.headers['Authorization']
-    const token = authHeader && authHeader.split(' ')[1]
-
-    if (token == null) {
-        return res.sendStatus(401)
-    }
-
-    jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
-        if (err) {
-            return res.sendStatus(403)
-        }
-
-        req.user = user
-
-        res.send(authHeader)
-
-        next()
-    })
-}
 
 app.post('/api/logarcliente', async (req, res) => {
     const { email, password } = req.body;
@@ -150,12 +127,34 @@ app.post('/api/logarcliente', async (req, res) => {
         const accessToken = jwt.sign({ email: cliente.email, name: cliente.name }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1h' });
         res.setHeader('Authorization', 'Bearer ' + accessToken);
         console.log('Token gerado e adicionado ao cabeçalho:', accessToken);
-        return res.json({ message: 'Login successful', accessToken });
+        return res.json({ message: 'Login successful: ', accessToken });
     } catch (error) {
         console.error('Erro ao fazer login:', error);
         return res.status(500).json({ message: 'Internal server error' });
     }
 });
+
+function authenticateToken(req, res, next) {
+    const authHeader = req.headers['authorization']
+    console.log(authHeader)
+    // const token = authHeader && authHeader.split(' ')[1]
+
+    if (authHeader == null) {
+        return res.sendStatus(401)
+    }
+
+    jwt.verify(authHeader, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
+        if (err) {
+            return res.sendStatus(403)
+        }
+
+        req.user = user
+
+        res.send(authHeader)
+
+        next()
+    })
+}
 
 app.get('/api/protected', authenticateToken, (req, res) => {
     res.send('Essa é uma rota protegida: ' + JSON.stringify(req.cliente))
