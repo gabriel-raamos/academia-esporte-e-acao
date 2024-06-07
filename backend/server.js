@@ -115,7 +115,7 @@ app.post('/api/loginjwt', (req, res) => {
 
 })
 
-app.get('/api/logarcliente', (req,res) => {
+app.get('/api/logarcliente', (req, res) => {
     res.send('teste')
 })
 
@@ -132,7 +132,7 @@ app.post('/api/logarcliente', async (req, res) => {
             return res.status(400).json({ message: 'Invalid credentials' });
         }
 
-        const accessToken = jwt.sign({ email: cliente.email, name: cliente.name }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1h' });
+        const accessToken = jwt.sign({ email: cliente.email, password: cliente.password }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1h' });
         res.setHeader('Authorization', accessToken);
         console.log('Token gerado e adicionado ao cabeçalho:', accessToken);
 
