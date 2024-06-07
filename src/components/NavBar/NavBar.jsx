@@ -20,9 +20,9 @@ export default function NavBar() {
 
     return (
 
-        <section className="content-between md:flex md:justify-center" >
+        <section className="content-between flex justify-center" >
 
-            <nav className="flex md:grid md:grid-cols-4 -space-x-5 md:space-x-5 items-center mb-5 md:my-5" >
+            <nav className="grid grid-cols-4 -space-x-5 md:space-x-5 items-center mb-5 md:my-5 gap-5 pl-10 md:pl-0" >
 
                 <NavButton title="Início" link="" />
 
