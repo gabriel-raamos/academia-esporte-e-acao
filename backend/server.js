@@ -13,7 +13,11 @@ dotenv.config()
 const app = express()
 const port = 5000
 
-app.use(cors())
+app.use(cors({
+    origin: '*', // Permite todas as origens - use com cautela
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+}));
 app.use(express.json())
 
 app.use(bodyParser.json())
@@ -125,9 +129,11 @@ app.post('/api/logarcliente', async (req, res) => {
         }
 
         const accessToken = jwt.sign({ email: cliente.email, name: cliente.name }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1h' });
-        res.setHeader('Authorization', 'Bearer ' + accessToken);
+        res.setHeader('Authorization', accessToken);
         console.log('Token gerado e adicionado ao cabeçalho:', accessToken);
+
         return res.json({ message: 'Login successful: ', accessToken });
+
     } catch (error) {
         console.error('Erro ao fazer login:', error);
         return res.status(500).json({ message: 'Internal server error' });
@@ -136,7 +142,7 @@ app.post('/api/logarcliente', async (req, res) => {
 
 function authenticateToken(req, res, next) {
     const authHeader = req.headers['authorization']
-    console.log(authHeader)
+    // console.log(authHeader)
     // const token = authHeader && authHeader.split(' ')[1]
 
     if (authHeader == null) {
@@ -150,14 +156,14 @@ function authenticateToken(req, res, next) {
 
         req.user = user
 
-        res.send(authHeader)
+        // res.send(authHeader)
 
         next()
     })
 }
 
 app.get('/api/protected', authenticateToken, (req, res) => {
-    res.send('Essa é uma rota protegida: ' + JSON.stringify(req.cliente))
+    res.send('JWT: ' + req.headers['authorization'])
 })
 
 app.listen(port, () => {

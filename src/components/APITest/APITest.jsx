@@ -41,7 +41,7 @@ export default function APITest() {
             <div className="flex justify-center items-center text-center mx-5">
                 <ul className="text-lg" >
                     {data.map((item) => (
-                        <li key={item.id}>{item.name} e {item.email}</li>
+                        <li key={item.email}>{item.name} e {item.email}</li>
                     ))}
                 </ul>
             </div>
