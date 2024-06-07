@@ -115,6 +115,10 @@ app.post('/api/loginjwt', (req, res) => {
 
 })
 
+app.get('/api/logarcliente', (req,res) => {
+    res.send('teste')
+})
+
 app.post('/api/logarcliente', async (req, res) => {
     const { email, password } = req.body;
 
@@ -163,6 +167,10 @@ function authenticateToken(req, res, next) {
 }
 
 app.get('/api/protected', authenticateToken, (req, res) => {
+    res.send('JWT: ' + req.headers['authorization'])
+})
+
+app.get('/api/protected2', (req, res) => {
     res.send('JWT: ' + req.headers['authorization'])
 })
 

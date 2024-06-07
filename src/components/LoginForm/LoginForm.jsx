@@ -16,7 +16,7 @@ export default function LoginForm() {
         };
 
         try {
-            const response = await axios.post("https://pi-acaedemia.vercel.app/api/logarcliente", userData);
+            const response = await axios.post("https://pi-academia.vercel.app/api/logarcliente", userData);
             // alert(response.data.accessToken)
 
             localStorage.setItem('authorization', response.data.accessToken)
