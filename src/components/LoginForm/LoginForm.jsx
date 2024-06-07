@@ -24,7 +24,7 @@ export default function LoginForm() {
 
             alert('Login efetuado com sucesso.');
 
-            // window.location.reload()
+            window.location.reload()
         } catch (error) {
             alert("Error: " + error.message);
         }
