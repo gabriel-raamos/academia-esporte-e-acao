@@ -1,11 +1,22 @@
+// import axios from "axios";
 import NavButton from "../NavButton/NavButton";
-// import LogoNoText from "../LogoNoText/LogoNoText";
-// import logo from '../../assets/2-removebg-preview.svg'
-// import { Link } from "react-router-dom";
-
-// import login from '../../assets/user-login-button-svgrepo-com.svg'
 
 export default function NavBar() {
+
+    const authHeader = localStorage.getItem('authorization')
+
+    const logout = async () => {
+
+        try {
+            localStorage.removeItem('authorization')
+            window.location.reload()
+        }
+
+        catch (error) {
+            alert('Error: ', error)
+        }
+
+    }
 
     return (
 
@@ -19,11 +30,25 @@ export default function NavBar() {
 
                 <NavButton title="Fale conosco" link="faleconosco" />
 
-                <NavButton title="Login" link="login" />
+                {!authHeader && (
+                    <NavButton title="Login" link="login" />
+                )}
 
-                <div className="m-5 text-center flex" >
-                    {localStorage.getItem('authorization')}
-                </div>
+                {authHeader && (
+                    <div className="flex justify-center items-center h-2/3 w-2/3" >
+                        {/* <p className="text-red-700 text-sm md:text-xl py-2 md:py-5 px-2 mt-7 md:mt-0 font-bold cursor-pointer" >
+                            a
+                        </p> */}
+
+                        <button
+                            onClick={logout}
+                            className="text-red-700 text-sm md:text-xl py-2 md:py-5 px-2 mt-7 md:mt-0 rounded-full font-bold transition duration-500 hover:bg-red-700 hover:text-white"
+                        >
+                            Logout
+                        </button>
+
+                    </div>
+                )}
 
             </nav>
 
@@ -31,23 +56,4 @@ export default function NavBar() {
 
     )
 }
-{/* <div className="flex items-center justify-center h-5/6 w-5/6 " >
-    <Link to="" >
-        <div>
-            <img src={logo} className="h-16 w-16 py-3 cursor-pointer hover:bg-red-700 transition duration-500 rounded-full mt-10 md:mt-5 " />
-        </div>
-    </Link>
-</div> */}
-
-{/* <div className="flex items-center justify-center h-5/6 w-5/6" >
-<Link to="login" >
-    <div>
-        <img src={login} className="h-16 w-16 py-3 cursor-pointer hover:bg-red-700 transition duration-500 rounded-full md:-mt-4" />
-    </div>
-</Link>
-</div> */}
-
-{/* <div className="flex items-center justify-center p-5 " >
-    <button className="text-red-700 font-bold" >Home</button>
-</div> */}
 

@@ -134,6 +134,7 @@ app.post('/api/logarcliente', async (req, res) => {
 
         const accessToken = jwt.sign({ email: cliente.email, password: cliente.password }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1h' });
         res.setHeader('Authorization', accessToken);
+        res.setHeader('x-json-header', {email, password})
         console.log('Token gerado e adicionado ao cabeçalho:', accessToken);
 
         return res.json({ message: 'Login successful: ', accessToken });
@@ -172,6 +173,10 @@ app.get('/api/protected', authenticateToken, (req, res) => {
 
 app.get('/api/protected2', (req, res) => {
     res.send('JWT: ' + req.headers['authorization'])
+})
+
+app.get('/api/resetheader', (req,res) => {
+    res.setHeader('authorization', '')
 })
 
 app.listen(port, () => {
