@@ -10,7 +10,7 @@ export default function NavBar() {
 
         try {
             localStorage.removeItem('authorization')
-            window.location.reload()
+            window.location.href = 'https://pi-academia.vercel.app/'
         }
 
         catch (error) {
