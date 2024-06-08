@@ -4,7 +4,7 @@ import NavButton from "../NavButton/NavButton";
 export default function NavBar() {
 
     const authHeader = localStorage.getItem('authorization')
-    const name = localStorage.getItem('json-header')
+    // const name = localStorage.getItem('json-header')
 
     const logout = async () => {
 
@@ -37,13 +37,13 @@ export default function NavBar() {
 
                 {authHeader && (
                     <div className="flex justify-center items-center h-2/3 w-2/3" >
-                        <p className="text-red-700 text-sm md:text-xl py-2 md:py-5 px-2 mt-7 md:mt-0 font-bold cursor-pointer" >
+                        {/* <p className="text-red-700 text-sm md:text-xl py-2 md:py-5 px-2 mt-7 md:mt-0 font-bold" >
                             {name} - 
-                        </p>
-
+                        </p> */}
+                        
                         <button
                             onClick={logout}
-                            className="text-red-700 text-sm md:text-xl py-2 md:py-5 px-2 mt-7 md:mt-0 rounded-full font-bold transition duration-500 hover:bg-red-700 hover:text-white"
+                            className="text-red-700 text-sm md:text-xl py-2 md:py-5 px-2 mt-7 md:mt-0 rounded-full font-bold transition hover:bg-red-700 hover:text-white duration-500"
                         >
                             Logout
                         </button>

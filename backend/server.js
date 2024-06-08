@@ -125,7 +125,7 @@ app.post('/api/logarcliente', async (req, res) => {
     try {
         const cliente = await Cliente.findOne({ email });
 
-        const name = cliente.name
+        // const name = cliente.name
 
         if (!cliente) {
             return res.status(404).json({ message: 'User not found' });
@@ -138,7 +138,7 @@ app.post('/api/logarcliente', async (req, res) => {
         const accessToken = jwt.sign({ email: cliente.email, password: cliente.password }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1h' });
         console.log('Token gerado e adicionado ao cabeçalho: ', accessToken);
 
-        return res.json({ message: 'Login successful', accessToken, name });
+        return res.json({ message: 'Login successful', accessToken, cliente });
 
     } catch (error) {
         console.error('Erro ao fazer login:', error);
