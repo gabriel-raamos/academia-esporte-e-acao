@@ -25,6 +25,7 @@ export default function LoginForm() {
             alert('Login efetuado com sucesso.');
 
             // window.location.reload()
+            window.location.href = 'https://pi-academia.vercel.app/'
         } catch (error) {
             alert("Error: " + error.message);
         }
