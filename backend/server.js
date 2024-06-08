@@ -124,6 +124,9 @@ app.post('/api/logarcliente', async (req, res) => {
 
     try {
         const cliente = await Cliente.findOne({ email });
+
+        const name = cliente.name
+
         if (!cliente) {
             return res.status(404).json({ message: 'User not found' });
         }
@@ -137,7 +140,7 @@ app.post('/api/logarcliente', async (req, res) => {
         res.setHeader('x-json-header', {email, password})
         console.log('Token gerado e adicionado ao cabeçalho:', accessToken);
 
-        return res.json({ message: 'Login successful: ', accessToken });
+        return res.json({ message: 'Login successful: ', accessToken, name });
 
     } catch (error) {
         console.error('Erro ao fazer login:', error);
@@ -150,9 +153,9 @@ function authenticateToken(req, res, next) {
     // console.log(authHeader)
     // const token = authHeader && authHeader.split(' ')[1]
 
-    if (authHeader == null) {
-        return res.sendStatus(401)
-    }
+    // if (authHeader == null) {
+    //     return res.sendStatus(401)
+    // }
 
     jwt.verify(authHeader, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
         if (err) {
