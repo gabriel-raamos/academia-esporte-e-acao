@@ -21,14 +21,11 @@ export default function LoginForm() {
             localStorage.setItem('authorization', response.data.accessToken)
             localStorage.setItem('json-header', JSON.stringify(response.data.cliente))
 
-            // alert("Nome do usuário: " + response.data.name)
+            alert("Nome do usuário: " + response.data.cliente._id)
             // alert("Header -> authorization: " + localStorage.getItem('authorization'))
             // alert(response.data.cliente.name)
 
-            // alert(localStorage.getItem('json-header'))
-
             const testName = JSON.parse(localStorage.getItem('json-header'))
-            // alert(testName)
             alert(testName.name)
 
             alert('Login efetuado com sucesso.');
