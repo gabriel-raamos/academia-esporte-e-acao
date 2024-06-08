@@ -19,11 +19,17 @@ export default function NavBar() {
 
     }
 
+    // const testName = JSON.parse(localStorage.getItem('json-header'))
+    // alert(testName.name)
+
+    const jsonHeader = JSON.parse(localStorage.getItem('json-header'))
+    const name = jsonHeader.name
+
     return (
 
         <section className="content-between flex justify-center" >
 
-            <nav className="grid grid-cols-4 -space-x-5 md:space-x-5 items-center mb-5 md:my-5 gap-5 pl-10 md:pl-0" >
+            <nav className="grid grid-cols-5 -space-x-5 md:space-x-5 items-center mb-5 md:my-5 gap-5 pl-10 md:pl-0" >
 
                 <NavButton title="Início" link="" />
 
@@ -32,15 +38,37 @@ export default function NavBar() {
                 <NavButton title="Fale conosco" link="faleconosco" />
 
                 {!authHeader && (
+
+                    <button
+                        className="text-red-400 text-sm md:text-xl py-2 md:py-5 px-2 mt-7 md:mt-0 rounded-full font-bold transition hover:bg-red-400 hover:text-white duration-500"
+                        disabled
+                    >
+                        Dashboard
+                    </button>
+
+                )}
+
+                {!authHeader && (
+
                     <NavButton title="Login" link="login" />
+
                 )}
 
                 {authHeader && (
                     <div className="flex justify-center items-center h-2/3 w-2/3" >
-                        {/* <p className="text-red-700 text-sm md:text-xl py-2 md:py-5 px-2 mt-7 md:mt-0 font-bold" >
-                            {name} - 
-                        </p> */}
-                        
+
+                        <button
+                            className="text-red-700 text-sm md:text-xl py-2 md:py-5 px-2 mt-7 md:mt-0 rounded-full font-bold transition hover:bg-red-700 hover:text-white duration-500"
+                        >
+                            {name}
+                        </button>
+
+                    </div>
+                )}
+
+                {authHeader && (
+                    <div className="flex justify-center items-center h-2/3 w-2/3" >
+
                         <button
                             onClick={logout}
                             className="text-red-700 text-sm md:text-xl py-2 md:py-5 px-2 mt-7 md:mt-0 rounded-full font-bold transition hover:bg-red-700 hover:text-white duration-500"
