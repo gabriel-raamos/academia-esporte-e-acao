@@ -136,11 +136,9 @@ app.post('/api/logarcliente', async (req, res) => {
         }
 
         const accessToken = jwt.sign({ email: cliente.email, password: cliente.password }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1h' });
-        res.setHeader('Authorization', accessToken);
-        res.setHeader('x-json-header', {email, password})
-        console.log('Token gerado e adicionado ao cabeçalho:', accessToken);
+        console.log('Token gerado e adicionado ao cabeçalho: ', accessToken);
 
-        return res.json({ message: 'Login successful: ', accessToken, name });
+        return res.json({ message: 'Login successful', accessToken, name });
 
     } catch (error) {
         console.error('Erro ao fazer login:', error);
@@ -149,15 +147,18 @@ app.post('/api/logarcliente', async (req, res) => {
 });
 
 function authenticateToken(req, res, next) {
-    const authHeader = req.headers['authorization']
+    // const authHeader = req.headers['authorization']
+
+    const token = localStorage.getItem('authorization')
+
     // console.log(authHeader)
     // const token = authHeader && authHeader.split(' ')[1]
 
-    // if (authHeader == null) {
-    //     return res.sendStatus(401)
-    // }
+    if (token == null) {
+        return res.sendStatus(401)
+    }
 
-    jwt.verify(authHeader, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
+    jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
         if (err) {
             return res.sendStatus(403)
         }
