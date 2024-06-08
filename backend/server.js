@@ -127,6 +127,8 @@ app.post('/api/logarcliente', async (req, res) => {
 
         // const name = cliente.name
 
+        // console.log(cliente)
+
         if (!cliente) {
             return res.status(404).json({ message: 'User not found' });
         }

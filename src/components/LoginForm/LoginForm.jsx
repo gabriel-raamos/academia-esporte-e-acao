@@ -17,14 +17,19 @@ export default function LoginForm() {
 
         try {
             const response = await axios.post("https://pi-academia.vercel.app/api/logarcliente", userData);
-            // alert(response.data.accessToken)
 
             localStorage.setItem('authorization', response.data.accessToken)
-            localStorage.setItem('json-header', response.data.cliente)
+            localStorage.setItem('json-header', JSON.stringify(response.data.cliente))
 
             // alert("Nome do usuário: " + response.data.name)
             // alert("Header -> authorization: " + localStorage.getItem('authorization'))
-            alert(localStorage.getItem('json-header'))
+            // alert(response.data.cliente.name)
+
+            // alert(localStorage.getItem('json-header'))
+
+            const testName = JSON.parse(localStorage.getItem('json-header'))
+            // alert(testName)
+            alert(testName.name)
 
             alert('Login efetuado com sucesso.');
 
