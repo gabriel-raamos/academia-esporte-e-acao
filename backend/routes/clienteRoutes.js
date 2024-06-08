@@ -1,5 +1,5 @@
 import express from 'express'
-import mongoose from 'mongoose' 
+import mongoose from 'mongoose'
 import jwt from 'jsonwebtoken'
 import bcrypt from 'bcryptjs'
 import Cliente from '../models/Cliente.js'
@@ -161,8 +161,20 @@ router.get('/protected2', (req, res) => {
     res.send('JWT: ' + req.headers['authorization'])
 })
 
-router.get('/resetheader', (req,res) => {
-    res.setHeader('authorization', '')
+router.get('/:id', async (req, res) => {
+    const _id = req.params.id
+
+    console.log('zap')
+    console.log(_id)
+
+    const cliente = await Cliente.findOne({ _id })
+
+    // Verifica se o cliente foi encontrado
+    if (!cliente) {
+        return res.status(404).send({ message: 'Cliente não encontrado' });
+    }
+
+    res.send(cliente);
 })
 
 export default router

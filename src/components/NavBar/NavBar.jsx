@@ -22,7 +22,7 @@ export default function NavBar() {
     // const testName = JSON.parse(localStorage.getItem('json-header'))
     // alert(testName.name)
 
-    const jsonHeader = JSON.parse(localStorage.getItem('json-header'))
+    const jsonHeader = JSON.parse(localStorage.getItem('client-data'))
     const name = jsonHeader.name
 
     return (
@@ -42,6 +42,7 @@ export default function NavBar() {
                     <button
                         className="text-red-400 text-sm md:text-xl py-2 md:py-5 px-2 mt-7 md:mt-0 rounded-full font-bold transition hover:bg-red-400 hover:text-white duration-500"
                         disabled
+                        href="https://pi-academia.vercel.app/"
                     >
                         Dashboard
                     </button>
