@@ -6,7 +6,7 @@ import Planos from './pages/Planos/Planos'
 import Login from './pages/Login/Login'
 import Rodape from './components/Rodape/Rodape'
 import FaleConosco from './pages/FaleConosco/FaleConosco'
-import Dashboard from './pages/Dashboard/Dashboard'
+// import Dashboard from './pages/Dashboard/Dashboard'
 
 export default function App() {
   return (
@@ -19,7 +19,7 @@ export default function App() {
           <Route path="/planos" element={<Planos />} />
           <Route path="/faleconosco" element={<FaleConosco />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/dashboard" element={<Dashboard/>} />
+          {/* <Route path="/dashboard" element={<Dashboard/>} /> */}
         </Routes>
       </div>
 

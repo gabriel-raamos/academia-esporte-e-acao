@@ -4,12 +4,14 @@ import NavButton from "../NavButton/NavButton";
 export default function NavBar() {
 
     const authHeader = localStorage.getItem('authorization')
+    // const jsonHeader = JSON.parse(localStorage.getItem('json-data'))
     // const name = localStorage.getItem('json-header')
 
     const logout = async () => {
 
         try {
             localStorage.removeItem('authorization')
+            localStorage.removeItem('json-data')
             window.location.href = 'https://pi-academia.vercel.app/'
         }
 
@@ -22,8 +24,7 @@ export default function NavBar() {
     // const testName = JSON.parse(localStorage.getItem('json-header'))
     // alert(testName.name)
 
-    const jsonHeader = JSON.parse(localStorage.getItem('client-data'))
-    const name = jsonHeader.name
+    // const name = jsonHeader.name || 'Cliente'
 
     return (
 
@@ -61,7 +62,7 @@ export default function NavBar() {
                         <button
                             className="text-red-700 text-sm md:text-xl py-2 md:py-5 px-2 mt-7 md:mt-0 rounded-full font-bold transition hover:bg-red-700 hover:text-white duration-500"
                         >
-                            {name}
+                            {JSON.parse(localStorage.getItem('json-data')).name}
                         </button>
 
                     </div>
