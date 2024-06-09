@@ -6,9 +6,7 @@ export default function Dashboard() {
         <section className="flex justify-center items-center" >
 
             <div>
-                {id}
-
-                <p>zap</p>
+                <p>id sendo passado pelo header: {id}</p>
             </div>
 
         </section>

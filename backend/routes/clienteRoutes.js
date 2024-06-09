@@ -20,11 +20,6 @@ router.get('/test', async (req, res) => {
 
 })
 
-// test2
-router.get('/', (req, res) => {
-    res.send('test')
-})
-
 // registrar
 router.post('/register', async (req, res) => {
 
