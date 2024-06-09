@@ -1,5 +1,5 @@
 export default function Dashboard() {
-    const id = JSON.parse(localStorage.getItem('json-data'))
+    const id = JSON.parse(localStorage.getItem('json-data')).id
 
     return (
         <section className="flex justify-center items-center" >
