@@ -76,7 +76,7 @@ router.get('/test-mongodb-connection', (req, res) => {
     }
 });
 
-router.get('/whatsapp', async (req, res) => {
+router.get('/mostrarclientes', async (req, res) => {
     const response = await Cliente.find({});
     res.send(response)
 })
@@ -165,12 +165,8 @@ router.get('/protected2', (req, res) => {
 router.get('/:id', async (req, res) => {
     const _id = req.params.id
 
-    console.log('zap')
-    console.log(_id)
+    const cliente = await Cliente.findById({ _id }).populate('workouts')
 
-    const cliente = await Cliente.findOne({ _id })
-
-    // Verifica se o cliente foi encontrado
     if (!cliente) {
         return res.status(404).send({ message: 'Cliente não encontrado' });
     }

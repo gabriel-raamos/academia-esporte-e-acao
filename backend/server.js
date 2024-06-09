@@ -8,6 +8,7 @@ dotenv.config()
 const app = express()
 const port = 5000
 import clienteRoutes from './routes/clienteRoutes.js'
+import treinoRoutes from './routes/treinoRoutes.js'
 
 app.use(cors({
     origin: '*', // Permite todas as origens - use com cautela
@@ -22,7 +23,8 @@ import connectDB from './connectMongo.js'
 
 connectDB()
 
-app.use('/api', clienteRoutes)
+app.use('/cliente', clienteRoutes)
+app.use('/treino', treinoRoutes)
 
 app.listen(port, () => {
     console.log(`Server rodando na porta ${port}`)

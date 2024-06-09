@@ -11,7 +11,8 @@ const ClienteSchema = new mongoose.Schema({
     cep: { type: String, required: true },
     height: { type: String, required: true },
     weight: { type: String, required: true },
-    active: { type: Boolean, required: true }
+    active: { type: Boolean, required: true },
+    workouts: [{ type: mongoose.Schema.Types.ObjectId, ref:'Treino' }]
 })
 
 ClienteSchema.pre('save', async function (next) {
