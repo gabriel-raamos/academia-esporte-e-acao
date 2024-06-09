@@ -42,7 +42,7 @@ export default function Form() {
         };
 
         // alert(name+email+password+confirmPassword+date+phone+cpf+cep+height+weight)
-        alert(userData.active)
+        // alert(userData.active)
 
         try {
             await axios.post("https://pi-academia.vercel.app/api/register", userData);

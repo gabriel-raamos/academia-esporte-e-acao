@@ -7,7 +7,7 @@ const TreinoSchema = new mongoose.Schema({
     treino4: { type: Text },
     treino5: { type: Text },
     treino6: { type: Text },
-    clienteID: { type: Schema.Types.ObjectId, ref: 'Cliente' }
+    clienteID : { type: Schema.Types.ObjectId, ref: 'Cliente' }
 })
 
 const Treino = mongoose.model('Treino', TreinoSchema)

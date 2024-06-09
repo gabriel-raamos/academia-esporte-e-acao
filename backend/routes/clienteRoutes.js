@@ -115,7 +115,9 @@ router.post('/logarcliente', async (req, res) => {
         const accessToken = jwt.sign({ email: cliente.email, password: cliente.password }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1h' });
         console.log('Token gerado e adicionado ao cabeçalho: ', accessToken);
 
-        return res.json({ message: 'Login successful', accessToken, cliente });
+        const clienteId = cliente._id
+
+        return res.json({ message: 'Login successful', accessToken, clienteId });
 
     } catch (error) {
         console.error('Erro ao fazer login:', error);
@@ -170,6 +172,16 @@ router.get('/:id', async (req, res) => {
     }
 
     res.send(cliente);
+})
+
+router.get('/findbyid/:id', async (req,res) => {
+
+    const _id = req.params.id
+
+    const cliente = await Cliente.findOne({ _id })
+
+    res.json(cliente._id)
+
 })
 
 export default router
