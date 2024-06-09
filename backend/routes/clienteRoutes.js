@@ -97,6 +97,7 @@ router.get('/logarcliente', (req, res) => {
 router.post('/logarcliente', async (req, res) => {
     const { email, password } = req.body;
 
+    // console.log('test')
     try {
         const cliente = await Cliente.findOne({ email });
 
