@@ -32,18 +32,24 @@ export default function NavBar() {
 
             <nav className="grid grid-cols-5 -space-x-3 md:space-x-5 items-center mb-5 md:my-5 gap-5 pl-5 md:pl-0" >
 
-                <NavButton title="Início" link="" />
+                <div className="pl-2 md:pl-0" >
+                    <NavButton title="Início" link="" />
+                </div>
 
-                <NavButton title="Planos" link="planos" />
+                <div className="pl-2 md:pl-0" >
+                    <NavButton title="Planos" link="planos" />
+                </div>
 
-                <NavButton title="Fale conosco" link="faleconosco" />
+                <div className="pl-3 md:pl-0" >
+                    <NavButton title="Fale conosco" link="faleconosco" />
+                </div>
 
                 {!authHeader && (
 
                     <button
                         className="text-red-400 text-sm md:text-xl py-2 md:py-5  md:px-2 mt-7 md:mt-0 rounded-full font-bold transition hover:bg-red-400 hover:text-white duration-500"
                         disabled
-                        // href="https://pi-academia.vercel.app/"
+                    // href="https://pi-academia.vercel.app/"
                     >
                         Dashboard
                     </button>
@@ -52,7 +58,7 @@ export default function NavBar() {
 
                 {!authHeader && (
 
-                    <div className="pl-3" >
+                    <div className="pl-3 md:pl-0♂" >
                         <NavButton title="Login" link="login" />
                     </div>
 
