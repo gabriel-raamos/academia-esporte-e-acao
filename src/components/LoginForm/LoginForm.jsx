@@ -61,12 +61,12 @@ export default function LoginForm() {
                 whenChanged={(valor) => setPassword(valor)}
             />
 
-            <div className="flex justify-center items-center my-5">
+            {/* <div className="flex justify-center items-center my-5">
                 <input type="checkbox" className="mr-3" />
                 <h3>Manter-se conectado</h3>
-            </div>
+            </div> */}
 
-            <div className="flex justify-center items-center my-5">
+            <div className="flex justify-center items-center my-2 font-bold">
                 <button type="button">Esqueci minha senha</button>
             </div>
 
