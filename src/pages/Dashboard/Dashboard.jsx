@@ -12,7 +12,7 @@ export default function Dashboard() {
 
     const teste = async () => {
         try {
-            const response = await axios.get(`https://pi-academia.vercel.app/cliente/${id}`)
+            const response = await axios.get(`https://pi-academia.vercel.app/api/cliente/${id}`)
             setData(response.data)
             setLoading(false)
         }

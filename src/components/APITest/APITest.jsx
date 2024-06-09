@@ -14,7 +14,7 @@ export default function APITest() {
     // Função fetch que irá buscar os dados da API
     const fetchData = async () => {
         try {
-            const response = await axios.get('https://pi-academia.vercel.app/cliente/mostrarclientes')
+            const response = await axios.get('https://pi-academia.vercel.app/api/cliente/mostrarclientes')
             setData(response.data)
             setLoading(false)
         }

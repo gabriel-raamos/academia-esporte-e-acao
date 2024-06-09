@@ -49,7 +49,6 @@ export default function NavBar() {
                     <button
                         className="text-red-400 text-sm md:text-xl py-2 md:py-5  md:px-2 mt-7 md:mt-0 rounded-full font-bold transition hover:bg-red-400 hover:text-white duration-500"
                         disabled
-                    // href="https://pi-academia.vercel.app/"
                     >
                         Dashboard
                     </button>
