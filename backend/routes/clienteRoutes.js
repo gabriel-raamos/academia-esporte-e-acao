@@ -23,10 +23,10 @@ router.get('/test', async (req, res) => {
 // registrar
 router.post('/register', async (req, res) => {
 
-    const { name, email, password, date, phone, cpf, cep, height, weight } = req.body
+    const { name, email, password, date, phone, cpf, cep, height, weight, active } = req.body
 
     try {
-        const newCliente = new Cliente({ name, email, password, date, phone, cpf, cep, height, weight })
+        const newCliente = new Cliente({ name, email, password, date, phone, cpf, cep, height, weight, active })
 
         await newCliente.save()
         res.status(201).send('Usuário registrado')

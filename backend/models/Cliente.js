@@ -10,7 +10,8 @@ const ClienteSchema = new mongoose.Schema({
     cpf: { type: String, required: true },
     cep: { type: String, required: true },
     height: { type: String, required: true },
-    weight: { type: String, required: true }
+    weight: { type: String, required: true },
+    active: { type: Boolean, required: true }
 })
 
 ClienteSchema.pre('save', async function (next) {

@@ -26,6 +26,8 @@ export default function Form() {
             return alert('senha diferente')
         }
 
+        const active = false
+
         const userData = {
             name,
             email,
@@ -35,27 +37,31 @@ export default function Form() {
             cpf,
             cep,
             height,
-            weight
+            weight,
+            active
         };
 
         // alert(name+email+password+confirmPassword+date+phone+cpf+cep+height+weight)
+        alert(userData.active)
 
         try {
             await axios.post("https://pi-academia.vercel.app/api/register", userData);
             alert('Registro efetuado com sucesso.')
 
             // Resetar os campos após o envio bem-sucedido
-            setName('')
-            setEmail('')
-            setPassword('')
-            setConfirmPassword('')
-            setDate('')
+            // setName('')
+            // setEmail('')
+            // setPassword('')
+            // setConfirmPassword('')
+            // setDate('')
 
-            setPhone('')
-            setCpf('')
-            setCep('')
-            setHeight('')
-            setWeight('')
+            // setPhone('')
+            // setCpf('')
+            // setCep('')
+            // setHeight('')
+            // setWeight('')
+
+            window.location.reload()
 
             setCurrentPage(1);  // Redefinir para a primeira página se necessário
 
