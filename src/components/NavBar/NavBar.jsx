@@ -65,7 +65,7 @@ export default function NavBar() {
                             {JSON.parse(localStorage.getItem('json-data')).name}
                         </button> */}
 
-                        <NavButton title={JSON.parse(localStorage.getItem('json-data')).name} link={`api/`+JSON.parse(localStorage.getItem('json-data'))._id} />
+                        <NavButton title={JSON.parse(localStorage.getItem('json-data')).name} link='dashboard' />
 
                     </div>
                 )}

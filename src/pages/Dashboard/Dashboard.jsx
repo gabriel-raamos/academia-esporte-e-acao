@@ -3,8 +3,14 @@ export default function Dashboard() {
     const id = cliente._id
 
     return (
-        <section>
-            {id}
+        <section className="flex justify-center items-center" >
+
+            <div>
+                {id}
+
+                <p>zap</p>
+            </div>
+
         </section>
     )
 }
