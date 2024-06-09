@@ -15,6 +15,13 @@ app.use(cors({
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization']
 }));
+
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*'); // Permite todas as origens
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    next();
+});
+
 app.use(express.json())
 
 app.use(bodyParser.json())

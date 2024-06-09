@@ -14,7 +14,7 @@ export default function APITest() {
     // Função fetch que irá buscar os dados da API
     const fetchData = async () => {
         try {
-            const response = await axios.get('https://pi-academia.vercel.app/api/whatsapp')
+            const response = await axios.get('http://localhost:5000/cliente/mostrarclientes')
             setData(response.data)
             setLoading(false)
         }
@@ -39,9 +39,9 @@ export default function APITest() {
             </div>
 
             <div className="flex justify-center items-center text-center mx-5">
-                <ul className="text-lg" >
+                <ul className="text-lg">
                     {data.map((item) => (
-                        <li key={item.email}>{item.name} e {item.email}</li>
+                        <p key={item.email}>{item.name} e {item.email}</p>
                     ))}
                 </ul>
             </div>
