@@ -59,11 +59,13 @@ export default function NavBar() {
                 {authHeader && (
                     <div className="flex justify-center items-center h-2/3 w-2/3" >
 
-                        <button
+                        {/* <button
                             className="text-red-700 text-sm md:text-xl py-2 md:py-5 px-2 mt-7 md:mt-0 rounded-full font-bold transition hover:bg-red-700 hover:text-white duration-500"
                         >
                             {JSON.parse(localStorage.getItem('json-data')).name}
-                        </button>
+                        </button> */}
+
+                        <NavButton title={JSON.parse(localStorage.getItem('json-data')).name} link={`api/`+JSON.parse(localStorage.getItem('json-data'))._id} />
 
                     </div>
                 )}
