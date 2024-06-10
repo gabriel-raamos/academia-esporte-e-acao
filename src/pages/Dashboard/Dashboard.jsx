@@ -45,7 +45,7 @@ export default function Dashboard() {
 
             <div>
                 <pre className="text-lg">
-                    {JSON.stringify(data, null, 2)}
+                    {JSON.stringify(data.workouts, null, 2)}
                 </pre>
             </div>
 
