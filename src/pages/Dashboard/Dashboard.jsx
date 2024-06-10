@@ -10,7 +10,7 @@ export default function Dashboard() {
 
     const id = JSON.parse(localStorage.getItem('json-data')).id
 
-    const teste = async () => {
+    const fetchData = async () => {
         try {
             const response = await axios.get(`https://pi-academia.vercel.app/api/cliente/${id}`)
             setData(response.data)
@@ -19,22 +19,26 @@ export default function Dashboard() {
 
         catch (error) {
             setError(error)
-            setLoading(error)
+            setLoading(false)
         }
     }
 
     useEffect(() => {
-        teste()
+        fetchData()
     }, [])
 
-    if (loading) return (
-        <div>
-            <p>id: {id}</p>
-            <p>Carregando...</p>
-        </div>
-    )
-
-    if (error) return <p>Ocorreu um erro ao usar os dados: {error.message}</p>
+    if (loading) {
+        return (
+            <div>
+                <p>id: {id}</p>
+                <p>Carregando...</p>
+            </div>
+        )
+    } else if (error) {
+        return (
+            <p>Ocorreu um erro ao usar os dados: {error.message}</p>
+        )
+    }
 
     return (
         <section className="flex justify-center items-center" >
