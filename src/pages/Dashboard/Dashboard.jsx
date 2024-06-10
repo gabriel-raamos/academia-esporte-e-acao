@@ -29,9 +29,9 @@ export default function Dashboard() {
 
     if (loading) {
         return (
-            <div>
-                <p>id: {id}</p>
-                <p>Carregando...</p>
+            <div className="grid grid-rows-2 justify-center items-center text-lg" >
+                <p className="bg-red-700 text-white rounded-full font-bold p-5 my-5" >id: {id}</p>
+                <p className="bg-red-700 text-white rounded-full font-bold p-5 my-5" >Carregando...</p>
             </div>
         )
     } else if (error) {
