@@ -36,4 +36,14 @@ router.get('/mostrartreinos', async (req,res) => {
 
 })
 
+router.get('/mostrartreinos/:id', async (req,res) => {
+
+    const _id = req.params.id
+
+    const treino = Treino.findById({ _id })
+
+    res.json(treino)
+
+})
+
 export default router
