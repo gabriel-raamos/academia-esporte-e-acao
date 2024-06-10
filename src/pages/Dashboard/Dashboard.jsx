@@ -47,11 +47,12 @@ export default function Dashboard() {
         <section className="flex justify-center items-center" >
 
             <div>
+                <h2 className="bg-red-700 text-white rounded-full font-bold p-5 my-5 text-xl" >ID do cliente: {data._id}</h2>
                 <h2 className="text-lg" >IDs dos treinos: </h2>
                 <ul>
                     {data.workouts.map((workout, index) => (
                         <li key={index} className="text-lg">
-                            Cliente ID: {workout.clienteID}
+                            - {workout._id}
                         </li>
                     ))}
                 </ul>
