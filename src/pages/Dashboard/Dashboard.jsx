@@ -30,7 +30,7 @@ export default function Dashboard() {
     if (loading) {
         return (
             <div className="grid grid-rows-2 justify-center items-center text-lg" >
-                <p className="bg-red-700 text-white rounded-full font-bold p-5 my-5" >id: {id}</p>
+                <p className="bg-red-700 text-white rounded-full font-bold p-5 my-5" >ID do cliente: {id}</p>
                 <p className="bg-red-700 text-white rounded-full font-bold p-5 my-5" >Carregando...</p>
             </div>
         )
@@ -40,13 +40,21 @@ export default function Dashboard() {
         )
     }
 
+    // const jsonWorkouts = JSON.stringify(data.workouts, null, 2)
+    // const treino1 = data.workouts[0].treino1
+
     return (
         <section className="flex justify-center items-center" >
 
             <div>
-                <pre className="text-lg">
-                    {JSON.stringify(data.workouts, null, 2)}
-                </pre>
+                <h2 className="text-lg" >IDs dos treinos: </h2>
+                <ul>
+                    {data.workouts.map((workout, index) => (
+                        <li key={index} className="text-lg">
+                            Cliente ID: {workout.clienteID}
+                        </li>
+                    ))}
+                </ul>
             </div>
 
         </section>
