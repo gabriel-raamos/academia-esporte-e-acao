@@ -1,7 +1,8 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
+import jwtDecode from 'jwt-decode'
 
-export default function Dashboard() {
+export default function Treinos() {
     const [data, setData] = useState([])
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
@@ -35,6 +36,18 @@ export default function Dashboard() {
             setLoading(false);
         }
     }
+    const isAdmin = () => {
+        const token = localStorage.getItem('authorization');
+
+        try {
+            const decodedToken = jwtDecode(token);
+            return decodedToken.role === 'admin';
+        }
+
+        catch (error) {
+            return false;
+        }
+    };
 
     useEffect(() => {
         fetchData();
@@ -63,6 +76,17 @@ export default function Dashboard() {
                         <p className="bg-red-700 text-white rounded-full font-bold p-5 my-5 text-xl">Não há cargo definido.</p>
                     )}
                 </div>
+
+                {isAdmin() && (
+                    <div className="flex justify-center items-center">
+                        <button
+                            onClick={() => window.location.href = '/usuarios'}
+                            className="bg-blue-500 text-white rounded-full font-bold p-3 my-5"
+                        >
+                            Ir para Usuários
+                        </button>
+                    </div>
+                )}
 
                 {data.workouts && data.workouts.length > 0 ? (
                     <div className="" >
