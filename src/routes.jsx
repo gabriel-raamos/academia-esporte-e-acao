@@ -6,6 +6,7 @@ import Login from './pages/Login/Login';
 import Rodape from './components/Rodape/Rodape';
 import FaleConosco from './pages/FaleConosco/FaleConosco';
 import Treinos from './pages/Treinos/Treinos';
+import Usuarios from './pages/Usuarios/Usuarios'
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
           <Route path="/faleconosco" element={<FaleConosco />} />
           <Route path="/login" element={<Login />} />
           <Route path="/treinos" element={<Treinos />} />
+          <Route path="/usuarios" element={<Usuarios/>} />
         </Routes>
       </div>
       <div className='footer'>

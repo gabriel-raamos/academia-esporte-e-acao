@@ -8,7 +8,7 @@ export default function Dashboard() {
 
     const fetchData = async () => {
         try {
-            const response = await axios.get(`https://pi-academia.vercel.app/api/cliente/${JSON.parse(localStorage.getItem('json-data')).email}`)
+            const response = await axios.get(`https://pi-academia.vercel.app/api/cliente/${JSON.parse(localStorage.getItem('json-data'))}`)
             const fetchedData = response.data;
 
             // alert(JSON.parse(localStorage.getItem('json-data')).email)
@@ -60,7 +60,7 @@ export default function Dashboard() {
                     {data.role ? (
                         <h2 className="bg-red-700 text-white rounded-full font-bold p-5 my-5 text-xl">Role do usuário: {data.role}</h2>
                     ) : (
-                        <p className="bg-red-700 text-white rounded-full font-bold p-5 my-5 text-xl">Não há role definida.</p>
+                        <p className="bg-red-700 text-white rounded-full font-bold p-5 my-5 text-xl">Não há cargo definido.</p>
                     )}
                 </div>
 
@@ -74,23 +74,23 @@ export default function Dashboard() {
                         <ul className="md:grid md:grid-cols-2 gap-4">
                             {data.workouts.map((workout, index) => (
                                 <li key={index} className="text-lg rounded-xl p-5 my-5 border-4 text-red-700 border-red-700 font-bold md:m-5 whitespace-pre-line overflow-y-auto">
-                                    <div className="flex" >
+                                    <div className="flex items-center border-red-700 border-4 m-2 p-2 rounded-lg" >
                                         <p className="mr-2" >Treino 1:</p>
                                         <p> {workout.treino1}</p>
                                     </div>
-                                    <div className="flex" >
+                                    <div className="flex items-center border-red-700 border-4 m-2 p-2 rounded-lg" >
                                         <p className="mr-2" >Treino 2:</p>
                                         <p> {workout.treino2}</p>
                                     </div>
-                                    <div className="flex" >
+                                    <div className="flex items-center border-red-700 border-4 m-2 p-2 rounded-lg" >
                                         <p className="mr-2" >Treino 3:</p>
                                         <p> {workout.treino3}</p>
                                     </div>
-                                    <div className="flex" >
+                                    <div className="flex items-center border-red-700 border-4 m-2 p-2 rounded-lg" >
                                         <p className="mr-2" >Treino 4:</p>
                                         <p> {workout.treino4}</p>
                                     </div>
-                                    <div className="flex" >
+                                    <div className="flex items-center border-red-700 border-4 m-2 p-2 rounded-lg" >
                                         <p className="mr-2" >Treino 5:</p>
                                         <p> {workout.treino5}</p>
                                     </div>

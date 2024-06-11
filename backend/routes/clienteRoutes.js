@@ -98,13 +98,13 @@ router.post('/logarcliente', async (req, res) => {
             return res.status(400).json({ message: 'Invalid credentials' });
         }
 
-        const accessToken = jwt.sign({ email: cliente.email, password: cliente.password }, process.env.ACCESS_TOKEN_SECRET);
+        const accessToken = jwt.sign({ email: cliente.email, password: cliente.password, role: cliente.role }, process.env.ACCESS_TOKEN_SECRET);
 
-        const clienteData = {
-            name: cliente.name,
-            email: cliente.email,
-            role: cliente.role
-        }
+        // const clienteData = {
+        //     email: cliente.email
+        // }
+
+        const clienteData = cliente.email
 
         return res.json({ message: 'Login efetuado com sucesso.', accessToken, clienteData });
 
