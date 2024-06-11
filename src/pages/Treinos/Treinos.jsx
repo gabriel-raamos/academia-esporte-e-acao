@@ -53,16 +53,18 @@ export default function Dashboard() {
     return (
         <section className="flex justify-center items-center">
             <div>
+
+                {data.role ? (
+                    <h2 className="bg-red-700 text-white rounded-full font-bold p-5 my-5 text-xl">Role do usuário: {data.role}</h2>
+                ) : (
+                    <p className="bg-red-700 text-white rounded-full font-bold p-5 my-5 text-xl">Não há role definida.</p>
+                )}
+
                 {data.workouts && data.workouts.length > 0 ? (
                     <div className="" >
                         <div className="flex justify-center items-center">
-                            <h2 className="bg-red-700 text-white rounded-full font-bold p-5 my-5 text-xl">Informação sobre os treinos:</h2>
 
-                            {data.role ? (
-                                <h2 className="bg-red-700 text-white rounded-full font-bold p-5 my-5 text-xl">Role do usuário: {data.role}</h2>
-                            ) : (
-                                <p className="bg-red-700 text-white rounded-full font-bold p-5 my-5 text-xl">Não há role definida.</p>
-                            )}
+                            <h2 className="bg-red-700 text-white rounded-full font-bold p-5 my-5 text-xl">Informação sobre os treinos:</h2>
 
                         </div>
                         <ul className="md:grid md:grid-cols-2 gap-4">
