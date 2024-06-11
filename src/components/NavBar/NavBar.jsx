@@ -66,7 +66,7 @@ export default function NavBar() {
                 {authHeader && (
                     <div className="flex justify-center items-center h-2/3 w-2/3 pl-3 md:pl-0" >
 
-                        <NavButton title={JSON.parse(localStorage.getItem('json-data')).name} link='dashboard' />
+                        <NavButton title={JSON.parse(localStorage.getItem('json-data')).name} link='treinos' />
 
                     </div>
                 )}
