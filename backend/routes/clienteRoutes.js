@@ -23,10 +23,10 @@ router.get('/test', async (req, res) => {
 // registrar
 router.post('/register', async (req, res) => {
 
-    const { name, email, password, date, phone, cpf, cep, height, weight, active } = req.body
+    const { name, email, password, date, phone, cpf, cep, height, weight, role, active } = req.body
 
     try {
-        const newCliente = new Cliente({ name, email, password, date, phone, cpf, cep, height, weight, active })
+        const newCliente = new Cliente({ name, email, password, date, phone, cpf, cep, height, weight, role, active })
 
         await newCliente.save()
         res.status(201).send('Usuário registrado')
@@ -44,28 +44,28 @@ router.post('/register', async (req, res) => {
 })
 
 // login
-router.post('/login', async (req, res) => {
-    const { email, password } = req.body;
-    try {
-        const cliente = await Cliente.findOne({ email });
-        if (!cliente) {
-            return res.status(404).json({ message: 'User not found' });
-        }
-        const isMatch = await bcrypt.compare(password, cliente.password);
-        if (!isMatch) {
-            return res.status(400).json({ message: 'Invalid credentials' });
-        }
-        res.status(200).json({ message: 'Login successful' });
-    } catch (error) {
-        console.error('Error during login', error);
-        res.status(500).json({
-            message: 'Server error',
-            error: error.message,
-            details: error
-        });
-    }
+// router.post('/login', async (req, res) => {
+//     const { email, password } = req.body;
+//     try {
+//         const cliente = await Cliente.findOne({ email });
+//         if (!cliente) {
+//             return res.status(404).json({ message: 'User not found' });
+//         }
+//         const isMatch = await bcrypt.compare(password, cliente.password);
+//         if (!isMatch) {
+//             return res.status(400).json({ message: 'Invalid credentials' });
+//         }
+//         res.status(200).json({ message: 'Login successful' });
+//     } catch (error) {
+//         console.error('Error during login', error);
+//         res.status(500).json({
+//             message: 'Server error',
+//             error: error.message,
+//             details: error
+//         });
+//     }
 
-})
+// })
 
 // Rota para testar a conexão com o MongoDB
 router.get('/test-mongodb-connection', (req, res) => {
@@ -81,29 +81,14 @@ router.get('/mostrarclientes', async (req, res) => {
     res.send(response)
 })
 
-router.post('/loginjwt', (req, res) => {
-
-    const cliente = req.body
-
-    const tokenAcesso = jwt.sign(cliente, process.env.ACCESS_TOKEN_SECRET)
-    res.json({ accessToken: tokenAcesso })
-
-})
-
 router.get('/logarcliente', (req, res) => {
     res.send('teste')
 })
 
 router.post('/logarcliente', async (req, res) => {
     const { email, password } = req.body;
-
-    // console.log('test')
     try {
         const cliente = await Cliente.findOne({ email });
-
-        // const name = cliente.name
-
-        // console.log(cliente)
 
         if (!cliente) {
             return res.status(404).json({ message: 'User not found' });
@@ -113,16 +98,15 @@ router.post('/logarcliente', async (req, res) => {
             return res.status(400).json({ message: 'Invalid credentials' });
         }
 
-        const accessToken = jwt.sign({ email: cliente.email, password: cliente.password }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1h' });
-        // console.log('Token gerado e adicionado ao cabeçalho: ', accessToken);
+        const accessToken = jwt.sign({ email: cliente.email, password: cliente.password }, process.env.ACCESS_TOKEN_SECRET);
 
         const clienteData = {
-            id: cliente._id,
             name: cliente.name,
-            email: cliente.email
+            email: cliente.email,
+            role: cliente.role
         }
 
-        return res.json({ message: 'Login successful', accessToken, clienteData });
+        return res.json({ message: 'Login efetuado com sucesso.', accessToken, clienteData });
 
     } catch (error) {
         console.error('Erro ao fazer login:', error);
@@ -163,10 +147,10 @@ router.get('/protected2', (req, res) => {
     res.send('JWT: ' + req.headers['authorization'])
 })
 
-router.get('/:id', async (req, res) => {
-    const _id = req.params.id
+router.get('/:email', async (req, res) => {
+    const email = req.params.email
 
-    const cliente = await Cliente.findById({ _id }).populate('workouts')
+    const cliente = await Cliente.findOne({ email }).populate('workouts')
 
     if (!cliente) {
         return res.status(404).send({ message: 'Cliente não encontrado' });

@@ -27,6 +27,7 @@ export default function Form() {
         }
 
         const active = false
+        const role = 'cliente'
 
         const userData = {
             name,
@@ -38,6 +39,7 @@ export default function Form() {
             cep,
             height,
             weight,
+            role,
             active
         };
 

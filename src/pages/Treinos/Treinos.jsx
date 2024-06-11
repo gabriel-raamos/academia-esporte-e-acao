@@ -8,7 +8,7 @@ export default function Dashboard() {
 
     const fetchData = async () => {
         try {
-            const response = await axios.get(`https://pi-academia.vercel.app/api/cliente/${JSON.parse(localStorage.getItem('json-data')).id}`)
+            const response = await axios.get(`https://pi-academia.vercel.app/cliente/${JSON.parse(localStorage.getItem('json-data')).email}`)
             const fetchedData = response.data;
 
             // Substituir ';' por '\n' nos workouts
@@ -57,6 +57,13 @@ export default function Dashboard() {
                     <div className="" >
                         <div className="flex justify-center items-center">
                             <h2 className="bg-red-700 text-white rounded-full font-bold p-5 my-5 text-xl">Informação sobre os treinos:</h2>
+
+                            {data.role ? (
+                                <h2 className="bg-red-700 text-white rounded-full font-bold p-5 my-5 text-xl">Role do usuário: {data.role}</h2>
+                            ) : (
+                                <p className="bg-red-700 text-white rounded-full font-bold p-5 my-5 text-xl">Não há role definida.</p>
+                            )}
+
                         </div>
                         <ul className="md:grid md:grid-cols-2 gap-4">
                             {data.workouts.map((workout, index) => (
