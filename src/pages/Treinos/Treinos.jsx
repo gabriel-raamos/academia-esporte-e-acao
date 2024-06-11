@@ -1,6 +1,7 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
-import jwt_decode from 'jwt-decode';
+import { decode } from 'jwt-decode';
+
 
 export default function Treinos() {
     const [data, setData] = useState([])
@@ -42,7 +43,7 @@ export default function Treinos() {
         if (!token) return false;
 
         try {
-            const decodedToken = jwt_decode(token);
+            const decodedToken = decode(token);
             return decodedToken.role === 'admin';
         }
 
