@@ -100,11 +100,10 @@ router.post('/logarcliente', async (req, res) => {
 
         const accessToken = jwt.sign({ email: cliente.email, password: cliente.password, role: cliente.role }, process.env.ACCESS_TOKEN_SECRET);
 
-        // const clienteData = {
-        //     email: cliente.email
-        // }
-
-        const clienteData = cliente.email
+        const clienteData = {
+            name: cliente.name,
+            email: cliente.email
+        }
 
         return res.json({ message: 'Login efetuado com sucesso.', accessToken, clienteData });
 

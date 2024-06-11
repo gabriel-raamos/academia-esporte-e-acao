@@ -8,7 +8,7 @@ export default function Dashboard() {
 
     const fetchData = async () => {
         try {
-            const response = await axios.get(`https://pi-academia.vercel.app/api/cliente/${JSON.parse(localStorage.getItem('json-data'))}`)
+            const response = await axios.get(`https://pi-academia.vercel.app/api/cliente/${JSON.parse(localStorage.getItem('json-data')).email}`)
             const fetchedData = response.data;
 
             // alert(JSON.parse(localStorage.getItem('json-data')).email)
