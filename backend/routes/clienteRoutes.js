@@ -173,7 +173,7 @@ router.put('/atualizarcliente', async (req, res) => {
     const { _id, name, email, phone, cpf, cep, height, weight, active, role } = req.body
 
     try {
-        const cliente = await Cliente.findOneAndUpdate(_id, {name, email, phone, cpf, cep, height, weight, active, role}, {new:true})
+        const cliente = await Cliente.findOneAndUpdate({_id}, {name, email, phone, cpf, cep, height, weight, active, role}, {new:true})
 
         if (!cliente) {
             return res.status(404).json({ message: 'Cliente não encontrado.' })
