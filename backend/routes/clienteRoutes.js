@@ -102,7 +102,7 @@ router.post('/logarcliente', async (req, res) => {
 
         const clienteData = {
             name: cliente.name,
-            email: cliente.email, 
+            email: cliente.email,
             role: cliente.role
         }
 
@@ -159,13 +159,32 @@ router.get('/:email', async (req, res) => {
     res.send(cliente);
 })
 
-router.get('/findbyid/:id', async (req,res) => {
+router.get('/findbyid/:id', async (req, res) => {
 
     const _id = req.params.id
 
     const cliente = await Cliente.findOne({ _id })
 
     res.json(cliente._id)
+
+})
+
+router.put('/atualizarcliente', async (req, res) => {
+    const { _id, name, email, phone, cpf, cep, height, weight, active, role } = req.body
+
+    try {
+        const cliente = await Cliente.findOneAndUpdate(_id, {name, email, phone, cpf, cep, height, weight, active, role}, {new:true})
+
+        if (!cliente) {
+            return res.status(404).json({ message: 'Cliente não encontrado.' })
+        }
+
+        res.json(cliente)
+    }
+
+    catch (error) {
+        res.status(500).json({ message: 'Erro interno no servidor: ', error })
+    }
 
 })
 

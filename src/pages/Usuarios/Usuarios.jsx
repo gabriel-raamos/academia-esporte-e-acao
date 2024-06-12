@@ -58,7 +58,7 @@ export default function Usuarios() {
                                         className="bg-red-700 text-white rounded-full p-3 my-5 text-lg"
                                         onClick={() => handleAbrirModal(cliente)}
                                     >
-                                        Abrir modal
+                                        Editar dados
                                     </button>
                                 </div>
                             ))}
