@@ -11,13 +11,15 @@ function Modal({ isOpen, onClose, children }) {
             <div className="bg-white p-8 rounded-lg max-w-md relative">
                 <div className='py-2' >
                     <button
-                        className="absolute top-0 right-0 mt-4 mr-4 bg-red-700 text-white rounded-full font-bold p-2"
+                        className="absolute top-0 right-0 my-4 mx-4 bg-red-700 text-white rounded-full font-bold p-3"
                         onClick={onClose}
                     >
                         Fechar
                     </button>
                 </div>
-                {children}
+                <div className='pt-2' >
+                    {children}
+                </div>
             </div>
         </div>
     )
