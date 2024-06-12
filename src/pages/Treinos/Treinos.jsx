@@ -1,12 +1,13 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
-import { decode } from 'jwt-decode';
+
 
 
 export default function Treinos() {
     const [data, setData] = useState([])
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
+    const [role, setRole] = useState('')
 
     const fetchData = async () => {
         try {
@@ -32,25 +33,28 @@ export default function Treinos() {
 
             setData(fetchedData);
             setLoading(false);
+            setRole(fetchedData.role)
         } catch (error) {
             setError(error);
             setLoading(false);
         }
     }
-    const isAdmin = () => {
-        const token = localStorage.getItem('authorization');
 
-        if (!token) return false;
+    // const isAdmin = () => {
+    //     const token = localStorage.getItem('authorization');
 
-        try {
-            const decodedToken = decode(token);
-            return decodedToken.role === 'admin';
-        }
+    //     if (!token) return false;
 
-        catch (error) {
-            return false;
-        }
-    };
+    //     try {
+    //         const decodedToken = jwt_decode(token);
+    //         alert(decodedToken.role)
+    //         return decodedToken.role === 'admin';
+    //     }
+
+    //     catch (error) {
+    //         return false;
+    //     }
+    // };
 
     useEffect(() => {
         fetchData();
@@ -80,7 +84,7 @@ export default function Treinos() {
                     )}
                 </div>
 
-                {isAdmin() && (
+                {role == 'admin' && (
                     <div className="flex justify-center items-center">
                         <button
                             onClick={() => window.location.href = '/usuarios'}
