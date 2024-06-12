@@ -33,7 +33,7 @@ export default function LoginForm() {
             alert(response.data.message)
 
             // window.location.reload()
-            window.location.href = 'https://pi-academia.vercel.app/'
+            window.location.href = '/'
         } catch (error) {
             alert("Error: " + error.message);
         }

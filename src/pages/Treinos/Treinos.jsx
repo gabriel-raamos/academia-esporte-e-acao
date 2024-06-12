@@ -1,8 +1,6 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
 
-
-
 export default function Treinos() {
     const [data, setData] = useState([])
     const [loading, setLoading] = useState(true)
@@ -76,21 +74,21 @@ export default function Treinos() {
         <section className="flex justify-center items-center">
             <div>
 
-                <div className="flex justify-center items-center">
+                {/* <div className="flex justify-center items-center">
                     {data.role ? (
                         <h2 className="bg-red-700 text-white rounded-full font-bold p-5 my-5 text-xl">Role do usuário: {data.role}</h2>
                     ) : (
-                        <p className="bg-red-700 text-white rounded-full font-bold p-5 my-5 text-xl">Não há cargo definido.</p>
+                        <h2 className="bg-red-700 text-white rounded-full font-bold p-5 my-5 text-xl">Não há cargo definido.</h2>
                     )}
-                </div>
+                </div> */}
 
                 {role == 'admin' && (
                     <div className="flex justify-center items-center">
                         <button
                             onClick={() => window.location.href = '/usuarios'}
-                            className="bg-blue-500 text-white rounded-full font-bold p-3 my-5"
+                            className="bg-red-700 text-white rounded-full font-bold p-5 my-5 text-xl"
                         >
-                            Ir para Usuários
+                            Ir para Usuários.
                         </button>
                     </div>
                 )}

@@ -12,7 +12,7 @@ export default function NavBar() {
         try {
             localStorage.removeItem('authorization')
             localStorage.removeItem('json-data')
-            window.location.href = 'https://pi-academia.vercel.app/'
+            window.location.href = '/'
         }
 
         catch (error) {
@@ -46,12 +46,14 @@ export default function NavBar() {
 
                 {!authHeader && (
 
-                    <button
-                        className="text-red-400 text-sm md:text-xl py-2 md:py-5  md:px-2 mt-7 md:mt-0 rounded-full font-bold transition hover:bg-red-400 hover:text-white duration-500"
-                        disabled
-                    >
-                        Treinos
-                    </button>
+                    <div className="flex justify-center items-center h-2/3 w-2/3" >
+                        <button
+                            className="text-red-400 text-sm md:text-xl py-2 md:py-5 px-2 mt-7 md:mt-0 rounded-full font-bold transition duration-500 hover:bg-red-400 hover:text-white"
+                            disabled
+                        >
+                            Treinos
+                        </button>
+                    </div>
 
                 )}
 
