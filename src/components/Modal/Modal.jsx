@@ -23,7 +23,7 @@ function Modal({ isOpen, onClose, cliente }) {
     const handleSubmit = (e) => {
         e.preventDefault()
 
-        onmouseleave(formData)
+        onSave(formData)
     }
 
     if (!isOpen) {
