@@ -43,7 +43,8 @@ export default function Usuarios() {
 
     const salvarCliente = async (clienteAtualizado) => {
         try {
-            const response = await axios.put(`https://pi-academia.vercel.app/api/cliente/${clienteAtualizado.email}`, clienteAtualizado)
+            // const response = await axios.put(`https://pi-academia.vercel.app/api/cliente/${clienteAtualizado.email}`, clienteAtualizado)
+            const response = await axios.put('https://pi-academia.vercel.app/api/cliente/atualizarcliente', clienteAtualizado)
 
             setData(data.map(cliente => (cliente._id === response.data._id ? response.data : cliente)))
 
