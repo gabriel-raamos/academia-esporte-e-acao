@@ -1,5 +1,6 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
+import { Link } from "react-router-dom"
 
 export default function Treinos() {
     const [data, setData] = useState([])
@@ -84,12 +85,14 @@ export default function Treinos() {
 
                 {role == 'admin' && (
                     <div className="flex justify-center items-center">
-                        <button
-                            onClick={() => window.location.href = '/usuarios'}
-                            className="bg-red-700 text-white rounded-full font-bold p-5 my-5 text-xl"
-                        >
-                            Ir para Usuários.
-                        </button>
+                        <Link to="../usuarios" >
+                            <button
+                                // onClick={() => window.location.href = '/usuarios'}
+                                className="bg-red-700 text-white rounded-full font-bold p-5 my-5 text-xl"
+                            >
+                                Ir para Usuários.
+                            </button>
+                        </Link>
                     </div>
                 )}
 
