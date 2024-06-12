@@ -41,6 +41,20 @@ export default function Usuarios() {
         setClienteSelecionado(null)
     };
 
+    const salvarCliente = async (clienteAtualizado) => {
+        try {
+            const response = await axios.put(`https://pi-academia.vercel.app/api/cliente/${clienteAtualizado.email}`, clienteAtualizado)
+
+            setData(data.map(cliente => (cliente._id === response.data._id ? response.data : cliente)))
+
+            handleFecharModal()
+        }
+
+        catch (error) {
+            alert('erro ao atualizar cliente: ', error)
+        }
+    }
+
     if (loading) return <p>Carregando...</p>
     if (error) return <p>Ocorreu um erro ao buscar os dados: {error.message}</p>
 
@@ -63,7 +77,7 @@ export default function Usuarios() {
                                 </div>
                             ))}
 
-                            <Modal isOpen={modalAberto} onClose={handleFecharModal}>
+                            {/* <Modal isOpen={modalAberto} onClose={handleFecharModal}>
                                 {clienteSelecionado && (
                                     <div className="text-xl" >
                                         <h2 className="text-2xl font-bold my-4">Detalhes do Cliente</h2>
@@ -78,7 +92,14 @@ export default function Usuarios() {
                                         <p className="mr-4" ><strong>Role:</strong> {clienteSelecionado.role}</p>
                                     </div>
                                 )}
-                            </Modal>
+                            </Modal> */}
+
+                            <Modal
+                                isOpen={modalAberto}
+                                onClose={handleFecharModal}
+                                cliente={clienteSelecionado}
+                                onSave={salvarCliente}
+                            />
                         </div>
                     </div>
                 </div>
