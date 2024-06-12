@@ -41,7 +41,7 @@ function Modal({ isOpen, onClose, cliente }) {
                         Fechar
                     </button>
                 </div>
-                <form action={handleSubmit} className='pt-8' >
+                <form onSubmit={handleSubmit} className='pt-8' >
                     <div className='md:grid md:grid-cols-2 gap-5 text-lg' >
                         <div className='md:my-2 rounded-xl py-3 grid grid-cols-8' >
                             <div className='mr-5 col-span-2 items-center flex' >
