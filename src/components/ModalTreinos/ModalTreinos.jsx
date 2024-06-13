@@ -3,31 +3,37 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 function TreinosModal({ clienteID, isOpen, onClose }) {
-    const [treinos, setTreinos] = useState([]);
-    const [newTreino, setNewTreino] = useState({ treino1: '', treino2: '', treino3: '', treino4: '', treino5: '', visibility: true });
+
+    const [treinos, setTreinos] = useState([])
+    const [newTreino, setNewTreino] = useState({ treino1: '', treino2: '', treino3: '', treino4: '', treino5: '', visibility: true })
 
     const fetchTreinos = async () => {
         try {
-            const response = await axios.get(`https://pi-academia.vercel.app/api/treino/${clienteID}`);
-            setTreinos(response.data);
-        } catch (error) {
-            console.error('Error fetching treinos', error);
+            const response = await axios.get(`https://pi-academia.vercel.app/api/treino/${clienteID}`)
+
+            setTreinos(response.data)
         }
-    };
+
+        catch (error) {
+            alert('Ocorreu um erro ao puxar os dados do cliente: ', error)
+            console.log('Ocorreu um erro: ', error)
+        }
+    }
 
     useEffect(() => {
         if (isOpen) {
-            fetchTreinos();
+            fetchTreinos()
         }
-    }, [isOpen]);
+    })
 
     const handleChange = (e) => {
-        const { name, value } = e.target;
+        const { name, value } = e.target
+
         setNewTreino({
             ...newTreino,
-            [name]: value,
-        });
-    };
+            [name]: value
+        })
+    }
 
     const handleCheckboxChange = (index) => {
         const updatedTreinos = [...treinos];
@@ -135,4 +141,4 @@ TreinosModal.propTypes = {
     onClose: PropTypes.func.isRequired,
 };
 
-export default TreinosModal;
+export default TreinosModal

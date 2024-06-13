@@ -205,7 +205,7 @@ function Modal({ isOpen, onClose, cliente, onSave }) {
 
             {isTreinosModalOpen && (
                 <ModalTreinos
-                    clienteEmail={cliente.email}
+                    clienteId={cliente._id}
                     isOpen={isTreinosModalOpen}
                     onClose={handleCloseTreinosModal}
                 />
