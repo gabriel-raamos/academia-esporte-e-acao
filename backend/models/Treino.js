@@ -6,6 +6,7 @@ const TreinoSchema = new mongoose.Schema({
     treino3: { type: String },
     treino4: { type: String },
     treino5: { type: String },
+    visibility: {type: Boolean},
     clienteID : { type: Schema.Types.ObjectId, ref: 'Cliente' }
 })
 

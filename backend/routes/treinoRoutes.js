@@ -6,10 +6,10 @@ const router = express.Router()
 
 router.post('/registrartreino', async (req,res) => {
 
-    const { treino1, treino2, treino3, treino4, treino5, clienteID } = req.body
+    const { treino1, treino2, treino3, treino4, treino5, visibility, clienteID } = req.body
 
     try {
-        const newTreino = new Treino({ treino1, treino2, treino3, treino4, treino5, clienteID })
+        const newTreino = new Treino({ treino1, treino2, treino3, treino4, treino5, visibility, clienteID })
 
         await newTreino.save()
 

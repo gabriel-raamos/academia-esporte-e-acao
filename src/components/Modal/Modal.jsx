@@ -1,9 +1,11 @@
 import PropTypes from 'prop-types'
 import { useEffect, useState } from 'react'
+import ModalTreinos from '../ModalTreinos/ModalTreinos'
 
 function Modal({ isOpen, onClose, cliente, onSave }) {
 
     const [formData, setFormData] = useState({})
+    const [isTreinosModalOpen, setIsTreinosModalOpen] = useState(false)
 
     useEffect(() => {
         if (cliente) {
@@ -26,6 +28,14 @@ function Modal({ isOpen, onClose, cliente, onSave }) {
         onSave(formData)
     }
 
+    const handleOpenTreinosModal = () => {
+        setIsTreinosModalOpen(true);
+    };
+
+    const handleCloseTreinosModal = () => {
+        setIsTreinosModalOpen(false);
+    };
+
     if (!isOpen) {
         return null
     }
@@ -43,7 +53,7 @@ function Modal({ isOpen, onClose, cliente, onSave }) {
                 </div>
                 <form onSubmit={handleSubmit} className='pt-8' >
                     <div className='md:grid md:grid-cols-2 gap-5 text-lg' >
-                        <div className='md:my-2 rounded-xl py-3 grid grid-cols-8' >
+                        <div className='py-2 pt-3 md:my-2 rounded-xl grid grid-cols-8' >
                             <div className='mr-5 col-span-2 items-center flex' >
                                 <label>Nome:</label>
                             </div>
@@ -57,7 +67,7 @@ function Modal({ isOpen, onClose, cliente, onSave }) {
                             />
                         </div>
 
-                        <div className='md:my-2 rounded-xl py-3 grid grid-cols-8' >
+                        <div className='py-2 md:pt-3 md:my-2 rounded-xl grid grid-cols-8' >
                             <div className='mr-5 col-span-2 items-center flex' >
                                 <label>Email:</label>
                             </div>
@@ -71,7 +81,7 @@ function Modal({ isOpen, onClose, cliente, onSave }) {
                             />
                         </div>
 
-                        <div className='md:my-2 rounded-xl py-3 grid grid-cols-8' >
+                        <div className='py-2 md:my-2 rounded-xl grid grid-cols-8' >
                             <div className='mr-5 col-span-2 items-center flex' >
                                 <label>Telefone:</label>
                             </div>
@@ -85,7 +95,7 @@ function Modal({ isOpen, onClose, cliente, onSave }) {
                             />
                         </div>
 
-                        <div className='md:my-2 rounded-xl py-3 grid grid-cols-8' >
+                        <div className='py-2 md:my-2 rounded-xl grid grid-cols-8' >
                             <div className='mr-5 col-span-2 items-center flex' >
                                 <label>CPF:</label>
                             </div>
@@ -99,7 +109,7 @@ function Modal({ isOpen, onClose, cliente, onSave }) {
                             />
                         </div>
 
-                        <div className='md:my-2 rounded-xl py-3 grid grid-cols-8' >
+                        <div className='py-2 md:my-2 rounded-xl grid grid-cols-8' >
                             <div className='mr-5 col-span-2 items-center flex' >
                                 <label>CEP:</label>
                             </div>
@@ -113,7 +123,7 @@ function Modal({ isOpen, onClose, cliente, onSave }) {
                             />
                         </div>
 
-                        <div className='md:my-2 rounded-xl py-3 grid grid-cols-8' >
+                        <div className='py-2 md:my-2 rounded-xl grid grid-cols-8' >
                             <div className='mr-5 col-span-2 items-center flex' >
                                 <label>Altura:</label>
                             </div>
@@ -127,7 +137,7 @@ function Modal({ isOpen, onClose, cliente, onSave }) {
                             />
                         </div>
 
-                        <div className='md:my-2 rounded-xl py-3 grid grid-cols-8' >
+                        <div className='py-2 md:my-2 rounded-xl grid grid-cols-8' >
                             <div className='mr-5 col-span-2 items-center flex' >
                                 <label>Peso:</label>
                             </div>
@@ -141,7 +151,7 @@ function Modal({ isOpen, onClose, cliente, onSave }) {
                             />
                         </div>
 
-                        <div className='md:my-2 rounded-xl py-3 grid grid-cols-8' >
+                        <div className='py-2 md:my-2 rounded-xl grid grid-cols-8' >
                             <div className='md:mx-3 col-span-2 items-center flex' >
                                 <label>Ativo:</label>
                             </div>
@@ -155,7 +165,7 @@ function Modal({ isOpen, onClose, cliente, onSave }) {
                             />
                         </div>
 
-                        <div className='md:my-2 rounded-xl py-3 grid grid-cols-8' >
+                        <div className='py-2 md:my-2 rounded-xl grid grid-cols-8' >
                             <div className='mr-5 col-span-2 items-center flex' >
                                 <label>Cargo:</label>
                             </div>
@@ -171,15 +181,36 @@ function Modal({ isOpen, onClose, cliente, onSave }) {
                         </div>
                     </div>
 
-                    <button
-                        type="submit"
-                        className="bg-red-700 text-white rounded-full p-3 text-lg font-bold"
-                    >
-                        Salvar
-                    </button>
+                    <div className='flex justify-between' >
+
+                        <button
+                            type="submit"
+                            className="bg-red-700 text-white rounded-full p-3 text-lg font-bold"
+                        >
+                            Salvar
+                        </button>
+
+                        <button
+                            type="button"
+                            onClick={handleOpenTreinosModal}
+                            className="bg-red-700 text-white rounded-full p-3 text-lg font-bold"
+                        >
+                            Treinos
+                        </button>
+
+                    </div>
 
                 </form>
             </div>
+
+            {isTreinosModalOpen && (
+                <ModalTreinos
+                    clienteEmail={cliente.email}
+                    isOpen={isTreinosModalOpen}
+                    onClose={handleCloseTreinosModal}
+                />
+            )}
+
         </div>
     )
 

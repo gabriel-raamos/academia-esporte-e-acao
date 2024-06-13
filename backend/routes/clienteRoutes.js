@@ -81,10 +81,6 @@ router.get('/mostrarclientes', async (req, res) => {
     res.send(response)
 })
 
-router.get('/logarcliente', (req, res) => {
-    res.send('teste')
-})
-
 router.post('/logarcliente', async (req, res) => {
     const { email, password } = req.body;
     try {
