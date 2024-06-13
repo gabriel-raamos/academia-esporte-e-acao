@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import { useEffect, useState } from 'react'
 
-function Modal({ isOpen, onClose, cliente }) {
+function Modal({ isOpen, onClose, cliente, onSave }) {
 
     const [formData, setFormData] = useState({})
 
@@ -12,13 +12,13 @@ function Modal({ isOpen, onClose, cliente }) {
     }, [cliente])
 
     const handleChange = (e) => {
-        const { name, value } = e.target
+        const { name, value, type, checked } = e.target;
 
         setFormData({
             ...formData,
-            [name]: value
-        })
-    }
+            [name]: type === 'checkbox' ? checked : value,
+        });
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -149,13 +149,8 @@ function Modal({ isOpen, onClose, cliente }) {
                             <input
                                 type="checkbox"
                                 name="active"
-                                value={formData.active || false}
-                                onChange={() => {
-                                    setFormData({
-                                        ...formData,
-                                        active: !formData.active
-                                    })
-                                }}
+                                checked={formData.active || false}
+                                onChange={handleChange}
                                 className='border-2 border-red-700 rounded-xl p-2 col-span-6'
                             />
                         </div>
@@ -193,7 +188,8 @@ function Modal({ isOpen, onClose, cliente }) {
 Modal.propTypes = {
     isOpen: PropTypes.bool.isRequired,
     onClose: PropTypes.func.isRequired,
-    cliente: PropTypes.object
+    cliente: PropTypes.object,
+    onSave: PropTypes.func.isRequired
 }
 
 export default Modal
