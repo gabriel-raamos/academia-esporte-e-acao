@@ -56,7 +56,7 @@ function Modal({ isOpen, onClose, cliente, onSave }) {
                 <form onSubmit={handleSubmit} className='pt-8' >
                     {cliente._id}
                     <div className='md:grid md:grid-cols-2 gap-5 text-lg' >
-                        <div className='py-2 pt-3 md:my-2 rounded-xl grid grid-cols-8' >
+                        <div className='my-1 pt-3 md:my-2 rounded-xl grid grid-cols-8' >
                             <div className='mr-5 col-span-2 items-center flex' >
                                 <label>Nome:</label>
                             </div>
@@ -66,11 +66,11 @@ function Modal({ isOpen, onClose, cliente, onSave }) {
                                 name="name"
                                 value={formData.name || ''}
                                 onChange={handleChange}
-                                className='border-4 border-red-700 rounded-xl p-2 col-span-6'
+                                className='border-2 border-red-700 rounded-xl p-2 col-span-6 '
                             />
                         </div>
 
-                        <div className='py-2 md:pt-3 md:my-2 rounded-xl grid grid-cols-8' >
+                        <div className='my-1 md:pt-3 md:my-2 rounded-xl grid grid-cols-8' >
                             <div className='mr-5 col-span-2 items-center flex' >
                                 <label>Email:</label>
                             </div>
@@ -80,11 +80,11 @@ function Modal({ isOpen, onClose, cliente, onSave }) {
                                 name="email"
                                 value={formData.email || ''}
                                 onChange={handleChange}
-                                className='border-4 border-red-700 rounded-xl p-2 col-span-6'
+                                className='border-2 border-red-700 rounded-xl p-2 col-span-6 '
                             />
                         </div>
 
-                        <div className='py-2 md:my-2 rounded-xl grid grid-cols-8' >
+                        <div className='my-1 md:my-2 rounded-xl grid grid-cols-8' >
                             <div className='mr-5 col-span-2 items-center flex' >
                                 <label>Telefone:</label>
                             </div>
@@ -94,11 +94,11 @@ function Modal({ isOpen, onClose, cliente, onSave }) {
                                 name="phone"
                                 value={formData.phone || ''}
                                 onChange={handleChange}
-                                className='border-4 border-red-700 rounded-xl p-2 col-span-6'
+                                className='border-2 border-red-700 rounded-xl p-2 col-span-6 '
                             />
                         </div>
 
-                        <div className='py-2 md:my-2 rounded-xl grid grid-cols-8' >
+                        <div className='my-1 md:my-2 rounded-xl grid grid-cols-8' >
                             <div className='mr-5 col-span-2 items-center flex' >
                                 <label>CPF:</label>
                             </div>
@@ -108,11 +108,11 @@ function Modal({ isOpen, onClose, cliente, onSave }) {
                                 name="cpf"
                                 value={formData.cpf || ''}
                                 onChange={handleChange}
-                                className='border-4 border-red-700 rounded-xl p-2 col-span-6'
+                                className='border-2 border-red-700 rounded-xl p-2 col-span-6 '
                             />
                         </div>
 
-                        <div className='py-2 md:my-2 rounded-xl grid grid-cols-8' >
+                        <div className='my-1 md:my-2 rounded-xl grid grid-cols-8' >
                             <div className='mr-5 col-span-2 items-center flex' >
                                 <label>CEP:</label>
                             </div>
@@ -122,11 +122,11 @@ function Modal({ isOpen, onClose, cliente, onSave }) {
                                 name="cep"
                                 value={formData.cep || ''}
                                 onChange={handleChange}
-                                className='border-4 border-red-700 rounded-xl p-2 col-span-6'
+                                className='border-2 border-red-700 rounded-xl p-2 col-span-6 '
                             />
                         </div>
 
-                        <div className='py-2 md:my-2 rounded-xl grid grid-cols-8' >
+                        <div className='my-1 md:my-2 rounded-xl grid grid-cols-8' >
                             <div className='mr-5 col-span-2 items-center flex' >
                                 <label>Altura:</label>
                             </div>
@@ -136,11 +136,11 @@ function Modal({ isOpen, onClose, cliente, onSave }) {
                                 name="height"
                                 value={formData.height || ''}
                                 onChange={handleChange}
-                                className='border-4 border-red-700 rounded-xl p-2 col-span-6'
+                                className='border-2 border-red-700 rounded-xl p-2 col-span-6 '
                             />
                         </div>
 
-                        <div className='py-2 md:my-2 rounded-xl grid grid-cols-8' >
+                        <div className='my-1 md:my-2 rounded-xl grid grid-cols-8' >
                             <div className='mr-5 col-span-2 items-center flex' >
                                 <label>Peso:</label>
                             </div>
@@ -150,11 +150,11 @@ function Modal({ isOpen, onClose, cliente, onSave }) {
                                 name="weight"
                                 value={formData.weight || ''}
                                 onChange={handleChange}
-                                className='border-4 border-red-700 rounded-xl p-2 col-span-6'
+                                className='border-2 border-red-700 rounded-xl p-2 col-span-6 '
                             />
                         </div>
 
-                        <div className='py-2 md:my-2 rounded-xl grid grid-cols-8' >
+                        <div className='my-1 md:my-2 rounded-xl grid grid-cols-8' >
                             <div className='mr-5 col-span-2 items-center flex' >
                                 <label>Ativo:</label>
                             </div>
@@ -164,11 +164,11 @@ function Modal({ isOpen, onClose, cliente, onSave }) {
                                 name="active"
                                 checked={formData.active || false}
                                 onChange={handleChange}
-                                className='border-4 border-red-700 rounded-xl p-2 col-span-6'
+                                className='border-2 border-red-700 rounded-xl p-2 col-span-6 '
                             />
                         </div>
 
-                        <div className='py-2 md:my-2 rounded-xl grid grid-cols-8' >
+                        <div className='my-1 md:my-2 rounded-xl grid grid-cols-8' >
                             <div className='mr-5 col-span-2 items-center flex' >
                                 <label>Cargo:</label>
                             </div>
@@ -178,7 +178,7 @@ function Modal({ isOpen, onClose, cliente, onSave }) {
                                 name="role"
                                 value={formData.role || ''}
                                 onChange={handleChange}
-                                className='border-4 border-red-700 rounded-xl p-2 col-span-6'
+                                className='border-2 border-red-700 rounded-xl p-2 col-span-6 '
                                 placeholder="'admin' ou 'cliente'"
                             />
                         </div>
