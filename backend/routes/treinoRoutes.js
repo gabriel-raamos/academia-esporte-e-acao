@@ -9,16 +9,25 @@ router.post('/registrartreino', async (req, res) => {
     const { treino1, treino2, treino3, treino4, treino5, visibility, clienteID } = req.body
 
     try {
-        const newTreino = new Treino({ treino1, treino2, treino3, treino4, treino5, visibility, clienteID })
-
-        await newTreino.save()
 
         const cliente = await Cliente.findById(clienteID)
+
+        if (!cliente) {
+            return res.status(400).json({message: 'Cliente não encontrado.'})
+        }
+
+        if (!cliente.role) {
+            cliente.role = 'user',
+            await cliente.save()
+        }
+
+        const newTreino = new Treino({ treino1, treino2, treino3, treino4, treino5, visibility, clienteID })
+        await newTreino.save()
+
         cliente.workouts.push(newTreino._id)
         await cliente.save()
 
         console.log(cliente)
-
         res.status(201).json(newTreino)
     }
 

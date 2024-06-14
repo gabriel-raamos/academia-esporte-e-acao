@@ -9,6 +9,8 @@ function TreinosModal({ clienteID, isOpen, onClose }) {
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
 
+    // const [updatedTreinos, setUpdatedTreinos] = useState([]);
+
     // const fetchTreinos = useCallback(async () => {
     //     alert('Fetching treinos for clienteID:', clienteID);
     //     try {
@@ -31,7 +33,13 @@ function TreinosModal({ clienteID, isOpen, onClose }) {
 
         try {
             const response = await axios.get(`http://localhost:5000/api/treino/buscarporcliente/${clienteID}`)
-            setTreinos(response.data)
+
+            const fetchedTreinos = response.data.map(treino => ({
+                ...treino,
+                visibility: treino.visibility !== undefined ? treino.visibility : true
+            }));
+
+            setTreinos(fetchedTreinos)
             // alert(response.data.treino1)
             setLoading(false)
         }
@@ -58,14 +66,24 @@ function TreinosModal({ clienteID, isOpen, onClose }) {
     };
 
     const handleAddTreino = async () => {
+        const dadosParaEnviar = { ...newTreino, clienteID };
+        console.log('Dados para enviar:', dadosParaEnviar);
+    
         try {
-            const response = await axios.post('http://localhost:5000/api/treino/registrartreino', { ...newTreino, clienteID });
+            const response = await axios.post('http://localhost:5000/api/treino/registrartreino', dadosParaEnviar);
             setTreinos([...treinos, response.data]);
-            setNewTreino({ treino1: '', treino2: '', treino3: '', treino4: '', treino5: '', visiblity: true })
+            setNewTreino({ treino1: '', treino2: '', treino3: '', treino4: '', treino5: '', visibility: true });
         } catch (error) {
-            console.error('Error adding treino', error);
+            if (error.response) {
+                console.error('Erro na resposta:', error.response.data);
+            } else if (error.request) {
+                console.error('Erro na requisição:', error.request);
+            } else {
+                console.error('Erro:', error.message);
+            }
         }
     };
+    
 
     const handleCheckboxChange = async (index) => {
         try {
@@ -80,6 +98,15 @@ function TreinosModal({ clienteID, isOpen, onClose }) {
         }
     };
 
+    // const handleCheckboxChange = (index) => {
+    //     const updatedTreinosCopy = [...treinos];
+    //     updatedTreinosCopy[index] = {
+    //         ...updatedTreinos[index],
+    //         visibility: !updatedTreinos[index]?.visibility
+    //     };
+    //     setTreinos(updatedTreinosCopy);
+    // };
+
     const handleSaveChanges = async () => {
         try {
             await Promise.all(
@@ -88,11 +115,15 @@ function TreinosModal({ clienteID, isOpen, onClose }) {
                 })
             )
             alert('Alterações salvas com sucesso.')
-        }
-
-        catch (error) {
+            // setUpdatedTreinos([])
+        } catch (error) {
             alert('Erro ao salvar mudanças: ', error)
         }
+    }
+
+    const handleModalClose = () => {
+        setNewTreino({treino1: '', treino2: '', treino3: '', treino4: '', treino5: '', visibility: true})
+        onClose()
     }
 
     if (!isOpen) {
@@ -109,10 +140,10 @@ function TreinosModal({ clienteID, isOpen, onClose }) {
                     <p>Ocorreu um erro: {error}</p>
                 ) : (
                     <div>
-                        <div className="py-2">
+                        <div className="py-2 my-5">
                             <button
                                 className="absolute top-0 right-0 bg-red-700 text-white rounded-full font-bold p-3 my-4 mr-8"
-                                onClick={onClose}
+                                onClick={handleModalClose}
                             >
                                 Fechar
                             </button>
@@ -120,7 +151,7 @@ function TreinosModal({ clienteID, isOpen, onClose }) {
                         {treinos.length === 0 ? (
                             <p className="text-center">O cliente não possui treinos cadastrados</p>
                         ) : (
-                            <ul className='pt-10' >
+                            <ul className='h-64 overflow-y-auto' >
                                 {treinos.map((treino, index) => (
                                     <li key={index} className="flex justify-between items-center">
                                         <span>{`Treino ${index + 1}:`} 

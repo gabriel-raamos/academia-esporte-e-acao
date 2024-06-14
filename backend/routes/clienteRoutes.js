@@ -24,6 +24,10 @@ router.get('/test', async (req, res) => {
 router.post('/register', async (req, res) => {
 
     const { name, email, password, date, phone, cpf, cep, height, weight, role, active } = req.body
+    
+    if (!role) {
+        return res.status(400).json({ message: 'O campo role é obrigatório' });
+    }
 
     try {
         const newCliente = new Cliente({ name, email, password, date, phone, cpf, cep, height, weight, role, active })
@@ -42,30 +46,6 @@ router.post('/register', async (req, res) => {
     }
 
 })
-
-// login
-// router.post('/login', async (req, res) => {
-//     const { email, password } = req.body;
-//     try {
-//         const cliente = await Cliente.findOne({ email });
-//         if (!cliente) {
-//             return res.status(404).json({ message: 'User not found' });
-//         }
-//         const isMatch = await bcrypt.compare(password, cliente.password);
-//         if (!isMatch) {
-//             return res.status(400).json({ message: 'Invalid credentials' });
-//         }
-//         res.status(200).json({ message: 'Login successful' });
-//     } catch (error) {
-//         console.error('Error during login', error);
-//         res.status(500).json({
-//             message: 'Server error',
-//             error: error.message,
-//             details: error
-//         });
-//     }
-
-// })
 
 // Rota para testar a conexão com o MongoDB
 router.get('/test-mongodb-connection', (req, res) => {
