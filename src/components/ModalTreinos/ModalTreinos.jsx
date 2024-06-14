@@ -121,7 +121,7 @@ function TreinosModal({ clienteID, isOpen, onClose }) {
                         {treinos.length === 0 ? (
                             <p className="text-center">O cliente não possui treinos cadastrados</p>
                         ) : (
-                            <ul className='h-64 overflow-y-auto border-4 border-red-700 rounded-lg md:grid md:grid-cols-2' >
+                            <ul className='h-64 md:h-80 overflow-y-auto border-4 border-red-700 rounded-lg md:grid md:grid-cols-2' >
                                 {treinos.map((treino, index) => (
                                     <li key={index} className="flex justify-between items-center ml-3">
                                         <span>{`Treino ${index + 1}:`}
@@ -193,8 +193,6 @@ function TreinosModal({ clienteID, isOpen, onClose }) {
                                 onChange={handleChange}
                                 className="border-2 border-red-700 rounded-xl p-2 m-3"
                             />
-                        </div>
-                        <div className='mt-4 flex justify-between' >
 
                             <button
                                 onClick={handleAddTreino}
@@ -202,6 +200,11 @@ function TreinosModal({ clienteID, isOpen, onClose }) {
                             >
                                 Adicionar Treino
                             </button>
+
+                            <p className='text-red-700 mx-3' >Utilize ; para quebra de linha.</p>
+
+                        </div>
+                        <div className='mt-4 flex justify-between' >
                         </div>
                     </div>
                 )}
