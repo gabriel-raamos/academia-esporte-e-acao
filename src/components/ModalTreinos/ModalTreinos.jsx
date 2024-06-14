@@ -32,7 +32,7 @@ function TreinosModal({ clienteID, isOpen, onClose }) {
         // alert(clienteID)
 
         try {
-            const response = await axios.get(`http://localhost:5000/api/treino/buscarporcliente/${clienteID}`)
+            const response = await axios.get(`https://pi-academia.vercel.app/api/treino/buscarporcliente/${clienteID}`)
 
             const fetchedTreinos = response.data.map(treino => ({
                 ...treino,
@@ -70,7 +70,7 @@ function TreinosModal({ clienteID, isOpen, onClose }) {
         console.log('Dados para enviar:', dadosParaEnviar);
     
         try {
-            const response = await axios.post('http://localhost:5000/api/treino/registrartreino', dadosParaEnviar);
+            const response = await axios.post('https://pi-academia.vercel.app/api/treino/registrartreino', dadosParaEnviar);
             setTreinos([...treinos, response.data]);
             setNewTreino({ treino1: '', treino2: '', treino3: '', treino4: '', treino5: '', visibility: true });
         } catch (error) {
@@ -111,7 +111,7 @@ function TreinosModal({ clienteID, isOpen, onClose }) {
         try {
             await Promise.all(
                 treinos.map(async (treino) => {
-                    await axios.put(`http://localhost:5000/api/treino/atualizartreino/${treino._id}`, treino)
+                    await axios.put(`https://pi-academia.vercel.app/api/treino/atualizartreino/${treino._id}`, treino)
                 })
             )
             alert('Alterações salvas com sucesso.')
