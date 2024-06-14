@@ -159,7 +159,7 @@ function TreinosModal({ clienteID, isOpen, onClose }) {
                                 placeholder="Treino 1"
                                 value={newTreino.treino1}
                                 onChange={handleChange}
-                                className="border-2 border-red-700 rounded-xl p-2 mr-2 m-3"
+                                className="border-2 border-red-700 rounded-xl p-2 mr-2 m-1 md:m-3"
                             />
                             <input
                                 type="text"
@@ -167,7 +167,7 @@ function TreinosModal({ clienteID, isOpen, onClose }) {
                                 placeholder="Treino 2"
                                 value={newTreino.treino2}
                                 onChange={handleChange}
-                                className="border-2 border-red-700 rounded-xl p-2 mr-2 m-3"
+                                className="border-2 border-red-700 rounded-xl p-2 mr-2 m-1 md:m-3"
                             />
                             <input
                                 type="text"
@@ -175,7 +175,7 @@ function TreinosModal({ clienteID, isOpen, onClose }) {
                                 placeholder="Treino 3"
                                 value={newTreino.treino3}
                                 onChange={handleChange}
-                                className="border-2 border-red-700 rounded-xl p-2 mr-2 m-3"
+                                className="border-2 border-red-700 rounded-xl p-2 mr-2 m-1 md:m-3"
                             />
                             <input
                                 type="text"
@@ -183,7 +183,7 @@ function TreinosModal({ clienteID, isOpen, onClose }) {
                                 placeholder="Treino 4"
                                 value={newTreino.treino4}
                                 onChange={handleChange}
-                                className="border-2 border-red-700 rounded-xl p-2 mr-2 m-3"
+                                className="border-2 border-red-700 rounded-xl p-2 mr-2 m-1 md:m-3"
                             />
                             <input
                                 type="text"
@@ -191,20 +191,18 @@ function TreinosModal({ clienteID, isOpen, onClose }) {
                                 placeholder="Treino 5"
                                 value={newTreino.treino5}
                                 onChange={handleChange}
-                                className="border-2 border-red-700 rounded-xl p-2 m-3"
+                                className="border-2 border-red-700 rounded-xl p-2 mr-2 m-1 md:m-3"
                             />
 
                             <button
                                 onClick={handleAddTreino}
-                                className="bg-red-700 text-white rounded-full p-3 my-2 text-lg font-bold"
+                                className="bg-red-700 text-white rounded-full p-3 md:my-2 text-lg font-bold"
                             >
                                 Adicionar Treino
                             </button>
 
                             <p className='text-red-700 mx-3' >Utilize ; para quebra de linha.</p>
 
-                        </div>
-                        <div className='mt-4 flex justify-between' >
                         </div>
                     </div>
                 )}
