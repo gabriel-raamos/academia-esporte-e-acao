@@ -9,27 +9,7 @@ function TreinosModal({ clienteID, isOpen, onClose }) {
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
 
-    // const [updatedTreinos, setUpdatedTreinos] = useState([]);
-
-    // const fetchTreinos = useCallback(async () => {
-    //     alert('Fetching treinos for clienteID:', clienteID);
-    //     try {
-    //         const response = await axios.get(`http://localhost:5000/api/treino/${clienteID}`);
-    //         console.log('Response data:', response.data);
-    //         setTreinos(response.data);
-    //     } catch (error) {
-    //         console.error('Ocorreu um erro ao puxar os dados do cliente:', error);
-    //     }
-    // }, [clienteID]);
-
-    // useEffect(() => {
-    //     if (isOpen) {
-    //         fetchTreinos();
-    //     }
-    // }, [isOpen, fetchTreinos]);
-
     const fetchTreinos = async () => {
-        // alert(clienteID)
 
         try {
             const response = await axios.get(`https://pi-academia.vercel.app/api/treino/buscarporcliente/${clienteID}`)
@@ -40,7 +20,6 @@ function TreinosModal({ clienteID, isOpen, onClose }) {
             }));
 
             setTreinos(fetchedTreinos)
-            // alert(response.data.treino1)
             setLoading(false)
         }
 
@@ -68,7 +47,7 @@ function TreinosModal({ clienteID, isOpen, onClose }) {
     const handleAddTreino = async () => {
         const dadosParaEnviar = { ...newTreino, clienteID };
         console.log('Dados para enviar:', dadosParaEnviar);
-    
+
         try {
             const response = await axios.post('https://pi-academia.vercel.app/api/treino/registrartreino', dadosParaEnviar);
             setTreinos([...treinos, response.data]);
@@ -83,7 +62,21 @@ function TreinosModal({ clienteID, isOpen, onClose }) {
             }
         }
     };
-    
+
+    const handleDeleteTreino = async (treinoID) => {
+
+        try {
+            await axios.delete(`https://pi-academia.vercel.app/api/treino/deletartreino/${treinoID}`)
+            setTreinos(treinos.filter(treino => treino._id !== treinoID))
+            alert('Treino deletado com sucesso')
+        }
+
+        catch (error) {
+            alert('Ocorreu um erro ao deletar o treino.')
+        }
+
+    }
+
 
     const handleCheckboxChange = async (index) => {
         try {
@@ -98,31 +91,8 @@ function TreinosModal({ clienteID, isOpen, onClose }) {
         }
     };
 
-    // const handleCheckboxChange = (index) => {
-    //     const updatedTreinosCopy = [...treinos];
-    //     updatedTreinosCopy[index] = {
-    //         ...updatedTreinos[index],
-    //         visibility: !updatedTreinos[index]?.visibility
-    //     };
-    //     setTreinos(updatedTreinosCopy);
-    // };
-
-    const handleSaveChanges = async () => {
-        try {
-            await Promise.all(
-                treinos.map(async (treino) => {
-                    await axios.put(`https://pi-academia.vercel.app/api/treino/atualizartreino/${treino._id}`, treino)
-                })
-            )
-            alert('Alterações salvas com sucesso.')
-            // setUpdatedTreinos([])
-        } catch (error) {
-            alert('Erro ao salvar mudanças: ', error)
-        }
-    }
-
     const handleModalClose = () => {
-        setNewTreino({treino1: '', treino2: '', treino3: '', treino4: '', treino5: '', visibility: true})
+        setNewTreino({ treino1: '', treino2: '', treino3: '', treino4: '', treino5: '', visibility: true })
         onClose()
     }
 
@@ -154,21 +124,30 @@ function TreinosModal({ clienteID, isOpen, onClose }) {
                             <ul className='h-64 overflow-y-auto border-4 border-red-700 rounded-lg md:grid md:grid-cols-2' >
                                 {treinos.map((treino, index) => (
                                     <li key={index} className="flex justify-between items-center ml-3">
-                                        <span>{`Treino ${index + 1}:`} 
-                                            <input 
-                                                type="checkbox" 
+                                        <span>{`Treino ${index + 1}:`}
+                                            <input
+                                                type="checkbox"
                                                 checked={treino.visibility}
                                                 onChange={() => handleCheckboxChange(index)}
                                                 className='ml-2'
-                                            /> 
+                                            />
                                         </span>
 
-                                        <button
-                                            className='bg-red-700 text-white rounded-full p-3 my-2 text-lg font-bold'
-                                            type="button"
-                                        >
-                                            Editar treino
-                                        </button>
+                                        <div className='justify-between' >
+                                            <button
+                                                className='bg-red-700 text-white rounded-full p-3 my-2 text-lg font-bold ml-3'
+                                                type="button"
+                                                onClick={() => handleDeleteTreino(treino._id)}
+                                            >
+                                                Deletar
+                                            </button>
+                                            <button
+                                                className='bg-red-700 text-white rounded-full p-3 my-2 text-lg font-bold'
+                                                type="button"
+                                            >
+                                                Editar treino
+                                            </button>
+                                        </div>
                                     </li>
                                 ))}
                             </ul>
@@ -216,13 +195,7 @@ function TreinosModal({ clienteID, isOpen, onClose }) {
                             />
                         </div>
                         <div className='mt-4 flex justify-between' >
-                            <button
-                                onClick={handleSaveChanges}
-                                className='bg-red-700 text-white rounded-full p-3 my-2 text-lg font-bold'
-                            >
-                                Salvar alterações
-                            </button>
-                            
+
                             <button
                                 onClick={handleAddTreino}
                                 className="bg-red-700 text-white rounded-full p-3 my-2 text-lg font-bold"
@@ -232,13 +205,6 @@ function TreinosModal({ clienteID, isOpen, onClose }) {
                         </div>
                     </div>
                 )}
-
-                {/* <button
-                    onClick={onClose}
-                    className="absolute top-0 right-0 bg-red-700 text-white rounded-full font-bold p-3 my-4 md:mx-8 mx-1"
-                >
-                    Fechar
-                </button> */}
 
             </div>
         </div>

@@ -84,4 +84,17 @@ router.put('/atualizartreino/:id', async (req, res) => {
 
 })
 
+router.delete('/deletartreino/:id', async (req,res) => {
+    const _id = req.params.id
+
+    try {
+        await Treino.deleteOne({_id})
+        res.json({message: 'treino deletado'})
+    }
+
+    catch (error) {
+        res.json({message: 'ocorreu um erro ', error})
+    }
+})
+
 export default router
