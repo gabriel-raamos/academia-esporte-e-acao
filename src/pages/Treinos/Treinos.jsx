@@ -105,7 +105,7 @@ export default function Treinos() {
                             <h2 className="bg-red-700 text-white rounded-full font-bold p-5 my-5 text-xl">Informação sobre os treinos:</h2>
 
                         </div>
-                        <ul className="flex justify-center gap-4">
+                        <ul className="md:flex justify-center gap-4">
                             {data.workouts.map((workout, index) => (
                                 <li key={index} className="text-lg rounded-xl p-5 my-5 border-4 text-red-700 border-red-700 font-bold md:m-5 whitespace-pre-line overflow-y-auto">
                                     <div className="flex items-center border-red-700 border-4 m-2 p-2 rounded-lg" >
