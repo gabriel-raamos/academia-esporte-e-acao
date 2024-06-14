@@ -151,9 +151,9 @@ function TreinosModal({ clienteID, isOpen, onClose }) {
                         {treinos.length === 0 ? (
                             <p className="text-center">O cliente não possui treinos cadastrados</p>
                         ) : (
-                            <ul className='h-64 overflow-y-auto' >
+                            <ul className='h-64 overflow-y-auto border-4 border-red-700 rounded-lg md:grid md:grid-cols-2' >
                                 {treinos.map((treino, index) => (
-                                    <li key={index} className="flex justify-between items-center">
+                                    <li key={index} className="flex justify-between items-center ml-3">
                                         <span>{`Treino ${index + 1}:`} 
                                             <input 
                                                 type="checkbox" 
