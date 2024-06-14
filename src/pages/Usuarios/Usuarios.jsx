@@ -87,23 +87,6 @@ export default function Usuarios() {
                                 </div>
                             ))}
 
-                            {/* <Modal isOpen={modalAberto} onClose={handleFecharModal}>
-                                {clienteSelecionado && (
-                                    <div className="text-xl" >
-                                        <h2 className="text-2xl font-bold my-4">Detalhes do Cliente</h2>
-                                        <p className="mr-4" ><strong>Nome:</strong> {clienteSelecionado.name}</p>
-                                        <p className="mr-4" ><strong>Email:</strong> {clienteSelecionado.email}</p>
-                                        <p className="mr-4" ><strong>Telefone:</strong> {clienteSelecionado.phone}</p>
-                                        <p className="mr-4" ><strong>CPF:</strong> {clienteSelecionado.cpf}</p>
-                                        <p className="mr-4" ><strong>CEP:</strong> {clienteSelecionado.cep}</p>
-                                        <p className="mr-4" ><strong>Altura:</strong> {clienteSelecionado.height}</p>
-                                        <p className="mr-4" ><strong>Peso:</strong> {clienteSelecionado.weight}</p>
-                                        <p className="mr-4" ><strong>Ativo:</strong> {clienteSelecionado.active ? "Sim" : "Não"}</p>
-                                        <p className="mr-4" ><strong>Role:</strong> {clienteSelecionado.role}</p>
-                                    </div>
-                                )}
-                            </Modal> */}
-
                             <Modal
                                 isOpen={modalAberto}
                                 onClose={handleFecharModal}

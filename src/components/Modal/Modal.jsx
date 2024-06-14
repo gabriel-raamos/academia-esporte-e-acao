@@ -10,7 +10,9 @@ function Modal({ isOpen, onClose, cliente, onSave }) {
     useEffect(() => {
         if (cliente) {
             setFormData(cliente)
+            // alert(`Cliente: ${JSON.stringify(cliente._id, null, 2)}`)
         }
+        // alert(cliente._id)
     }, [cliente])
 
     const handleChange = (e) => {
@@ -52,6 +54,7 @@ function Modal({ isOpen, onClose, cliente, onSave }) {
                     </button>
                 </div>
                 <form onSubmit={handleSubmit} className='pt-8' >
+                    {cliente._id}
                     <div className='md:grid md:grid-cols-2 gap-5 text-lg' >
                         <div className='py-2 pt-3 md:my-2 rounded-xl grid grid-cols-8' >
                             <div className='mr-5 col-span-2 items-center flex' >
@@ -152,7 +155,7 @@ function Modal({ isOpen, onClose, cliente, onSave }) {
                         </div>
 
                         <div className='py-2 md:my-2 rounded-xl grid grid-cols-8' >
-                            <div className='md:mx-3 col-span-2 items-center flex' >
+                            <div className='mr-5 col-span-2 items-center flex' >
                                 <label>Ativo:</label>
                             </div>
 
@@ -205,7 +208,7 @@ function Modal({ isOpen, onClose, cliente, onSave }) {
 
             {isTreinosModalOpen && (
                 <ModalTreinos
-                    clienteId={cliente._id}
+                    clienteID={cliente._id}
                     isOpen={isTreinosModalOpen}
                     onClose={handleCloseTreinosModal}
                 />
