@@ -102,7 +102,7 @@ function TreinosModal({ clienteID, isOpen, onClose }) {
 
     return (
         <div className="fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center">
-            <div className="bg-white px-2 md:px-8 py-4 rounded-lg max-w-md md:max-w-3xl relative text-xl overflow-y-auto">
+            <div className="bg-white border-4 border-red-700 px-2 md:px-8 py-4 rounded-lg max-w-md md:max-w-3xl relative text-xl overflow-y-auto">
 
                 {loading ? (
                     <p>Os dados estão carregando...</p>
