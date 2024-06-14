@@ -4,7 +4,7 @@ import RegisterFormAPI from "../../components/RegisterFormAPI/RegisterFormAPI";
 import { CgGym } from "react-icons/cg";
 import { GiGymBag } from "react-icons/gi";
 import { MdOutlineDirectionsBike } from "react-icons/md";
-import APITest from "../../components/APITest/APITest";
+// import APITest from "../../components/APITest/APITest";
 
 export default function Home() {
     return (
@@ -52,9 +52,9 @@ export default function Home() {
                 </div>
             </section>
 
-            <section>
+            {/* <section>
                 <APITest/>
-            </section>
+            </section> */}
 
         </section>
     )

@@ -119,11 +119,11 @@ function TreinosModal({ clienteID, isOpen, onClose }) {
                             </button>
                         </div>
                         {treinos.length === 0 ? (
-                            <p className="text-center">O cliente não possui treinos cadastrados</p>
+                            <p className="text-center mb-10">O cliente não possui treinos cadastrados</p>
                         ) : (
                             <ul className='h-64 md:h-80 overflow-y-auto border-4 border-red-700 rounded-lg md:grid md:grid-cols-2' >
                                 {treinos.map((treino, index) => (
-                                    <li key={index} className="flex justify-between items-center ml-3">
+                                    <li key={index} className="flex justify-between items-center ml-1">
                                         <span>{`Treino ${index + 1}:`}
                                             <input
                                                 type="checkbox"
@@ -152,7 +152,7 @@ function TreinosModal({ clienteID, isOpen, onClose }) {
                                 ))}
                             </ul>
                         )}
-                        <div className="mt-4">
+                        <div className="mt-2">
                             <input
                                 type="text"
                                 name="treino1"
@@ -196,7 +196,7 @@ function TreinosModal({ clienteID, isOpen, onClose }) {
 
                             <button
                                 onClick={handleAddTreino}
-                                className="bg-red-700 text-white rounded-full p-3 md:my-2 text-lg font-bold"
+                                className="bg-red-700 text-white rounded-full p-3 md:my-0 text-lg font-bold"
                             >
                                 Adicionar Treino
                             </button>
