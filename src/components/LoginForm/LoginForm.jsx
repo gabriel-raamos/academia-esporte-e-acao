@@ -20,7 +20,7 @@ export default function LoginForm() {
 
             localStorage.setItem('authorization', response.data.accessToken)
             localStorage.setItem('json-data', JSON.stringify(response.data.clienteData))
-            // alert(JSON.stringify(response.data.clienteData))
+            // alert(response.data.clienteData.id)
 
             // alert("ID do usuário: " + response.data.clienteData.id)
             // alert("Header -> authorization: " + localStorage.getItem('authorization'))

@@ -22,7 +22,7 @@ export default function Usuarios() {
         try {
             const response = await axios.get('https://pi-academia.vercel.app/api/cliente/clientealfabetico')
             setData(response.data.clientes)
-            setLoading(false)
+            // setLoading(false)
         }
 
         catch (error) {
@@ -33,6 +33,7 @@ export default function Usuarios() {
 
     const fetchRole = async() => {
         try {
+            // alert(id)
             const response = await axios.get(`https://pi-academia.vercel.app/api/cliente/findbyid/${id}`)
 
             // alert(JSON.stringify(response.data))
@@ -46,16 +47,19 @@ export default function Usuarios() {
             }
 
             setIsAdmin(response.data.role)
+            setLoading(false)
         }
 
         catch (error) {
             alert('Ocorreu um erro: ' + error)
+            setLoading(false)
+            setError(error)
         }
     }
 
     useEffect(() => {
-        fetchData(),
-        fetchRole()
+        fetchRole(),
+        fetchData()
     }, [])
 
     const handleAbrirModal = (cliente) => {
@@ -92,7 +96,7 @@ export default function Usuarios() {
     } else if (error) {
         return (
             <div className="grid grid-rows-1 justify-center items-center text-lg">
-                <p className="bg-red-700 text-white rounded-full font-bold p-5 my-5 text-xl">Ocorreu um erro ao usar os dados: {error.message}</p>
+                <p className="bg-red-700 text-white rounded-full font-bold p-5 my-5 text-xl">Ocorreu um erro ao tentar puxar os dados: {error.message}</p>
             </div>
         )
     }
