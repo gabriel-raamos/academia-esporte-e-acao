@@ -10,7 +10,7 @@ export default function Treinos() {
 
     const fetchData = async () => {
         try {
-            const response = await axios.get(`https://pi-academia.vercel.app/api/cliente/${JSON.parse(localStorage.getItem('json-data')).email}`)
+            const response = await axios.get(`https://pi-academia.vercel.app/api/cliente/clienteemail/${JSON.parse(localStorage.getItem('json-data')).email}`)
             const fetchedData = response.data;
 
             // alert(JSON.parse(localStorage.getItem('json-data')).email)
