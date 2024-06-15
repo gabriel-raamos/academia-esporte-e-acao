@@ -164,4 +164,11 @@ router.put('/atualizarcliente', async (req, res) => {
 
 })
 
+router.get('/clientealfabetico', async (req,res) => {
+    
+    const clientes = await Cliente.find().sort({name:1})
+    res.json({clientes})
+
+})
+
 export default router
