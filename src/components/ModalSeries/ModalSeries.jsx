@@ -58,7 +58,7 @@ function ModalSeries({ treino, onSave, onClose }) {
         }
 
         try {
-            const response = await axios.put(`http://localhost:5000/api/treino/atualizartreino/${updatedTreino._id}`, updatedTreino)
+            const response = await axios.put(`https://pi-academia.vercel.app/api/treino/atualizartreino/${updatedTreino._id}`, updatedTreino)
             onSave(response.data)
             onClose()
         }
