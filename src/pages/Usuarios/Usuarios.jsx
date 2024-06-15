@@ -58,13 +58,15 @@ export default function Usuarios() {
 
     if (loading) {
         return (
-            <div className="grid grid-rows-2 justify-center items-center text-lg">
+            <div className="grid grid-rows-1 justify-center items-center text-lg">
                 <p className="bg-red-700 text-white rounded-full font-bold p-5 my-5 text-xl">Carregando...</p>
             </div>
         )
     } else if (error) {
         return (
-            <p>Ocorreu um erro ao usar os dados: {error.message}</p>
+            <div className="grid grid-rows-1 justify-center items-center text-lg">
+                <p className="bg-red-700 text-white rounded-full font-bold p-5 my-5 text-xl">Ocorreu um erro ao usar os dados: {error.message}</p>
+            </div>
         )
     }
 
