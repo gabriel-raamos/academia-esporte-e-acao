@@ -215,7 +215,7 @@ function TreinosModal({ clienteID, isOpen, onClose }) {
                             >
                                 Adicionar Treino
                             </button>
-                            <p className='text-red-700 font-bold' >Utilize ; para quebra de linha.</p>
+                            
                         </div>
                     </div>
                 )}

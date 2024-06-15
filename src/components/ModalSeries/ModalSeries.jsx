@@ -184,6 +184,9 @@ function ModalSeries({ treino, onSave, onClose }) {
                             >
                                 Salvar treino
                             </button>
+                            <p className='text-red-700 font-bold mt-3' >
+                                Utilize ; para quebra de linha.
+                            </p>
                         </div>
                     </div>
                 )}
