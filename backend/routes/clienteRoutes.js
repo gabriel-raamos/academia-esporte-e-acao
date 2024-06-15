@@ -123,13 +123,13 @@ router.get('/protected2', (req, res) => {
     res.send('JWT: ' + req.headers['authorization'])
 })
 
-router.get('/:email', async (req, res) => {
+router.get('/clienteemail/:email', async (req, res) => {
     const email = req.params.email
 
     const cliente = await Cliente.findOne({ email }).populate('workouts')
 
     if (!cliente) {
-        return res.status(404).send({ message: 'Cliente não encontrado' });
+        return res.status(404).send({ message: 'Cliente não encontrado.' });
     }
 
     res.send(cliente);
@@ -166,8 +166,13 @@ router.put('/atualizarcliente', async (req, res) => {
 
 router.get('/clientealfabetico', async (req,res) => {
     
-    const clientes = await Cliente.find().sort({name:1})
-    res.json({clientes})
+    try {
+        const clientes = await Cliente.find({}).sort({ name: 1 });
+        res.json({ clientes });
+    } catch (error) {
+        console.error('Erro ao buscar clientes:', error);
+        res.status(500).json({ error: 'Erro ao buscar clientes' });
+    }
 
 })
 

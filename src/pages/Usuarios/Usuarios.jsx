@@ -17,7 +17,7 @@ export default function Usuarios() {
     const fetchData = async () => {
         try {
             const response = await axios.get('https://pi-academia.vercel.app/api/cliente/clientealfabetico')
-            setData(response.data)
+            setData(response.data.clientes)
             setLoading(false)
         }
 
