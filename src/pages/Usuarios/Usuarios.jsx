@@ -77,11 +77,11 @@ export default function Usuarios() {
                     <div>
                         <div className="md:grid md:grid-cols-2 gap-4" >
                             {data.map((cliente) => (
-                                <div key={cliente._id} className="mb-4 flex justify-center items-center border-red-700 border-4 font-bold rounded-xl" >
-                                    <p className="text-red-700 text-lg mx-2" >{cliente.name}</p>
+                                <div key={cliente._id} className="mb-4 grid grid-cols-2 justify-center items-center border-red-700 border-4 font-bold rounded-xl" >
+                                    <p className="text-red-700 text-lg mx-2 text-center" >{cliente.name.length > 10 ? `${cliente.name.substring(0,10)}...` : cliente.name}</p>
 
                                     <button
-                                        className="bg-red-700 text-white rounded-full p-3 my-5 text-lg"
+                                        className="bg-red-700 text-white rounded-full p-3 my-5 mx-2 text-lg"
                                         onClick={() => handleAbrirModal(cliente)}
                                     >
                                         Editar dados

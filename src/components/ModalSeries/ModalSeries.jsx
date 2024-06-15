@@ -193,7 +193,6 @@ function ModalSeries({ treino, onSave, onClose }) {
             </div>
         </div>
     )
-
 }
 
 ModalSeries.propTypes = {
