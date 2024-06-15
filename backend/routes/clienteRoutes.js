@@ -146,6 +146,20 @@ router.get('/findbyid/:id', async (req, res) => {
 
 })
 
+router.get('/findworkoutsbyid/:id', async (req,res) => {
+
+    const _id = req.params.id
+
+    const cliente = await Cliente.findById({ _id }).populate('workouts')
+
+    if (!cliente) {
+        return res.status(404).send({ message: 'Cliente não encontrado.' });
+    }
+
+    res.send(cliente);
+
+})
+
 router.put('/atualizarcliente', async (req, res) => {
     const { _id, name, email, phone, cpf, cep, height, weight, active, role } = req.body
 
