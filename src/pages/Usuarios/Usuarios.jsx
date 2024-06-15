@@ -5,7 +5,7 @@ import axios from "axios";
 
 export default function Usuarios() {
 
-    const role = JSON.parse(localStorage.getItem('json-data')).role
+    // const role = JSON.parse(localStorage.getItem('json-data')).role
 
     const [data, setData] = useState([])
     const [loading, setLoading] = useState(true)
@@ -13,6 +13,8 @@ export default function Usuarios() {
 
     const [modalAberto, setModalAberto] = useState(false)
     const [clienteSelecionado, setClienteSelecionado] = useState(null)
+
+    const [isAdmin, setIsAdmin] = useState(null)
 
     const fetchData = async () => {
         try {
@@ -27,8 +29,29 @@ export default function Usuarios() {
         }
     }
 
+    const fetchRole = async() => {
+        try {
+            const response = await axios.get(`http://localhost:5000/api/cliente/clienteemail/${JSON.parse(localStorage.getItem('json-data')).id}`)
+
+            if (!response) {
+                alert('Cliente não foi encontrado.')
+            }
+
+            if (response.data.role == '') {
+                return setIsAdmin('cliente')
+            }
+
+            setIsAdmin(response.data.role)
+        }
+
+        catch (error) {
+            alert('Ocorreu um erro: ' + error)
+        }
+    }
+
     useEffect(() => {
-        fetchData()
+        fetchData(),
+        fetchRole()
     }, [])
 
     const handleAbrirModal = (cliente) => {
@@ -72,7 +95,7 @@ export default function Usuarios() {
 
     return (
         <section>
-            {role == 'admin' ? (
+            {isAdmin == 'admin' ? (
                 <div className="flex justify-center items-center" >
                     <div>
                         <div className="md:grid md:grid-cols-2 gap-4" >
