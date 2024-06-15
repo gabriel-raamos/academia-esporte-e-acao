@@ -20,6 +20,7 @@ export default function LoginForm() {
 
             localStorage.setItem('authorization', response.data.accessToken)
             localStorage.setItem('json-data', JSON.stringify(response.data.clienteData))
+            // alert(JSON.stringify(response.data.clienteData))
 
             // alert("ID do usuário: " + response.data.clienteData.id)
             // alert("Header -> authorization: " + localStorage.getItem('authorization'))
@@ -27,7 +28,6 @@ export default function LoginForm() {
 
             // const testName = JSON.parse(localStorage.getItem('json-header'))
             // alert(testName.name)
-
 
             // alert('Login efetuado com sucesso.');
             alert(response.data.message)
