@@ -142,7 +142,7 @@ router.get('/findbyid/:id', async (req, res) => {
 
     const cliente = await Cliente.findOne({ _id })
 
-    res.json(cliente._id)
+    res.json(cliente)
 
 })
 

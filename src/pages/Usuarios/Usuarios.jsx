@@ -7,6 +7,8 @@ export default function Usuarios() {
 
     // const role = JSON.parse(localStorage.getItem('json-data')).role
 
+    const id = JSON.parse(localStorage.getItem('json-data')).id
+
     const [data, setData] = useState([])
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
@@ -31,7 +33,9 @@ export default function Usuarios() {
 
     const fetchRole = async() => {
         try {
-            const response = await axios.get(`http://localhost:5000/api/cliente/clienteemail/${JSON.parse(localStorage.getItem('json-data')).id}`)
+            const response = await axios.get(`https://pi-academia.vercel.app/api/cliente/findbyid/${id}`)
+
+            // alert(JSON.stringify(response.data))
 
             if (!response) {
                 alert('Cliente não foi encontrado.')
