@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import ModalSeries from '../ModalSeries/ModalSeries';
 
 function TreinosModal({ clienteID, isOpen, onClose }) {
     const [treinos, setTreinos] = useState([]);
@@ -8,6 +9,8 @@ function TreinosModal({ clienteID, isOpen, onClose }) {
 
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
+
+    const [editIndex, setEditIndex] = useState(null)
 
     const fetchTreinos = async () => {
 
@@ -91,8 +94,19 @@ function TreinosModal({ clienteID, isOpen, onClose }) {
         }
     };
 
+    const handleEditTreino = (index) => {
+        setEditIndex(index)
+    }
+
+    const handleSaveEdit = (updatedTreino) => {
+        const updatedTreinos = [...treinos]
+        updatedTreinos[editIndex] = updatedTreino
+        setEditIndex(null)
+    }
+
     const handleModalClose = () => {
         setNewTreino({ treino1: '', treino2: '', treino3: '', treino4: '', treino5: '', visibility: true })
+        setEditIndex(null)
         onClose()
     }
 
@@ -135,15 +149,16 @@ function TreinosModal({ clienteID, isOpen, onClose }) {
 
                                         <div className='justify-between' >
                                             <button
-                                                className='bg-red-700 text-white rounded-full p-3 my-2 text-lg font-bold ml-3'
+                                                className='bg-red-700 text-white rounded-full p-3 my-2 text-lg font-bold mx-1 md:mx-2'
                                                 type="button"
                                                 onClick={() => handleDeleteTreino(treino._id)}
                                             >
                                                 Deletar
                                             </button>
                                             <button
-                                                className='bg-red-700 text-white rounded-full p-3 my-2 text-lg font-bold'
+                                                className='bg-red-700 text-white rounded-full p-3 my-2 text-lg font-bold mr-1 md:mr-2'
                                                 type="button"
+                                                onClick={() => handleEditTreino(index)}
                                             >
                                                 Editar treino
                                             </button>
@@ -152,14 +167,14 @@ function TreinosModal({ clienteID, isOpen, onClose }) {
                                 ))}
                             </ul>
                         )}
-                        <div className="mt-2">
+                        <div className="mt-0">
                             <input
                                 type="text"
                                 name="treino1"
                                 placeholder="Treino 1"
                                 value={newTreino.treino1}
                                 onChange={handleChange}
-                                className="border-2 border-red-700 rounded-xl p-2 mr-2 m-1 md:m-3"
+                                className="border-2 border-red-700 rounded-xl p-2 mr-2 m-1 ml-0 md:my-3 md:mr-3"
                             />
                             <input
                                 type="text"
@@ -167,7 +182,7 @@ function TreinosModal({ clienteID, isOpen, onClose }) {
                                 placeholder="Treino 2"
                                 value={newTreino.treino2}
                                 onChange={handleChange}
-                                className="border-2 border-red-700 rounded-xl p-2 mr-2 m-1 md:m-3"
+                                className="border-2 border-red-700 rounded-xl p-2 mr-2 m-1 ml-0 md:my-3 md:mr-3"
                             />
                             <input
                                 type="text"
@@ -175,7 +190,7 @@ function TreinosModal({ clienteID, isOpen, onClose }) {
                                 placeholder="Treino 3"
                                 value={newTreino.treino3}
                                 onChange={handleChange}
-                                className="border-2 border-red-700 rounded-xl p-2 mr-2 m-1 md:m-3"
+                                className="border-2 border-red-700 rounded-xl p-2 mr-2 m-1 ml-0 md:my-3 md:mr-3"
                             />
                             <input
                                 type="text"
@@ -183,7 +198,7 @@ function TreinosModal({ clienteID, isOpen, onClose }) {
                                 placeholder="Treino 4"
                                 value={newTreino.treino4}
                                 onChange={handleChange}
-                                className="border-2 border-red-700 rounded-xl p-2 mr-2 m-1 md:m-3"
+                                className="border-2 border-red-700 rounded-xl p-2 mr-2 m-1 ml-0 md:my-3 md:mr-3"
                             />
                             <input
                                 type="text"
@@ -191,7 +206,7 @@ function TreinosModal({ clienteID, isOpen, onClose }) {
                                 placeholder="Treino 5"
                                 value={newTreino.treino5}
                                 onChange={handleChange}
-                                className="border-2 border-red-700 rounded-xl p-2 mr-2 m-1 md:m-3"
+                                className="border-2 border-red-700 rounded-xl p-2 mr-2 m-1 ml-0 md:my-3 md:mr-3"
                             />
 
                             <button
@@ -200,14 +215,19 @@ function TreinosModal({ clienteID, isOpen, onClose }) {
                             >
                                 Adicionar Treino
                             </button>
-
-                            <p className='text-red-700 mx-3' >Utilize ; para quebra de linha.</p>
-
+                            <p className='text-red-700 font-bold' >Utilize ; para quebra de linha.</p>
                         </div>
                     </div>
                 )}
-
             </div>
+
+            {editIndex !== null && (
+                <ModalSeries 
+                    treino={treinos[editIndex]}
+                    onSave={handleSaveEdit}
+                    onClose={() => setEditIndex(null)}
+                />
+            )}
         </div>
     );
 }
