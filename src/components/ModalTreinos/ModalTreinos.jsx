@@ -116,7 +116,7 @@ function TreinosModal({ clienteID, isOpen, onClose }) {
 
     return (
         <div className="fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center">
-            <div className="bg-white border-4 border-red-700 px-2 md:px-8 py-4 rounded-lg max-w-md md:max-w-3xl relative text-xl overflow-y-auto">
+            <div className="bg-white border-4 border-blue-700 px-2 md:px-8 py-4 rounded-lg max-w-md md:max-w-3xl relative text-xl overflow-y-auto">
 
                 {loading ? (
                     <p>Os dados estão carregando...</p>
@@ -126,7 +126,7 @@ function TreinosModal({ clienteID, isOpen, onClose }) {
                     <div>
                         <div className="py-2 my-5">
                             <button
-                                className="absolute top-0 right-0 bg-red-700 text-white rounded-full font-bold p-3 my-4 mr-8"
+                                className="absolute top-0 right-0 bg-blue-700 text-white rounded-full font-bold p-3 my-4 mr-8"
                                 onClick={handleModalClose}
                             >
                                 Fechar
@@ -135,7 +135,7 @@ function TreinosModal({ clienteID, isOpen, onClose }) {
                         {treinos.length === 0 ? (
                             <p className="text-center mb-10">O cliente não possui treinos cadastrados</p>
                         ) : (
-                            <ul className='h-64 md:h-80 overflow-y-auto border-4 border-red-700 rounded-lg md:grid md:grid-cols-2' >
+                            <ul className='h-64 md:h-80 overflow-y-auto border-4 border-blue-700 rounded-lg md:grid md:grid-cols-2' >
                                 {treinos.map((treino, index) => (
                                     <li key={index} className="flex justify-between items-center ml-1">
                                         <span>{`Treino ${index + 1}:`}
@@ -149,14 +149,14 @@ function TreinosModal({ clienteID, isOpen, onClose }) {
 
                                         <div className='justify-between' >
                                             <button
-                                                className='bg-red-700 text-white rounded-full p-3 my-2 text-lg font-bold mx-1 md:mx-2'
+                                                className='bg-blue-700 text-white rounded-full p-3 my-2 text-lg font-bold mx-1 md:mx-2'
                                                 type="button"
                                                 onClick={() => handleDeleteTreino(treino._id)}
                                             >
                                                 Deletar
                                             </button>
                                             <button
-                                                className='bg-red-700 text-white rounded-full p-3 my-2 text-lg font-bold mr-1 md:mr-2'
+                                                className='bg-blue-700 text-white rounded-full p-3 my-2 text-lg font-bold mr-1 md:mr-2'
                                                 type="button"
                                                 onClick={() => handleEditTreino(index)}
                                             >
@@ -174,7 +174,7 @@ function TreinosModal({ clienteID, isOpen, onClose }) {
                                 placeholder="Treino 1"
                                 value={newTreino.treino1}
                                 onChange={handleChange}
-                                className="border-2 border-red-700 rounded-xl p-2 mr-2 m-1 ml-0 md:my-3 md:mr-3"
+                                className="border-2 border-blue-700 rounded-xl p-2 mr-2 m-1 ml-0 md:my-3 md:mr-3"
                             />
                             <input
                                 type="text"
@@ -182,7 +182,7 @@ function TreinosModal({ clienteID, isOpen, onClose }) {
                                 placeholder="Treino 2"
                                 value={newTreino.treino2}
                                 onChange={handleChange}
-                                className="border-2 border-red-700 rounded-xl p-2 mr-2 m-1 ml-0 md:my-3 md:mr-3"
+                                className="border-2 border-blue-700 rounded-xl p-2 mr-2 m-1 ml-0 md:my-3 md:mr-3"
                             />
                             <input
                                 type="text"
@@ -190,7 +190,7 @@ function TreinosModal({ clienteID, isOpen, onClose }) {
                                 placeholder="Treino 3"
                                 value={newTreino.treino3}
                                 onChange={handleChange}
-                                className="border-2 border-red-700 rounded-xl p-2 mr-2 m-1 ml-0 md:my-3 md:mr-3"
+                                className="border-2 border-blue-700 rounded-xl p-2 mr-2 m-1 ml-0 md:my-3 md:mr-3"
                             />
                             <input
                                 type="text"
@@ -198,7 +198,7 @@ function TreinosModal({ clienteID, isOpen, onClose }) {
                                 placeholder="Treino 4"
                                 value={newTreino.treino4}
                                 onChange={handleChange}
-                                className="border-2 border-red-700 rounded-xl p-2 mr-2 m-1 ml-0 md:my-3 md:mr-3"
+                                className="border-2 border-blue-700 rounded-xl p-2 mr-2 m-1 ml-0 md:my-3 md:mr-3"
                             />
                             <input
                                 type="text"
@@ -206,12 +206,12 @@ function TreinosModal({ clienteID, isOpen, onClose }) {
                                 placeholder="Treino 5"
                                 value={newTreino.treino5}
                                 onChange={handleChange}
-                                className="border-2 border-red-700 rounded-xl p-2 mr-2 m-1 ml-0 md:my-3 md:mr-3"
+                                className="border-2 border-blue-700 rounded-xl p-2 mr-2 m-1 ml-0 md:my-3 md:mr-3"
                             />
 
                             <button
                                 onClick={handleAddTreino}
-                                className="bg-red-700 text-white rounded-full p-3 md:my-0 text-lg font-bold"
+                                className="bg-blue-700 text-white rounded-full p-3 md:my-0 text-lg font-bold"
                             >
                                 Adicionar Treino
                             </button>

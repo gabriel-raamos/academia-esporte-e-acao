@@ -9,7 +9,7 @@ export default function FaleConosco() {
     return (
         <section className="flex flex-col justify-center items-center" >
 
-            <section className="mx-5 md:mx-40 grid grid-rows-2 bg-red-700 rounded-lg p-5 mb-5 text-white" >
+            <section className="mx-5 md:mx-40 grid grid-rows-2 bg-blue-700 rounded-lg p-5 mb-5 text-white" >
                 <div>
                     <h1 className="text-2xl font-bold" >Nos contate</h1>
 
@@ -50,7 +50,7 @@ export default function FaleConosco() {
                         id="msg"
                         name="msg"
                         placeholder="Mensagem"
-                        className="w-full text-red-700 p-2 mt-4 placeholder-red-700 rounded-lg"
+                        className="w-full text-blue-700 p-2 mt-4 placeholder-blue-700 rounded-lg"
                         rows="5"
                         cols="5"
                     />
@@ -58,7 +58,7 @@ export default function FaleConosco() {
                     <div className="justify-center items-center flex" >
                         <button
                             type="submit"
-                            className="bg-white text-red-700 my-5 px-5 py-3 text-sm md:text-2xl rounded-full transition hover:-translate-y-3 duration-500"
+                            className="bg-white text-blue-700 my-5 px-5 py-3 text-sm md:text-2xl rounded-full transition hover:-translate-y-3 duration-500"
                         >Enviar</button>
                     </div>
 

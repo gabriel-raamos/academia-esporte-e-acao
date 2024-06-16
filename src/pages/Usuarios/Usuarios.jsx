@@ -90,13 +90,13 @@ export default function Usuarios() {
     if (loading) {
         return (
             <div className="grid grid-rows-1 justify-center items-center text-lg">
-                <p className="bg-red-700 text-white rounded-full font-bold p-5 my-5 text-xl">Carregando...</p>
+                <p className="bg-blue-700 text-white rounded-full font-bold p-5 my-5 text-xl">Carregando...</p>
             </div>
         )
     } else if (error) {
         return (
             <div className="grid grid-rows-1 justify-center items-center text-lg">
-                <p className="bg-red-700 text-white rounded-full font-bold p-5 my-5 text-xl">Ocorreu um erro ao tentar puxar os dados: {error.message}</p>
+                <p className="bg-blue-700 text-white rounded-full font-bold p-5 my-5 text-xl">Ocorreu um erro ao tentar puxar os dados: {error.message}</p>
             </div>
         )
     }
@@ -108,11 +108,11 @@ export default function Usuarios() {
                     <div>
                         <div className="md:grid md:grid-cols-2 gap-4" >
                             {data.map((cliente) => (
-                                <div key={cliente._id} className="mb-4 grid grid-cols-2 justify-center items-center border-red-700 border-4 font-bold rounded-xl" >
-                                    <p className="text-red-700 text-lg mx-2 text-center" >{cliente.name.length > 10 ? `${cliente.name.substring(0,10)}...` : cliente.name}</p>
+                                <div key={cliente._id} className="mb-4 grid grid-cols-2 justify-center items-center border-blue-700 border-4 font-bold rounded-xl" >
+                                    <p className="text-blue-700 text-lg mx-2 text-center" >{cliente.name.length > 10 ? `${cliente.name.substring(0,10)}...` : cliente.name}</p>
 
                                     <button
-                                        className="bg-red-700 text-white rounded-full p-3 my-5 mx-2 text-lg"
+                                        className="bg-blue-700 text-white rounded-full p-3 my-5 mx-2 text-lg"
                                         onClick={() => handleAbrirModal(cliente)}
                                     >
                                         Editar dados
@@ -133,12 +133,12 @@ export default function Usuarios() {
             ) : (
                 <div className="justify-center items-center" >
                     <div className="flex justify-center items-center" >
-                        <p className="bg-red-700 text-white rounded-full font-bold p-5 my-5 text-xl" >Essa página só deve ser acessada por admins</p>
+                        <p className="bg-blue-700 text-white rounded-full font-bold p-5 my-5 text-xl" >Essa página só deve ser acessada por admins</p>
                     </div>
 
                     <div className="flex justify-center items-center" >
                         <Link to='../' >
-                            <button className="bg-red-700 text-white rounded-full font-bold p-5 my-5 text-xl" >
+                            <button className="bg-blue-700 text-white rounded-full font-bold p-5 my-5 text-xl" >
                                 Clique aqui para voltar para a home page.
                             </button>
                         </Link>

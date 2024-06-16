@@ -64,7 +64,7 @@ export default function Treinos() {
     if (loading) {
         return (
             <div className="grid grid-rows-2 justify-center items-center text-lg">
-                <p className="bg-red-700 text-white rounded-full font-bold p-5 my-5 text-xl">Carregando...</p>
+                <p className="bg-blue-700 text-white rounded-full font-bold p-5 my-5 text-xl">Carregando...</p>
             </div>
         )
     } else if (error) {
@@ -79,9 +79,9 @@ export default function Treinos() {
 
                 {/* <div className="flex justify-center items-center">
                     {data.role ? (
-                        <h2 className="bg-red-700 text-white rounded-full font-bold p-5 my-5 text-xl">Role do usuário: {data.role}</h2>
+                        <h2 className="bg-blue-700 text-white rounded-full font-bold p-5 my-5 text-xl">Role do usuário: {data.role}</h2>
                     ) : (
-                        <h2 className="bg-red-700 text-white rounded-full font-bold p-5 my-5 text-xl">Não há cargo definido.</h2>
+                        <h2 className="bg-blue-700 text-white rounded-full font-bold p-5 my-5 text-xl">Não há cargo definido.</h2>
                     )}
                 </div> */}
 
@@ -90,7 +90,7 @@ export default function Treinos() {
                         <Link to="../usuarios" >
                             <button
                                 // onClick={() => window.location.href = '/usuarios'}
-                                className="bg-red-700 text-white rounded-full font-bold p-5 my-5 text-xl"
+                                className="bg-blue-700 text-white rounded-full font-bold p-5 my-5 text-xl"
                             >
                                 Ir para Usuários.
                             </button>
@@ -102,29 +102,29 @@ export default function Treinos() {
                     <div className="" >
                         <div className="flex justify-center items-center">
 
-                            <h2 className="bg-red-700 text-white rounded-full font-bold p-5 my-5 text-xl">Informação sobre os treinos:</h2>
+                            <h2 className="bg-blue-700 text-white rounded-full font-bold p-5 my-5 text-xl">Informação sobre os treinos:</h2>
 
                         </div>
                         <ul className="md:flex justify-center gap-4">
                             {data.workouts.map((workout, index) => (
-                                <li key={index} className="text-lg rounded-xl p-5 my-5 border-4 text-red-700 border-red-700 font-bold md:m-5 whitespace-pre-line overflow-y-auto">
-                                    <div className="flex items-center border-red-700 border-4 m-2 p-2 rounded-lg" >
+                                <li key={index} className="text-lg rounded-xl p-5 my-5 border-4 text-blue-700 border-blue-700 font-bold md:m-5 whitespace-pre-line overflow-y-auto">
+                                    <div className="flex items-center border-blue-700 border-4 m-2 p-2 rounded-lg" >
                                         <p className="mr-2" >Treino 1:</p>
                                         <p> {workout.treino1}</p>
                                     </div>
-                                    <div className="flex items-center border-red-700 border-4 m-2 p-2 rounded-lg" >
+                                    <div className="flex items-center border-blue-700 border-4 m-2 p-2 rounded-lg" >
                                         <p className="mr-2" >Treino 2:</p>
                                         <p> {workout.treino2}</p>
                                     </div>
-                                    <div className="flex items-center border-red-700 border-4 m-2 p-2 rounded-lg" >
+                                    <div className="flex items-center border-blue-700 border-4 m-2 p-2 rounded-lg" >
                                         <p className="mr-2" >Treino 3:</p>
                                         <p> {workout.treino3}</p>
                                     </div>
-                                    <div className="flex items-center border-red-700 border-4 m-2 p-2 rounded-lg" >
+                                    <div className="flex items-center border-blue-700 border-4 m-2 p-2 rounded-lg" >
                                         <p className="mr-2" >Treino 4:</p>
                                         <p> {workout.treino4}</p>
                                     </div>
-                                    <div className="flex items-center border-red-700 border-4 m-2 p-2 rounded-lg" >
+                                    <div className="flex items-center border-blue-700 border-4 m-2 p-2 rounded-lg" >
                                         <p className="mr-2" >Treino 5:</p>
                                         <p> {workout.treino5}</p>
                                     </div>
@@ -133,7 +133,7 @@ export default function Treinos() {
                         </ul>
                     </div>
                 ) : (
-                    <p className="bg-red-700 text-white rounded-full font-bold p-5 my-5 text-xl">Não há treinos no banco de dados.</p>
+                    <p className="bg-blue-700 text-white rounded-full font-bold p-5 my-5 text-xl">Não há treinos no banco de dados.</p>
                 )}
             </div>
         </section>

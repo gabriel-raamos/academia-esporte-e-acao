@@ -71,7 +71,7 @@ function ModalSeries({ treino, onSave, onClose }) {
     // if (loading) {
     //     return (
     //         <div className="grid grid-rows-1 justify-center items-center text-lg">
-    //             <p className="bg-red-700 text-white rounded-full font-bold p-5 my-5 text-xl">Carregando...</p>
+    //             <p className="bg-blue-700 text-white rounded-full font-bold p-5 my-5 text-xl">Carregando...</p>
     //         </div>
     //     )
     // }
@@ -79,23 +79,23 @@ function ModalSeries({ treino, onSave, onClose }) {
     // if (error) {
     //     return (
     //         <div className="grid grid-rows-1 justify-center items-center text-lg">
-    //             <p className="bg-red-700 text-white rounded-full font-bold p-5 my-5 text-xl">Ocorreu um erro ao usar os dados: {error.message}</p>
+    //             <p className="bg-blue-700 text-white rounded-full font-bold p-5 my-5 text-xl">Ocorreu um erro ao usar os dados: {error.message}</p>
     //         </div>
     //     )
     // }
 
     return (
         <div className="fixed inset-0 bg-gray-900 bg-opacity-30 flex justify-center items-center" >
-            <div className="bg-white border-4 border-red-700 px-2 md:px-8 py-4 rounded-lg max-w-md md:max-w-lg relative text-xl" >
+            <div className="bg-white border-4 border-blue-700 px-2 md:px-8 py-4 rounded-lg max-w-md md:max-w-lg relative text-xl" >
                 {loading ? (
-                    <p className="bg-red-700 text-white rounded-full font-bold p-5 my-5 text-xl">Carregando...</p>
+                    <p className="bg-blue-700 text-white rounded-full font-bold p-5 my-5 text-xl">Carregando...</p>
                 ) : error ? (
-                    <p className="bg-red-700 text-white rounded-full font-bold p-5 my-5 text-xl">Carregando...</p>
+                    <p className="bg-blue-700 text-white rounded-full font-bold p-5 my-5 text-xl">Carregando...</p>
                 ) : (
                     <div>
                         <div className="py-2 my-5">
                             <button
-                                className="absolute top-0 right-0 bg-red-700 text-white rounded-full font-bold p-3 my-4 mr-8"
+                                className="absolute top-0 right-0 bg-blue-700 text-white rounded-full font-bold p-3 my-4 mr-8"
                                 onClick={onClose}
                             >
                                 Fechar
@@ -114,7 +114,7 @@ function ModalSeries({ treino, onSave, onClose }) {
                                         placeholder="Treino 1"
                                         value={editedTreino.treino1}
                                         onChange={handleChange}
-                                        className="border-2 border-red-700 rounded-xl p-2 mr-2 m-1 ml-2 md:my-3 md:mr-3 col-span-3"
+                                        className="border-2 border-blue-700 rounded-xl p-2 mr-2 m-1 ml-2 md:my-3 md:mr-3 col-span-3"
                                     />
                                 </div>
 
@@ -129,7 +129,7 @@ function ModalSeries({ treino, onSave, onClose }) {
                                         placeholder="Treino 2"
                                         value={editedTreino.treino2}
                                         onChange={handleChange}
-                                        className="border-2 border-red-700 rounded-xl p-2 mr-2 m-1 ml-2 md:my-3 md:mr-3 col-span-3"
+                                        className="border-2 border-blue-700 rounded-xl p-2 mr-2 m-1 ml-2 md:my-3 md:mr-3 col-span-3"
                                     />
                                 </div>
 
@@ -144,7 +144,7 @@ function ModalSeries({ treino, onSave, onClose }) {
                                         placeholder="Treino 3"
                                         value={editedTreino.treino3}
                                         onChange={handleChange}
-                                        className="border-2 border-red-700 rounded-xl p-2 mr-2 m-1 ml-2 md:my-3 md:mr-3 col-span-3"
+                                        className="border-2 border-blue-700 rounded-xl p-2 mr-2 m-1 ml-2 md:my-3 md:mr-3 col-span-3"
                                     />
                                 </div>
 
@@ -159,7 +159,7 @@ function ModalSeries({ treino, onSave, onClose }) {
                                         placeholder="Treino 4"
                                         value={editedTreino.treino4}
                                         onChange={handleChange}
-                                        className="border-2 border-red-700 rounded-xl p-2 mr-2 m-1 ml-2 md:my-3 md:mr-3 col-span-3"
+                                        className="border-2 border-blue-700 rounded-xl p-2 mr-2 m-1 ml-2 md:my-3 md:mr-3 col-span-3"
                                     />
                                 </div>
 
@@ -174,17 +174,17 @@ function ModalSeries({ treino, onSave, onClose }) {
                                         placeholder="Treino 5"
                                         value={editedTreino.treino5}
                                         onChange={handleChange}
-                                        className="border-2 border-red-700 rounded-xl p-2 mr-2 m-1 ml-2 md:my-3 md:mr-3 col-span-3"
+                                        className="border-2 border-blue-700 rounded-xl p-2 mr-2 m-1 ml-2 md:my-3 md:mr-3 col-span-3"
                                     />
                                 </div>
                             </div>
                             <button
                                 onClick={handleSave}
-                                className="bg-red-700 text-white rounded-full p-3 md:my-0 text-lg font-bold"
+                                className="bg-blue-700 text-white rounded-full p-3 md:my-0 text-lg font-bold"
                             >
                                 Salvar treino
                             </button>
-                            <p className='text-red-700 font-bold mt-3' >
+                            <p className='text-blue-700 font-bold mt-3' >
                                 Utilize ; para quebra de linha.
                             </p>
                         </div>

@@ -48,7 +48,7 @@ export default function NavBar() {
 
                     <div className="flex justify-center items-center h-2/3 w-2/3 pl-8 md:pl-0" >
                         <button
-                            className="text-red-400 text-sm md:text-xl py-2 md:py-5 px-2 mt-7 md:mt-0 rounded-full font-bold transition duration-500 hover:bg-red-400 hover:text-white"
+                            className="text-blue-400 text-sm md:text-xl py-2 md:py-5 px-2 mt-7 md:mt-0 rounded-full font-bold transition duration-500 hover:bg-blue-400 hover:text-white"
                             disabled
                         >
                             Treinos
@@ -78,7 +78,7 @@ export default function NavBar() {
 
                         <button
                             onClick={logout}
-                            className="text-red-700 text-sm md:text-xl py-2 md:py-5 px-2 mt-7 md:mt-0 rounded-full font-bold transition hover:bg-red-700 hover:text-white duration-500"
+                            className="text-blue-700 text-sm md:text-xl py-2 md:py-5 px-2 mt-7 md:mt-0 rounded-full font-bold transition hover:bg-blue-700 hover:text-white duration-500"
                         >
                             Logout
                         </button>

@@ -1,7 +1,7 @@
 export default function Card3() {
     return (
         <section className="flex justify-center items-center">
-            <div className="bg-red-700 rounded-3xl p-5 m-5 overflow-hidden text-white text-center flex flex-col justify-between" >
+            <div className="bg-blue-700 rounded-3xl p-5 m-5 overflow-hidden text-white text-center flex flex-col justify-between" >
                 <div>
                     <h1 className="text-3xl m-5 font-bold" >Nosso plano que mais agrega benefícios!</h1>
 

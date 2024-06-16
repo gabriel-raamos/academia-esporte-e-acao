@@ -41,7 +41,7 @@ export default function LoginForm() {
 
     return (
         <form
-            className="rounded-xl p-5 my-5 border-4 text-red-700 border-red-700"
+            className="rounded-xl p-5 my-5 border-4 text-blue-700 border-blue-700"
             onSubmit={onSave}
         >
             <h1 className="text-center text-lg font-bold">Faça seu login aqui!</h1>

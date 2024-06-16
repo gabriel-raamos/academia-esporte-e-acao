@@ -44,10 +44,10 @@ function Modal({ isOpen, onClose, cliente, onSave }) {
 
     return (
         <div className="fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center">
-            <div className="bg-white border-4 border-red-700 px-2 md:px-8 py-4 rounded-xl max-w-md md:max-w-3xl relative text-xl">
+            <div className="bg-white border-4 border-blue-700 px-2 md:px-8 py-4 rounded-xl max-w-md md:max-w-3xl relative text-xl">
                 <div className='py-2' >
                     <button
-                        className="absolute top-0 right-0 bg-red-700 text-white rounded-full font-bold p-3 my-4 md:mx-8 mx-1"
+                        className="absolute top-0 right-0 bg-blue-700 text-white rounded-full font-bold p-3 my-4 md:mx-8 mx-1"
                         onClick={onClose}
                     >
                         Fechar
@@ -66,7 +66,7 @@ function Modal({ isOpen, onClose, cliente, onSave }) {
                                 name="name"
                                 value={formData.name || ''}
                                 onChange={handleChange}
-                                className='border-2 border-red-700 rounded-xl p-2 col-span-6 '
+                                className='border-2 border-blue-700 rounded-xl p-2 col-span-6 '
                             />
                         </div>
 
@@ -80,7 +80,7 @@ function Modal({ isOpen, onClose, cliente, onSave }) {
                                 name="email"
                                 value={formData.email || ''}
                                 onChange={handleChange}
-                                className='border-2 border-red-700 rounded-xl p-2 col-span-6 '
+                                className='border-2 border-blue-700 rounded-xl p-2 col-span-6 '
                             />
                         </div>
 
@@ -94,7 +94,7 @@ function Modal({ isOpen, onClose, cliente, onSave }) {
                                 name="phone"
                                 value={formData.phone || ''}
                                 onChange={handleChange}
-                                className='border-2 border-red-700 rounded-xl p-2 col-span-6 '
+                                className='border-2 border-blue-700 rounded-xl p-2 col-span-6 '
                             />
                         </div>
 
@@ -108,7 +108,7 @@ function Modal({ isOpen, onClose, cliente, onSave }) {
                                 name="cpf"
                                 value={formData.cpf || ''}
                                 onChange={handleChange}
-                                className='border-2 border-red-700 rounded-xl p-2 col-span-6 '
+                                className='border-2 border-blue-700 rounded-xl p-2 col-span-6 '
                             />
                         </div>
 
@@ -122,7 +122,7 @@ function Modal({ isOpen, onClose, cliente, onSave }) {
                                 name="cep"
                                 value={formData.cep || ''}
                                 onChange={handleChange}
-                                className='border-2 border-red-700 rounded-xl p-2 col-span-6 '
+                                className='border-2 border-blue-700 rounded-xl p-2 col-span-6 '
                             />
                         </div>
 
@@ -136,7 +136,7 @@ function Modal({ isOpen, onClose, cliente, onSave }) {
                                 name="height"
                                 value={formData.height || ''}
                                 onChange={handleChange}
-                                className='border-2 border-red-700 rounded-xl p-2 col-span-6 '
+                                className='border-2 border-blue-700 rounded-xl p-2 col-span-6 '
                             />
                         </div>
 
@@ -150,7 +150,7 @@ function Modal({ isOpen, onClose, cliente, onSave }) {
                                 name="weight"
                                 value={formData.weight || ''}
                                 onChange={handleChange}
-                                className='border-2 border-red-700 rounded-xl p-2 col-span-6 '
+                                className='border-2 border-blue-700 rounded-xl p-2 col-span-6 '
                             />
                         </div>
 
@@ -164,7 +164,7 @@ function Modal({ isOpen, onClose, cliente, onSave }) {
                                 name="active"
                                 checked={formData.active || false}
                                 onChange={handleChange}
-                                className='border-2 border-red-700 rounded-xl p-2 col-span-6 '
+                                className='border-2 border-blue-700 rounded-xl p-2 col-span-6 '
                             />
                         </div>
 
@@ -178,7 +178,7 @@ function Modal({ isOpen, onClose, cliente, onSave }) {
                                 name="role"
                                 value={formData.role || ''}
                                 onChange={handleChange}
-                                className='border-2 border-red-700 rounded-xl p-2 col-span-6 '
+                                className='border-2 border-blue-700 rounded-xl p-2 col-span-6 '
                                 placeholder="'admin' ou 'cliente'"
                             />
                         </div>
@@ -188,7 +188,7 @@ function Modal({ isOpen, onClose, cliente, onSave }) {
 
                         <button
                             type="submit"
-                            className="bg-red-700 text-white rounded-full p-3 text-lg font-bold"
+                            className="bg-blue-700 text-white rounded-full p-3 text-lg font-bold"
                         >
                             Salvar
                         </button>
@@ -196,7 +196,7 @@ function Modal({ isOpen, onClose, cliente, onSave }) {
                         <button
                             type="button"
                             onClick={handleOpenTreinosModal}
-                            className="bg-red-700 text-white rounded-full p-3 text-lg font-bold"
+                            className="bg-blue-700 text-white rounded-full p-3 text-lg font-bold"
                         >
                             Treinos
                         </button>
