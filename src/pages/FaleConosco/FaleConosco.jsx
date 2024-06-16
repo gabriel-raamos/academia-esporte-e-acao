@@ -19,15 +19,15 @@ export default function FaleConosco() {
                             <AiFillEnvironment className="translate-y-2 mr-5 h-10 w-10" />
                             <div>
                                 <h3 className="font-bold">Endereço</h3>
-                                <p>Rua tal tal tal</p>
+                                <p>Av. Prof. Francisco Antônio Lacaz Neto, <br />105 - Beira Rio I, Guaratinguetá - SP, <br />12517-550</p>
                             </div>
                         </div>
 
                         <div className="mb-10 flex" >
                             <GiSmartphone className="translate-y-2 mr-5 h-10 w-10" />
                             <div>
-                                <h3 className="font-bold">Celular</h3>
-                                <p>12 99999-9999</p>
+                                <h3 className="font-bold">Contato</h3>
+                                <p>12 3125-9225</p>
                             </div>
                         </div>
 

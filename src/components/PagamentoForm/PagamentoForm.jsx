@@ -64,8 +64,8 @@ function Pagamento() {
                         <h1 className="text-3xl mb-5 font-bold" >Formulário de pagamento</h1>
                     </div>
 
-                    <div className="flex justify-center md:grid md:grid-cols-2 md:gap-5" >
-                        <label className="md:my-3 font-bold" >Qual dos planos você deseja?</label>
+                    <div className="flex justify-center md:gap-5" >
+                        {/* <label className="md:my-3 font-bold" >Qual dos planos você deseja?</label> */}
 
                         <select
                             className="border-4 border-blue-700 p-3 rounded-xl mt-5 md:mt-0"
@@ -79,6 +79,15 @@ function Pagamento() {
                             <option value="Plano 3" >Plano 3 - R$ 150,00</option>
                         </select>
                     </div>
+                </div>
+
+
+                <div className="flex justify-center" >
+                    <input
+                        type='number'
+                        placeholder="CPF"
+                        className="border-4 border-blue-700 p-3 rounded-xl max-w-full"
+                    />
                 </div>
 
                 <div className="font-bold my-3 grid grid-cols-2" >
@@ -111,52 +120,55 @@ function Pagamento() {
                     </div>
                 </div>
                 <div className="my-3" >
-                    { formData.paymentMethod == 'pix' ? (
+                    {formData.paymentMethod == 'pix' ? (
                         <div className="justify-center flex" >
-                            <p>Método PIX</p>
+                            <div>
+                                <p className="justify-center flex" >PIX</p>
 
-                            { formData.paymentAmount == 80 ? (
-                                <div>
-                                    <button
-                                        className=""
-                                    >
-                                        Gerar QR code
-                                    </button>
-                                </div>
-                            ) : formData.paymentAmount == 120 ? (
-                                <div>
-
-                                </div>
-                            ) : formData.paymentAmount == 150 ? (
-                                <div>
-
-                                </div>
-                            ) : (
-                                <div>
-
-                                </div>
-                            )}
-
+                                {formData.paymentAmount == 80 ? (
+                                    <div>
+                                        <button
+                                            className="p-5 px-10 bg-blue-700 m-3 text-white text-xl rounded-xl transition hover:bg-blue-500 hover:-translate-y-3 duration-500"
+                                        >
+                                            Gerar QR code
+                                        </button>
+                                    </div>
+                                ) : formData.paymentAmount == 120 ? (
+                                    <div>
+                                        <button
+                                            className="p-5 px-10 bg-blue-700 m-3 text-white text-xl rounded-xl transition hover:bg-blue-500 hover:-translate-y-3 duration-500"
+                                        >
+                                            Gerar QR code
+                                        </button>
+                                    </div>
+                                ) : formData.paymentAmount == 150 ? (
+                                    <div>
+                                        <button
+                                            className="p-5 px-10 bg-blue-700 m-3 text-white text-xl rounded-xl transition hover:bg-blue-500 hover:-translate-y-3 duration-500"
+                                        >
+                                            Gerar QR code
+                                        </button>
+                                    </div>
+                                ) : (
+                                    <div>
+                                        <div>
+                                            <p className="bg-blue-700 text-white rounded-full font-bold p-5 mt-5 text-xl" >Selecione um plano para prosseguir</p>
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
                         </div>
                     ) : formData.paymentMethod == 'cartao' ? (
                         <div className="justify-center flex" >
-                            <p>Método cartão</p>
+                            <p>Cartão</p>
                         </div>
                     ) : (
                         <div className="justify-center flex" >
                             <p>
-                                Escolha o método de pagamento.
+                                Escolha o método de pagamento para prosseguir.
                             </p>
                         </div>
                     )}
-                </div>
-
-                <div className="flex justify-center" >
-                    <input
-                        type='number'
-                        placeholder="CPF"
-                        className="border-4 border-blue-700 p-3 rounded-xl max-w-full"
-                    />
                 </div>
             </form>
         </section>
