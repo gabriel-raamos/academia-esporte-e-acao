@@ -64,7 +64,7 @@ function Pagamento() {
                         <h1 className="text-3xl mb-5 font-bold" >Formulário de pagamento</h1>
                     </div>
 
-                    <div className="md:grid md:grid-cols-2 md:gap-5" >
+                    <div className="flex justify-center md:grid md:grid-cols-2 md:gap-5" >
                         <label className="md:my-3 font-bold" >Qual dos planos você deseja?</label>
 
                         <select
@@ -84,7 +84,7 @@ function Pagamento() {
                 <div className="font-bold my-3 grid grid-cols-2" >
                     <h2>Método de pagamento: </h2>
 
-                    <div className="grid grid-rows-2 md:flex">
+                    <div className="grid grid-rows-2 md:flex justify-center">
                         <label className="mr-3">
                             <input
                                 type="radio"
