@@ -133,7 +133,7 @@ export default function Usuarios() {
             ) : (
                 <div className="justify-center items-center" >
                     <div className="flex justify-center items-center" >
-                        <p className="bg-red-700 text-white rounded-full font-bold p-5 my-5 text-xl" >Você não deveria estar aqui.</p>
+                        <p className="bg-red-700 text-white rounded-full font-bold p-5 my-5 text-xl" >Essa página só deve ser acessada por admins</p>
                     </div>
 
                     <div className="flex justify-center items-center" >
