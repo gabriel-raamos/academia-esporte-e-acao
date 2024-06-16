@@ -182,7 +182,7 @@ router.put('/atualizarcliente', async (req, res) => {
 router.get('/clientealfabetico', async (req,res) => {
     
     try {
-        const clientes = await Cliente.find({}).sort({ name: 1 });
+        const clientes = await Cliente.find({}).collation({ locale: 'pt', strength: 1 }).sort({ name: 1 });
         res.json({ clientes });
     } catch (error) {
         console.error('Erro ao buscar clientes:', error);
