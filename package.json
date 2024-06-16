@@ -24,7 +24,6 @@
     "dotenv": "^16.4.5",
     "esm": "^3.2.25",
     "express": "^4.19.2",
-    "google-maps-react": "^2.0.6",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.4.1",
     "postcss": "^8.4.38",

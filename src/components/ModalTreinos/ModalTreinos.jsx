@@ -88,7 +88,7 @@ function TreinosModal({ clienteID, isOpen, onClose }) {
             setTreinos(updatedTreinos);
             // alert(JSON.stringify(treinos[index].visibility))
 
-            await axios.put(`http://localhost:5000/api/treino/atualizartreino/${updatedTreinos[index]._id}`, updatedTreinos[index]);
+            await axios.put(`https://pi-academia.vercel.app/api/treino/atualizartreino/${updatedTreinos[index]._id}`, updatedTreinos[index]);
         } catch (error) {
             alert('Error updating treino', error);
         }

@@ -110,6 +110,7 @@ function Pagamento() {
                         </label>
                     </div>
                 </div>
+                {formData.paymentMethod}
             </form>
         </section>
     )
