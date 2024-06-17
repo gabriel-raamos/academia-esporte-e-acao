@@ -76,7 +76,7 @@ function Pagamento() {
         try {
             await axios.post('http://localhost:5000/api/pagamento/registrarpagamento', updatedFormData)
             // alert('Pagamento salvo: ' + response.data.clienteID)
-            window.location.reload()
+            window.location.href = '/'
         }
 
         catch (error) {
