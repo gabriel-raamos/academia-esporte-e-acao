@@ -163,7 +163,7 @@ function FormBox1(prop) {
         <div>
             <Textbox
                 obrigatorio={true}
-                placeholder="Nome"
+                placeholder="Nome completo"
                 valor={prop.name}
                 tipo={"text"}
                 whenChanged={valor => prop.setName(valor)}

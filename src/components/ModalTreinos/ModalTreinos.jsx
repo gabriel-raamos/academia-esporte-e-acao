@@ -126,7 +126,7 @@ function TreinosModal({ clienteID, isOpen, onClose }) {
                     <div>
                         <div className="py-2 my-5">
                             <button
-                                className="absolute top-0 right-0 bg-blue-700 text-white rounded-full font-bold p-3 my-4 mr-8"
+                                className="absolute top-0 right-0 bg-blue-700 text-white rounded-full font-bold p-3 my-4 mr-8 transition hover:bg-blue-500 hover:-translate-y-1 duration-500"
                                 onClick={handleModalClose}
                             >
                                 Fechar
@@ -149,14 +149,14 @@ function TreinosModal({ clienteID, isOpen, onClose }) {
 
                                         <div className='justify-between' >
                                             <button
-                                                className='bg-blue-700 text-white rounded-full p-3 my-2 text-lg font-bold mx-1 md:mx-2'
+                                                className='bg-blue-700 text-white rounded-full p-3 my-2 text-lg font-bold mx-1 md:mx-2 transition hover:bg-blue-500 hover:-translate-y-1 duration-500'
                                                 type="button"
                                                 onClick={() => handleDeleteTreino(treino._id)}
                                             >
                                                 Deletar
                                             </button>
                                             <button
-                                                className='bg-blue-700 text-white rounded-full p-3 my-2 text-lg font-bold mr-1 md:mr-2'
+                                                className='bg-blue-700 text-white rounded-full p-3 my-2 text-lg font-bold mr-1 md:mr-2 transition hover:bg-blue-500 hover:-translate-y-1 duration-500'
                                                 type="button"
                                                 onClick={() => handleEditTreino(index)}
                                             >
@@ -211,7 +211,7 @@ function TreinosModal({ clienteID, isOpen, onClose }) {
 
                             <button
                                 onClick={handleAddTreino}
-                                className="bg-blue-700 text-white rounded-full p-3 md:my-0 text-lg font-bold"
+                                className="bg-blue-700 text-white rounded-full p-3 md:my-0 text-lg font-bold transition hover:bg-blue-500 hover:-translate-y-1 duration-500"
                             >
                                 Adicionar Treino
                             </button>

@@ -112,7 +112,7 @@ export default function Usuarios() {
                                     <p className="text-blue-700 text-lg mx-2 text-center" >{cliente.name.length > 10 ? `${cliente.name.substring(0,10)}...` : cliente.name}</p>
 
                                     <button
-                                        className="bg-blue-700 text-white rounded-full p-3 my-5 mx-2 text-lg"
+                                        className="bg-blue-700 text-white rounded-full p-3 my-5 mx-2 text-lg transition hover:bg-blue-500 hover:-translate-y-1 duration-500"
                                         onClick={() => handleAbrirModal(cliente)}
                                     >
                                         Editar dados
@@ -138,7 +138,7 @@ export default function Usuarios() {
 
                     <div className="flex justify-center items-center" >
                         <Link to='../' >
-                            <button className="bg-blue-700 text-white rounded-full font-bold p-5 my-5 text-xl" >
+                            <button className="bg-blue-700 text-white rounded-full font-bold p-5 my-5 text-xl transition hover:bg-blue-500 hover:-translate-y-1 duration-500" >
                                 Clique aqui para voltar para a home page.
                             </button>
                         </Link>

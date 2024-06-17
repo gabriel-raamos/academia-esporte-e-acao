@@ -35,7 +35,7 @@ export default function FaleConosco() {
                             <MdEmail className="translate-y-2 mr-5 h-10 w-10" />
                             <div>
                                 <h3 className="font-bold">Email</h3>
-                                <p>esporteeacao@gmail.com</p>
+                                <p>acadesporteeacao@gmail.com</p>
                             </div>
                         </div>
 
@@ -58,7 +58,7 @@ export default function FaleConosco() {
                     <div className="justify-center items-center flex" >
                         <button
                             type="submit"
-                            className="bg-white text-blue-700 my-5 px-5 py-3 text-sm md:text-2xl rounded-full transition hover:-translate-y-3 duration-500"
+                            className="bg-white text-blue-700 my-5 px-5 py-3 text-sm md:text-2xl rounded-full transition hover:-translate-y-1 duration-500"
                         >Enviar</button>
                     </div>
 

@@ -90,7 +90,7 @@ export default function Treinos() {
                         <Link to="../usuarios" >
                             <button
                                 // onClick={() => window.location.href = '/usuarios'}
-                                className="bg-blue-700 text-white rounded-full font-bold p-5 my-5 text-xl"
+                                className="bg-blue-700 text-white rounded-full font-bold p-5 my-5 text-xl transition hover:bg-blue-500 hover:-translate-y-1 duration-500"
                             >
                                 Ir para Usuários.
                             </button>

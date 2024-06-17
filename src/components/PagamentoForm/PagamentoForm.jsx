@@ -1,7 +1,7 @@
 // import Textbox from "../Textbox/Textbox"
 
 import axios from "axios"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 function Pagamento() {
 
@@ -16,6 +16,23 @@ function Pagamento() {
         approvalCode: ''
     })
     const [selectedPlan, setSelectedPlan] = useState('')
+    const [clienteCPF, setClienteCPF] = useState('')
+    const [clienteCEP, setClienteCEP] = useState('')
+
+    const fetchData = async () => {
+
+        try {
+            const response = await axios.get(`https://pi-academia.vercel.app/api/cliente/findbyid/${id}`)
+            // alert(response.data.cpf)
+            setClienteCPF(response.data.cpf)
+            setClienteCEP(response.data.cep)
+
+        }
+
+        catch (error) {
+            alert('ocorreu um erro: ' + error)
+        }
+    }
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value })
@@ -26,6 +43,9 @@ function Pagamento() {
         setSelectedPlan(planValue)
 
         switch (planValue) {
+            case '':
+                setFormData({ ...formData, paymentAmount: '' })
+                break;
             case 'Plano 1':
                 setFormData({ ...formData, paymentAmount: 80 })
                 break;
@@ -53,15 +73,19 @@ function Pagamento() {
         }
     }
 
+    useEffect(() => {
+        fetchData()
+    }, [])
+
     return (
         <section>
             <form
-                className="p-5 border-4 border-blue-700 rounded-xl text-xl text-blue-700"
+                className="p-3 border-4 border-blue-700 rounded-xl text-xl text-blue-700 mx-2 mb-5 md:mx-0"
                 onSubmit={handleSubmit}
             >
                 <div className="my-3" >
                     <div className="justify-center flex items-center" >
-                        <h1 className="text-3xl mb-5 font-bold" >Formulário de pagamento</h1>
+                        <h1 className="text-3xl font-bold" >Formulário de pagamento</h1>
                     </div>
 
                     <div className="flex justify-center md:gap-5" >
@@ -82,11 +106,16 @@ function Pagamento() {
                 </div>
 
 
-                <div className="flex justify-center" >
+                <div className="grid grid-cols-2 items-center font-bold" >
+                    <div className="justify-center flex" >
+                        <label>CPF:</label>
+                    </div>
                     <input
-                        type='number'
+                        type='text'
                         placeholder="CPF"
                         className="border-4 border-blue-700 p-3 rounded-xl max-w-full"
+                        value={clienteCPF}
+                        disabled
                     />
                 </div>
 
@@ -121,14 +150,16 @@ function Pagamento() {
                 </div>
                 <div className="my-3" >
                     {formData.paymentMethod == 'pix' ? (
-                        <div className="justify-center flex" >
+                        <section className="justify-center flex" >
                             <div>
-                                <p className="justify-center flex" >PIX</p>
+                                {/* <p className="justify-center flex" >PIX</p> */}
 
                                 {formData.paymentAmount == 80 ? (
                                     <div>
                                         <button
-                                            className="p-5 px-10 bg-blue-700 m-3 text-white text-xl rounded-xl transition hover:bg-blue-500 hover:-translate-y-3 duration-500"
+                                            type="button"
+                                            onClick={handleSubmit}
+                                            className="p-5 px-10 bg-blue-700 my-3 text-white text-xl rounded-xl transition hover:bg-blue-500 hover:-translate-y-1 duration-500"
                                         >
                                             Gerar QR code
                                         </button>
@@ -136,7 +167,9 @@ function Pagamento() {
                                 ) : formData.paymentAmount == 120 ? (
                                     <div>
                                         <button
-                                            className="p-5 px-10 bg-blue-700 m-3 text-white text-xl rounded-xl transition hover:bg-blue-500 hover:-translate-y-3 duration-500"
+                                            type="button"
+                                            onClick={() => alert(formData.paymentAmount)}
+                                            className="p-5 px-10 bg-blue-700 my-3 text-white text-xl rounded-xl transition hover:bg-blue-500 hover:-translate-y-1 duration-500"
                                         >
                                             Gerar QR code
                                         </button>
@@ -144,7 +177,9 @@ function Pagamento() {
                                 ) : formData.paymentAmount == 150 ? (
                                     <div>
                                         <button
-                                            className="p-5 px-10 bg-blue-700 m-3 text-white text-xl rounded-xl transition hover:bg-blue-500 hover:-translate-y-3 duration-500"
+                                            type="button"
+                                            onClick={() => alert(formData.paymentAmount)}
+                                            className="p-5 px-10 bg-blue-700 my-3 text-white text-xl rounded-xl transition hover:bg-blue-500 hover:-translate-y-1 duration-500"
                                         >
                                             Gerar QR code
                                         </button>
@@ -152,16 +187,69 @@ function Pagamento() {
                                 ) : (
                                     <div>
                                         <div>
-                                            <p className="bg-blue-700 text-white rounded-full font-bold p-5 mt-5 text-xl" >Selecione um plano para prosseguir</p>
+                                            <p className="bg-blue-700 text-white rounded-full p-5 mt-5 text-xl" >Selecione um plano para prosseguir</p>
                                         </div>
                                     </div>
                                 )}
                             </div>
-                        </div>
+                        </section>
                     ) : formData.paymentMethod == 'cartao' ? (
-                        <div className="justify-center flex" >
-                            <p>Cartão</p>
-                        </div>
+                        <section className="" >
+                            {/* <div className="justify-center flex" >
+                                <p>Cartão</p>
+                            </div> */}
+
+                            <div className="justify-center grid grid-rows-4">
+                                <div className="flex justify-center" >
+                                    <input
+                                        placeholder="Número do cartão"
+                                        type="number"
+                                        className="border-4 border-blue-700 p-3 rounded-xl max-w-full my-3 md:w-96"
+                                    />
+                                </div>
+
+                                <div className="flex justify-center" >
+                                    <input
+                                        placeholder="Código de segurança"
+                                        type="number"
+                                        className="border-4 border-blue-700 p-3 rounded-xl max-w-full my-3 md:w-96"
+                                    />
+                                </div>
+
+                                <div className="flex justify-center items-center" >
+                                    <label className="font-bold" >Data de validade: </label>
+                                    <input
+                                        type="date"
+                                        placeholder="Data de validade"
+                                        className="border-4 border-blue-700 p-3 rounded-xl max-w-full my-3"
+                                    />
+                                </div>
+                                
+                                <div className="flex justify-center items-center" >
+                                    <label className="font-bold" >CEP: </label>
+                                    <input
+                                        type="number"
+                                        placeholder="CEP"
+                                        value={clienteCEP}
+                                        className="border-4 border-blue-700 p-3 rounded-xl max-w-full my-3"
+                                        disabled
+                                    />
+                                </div>
+                                
+                                <div className="flex justify-center items-center" >
+                                    <label className="font-bold" >Número da residência: </label>
+                                    <input
+                                        type="number"
+                                        placeholder="Número"
+                                        className="border-4 border-blue-700 p-3 rounded-xl max-w-full my-3 w-1/2"
+                                    />
+                                </div>
+                            </div>
+
+                            <div>
+                            </div>
+
+                        </section>
                     ) : (
                         <div className="justify-center flex" >
                             <p>

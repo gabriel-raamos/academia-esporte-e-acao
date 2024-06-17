@@ -47,7 +47,7 @@ function Modal({ isOpen, onClose, cliente, onSave }) {
             <div className="bg-white border-4 border-blue-700 px-2 md:px-8 py-4 rounded-xl max-w-md md:max-w-3xl relative text-xl">
                 <div className='py-2' >
                     <button
-                        className="absolute top-0 right-0 bg-blue-700 text-white rounded-full font-bold p-3 my-4 md:mx-8 mx-1"
+                        className="absolute top-0 right-0 bg-blue-700 text-white rounded-full font-bold p-3 my-4 md:mx-8 mx-1 transition hover:bg-blue-500 hover:-translate-y-1 duration-500"
                         onClick={onClose}
                     >
                         Fechar
@@ -188,7 +188,7 @@ function Modal({ isOpen, onClose, cliente, onSave }) {
 
                         <button
                             type="submit"
-                            className="bg-blue-700 text-white rounded-full p-3 text-lg font-bold"
+                            className="bg-blue-700 text-white rounded-full p-3 text-lg font-bold transition hover:bg-blue-500 hover:-translate-y-1 duration-500"
                         >
                             Salvar
                         </button>
@@ -196,7 +196,7 @@ function Modal({ isOpen, onClose, cliente, onSave }) {
                         <button
                             type="button"
                             onClick={handleOpenTreinosModal}
-                            className="bg-blue-700 text-white rounded-full p-3 text-lg font-bold"
+                            className="bg-blue-700 text-white rounded-full p-3 text-lg font-bold transition hover:bg-blue-500 hover:-translate-y-1 duration-500"
                         >
                             Treinos
                         </button>
