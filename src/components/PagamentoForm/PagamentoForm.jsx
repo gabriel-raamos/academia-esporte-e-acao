@@ -212,78 +212,75 @@ function Pagamento() {
                         </section>
                     ) : formData.paymentMethod == 'cartao' ? (
                         <section className="" >
-                            {/* <div className="justify-center flex" >
-                                <p>Cartão</p>
-                            </div> */}
 
-                            <div className="justify-center grid grid-rows-5">
-                                {/* <div className="flex justify-center" >
-                                    <input
-                                        placeholder="Número do cartão"
-                                        type="number"
-                                        className="border-4 border-blue-700 p-3 rounded-xl max-w-full my-3 md:w-96"
-                                    />
-                                </div> */}
-                                
-
-                                <div className="flex justify-center">
-                                    <input
-                                        placeholder="Número do cartão"
-                                        type="number"
-                                        className="border-4 border-blue-700 p-3 rounded-xl max-w-full my-3 md:w-96"
-                                        name="payerAccountNumber"
-                                        value={formData.payerAccountNumber}
-                                        onChange={handleChange}
-                                    />
-                                </div>
-
+                            {formData.paymentAmount == '' ? (
                                 <div className="flex justify-center" >
-                                    <input
-                                        placeholder="Código de segurança"
-                                        type="number"
-                                        className="border-4 border-blue-700 p-3 rounded-xl max-w-full my-3 md:w-96"
-                                    />
+                                    <p className="bg-blue-700 text-white rounded-full p-5 mt-5 text-xl" >Selecione um plano para prosseguir</p>
                                 </div>
+                            ) : (
+                                <div>
+                                    <div className="justify-center grid grid-rows-5">
 
-                                <div className="flex justify-center items-center md:grid md:grid-cols-2" >
-                                    <label className="font-bold" >Data de validade: </label>
-                                    <input
-                                        type="date"
-                                        placeholder="Data de validade"
-                                        className="border-4 border-blue-700 p-3 rounded-xl max-w-full my-3"
-                                    />
+                                        <div className="flex justify-center">
+                                            <input
+                                                placeholder="Número do cartão"
+                                                type="number"
+                                                className="border-4 border-blue-700 p-3 rounded-xl max-w-full my-3 md:w-96"
+                                                name="payerAccountNumber"
+                                                value={formData.payerAccountNumber}
+                                                onChange={handleChange}
+                                            />
+                                        </div>
+
+                                        <div className="flex justify-center" >
+                                            <input
+                                                placeholder="Código de segurança"
+                                                type="number"
+                                                className="border-4 border-blue-700 p-3 rounded-xl max-w-full my-3 md:w-96"
+                                            />
+                                        </div>
+
+                                        <div className="flex justify-center items-center md:grid md:grid-cols-2" >
+                                            <label className="font-bold" >Data de validade: </label>
+                                            <input
+                                                type="date"
+                                                placeholder="Data de validade"
+                                                className="border-4 border-blue-700 p-3 rounded-xl max-w-full my-3"
+                                            />
+                                        </div>
+
+                                        <div className="justify-center items-center grid grid-cols-2" >
+                                            <label className="font-bold" >CEP: </label>
+                                            <input
+                                                type="number"
+                                                placeholder="CEP"
+                                                value={clienteCEP}
+                                                className="border-4 border-blue-700 p-3 rounded-xl max-w-full my-3"
+                                                disabled
+                                            />
+                                        </div>
+
+                                        <div className="flex justify-center items-center md:grid md:grid-cols-2" >
+                                            <label className="font-bold" >Número da residência: </label>
+                                            <input
+                                                type="number"
+                                                placeholder="Número"
+                                                className="border-4 border-blue-700 p-3 rounded-xl max-w-full my-3 w-1/2"
+                                            />
+                                        </div>
+                                    </div>
+
+                                    <div className="flex justify-center" >
+                                        <button
+                                            type="submit"
+                                            className="p-5 px-10 bg-blue-700 my-3 text-white text-xl rounded-xl transition hover:bg-blue-500 hover:-translate-y-1 duration-500"
+                                        // onClick={handleSubmit}
+                                        >
+                                            Pagar
+                                        </button>
+                                    </div>
                                 </div>
-
-                                <div className="justify-center items-center grid grid-cols-2" >
-                                    <label className="font-bold" >CEP: </label>
-                                    <input
-                                        type="number"
-                                        placeholder="CEP"
-                                        value={clienteCEP}
-                                        className="border-4 border-blue-700 p-3 rounded-xl max-w-full my-3"
-                                        disabled
-                                    />
-                                </div>
-
-                                <div className="flex justify-center items-center md:grid md:grid-cols-2" >
-                                    <label className="font-bold" >Número da residência: </label>
-                                    <input
-                                        type="number"
-                                        placeholder="Número"
-                                        className="border-4 border-blue-700 p-3 rounded-xl max-w-full my-3 w-1/2"
-                                    />
-                                </div>
-                            </div>
-
-                            <div className="flex justify-center" >
-                                <button
-                                    type="submit"
-                                    className="p-5 px-10 bg-blue-700 my-3 text-white text-xl rounded-xl transition hover:bg-blue-500 hover:-translate-y-1 duration-500"
-                                    // onClick={handleSubmit}
-                                >
-                                    Pagar
-                                </button>
-                            </div>
+                            )}
 
                         </section>
                     ) : (
