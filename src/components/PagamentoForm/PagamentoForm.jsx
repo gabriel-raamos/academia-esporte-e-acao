@@ -72,9 +72,9 @@ function Pagamento() {
         };
 
         try {
-            const response = await axios.post('http://localhost:5000/api/pagamento/registrarpagamento', updatedFormData)
-            alert('Pagamento salvo: ' + response.data)
-
+            await axios.post('http://localhost:5000/api/pagamento/registrarpagamento', updatedFormData)
+            // alert('Pagamento salvo: ' + response.data.clienteID)
+            window.location.reload()
         }
 
         catch (error) {
@@ -102,7 +102,7 @@ function Pagamento() {
             >
                 <div className="my-3" >
                     <div className="justify-center flex items-center" >
-                        <h1 className="text-3xl font-bold" >Formulário de pagamento</h1>
+                        <h1 className="text-3xl font-bold md:my-3" >Formulário de pagamento</h1>
                     </div>
 
                     <div className="flex justify-center md:gap-5" >
@@ -245,7 +245,7 @@ function Pagamento() {
                                     />
                                 </div>
 
-                                <div className="flex justify-center items-center" >
+                                <div className="flex justify-center items-center md:grid md:grid-cols-2" >
                                     <label className="font-bold" >Data de validade: </label>
                                     <input
                                         type="date"
@@ -254,7 +254,7 @@ function Pagamento() {
                                     />
                                 </div>
 
-                                <div className="flex justify-center items-center" >
+                                <div className="justify-center items-center grid grid-cols-2" >
                                     <label className="font-bold" >CEP: </label>
                                     <input
                                         type="number"
@@ -265,7 +265,7 @@ function Pagamento() {
                                     />
                                 </div>
 
-                                <div className="flex justify-center items-center" >
+                                <div className="flex justify-center items-center md:grid md:grid-cols-2" >
                                     <label className="font-bold" >Número da residência: </label>
                                     <input
                                         type="number"
@@ -275,7 +275,14 @@ function Pagamento() {
                                 </div>
                             </div>
 
-                            <div>
+                            <div className="flex justify-center" >
+                                <button
+                                    type="submit"
+                                    className="p-5 px-10 bg-blue-700 my-3 text-white text-xl rounded-xl transition hover:bg-blue-500 hover:-translate-y-1 duration-500"
+                                    // onClick={handleSubmit}
+                                >
+                                    Pagar
+                                </button>
                             </div>
 
                         </section>

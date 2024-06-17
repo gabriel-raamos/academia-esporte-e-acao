@@ -8,7 +8,7 @@ router.get('/teste', (req,res) => {
 })
 
 router.post('/registrarpagamento', async (req,res) => {
-    const { clienteID, paymentAmount, paymentMethod, paymentStatus, currency, transactionID, payerAccountNumber, approvalCode } = req.body
+    const { clienteID, paymentAmount, paymentMethod, paymentStatus, transactionID, payerAccountNumber, approvalCode } = req.body
 
     try {
         const newPagamento = new Pagamento({
@@ -16,7 +16,6 @@ router.post('/registrarpagamento', async (req,res) => {
             paymentAmount,
             paymentMethod,
             paymentStatus,
-            currency,
             transactionID,
             payerAccountNumber,
             approvalCode
@@ -24,6 +23,7 @@ router.post('/registrarpagamento', async (req,res) => {
 
         const savedPagamento = await newPagamento.save()
         res.json(savedPagamento)
+        console.log(savedPagamento)
     }
 
     catch (error) {
