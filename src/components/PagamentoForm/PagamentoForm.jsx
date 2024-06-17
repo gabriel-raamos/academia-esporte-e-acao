@@ -12,6 +12,7 @@ function Pagamento() {
         paymentAmount: '',
         paymentMethod: '',
         paymentStatus: 'pending',
+        transactionID: '',
         payerAccountNumber: '',
         approvalCode: ''
     })
@@ -63,14 +64,30 @@ function Pagamento() {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
+        const updatedFormData = {
+            ...formData,
+            transactionID: generateTransactionID(),
+            approvalCode: generateApprovalCode(),
+            paymentStatus: 'completed'
+        };
+
         try {
-            const response = await axios.post('http://localhost:5000/api/pagamento/registrarpagamento', formData)
+            const response = await axios.post('http://localhost:5000/api/pagamento/registrarpagamento', updatedFormData)
             alert('Pagamento salvo: ' + response.data)
+
         }
 
         catch (error) {
             alert('Ocorreu um erro ao salvar o pagamento: ' + error)
         }
+    }
+
+    const generateTransactionID = () => {
+        return 'TRANS_' + Math.random().toString(36).substr(2, 9).toUpperCase();
+    }
+
+    const generateApprovalCode = () => {
+        return 'APPROVAL_' + Math.random().toString(36).substr(2, 9).toUpperCase();
     }
 
     useEffect(() => {
@@ -199,12 +216,24 @@ function Pagamento() {
                                 <p>Cartão</p>
                             </div> */}
 
-                            <div className="justify-center grid grid-rows-4">
-                                <div className="flex justify-center" >
+                            <div className="justify-center grid grid-rows-5">
+                                {/* <div className="flex justify-center" >
                                     <input
                                         placeholder="Número do cartão"
                                         type="number"
                                         className="border-4 border-blue-700 p-3 rounded-xl max-w-full my-3 md:w-96"
+                                    />
+                                </div> */}
+                                
+
+                                <div className="flex justify-center">
+                                    <input
+                                        placeholder="Número do cartão"
+                                        type="number"
+                                        className="border-4 border-blue-700 p-3 rounded-xl max-w-full my-3 md:w-96"
+                                        name="payerAccountNumber"
+                                        value={formData.payerAccountNumber}
+                                        onChange={handleChange}
                                     />
                                 </div>
 
@@ -224,7 +253,7 @@ function Pagamento() {
                                         className="border-4 border-blue-700 p-3 rounded-xl max-w-full my-3"
                                     />
                                 </div>
-                                
+
                                 <div className="flex justify-center items-center" >
                                     <label className="font-bold" >CEP: </label>
                                     <input
@@ -235,7 +264,7 @@ function Pagamento() {
                                         disabled
                                     />
                                 </div>
-                                
+
                                 <div className="flex justify-center items-center" >
                                     <label className="font-bold" >Número da residência: </label>
                                     <input
