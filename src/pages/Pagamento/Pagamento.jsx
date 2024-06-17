@@ -17,7 +17,9 @@ export default function Pagamento() {
             ) : (
                 <div className="grid grid-rows-1 justify-center items-center text-lg">
                     <Link to="../login" >
-                        <p className="bg-blue-700 text-white rounded-full font-bold p-5 my-5 text-xl">Faça login para acessar a página</p>
+                        <p className="bg-blue-700 text-white rounded-full font-bold p-5 my-5 text-xl transition hover:bg-blue-500 hover:-translate-y-1 duration-500" >
+                            Faça login para acessar a página
+                        </p>
                     </Link>
                 </div>
             )}

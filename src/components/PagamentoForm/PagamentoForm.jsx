@@ -2,6 +2,7 @@
 
 import axios from "axios"
 import { useEffect, useState } from "react"
+import ModalPagamento from "../ModalPagamento/ModalPagamento"
 
 function Pagamento() {
 
@@ -19,6 +20,7 @@ function Pagamento() {
     const [selectedPlan, setSelectedPlan] = useState('')
     const [clienteCPF, setClienteCPF] = useState('')
     const [clienteCEP, setClienteCEP] = useState('')
+    const [isModalOpen, setIsModalOpen] = useState(false)
 
     const fetchData = async () => {
 
@@ -90,6 +92,14 @@ function Pagamento() {
         return 'APPROVAL_' + Math.random().toString(36).substr(2, 9).toUpperCase();
     }
 
+    const handleModalOpen = () => {
+        setIsModalOpen(true)
+    }
+
+    const handleModalClose = () => {
+        setIsModalOpen(false)
+    }
+
     useEffect(() => {
         fetchData()
     }, [])
@@ -102,19 +112,21 @@ function Pagamento() {
             >
                 <div className="my-3" >
                     <div className="justify-center flex items-center" >
-                        <h1 className="text-3xl font-bold md:my-3" >Formulário de pagamento</h1>
+                        <h1 className="text-3xl font-bold md:my-3 " >Formulário de pagamento</h1>
                     </div>
 
-                    <div className="flex justify-center md:gap-5" >
-                        {/* <label className="md:my-3 font-bold" >Qual dos planos você deseja?</label> */}
+                    <div className="grid grid-cols-2 justify-center md:gap-5" >
+                        <div className="flex justify-center items-center" >
+                            <label className="font-bold" >Escolha o plano:</label>
+                        </div>
 
                         <select
-                            className="border-4 border-blue-700 p-3 rounded-xl mt-5 md:mt-0"
+                            className="border-4 border-blue-700 p-3 rounded-xl mt-5 md:mt-0 bg-white"
                             name="paymentAmount"
                             value={selectedPlan}
                             onChange={handlePlanChange}
                         >
-                            <option value="" >Selecione um plano:</option>
+                            <option value="" >Selecione um plano</option>
                             <option value="Plano 1" >Plano 1 - R$ 80,00</option>
                             <option value="Plano 2" >Plano 2 - R$ 120,00</option>
                             <option value="Plano 3" >Plano 3 - R$ 150,00</option>
@@ -137,7 +149,7 @@ function Pagamento() {
                 </div>
 
                 <div className="font-bold my-3 grid grid-cols-2" >
-                    <h2>Método de pagamento: </h2>
+                    <h2 className="justify-center flex" >Método de pagamento: </h2>
 
                     <div className="grid grid-rows-2 md:flex justify-center">
                         <label className="mr-3">
@@ -175,7 +187,7 @@ function Pagamento() {
                                     <div>
                                         <button
                                             type="button"
-                                            onClick={handleSubmit}
+                                            onClick={handleModalOpen}
                                             className="p-5 px-10 bg-blue-700 my-3 text-white text-xl rounded-xl transition hover:bg-blue-500 hover:-translate-y-1 duration-500"
                                         >
                                             Gerar QR code
@@ -185,7 +197,7 @@ function Pagamento() {
                                     <div>
                                         <button
                                             type="button"
-                                            onClick={() => alert(formData.paymentAmount)}
+                                            onClick={handleModalOpen}
                                             className="p-5 px-10 bg-blue-700 my-3 text-white text-xl rounded-xl transition hover:bg-blue-500 hover:-translate-y-1 duration-500"
                                         >
                                             Gerar QR code
@@ -195,7 +207,7 @@ function Pagamento() {
                                     <div>
                                         <button
                                             type="button"
-                                            onClick={() => alert(formData.paymentAmount)}
+                                            onClick={handleModalOpen}
                                             className="p-5 px-10 bg-blue-700 my-3 text-white text-xl rounded-xl transition hover:bg-blue-500 hover:-translate-y-1 duration-500"
                                         >
                                             Gerar QR code
@@ -292,6 +304,16 @@ function Pagamento() {
                     )}
                 </div>
             </form>
+
+            {isModalOpen && (
+                <ModalPagamento
+                    isOpen={isModalOpen}
+                    onClose={handleModalClose}
+                    paymentAmount={formData.paymentAmount}
+                    handleSubmit={handleSubmit}
+                />
+            )}
+
         </section>
     )
 }
