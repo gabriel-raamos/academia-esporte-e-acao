@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
+
 html,
 body,
 #root {
@@ -42,6 +45,10 @@ body,
 
 .h-90vh {
     min-height: 90vh;
+}
+
+.h-100vh {
+    min-height: 100vh;
 }
 
 .footer {
