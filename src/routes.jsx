@@ -12,8 +12,8 @@ import Pagamento from './pages/Pagamento/Pagamento';
 export default function App() {
   return (
     <BrowserRouter>
-      <div className='app-container'>
-        <NavBar />
+      <NavBar />
+      <div className='h-80vh'>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/planos" element={<Planos />} />
@@ -23,9 +23,9 @@ export default function App() {
           <Route path="/usuarios" element={<Usuarios />} />
           <Route path="/pagamento" element={<Pagamento />} />
         </Routes>
-        <div className='footer'>
-          <Rodape />
-        </div>
+      </div>
+      <div className='footer'>
+        <Rodape />
       </div>
     </BrowserRouter>
   );

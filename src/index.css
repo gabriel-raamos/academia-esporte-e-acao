@@ -32,12 +32,16 @@ body,
     width: 70vw;
 }
 
-.app-container {
+.h-80vh {
     min-height: 80vh;
     /* Ensure the container fills at least the height of the viewport */
-    display: flex;
-    flex-direction: column;
+    /* display: flex; */
+    /* flex-direction: column; */
     /* Ensure child elements stack vertically */
+}
+
+.h-90vh {
+    min-height: 90vh;
 }
 
 .footer {
@@ -49,4 +53,8 @@ body,
 
 textarea {
     resize: none;
+}
+
+.box-shadow {
+    box-shadow: 0px px 20px 10px #2b6cb0;
 }
