@@ -65,3 +65,13 @@ textarea {
 .box-shadow {
     box-shadow: 0px px 20px 10px #2b6cb0;
 }
+
+.fixed-lg-width {
+    width: 400px;
+    height: auto;
+}
+
+.fixed-width {
+    width: 275px;
+    height: auto;
+}

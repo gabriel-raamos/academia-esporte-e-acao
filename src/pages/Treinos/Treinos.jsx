@@ -19,7 +19,16 @@ export default function Treinos() {
                 const fetchedData = response.data;
 
                 if (fetchedData.workouts) {
-                    const filteredWorkouts = fetchedData.workouts.filter(workout => workout.visibility);
+                    const filteredWorkouts = fetchedData.workouts
+                        .filter(workout => workout.visibility)
+                        .map(workout => ({
+                            ...workout,
+                            treino1: workout.treino1 ? workout.treino1.replace(/;/g, '\n') : '',
+                            treino2: workout.treino2 ? workout.treino2.replace(/;/g, '\n') : '',
+                            treino3: workout.treino3 ? workout.treino3.replace(/;/g, '\n') : '',
+                            treino4: workout.treino4 ? workout.treino4.replace(/;/g, '\n') : '',
+                            treino5: workout.treino5 ? workout.treino5.replace(/;/g, '\n') : '',
+                        }));
                     setWorkouts(filteredWorkouts);
                 }
 
@@ -124,11 +133,11 @@ export default function Treinos() {
                                 <p>Treino {currentWorkoutIndex + 1} de {workouts.length}</p>
                             </div>
                             <div className="flex justify-center text-lg rounded-xl p-5 my-5 mx-3 border-4 text-blue-700 border-blue-700 font-bold md:m-5 whitespace-pre-line overflow-y-auto">
-                                <div>
+                                <div className='fixed-width md:fixed-lg-width'>
                                     <div className="flex justify-center items-center mb-4">
                                         <p>Série {currentSerieIndex + 1} de 5</p>
                                     </div>
-                                    <div className="flex items-center border-blue-700 border-4 m-2 p-5 rounded-lg">
+                                    <div className="flex items-center justify-center border-blue-700 border-4 m-2 p-5 rounded-lg">
                                         <p>{renderSerie()}</p>
                                     </div>
                                 </div>
