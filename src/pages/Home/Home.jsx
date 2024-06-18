@@ -10,6 +10,12 @@ export default function Home() {
     return (
         <section>
 
+            <section className="bg-gym2 bg-no-repeat h-screen flex justify-center items-center static" >
+                <div className="justify-center items-center flex bg-blue-700 text-white rounded-full font-bold" >
+                    <h1 className="text-xl p-3 md:text-4xl md:p-8" >Seja bem vindo à academia <br/> <span className="flex justify-center">Esporte e Ação!</span></h1>
+                </div>
+            </section>
+
             <section className="h-full grid md:grid-cols-2 bg-white " >
 
                 <Card2 />

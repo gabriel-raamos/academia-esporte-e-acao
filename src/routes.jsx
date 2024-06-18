@@ -12,20 +12,20 @@ import Pagamento from './pages/Pagamento/Pagamento';
 export default function App() {
   return (
     <BrowserRouter>
-      <NavBar />
       <div className='app-container'>
+        <NavBar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/planos" element={<Planos />} />
           <Route path="/faleconosco" element={<FaleConosco />} />
           <Route path="/login" element={<Login />} />
           <Route path="/treinos" element={<Treinos />} />
-          <Route path="/usuarios" element={<Usuarios/>} />
-          <Route path="/pagamento" element={<Pagamento/>} />
+          <Route path="/usuarios" element={<Usuarios />} />
+          <Route path="/pagamento" element={<Pagamento />} />
         </Routes>
-      </div>
-      <div className='footer'>
-        <Rodape />
+        <div className='footer'>
+          <Rodape />
+        </div>
       </div>
     </BrowserRouter>
   );
