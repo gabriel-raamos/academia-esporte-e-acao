@@ -76,8 +76,7 @@ function Pagamento() {
         try {
             await axios.post('https://pi-academia.vercel.app/api/pagamento/registrarpagamento', updatedFormData)
 
-            const response = await axios.put(`https://pi-academia.vercel.app/api/cliente/updateActive/${id}`, { active: true })
-            alert(response)
+            await axios.put(`https://pi-academia.vercel.app/api/cliente/updateActive/${id}`, { active: true })
 
             window.location.href = '/'
         }
