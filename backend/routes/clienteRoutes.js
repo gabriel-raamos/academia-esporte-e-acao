@@ -195,8 +195,10 @@ router.put('/updateActive/:id', async (req,res) => {
     const { _id } = req.params.id;
     const { active } = req.body.active;
 
+    console.log('ID do usuário: ' + _id)
+
     try {
-        const cliente = await Cliente.findByIdAndUpdate(_id, { active }, { new: true });
+        const cliente = await Cliente.findByIdAndUpdate({_id}, { active }, { new: true });
 
         if (!cliente) {
             return res.status(404).json({ message: 'Cliente não encontrado' });
