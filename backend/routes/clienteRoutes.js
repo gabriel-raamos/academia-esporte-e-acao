@@ -192,8 +192,8 @@ router.get('/clientealfabetico', async (req,res) => {
 })
 
 router.put('/updateActive/:id', async (req,res) => {
-    const { _id } = req.params;
-    const { active } = req.body;
+    const { _id } = req.params.id;
+    const { active } = req.body.active;
 
     try {
         const cliente = await Cliente.findByIdAndUpdate(_id, { active }, { new: true });

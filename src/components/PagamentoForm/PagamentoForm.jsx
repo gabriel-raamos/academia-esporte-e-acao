@@ -77,7 +77,8 @@ function Pagamento() {
             await axios.post('https://pi-academia.vercel.app/api/pagamento/registrarpagamento', updatedFormData)
 
             // Atualize o campo 'active' do cliente após o pagamento bem-sucedido
-            await axios.put(`https://pi-academia.vercel.app/api/cliente/updateActive/${id}`, { active: true })
+            const response = await axios.put(`https://pi-academia.vercel.app/api/cliente/updateActive/${id}`, { active: true })
+            alert(response)
 
             window.location.href = '/'
         }
