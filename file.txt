@@ -25,3 +25,13 @@
   ]
   
 }
+
+• mudar cadastro de treinos para uma lista
+• botão pra abrir tela com todos os pagamentos já cadastrados 
+• adicionar campo de busca de cliente filtrando por nome e cargo
+• corrigir sessão jwt
+• passar o cliente para ativo após pagamento ser efetuado - FEITO
+• limitar quantidade de caracteres que serão renderizados no nome do cliente na navbar - FEITO
+• transformar treinos em formulário e ir passando de um treino para o outro como páginas - FEITO
+• botão pra controlar se o treino ficará visível ou não para os clientes - FEITO
+• botão pra adicionar treinos no modal dos clientes - FEITO

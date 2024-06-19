@@ -48,7 +48,7 @@ export default function Form() {
 
         try {
             await axios.post("https://pi-academia.vercel.app/api/cliente/register", userData);
-            // alert('Registro efetuado com sucesso.')
+            alert('Registro efetuado com sucesso.')
 
             // Resetar os campos após o envio bem-sucedido
             // setName('')
