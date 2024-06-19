@@ -10,7 +10,7 @@ export default function Home() {
     return (
         <section>
 
-            <section className="bg-gym2 bg-cover bg-no-repeat h-90vh items-center flex justify-center static bg-fixed bg-blend-darken bg-black bg-opacity-50 shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)]" >
+            <section className="bg-gym3 bg-cover bg-no-repeat h-90vh items-center flex justify-center static bg-fixed bg-blend-darken bg-black bg-opacity-50 shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)]" >
                 <div className="flex justify-center items-center" >
                     <div className="justify-center items-center flex bg-blue-700 p-3 bg-gradient-to-br from blue-700 text-white rounded-full font-bold hover:shadow-[0px_0px_20px_10px] hover:shadow-[#1d4ed8] transition duration-500" >
                         <div className="" >
