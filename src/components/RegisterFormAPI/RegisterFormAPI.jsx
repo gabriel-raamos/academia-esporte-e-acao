@@ -213,7 +213,7 @@ function FormBox2(prop) {
         <div>
             <Textbox
                 obrigatorio={true}
-                placeholder="Celular"
+                placeholder="Celular (apenas os números)"
                 valor={prop.phone}
                 tipo={"number"}
                 whenChanged={valor => prop.setPhone(valor)}
@@ -221,7 +221,7 @@ function FormBox2(prop) {
 
             <Textbox
                 obrigatorio={true}
-                placeholder="CPF"
+                placeholder="CPF (apenas os números)"
                 valor={prop.cpf}
                 tipo={"number"}
                 whenChanged={valor => prop.setCpf(valor)}
@@ -229,7 +229,7 @@ function FormBox2(prop) {
 
             <Textbox
                 obrigatorio={true}
-                placeholder="CEP"
+                placeholder="CEP (apenas os números)"
                 valor={prop.cep}
                 tipo={"number"}
                 whenChanged={valor => prop.setCep(valor)}
@@ -237,7 +237,7 @@ function FormBox2(prop) {
 
             <Textbox
                 obrigatorio={true}
-                placeholder="Altura em CM (sem vírgula)"
+                placeholder="Altura em cm (sem vírgula)"
                 valor={prop.height}
                 tipo={"number"}
                 whenChanged={valor => prop.setHeight(valor)}
