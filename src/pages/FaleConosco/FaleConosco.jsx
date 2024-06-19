@@ -9,7 +9,7 @@ export default function FaleConosco() {
     return (
         <section className="flex flex-col justify-center items-center mt-5" >
 
-            <section className="mx-10 md:mx-40 grid grid-rows-2 bg-blue-700 rounded-lg p-2 md:p-5 mb-5 text-white" >
+            <section className="mx-10 md:mx-40 grid grid-rows-2 bg-blue-700 rounded-lg p-2 md:p-5 mb-5 md:mt-8 text-white hover:scale-105 transition duration-500" >
                 <div>
                     <h1 className="text-2xl font-bold" >Nos contate</h1>
 

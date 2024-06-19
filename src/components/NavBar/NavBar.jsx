@@ -6,6 +6,8 @@ import { useEffect, useState } from "react";
 export default function NavBar() {
 
     const [name, setName] = useState('')
+    const [loading, setLoading] = useState(true)
+    const [error, setError] = useState('')
 
     const authHeader = localStorage.getItem('authorization')
     // const jsonHeader = JSON.parse(localStorage.getItem('json-data'))
@@ -18,11 +20,15 @@ export default function NavBar() {
 
             const name = response.data.name
             setName(name)
-            // alert(name)
         }
 
         catch (error) {
             console.log(error)
+            setError(error)
+        }
+        
+        finally {
+            setLoading(false);
         }
 
     }
@@ -42,13 +48,17 @@ export default function NavBar() {
     }
 
     useEffect(() => {
-        fetchName()
-    }, [])
+        if (authHeader) {
+            fetchName();
+        }
+    }, [authHeader]);
 
     // const testName = JSON.parse(localStorage.getItem('json-header'))
     // alert(testName.name)
 
     // const name = jsonHeader.name || 'Cliente'
+
+    const limitedName = name.length > 10 ? `${name.substring(0, 10)}...` : name;
 
     return (
 
@@ -79,13 +89,23 @@ export default function NavBar() {
                         </button>
                     </div>
 
+                ) : loading ? (
+
+                    <div className="flex justify-center items-center h-2/3 w-2/3 pl-6 md:pl-0" >
+
+                        <p className="text-white font-bold md:text-xl" >Carregando...</p>
+
+                    </div>
+                ) : error ? (
+                    <div>
+                        <p>{error}</p>
+                    </div>
                 ) : (
+                    <div className="flex justify-center items-center h-2/3 w-2/3 pl-6 md:pl-0" >
 
-                <div className="flex justify-center items-center h-2/3 w-2/3 pl-6 md:pl-0" >
+                        <NavButton title={limitedName} link='treinos' />
 
-                    <NavButton title={name} link='treinos' />
-
-                </div>
+                    </div>
                 )}
 
                 {!authHeader && (
