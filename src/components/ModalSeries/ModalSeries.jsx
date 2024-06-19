@@ -95,7 +95,7 @@ function ModalSeries({ treino, onSave, onClose }) {
                     <div>
                         <div className="py-2 my-5">
                             <button
-                                className="absolute top-0 right-0 bg-blue-700 text-white rounded-full font-bold p-3 my-4 mr-8"
+                                className="absolute top-0 right-0 bg-blue-700 text-white rounded-full font-bold p-3 my-4 mr-8 hover:bg-blue-500 hover:-translate-y-1 duration-500"
                                 onClick={onClose}
                             >
                                 Fechar
@@ -180,7 +180,7 @@ function ModalSeries({ treino, onSave, onClose }) {
                             </div>
                             <button
                                 onClick={handleSave}
-                                className="bg-blue-700 text-white rounded-full p-3 md:my-0 text-lg font-bold"
+                                className="bg-blue-700 text-white rounded-full p-3 md:my-0 text-lg font-bold hover:bg-blue-500 hover:-translate-y-1 duration-500"
                             >
                                 Salvar treino
                             </button>
