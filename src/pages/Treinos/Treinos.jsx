@@ -120,7 +120,7 @@ export default function Treinos() {
                 </div>
             )}
             {workouts.length > 0 ? (
-                <section>
+                <section className='mb-5' >
                     <div className="flex justify-center items-center">
                         <h2 className="bg-blue-700 text-white rounded-full font-bold p-5 my-5 text-xl">
                             Informação sobre os treinos:
