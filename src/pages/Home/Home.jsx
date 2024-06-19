@@ -10,15 +10,17 @@ export default function Home() {
     return (
         <section>
 
-            <section className="bg-gym2 bg-no-repeat h-90vh flex justify-center items-center static bg-fixed" >
-                <div className="justify-center items-center flex bg-blue-700 p-3 bg-gradient-to-br from blue-700 text-white rounded-full font-bold shadow-[0px_0px_20px_10px] shadow-[#1d4ed8]" >
-                    <div className="" >
-                        <h1 className="text-xl p-3 md:text-4xl md:p-8" >
-                            Seja bem vindo à academia <br /> 
-                            <span className="flex justify-center">
-                                Esporte e Ação!
-                            </span>
-                        </h1>
+            <section className="bg-gym2 bg-cover bg-no-repeat h-90vh items-center flex justify-center static bg-fixed bg-blend-darken bg-black bg-opacity-50 " >
+                <div className="flex justify-center items-center" >
+                    <div className="justify-center items-center flex bg-blue-700 p-3 bg-gradient-to-br from blue-700 text-white rounded-full font-bold hover:shadow-[0px_0px_20px_10px] hover:shadow-[#1d4ed8] transition duration-500" >
+                        <div className="" >
+                            <h1 className="text-xl p-3 md:text-4xl md:p-8" >
+                                Seja bem vindo à academia <br />
+                                <span className="flex justify-center">
+                                    Esporte e Ação!
+                                </span>
+                            </h1>
+                        </div>
                     </div>
                 </div>
             </section>

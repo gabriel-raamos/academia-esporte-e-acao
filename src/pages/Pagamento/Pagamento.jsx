@@ -7,7 +7,7 @@ export default function Pagamento() {
     const id = userData ? JSON.parse(userData).id : null
 
     return (
-        <section>
+        <section className='mt-5' >
             {id ? (
                 <section className='flex justify-center items-center' >
                     <div>

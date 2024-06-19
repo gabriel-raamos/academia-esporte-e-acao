@@ -7,7 +7,7 @@ import { MdEmail } from "react-icons/md";
 
 export default function FaleConosco() {
     return (
-        <section className="flex flex-col justify-center items-center" >
+        <section className="flex flex-col justify-center items-center mt-5" >
 
             <section className="mx-5 md:mx-40 grid grid-rows-2 bg-blue-700 rounded-lg p-5 mb-5 text-white" >
                 <div>

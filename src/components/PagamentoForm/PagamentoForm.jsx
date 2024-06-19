@@ -74,7 +74,7 @@ function Pagamento() {
         };
 
         try {
-            await axios.post('http://localhost:5000/api/pagamento/registrarpagamento', updatedFormData)
+            await axios.post('https://pi-academia.vercel.app/api/pagamento/registrarpagamento', updatedFormData)
             // alert('Pagamento salvo: ' + response.data.clienteID)
             window.location.href = '/'
         }

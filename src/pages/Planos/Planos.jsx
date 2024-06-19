@@ -9,7 +9,7 @@ export default function Planos() {
     const id = userData ? JSON.parse(userData).id : null
 
     return (
-        <div className="md:grid" >
+        <div className="md:grid mt-5" >
 
             {id ? (
                 <div className="flex justify-center items-center" >
