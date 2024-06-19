@@ -104,7 +104,7 @@ export default function Usuarios() {
     return (
         <section>
             {isAdmin == 'admin' ? (
-                <div className="flex justify-center items-center" >
+                <div className="flex justify-center items-center mt-5" >
                     <div>
                         <div className="md:grid md:grid-cols-2 gap-4" >
                             {data.map((cliente) => (
