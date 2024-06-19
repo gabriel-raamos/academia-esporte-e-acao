@@ -22,6 +22,9 @@ export default {
           '75%': { transform: 'rotate(-1.5deg)' }
         }
       },
+      colors: {
+        'azulzinho': '#2892DE' 
+      }
     }
   },
   plugins: [],
