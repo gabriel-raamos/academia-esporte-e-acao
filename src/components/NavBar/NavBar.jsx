@@ -26,7 +26,7 @@ export default function NavBar() {
             console.log(error)
             setError(error)
         }
-        
+
         finally {
             setLoading(false);
         }
@@ -90,11 +90,12 @@ export default function NavBar() {
                     </div>
 
                 ) : loading ? (
-
-                    <div className="flex justify-center items-center h-2/3 w-2/3 pl-6 md:pl-0" >
-
-                        <p className="text-white font-bold md:text-xl" >Carregando...</p>
-
+                    <div className="flex justify-center items-center h-2/3 w-2/3" >
+                        <div className="flex justify-center items-center h-2/3 w-2/3 pl-3 md:pl-0 " >
+                            <button className="text-white text-sm md:text-xl py-2 md:py-5 px-2 mt-7 md:mt-0 rounded-full font-bold transition duration-500 hover:bg-blue-700 hover:text-white focus:bg-blue-700 hover:shadow-[0px_0px_20px_10px] hover:shadow-[#1d4ed8]" >
+                                Carregando
+                            </button>
+                        </div>
                     </div>
                 ) : error ? (
                     <div>

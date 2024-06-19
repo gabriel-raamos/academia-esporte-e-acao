@@ -191,4 +191,21 @@ router.get('/clientealfabetico', async (req,res) => {
 
 })
 
+router.put('/updateActive/:id', async (req,res) => {
+    const { _id } = req.params;
+    const { active } = req.body;
+
+    try {
+        const cliente = await Cliente.findByIdAndUpdate(_id, { active }, { new: true });
+
+        if (!cliente) {
+            return res.status(404).json({ message: 'Cliente não encontrado' });
+        }
+
+        res.json(cliente);
+    } catch (error) {
+        res.status(500).json({ message: 'Erro ao atualizar cliente', error });
+    }
+})
+
 export default router
