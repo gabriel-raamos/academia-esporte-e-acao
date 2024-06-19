@@ -237,7 +237,7 @@ function FormBox2(prop) {
 
             <Textbox
                 obrigatorio={true}
-                placeholder="Altura"
+                placeholder="Altura em CM (sem vírgula)"
                 valor={prop.height}
                 tipo={"number"}
                 whenChanged={valor => prop.setHeight(valor)}
@@ -245,7 +245,7 @@ function FormBox2(prop) {
 
             <Textbox
                 obrigatorio={true}
-                placeholder="Peso"
+                placeholder="Peso em KG"
                 valor={prop.weight}
                 tipo={"number"}
                 whenChanged={valor => prop.setWeight(valor)}
