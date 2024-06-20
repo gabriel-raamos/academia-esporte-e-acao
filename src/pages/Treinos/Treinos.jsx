@@ -99,11 +99,13 @@ export default function Treinos() {
             <div className="grid grid-rows-2 justify-center items-center text-lg">
                 <p className="bg-blue-700 text-white rounded-full font-bold p-5 my-5 text-xl">Carregando...</p>
             </div>
-        );
+        )
     } else if (error) {
         return (
-            <p className="bg-blue-700 text-white rounded-full font-bold p-5 my-5 text-xl">Ocorreu um erro ao usar os dados: {error.message}</p>
-        );
+            <div className="grid grid-rows-2 justify-center items-center text-lg">
+                <p className="bg-blue-700 text-white rounded-full font-bold p-5 my-5 text-xl">Ocorreu um erro ao usar os dados: {error.message}</p>
+            </div>
+        )
     }
 
     return (
