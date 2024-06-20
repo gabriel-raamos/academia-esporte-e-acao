@@ -39,13 +39,13 @@ function TreinosModal({ clienteID, isOpen, onClose }) {
         }
     }, [isOpen, clienteID])
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setNewTreino({
-            ...newTreino,
-            [name]: value
-        });
-    };
+    // const handleChange = (e) => {
+    //     const { name, value } = e.target;
+    //     setNewTreino({
+    //         ...newTreino,
+    //         [name]: value
+    //     });
+    // };
 
     const handleAddTreino = async () => {
         const dadosParaEnviar = { ...newTreino, clienteID };
@@ -71,7 +71,7 @@ function TreinosModal({ clienteID, isOpen, onClose }) {
         try {
             await axios.delete(`https://pi-academia.vercel.app/api/treino/deletartreino/${treinoID}`)
             setTreinos(treinos.filter(treino => treino._id !== treinoID))
-            alert('Treino deletado com sucesso')
+            // alert('Treino deletado com sucesso')
         }
 
         catch (error) {
@@ -151,64 +151,23 @@ function TreinosModal({ clienteID, isOpen, onClose }) {
                                             <button
                                                 className='bg-blue-700 text-white rounded-full p-3 my-2 text-lg font-bold mx-1 md:mx-2 transition hover:bg-blue-500 hover:-translate-y-1 duration-500'
                                                 type="button"
-                                                onClick={() => handleDeleteTreino(treino._id)}
-                                            >
-                                                Deletar
-                                            </button>
-                                            <button
-                                                className='bg-blue-700 text-white rounded-full p-3 my-2 text-lg font-bold mr-1 md:mr-2 transition hover:bg-blue-500 hover:-translate-y-1 duration-500'
-                                                type="button"
                                                 onClick={() => handleEditTreino(index)}
                                             >
                                                 Editar treino
+                                            </button>
+                                            <button
+                                                className='bg-red-700 text-white rounded-full p-3 my-2 text-lg md:mr-2 font-bold transition hover:bg-red-500 hover:-translate-y-1 duration-500'
+                                                type="button"
+                                                onClick={() => handleDeleteTreino(treino._id)}
+                                            >
+                                                Deletar
                                             </button>
                                         </div>
                                     </li>
                                 ))}
                             </ul>
                         )}
-                        <div className="mt-0">
-                            <input
-                                type="text"
-                                name="treino1"
-                                placeholder="Treino 1"
-                                value={newTreino.treino1}
-                                onChange={handleChange}
-                                className="border-2 border-blue-700 rounded-xl p-2 mr-2 m-1 ml-0 md:my-3 md:mr-3"
-                            />
-                            <input
-                                type="text"
-                                name="treino2"
-                                placeholder="Treino 2"
-                                value={newTreino.treino2}
-                                onChange={handleChange}
-                                className="border-2 border-blue-700 rounded-xl p-2 mr-2 m-1 ml-0 md:my-3 md:mr-3"
-                            />
-                            <input
-                                type="text"
-                                name="treino3"
-                                placeholder="Treino 3"
-                                value={newTreino.treino3}
-                                onChange={handleChange}
-                                className="border-2 border-blue-700 rounded-xl p-2 mr-2 m-1 ml-0 md:my-3 md:mr-3"
-                            />
-                            <input
-                                type="text"
-                                name="treino4"
-                                placeholder="Treino 4"
-                                value={newTreino.treino4}
-                                onChange={handleChange}
-                                className="border-2 border-blue-700 rounded-xl p-2 mr-2 m-1 ml-0 md:my-3 md:mr-3"
-                            />
-                            <input
-                                type="text"
-                                name="treino5"
-                                placeholder="Treino 5"
-                                value={newTreino.treino5}
-                                onChange={handleChange}
-                                className="border-2 border-blue-700 rounded-xl p-2 mr-2 m-1 ml-0 md:my-3 md:mr-3"
-                            />
-
+                        <div className="mt-5">
                             <button
                                 onClick={handleAddTreino}
                                 className="bg-blue-700 text-white rounded-full p-3 md:my-0 text-lg font-bold transition hover:bg-blue-500 hover:-translate-y-1 duration-500"

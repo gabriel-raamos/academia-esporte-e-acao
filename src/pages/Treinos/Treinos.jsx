@@ -23,11 +23,12 @@ export default function Treinos() {
                         .filter(workout => workout.visibility)
                         .map(workout => ({
                             ...workout,
-                            treino1: workout.treino1 ? workout.treino1.replace(/;/g, '\n') : '',
-                            treino2: workout.treino2 ? workout.treino2.replace(/;/g, '\n') : '',
-                            treino3: workout.treino3 ? workout.treino3.replace(/;/g, '\n') : '',
-                            treino4: workout.treino4 ? workout.treino4.replace(/;/g, '\n') : '',
-                            treino5: workout.treino5 ? workout.treino5.replace(/;/g, '\n') : '',
+                            // Mapear arrays de strings e adicionar '\n' ao final de cada string
+                            treino1: Array.isArray(workout.treino1) ? workout.treino1.join('\n') : workout.treino1,
+                            treino2: Array.isArray(workout.treino2) ? workout.treino2.join('\n') : workout.treino2,
+                            treino3: Array.isArray(workout.treino3) ? workout.treino3.join('\n') : workout.treino3,
+                            treino4: Array.isArray(workout.treino4) ? workout.treino4.join('\n') : workout.treino4,
+                            treino5: Array.isArray(workout.treino5) ? workout.treino5.join('\n') : workout.treino5,
                         }));
                     setWorkouts(filteredWorkouts);
                 }
