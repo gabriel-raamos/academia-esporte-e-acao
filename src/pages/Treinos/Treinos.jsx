@@ -23,12 +23,11 @@ export default function Treinos() {
                         .filter(workout => workout.visibility)
                         .map(workout => ({
                             ...workout,
-                            // Mapear arrays de strings e adicionar '\n' ao final de cada string
-                            treino1: Array.isArray(workout.treino1) ? workout.treino1.join('\n') : workout.treino1,
-                            treino2: Array.isArray(workout.treino2) ? workout.treino2.join('\n') : workout.treino2,
-                            treino3: Array.isArray(workout.treino3) ? workout.treino3.join('\n') : workout.treino3,
-                            treino4: Array.isArray(workout.treino4) ? workout.treino4.join('\n') : workout.treino4,
-                            treino5: Array.isArray(workout.treino5) ? workout.treino5.join('\n') : workout.treino5,
+                            treino1: Array.isArray(workout.treino1) ? workout.treino1 : [''],
+                            treino2: Array.isArray(workout.treino2) ? workout.treino2 : [''],
+                            treino3: Array.isArray(workout.treino3) ? workout.treino3 : [''],
+                            treino4: Array.isArray(workout.treino4) ? workout.treino4 : [''],
+                            treino5: Array.isArray(workout.treino5) ? workout.treino5 : [''],
                         }));
                     setWorkouts(filteredWorkouts);
                 }
@@ -79,19 +78,19 @@ export default function Treinos() {
 
     const renderSerie = () => {
         const workout = workouts[currentWorkoutIndex];
-        switch (currentSerieIndex) {
-            case 0:
-                return workout.treino1;
-            case 1:
-                return workout.treino2;
-            case 2:
-                return workout.treino3;
-            case 3:
-                return workout.treino4;
-            case 4:
-                return workout.treino5;
-            default:
-                return null;
+        const series = [
+            workout.treino1,
+            workout.treino2,
+            workout.treino3,
+            workout.treino4,
+            workout.treino5
+        ];
+
+        const currentSerie = series[currentSerieIndex];
+        if (Array.isArray(currentSerie) && currentSerie.length === 1 && currentSerie[0] === '') {
+            return 'Série não criada';
+        } else {
+            return Array.isArray(currentSerie) ? currentSerie.join('\n') : 'Série não criada';
         }
     };
 
@@ -100,20 +99,20 @@ export default function Treinos() {
             <div className="grid grid-rows-2 justify-center items-center text-lg">
                 <p className="bg-blue-700 text-white rounded-full font-bold p-5 my-5 text-xl">Carregando...</p>
             </div>
-        )
+        );
     } else if (error) {
         return (
             <div className="grid grid-rows-2 justify-center items-center text-lg">
                 <p className="bg-blue-700 text-white rounded-full font-bold p-5 my-5 text-xl">Ocorreu um erro ao usar os dados: {error.message}</p>
             </div>
-        )
+        );
     }
 
     return (
         <div>
             {role === 'admin' && (
                 <div className="grid grid-rows-2 justify-center items-center">
-                    <div className='flex justify-center'>
+                    <div className="flex justify-center">
                         <Link to="../usuarios">
                             <button
                                 className="bg-blue-700 text-white rounded-full font-bold p-5 my-5 text-xl transition hover:bg-blue-500 hover:-translate-y-1 duration-500"
@@ -123,7 +122,7 @@ export default function Treinos() {
                         </Link>
                     </div>
 
-                    <div className='flex justify-center'>
+                    <div className="flex justify-center">
                         <Link to="../pagamentolista">
                             <button
                                 className="bg-blue-700 text-white rounded-full font-bold p-5 my-5 text-xl transition hover:bg-blue-500 hover:-translate-y-1 duration-500"
@@ -135,25 +134,25 @@ export default function Treinos() {
                 </div>
             )}
             {workouts.length > 0 ? (
-                <section className='mb-5' >
+                <section className="mb-5">
                     <div className="flex justify-center items-center">
                         <h2 className="bg-blue-700 text-white rounded-full font-bold p-5 my-5 text-xl">
                             Informação sobre os treinos:
                         </h2>
                     </div>
 
-                    <div className='flex justify-center'>
-                        <div className='border-4 border-blue-700 rounded-xl' >
-                            <div className='flex justify-center text-blue-700 font-bold my-5 text-lg' >
+                    <div className="flex justify-center">
+                        <div className="border-4 border-blue-700 rounded-xl">
+                            <div className="flex justify-center text-blue-700 font-bold my-5 text-lg">
                                 <p>Treino {currentWorkoutIndex + 1} de {workouts.length}</p>
                             </div>
                             <div className="flex justify-center text-lg rounded-xl p-5 my-5 mx-3 border-4 text-blue-700 border-blue-700 font-bold md:m-5 whitespace-pre-line overflow-y-auto">
-                                <div className='fixed-width md:fixed-lg-width'>
+                                <div className="fixed-width md:fixed-lg-width">
                                     <div className="flex justify-center items-center mb-4">
                                         <p>Série {currentSerieIndex + 1} de 5</p>
                                     </div>
                                     <div className="flex items-center justify-center border-blue-700 border-4 m-2 p-5 rounded-lg">
-                                        <p>{renderSerie()}</p>
+                                        <p className="justify-center flex">{renderSerie()}</p>
                                     </div>
                                 </div>
                             </div>
