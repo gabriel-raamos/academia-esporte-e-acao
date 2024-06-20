@@ -28,7 +28,7 @@ export default function PagamentoLista() {
 
     const fetchPagamentos = async () => {
         try {
-            const response = await axios.get(`http://localhost:5000/api/pagamento/mostrarpagamentosreverso`);
+            const response = await axios.get(`https://pi-academia.vercel.app/api/pagamento/mostrarpagamentosreverso`);
             console.log("Dados da API de pagamentos:", response.data); // Adicionando log para ver os dados
 
             const pagamentosData = response.data;
