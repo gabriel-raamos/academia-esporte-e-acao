@@ -68,7 +68,7 @@ function ModalSeries({ treino, onClose }) {
                                 <div key={index}>
                                     <div className="my-3">
                                         <div className="my-2 flex items-center justify-center">
-                                            <label>{`Treino ${index + 1}: `}</label>
+                                            <label>{`Série ${index + 1}: `}</label>
                                         </div>
                                         <div>
                                             <button
