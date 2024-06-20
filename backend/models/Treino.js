@@ -1,11 +1,11 @@
 import mongoose, { Schema } from 'mongoose'
 
 const TreinoSchema = new mongoose.Schema({
-    treino1: { type: String },
-    treino2: { type: String },
-    treino3: { type: String },
-    treino4: { type: String },
-    treino5: { type: String },
+    treino1: { type: Array },
+    treino2: { type: Array },
+    treino3: { type: Array },
+    treino4: { type: Array },
+    treino5: { type: Array },
     visibility: {type: Boolean},
     clienteID : { type: Schema.Types.ObjectId, ref: 'Cliente' }
 })

@@ -30,7 +30,7 @@ export default function LoginForm() {
             // alert(testName.name)
 
             // alert('Login efetuado com sucesso.');
-            alert(response.data.message)
+            // alert(response.data.message)
 
             // window.location.reload()
             window.location.href = '/'

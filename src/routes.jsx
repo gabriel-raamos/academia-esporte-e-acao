@@ -8,6 +8,7 @@ import FaleConosco from './pages/FaleConosco/FaleConosco';
 import Treinos from './pages/Treinos/Treinos';
 import Usuarios from './pages/Usuarios/Usuarios'
 import Pagamento from './pages/Pagamento/Pagamento';
+import PagamentoLista from './pages/PagamentoLista/PagamentoLista';
 
 export default function App() {
   return (
@@ -22,6 +23,7 @@ export default function App() {
           <Route path="/treinos" element={<Treinos />} />
           <Route path="/usuarios" element={<Usuarios />} />
           <Route path="/pagamento" element={<Pagamento />} />
+          <Route path="/pagamentolista" element={<PagamentoLista />} />
         </Routes>
       </div>
       <div className='footer'>

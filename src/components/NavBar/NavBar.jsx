@@ -82,7 +82,7 @@ export default function NavBar() {
 
                     <div className="flex justify-center items-center h-2/3 w-2/3 pl-8 md:pl-0" >
                         <button
-                            className="text-white text-sm md:text-xl py-2 md:py-5 px-2 mt-7 md:mt-0 rounded-full font-bold transition duration-500 hover:bg-blue-700 focus:bg-blue-700 hover:shadow-[0px_0px_20px_10px] hover:shadow-[#1d4ed8]"
+                            className="text-white text-sm md:text-xl py-2 md:py-5 px-2 mt-7 md:mt-0 rounded-full font-bold transition duration-500 hover:bg-blue-300 focus:bg-blue-300 hover:shadow-[0px_0px_20px_10px] hover:shadow-[#1d4ed8]"
                             disabled
                         >
                             Treinos

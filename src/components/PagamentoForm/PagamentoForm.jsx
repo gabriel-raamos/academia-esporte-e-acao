@@ -66,14 +66,18 @@ function Pagamento() {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        const updatedFormData = {
-            ...formData,
-            transactionID: generateTransactionID(),
-            approvalCode: generateApprovalCode(),
-            paymentStatus: 'completed'
-        };
-
         try {
+            const brasiliaDate = new Date().toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' });
+
+            const updatedFormData = {
+                ...formData,
+                transactionID: generateTransactionID(),
+                approvalCode: generateApprovalCode(),
+                paymentStatus: 'completed',
+                createdAt: brasiliaDate,
+                updatedAt: brasiliaDate
+            };
+
             await axios.post('https://pi-academia.vercel.app/api/pagamento/registrarpagamento', updatedFormData)
 
             await axios.put(`https://pi-academia.vercel.app/api/cliente/updateActive/${id}`, { active: true })

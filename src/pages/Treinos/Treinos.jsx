@@ -111,14 +111,26 @@ export default function Treinos() {
     return (
         <div>
             {role === 'admin' && (
-                <div className="flex justify-center items-center">
-                    <Link to="../usuarios">
-                        <button
-                            className="bg-blue-700 text-white rounded-full font-bold p-5 my-5 text-xl transition hover:bg-blue-500 hover:-translate-y-1 duration-500"
-                        >
-                            Ir para Usuários.
-                        </button>
-                    </Link>
+                <div className="grid grid-rows-2 justify-center items-center">
+                    <div className='flex justify-center'>
+                        <Link to="../usuarios">
+                            <button
+                                className="bg-blue-700 text-white rounded-full font-bold p-5 my-5 text-xl transition hover:bg-blue-500 hover:-translate-y-1 duration-500"
+                            >
+                                Ir para Usuários.
+                            </button>
+                        </Link>
+                    </div>
+
+                    <div className='flex justify-center'>
+                        <Link to="../pagamentolista">
+                            <button
+                                className="bg-blue-700 text-white rounded-full font-bold p-5 my-5 text-xl transition hover:bg-blue-500 hover:-translate-y-1 duration-500"
+                            >
+                                Ir para histórico de pagamentos.
+                            </button>
+                        </Link>
+                    </div>
                 </div>
             )}
             {workouts.length > 0 ? (
