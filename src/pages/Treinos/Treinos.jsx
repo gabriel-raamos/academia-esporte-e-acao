@@ -94,6 +94,16 @@ export default function Treinos() {
         }
     };
 
+    if (!localStorage.getItem('json-data')) {
+        return (
+            <div className='flex justify-center items-center' >
+                <Link to='../login' >
+                    <p className="bg-blue-700 text-white rounded-full font-bold p-5 my-5 text-xl">Verifique se está logado</p>
+                </Link>
+            </div>
+        )
+    }
+
     if (loading) {
         return (
             <div className="grid grid-rows-2 justify-center items-center text-lg">
@@ -103,7 +113,12 @@ export default function Treinos() {
     } else if (error) {
         return (
             <div className="grid grid-rows-2 justify-center items-center text-lg">
-                <p className="bg-blue-700 text-white rounded-full font-bold p-5 my-5 text-xl">Ocorreu um erro ao usar os dados: {error.message}</p>
+                <div className='flex justify-center items-center' >
+                    <p className="bg-blue-700 text-white rounded-full font-bold p-5 my-5 text-xl">Ocorreu um erro ao usar os dados: {error.message}</p>
+                </div>
+                <div className='flex justify-center items-center' >
+                    <p className="bg-blue-700 text-white rounded-full font-bold p-5 my-5 text-xl">Verifique se está logado</p>
+                </div>
             </div>
         );
     }

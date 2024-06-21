@@ -75,3 +75,19 @@ textarea {
     width: 275px;
     height: auto;
 }
+
+@keyframes teste1 {
+    from {
+        transform: translateX(100%);
+    }
+
+    to {
+        transform: translateX(0%);
+    }
+}
+
+.translate-test {
+    -webkit-animation: teste1 1s ease;
+    -moz-animation: teste1 1s ease;
+    animation: teste1 1s ease;
+}

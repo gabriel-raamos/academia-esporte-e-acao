@@ -1,12 +1,49 @@
+import { useEffect, useState } from "react";
 import Card2 from "../../components/Card2/Card2";
 import RegisterFormAPI from "../../components/RegisterFormAPI/RegisterFormAPI";
 
 import { CgGym } from "react-icons/cg";
 import { GiGymBag } from "react-icons/gi";
 import { MdOutlineDirectionsBike } from "react-icons/md";
+import axios from "axios";
 // import APITest from "../../components/APITest/APITest";
 
 export default function Home() {
+
+    const authHeader = localStorage.getItem('authorization')
+
+    const [name, setName] = useState('')
+    const [loading, setLoading] = useState(true)
+    const [error, setError] = useState('')
+
+
+    const fetchName = async () => {
+        const id = JSON.parse(localStorage.getItem('json-data')).id
+
+        try {
+            const response = await axios.get(`https://pi-academia.vercel.app/api/cliente/findbyid/${id}`)
+
+            const name = response.data.name
+            setName(name)
+        }
+
+        catch (error) {
+            console.log(error)
+            setError(error)
+        }
+
+        finally {
+            setLoading(false);
+        }
+
+    }
+
+    useEffect(() => {
+        if (authHeader) {
+            fetchName();
+        }
+    }, [authHeader]);
+
     return (
         <section>
             <section className="bg-gym3 bg-cover bg-no-repeat h-90vh items-center flex justify-center static bg-fixed bg-blend-darken bg-black bg-opacity-50 shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)]" >
@@ -28,11 +65,29 @@ export default function Home() {
 
                 <Card2 />
 
-                <div className='flex justify-center items-center static'>
-
-                    <RegisterFormAPI />
-
-                </div>
+                {authHeader ? (
+                    <section className="flex justify-center items-center text-3xl font-bold">
+                        <div className="bg-blue-700 rounded-3xl p-5 m-5 overflow-hidden text-white text-center flex flex-col justify-between hover:scale-105 transition duration-500">
+                            {loading ? (
+                                <div>
+                                    <p>Carregando...</p>
+                                </div>
+                            ) : error ? (
+                                <div>
+                                    <p>Ocorreu um erro: {error.message}</p>
+                                </div>
+                            ) : (
+                                <div>
+                                    <p>Seja bem vindo {name}!</p>
+                                </div>
+                            )}
+                        </div>
+                    </section>
+                ) : (
+                    <div className='flex justify-center items-center static'>
+                        <RegisterFormAPI />
+                    </div>
+                )}
 
             </section>
 
