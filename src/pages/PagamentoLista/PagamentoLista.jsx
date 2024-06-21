@@ -64,6 +64,8 @@ export default function PagamentoLista() {
         }
     };
 
+    const [searchTerm, setSearchTerm] = useState('');
+
     useEffect(() => {
         const fetchData = async () => {
             await fetchRole()
@@ -92,38 +94,44 @@ export default function PagamentoLista() {
                 <section>
                     <div className="flex justify-center items-center mt-5">
                         <div>
+                            <div className="flex justify-center items-center" >
+                                <input
+                                    type="text"
+                                    placeholder="Buscar por nome do cliente"
+                                    value={searchTerm}
+                                    onChange={(e) => setSearchTerm(e.target.value)}
+                                    className="mb-4 border-4 border-blue-700 rounded-xl p-2 text-lg w-72"
+                                />
+                            </div>
                             <div className="md:grid md:grid-cols-2 gap-4 mx-5">
-                                {pagamentos.map((pagamento) => (
-                                    <div key={pagamento._id} className="mb-4 grid grid-cols-2 justify-center items-center border-blue-700 border-4 font-bold rounded-xl">
-                                        <p className="text-blue-700 text-lg mx-2 text-center">
-                                            Cliente: {pagamento.clienteName}
-                                        </p>
-                                        {/* <p className="text-blue-700 text-lg mx-2 text-center">
-                                            Email: {pagamento.clienteEmail}
-                                        </p> */}
-                                        <p className="text-blue-700 text-lg mx-2 text-center">
-                                            Telefone: {pagamento.clientePhone}
-                                        </p>
-                                        <p className="text-blue-700 text-lg mx-2 text-center">
-                                            Valor: R$ {pagamento.paymentAmount.toFixed(2)}
-                                        </p>
-                                        <p className="text-blue-700 text-lg mx-2 text-center">
-                                            Método: {pagamento.paymentMethod}
-                                        </p>
-                                        {/* <p className="text-blue-700 text-lg mx-2 text-center">
-                                            Status: {pagamento.paymentStatus}
-                                        </p> */}
-                                        <p className="text-blue-700 text-lg mx-2 text-center">
-                                            Data/Hora: {moment.tz(pagamento.createdAt, 'America/Sao_Paulo').format('YYYY-MM-DD HH:mm:ss')}
-                                        </p>
-                                        <p className="text-blue-700 text-lg mx-2 text-center mb-2">
-                                            CPF: {pagamento.clienteCPF}
-                                        </p>
-                                        <p className="text-blue-700 text-lg mx-2 text-center mb-2">
-                                            ID: {pagamento._id}
-                                        </p>
-                                    </div>
-                                ))}
+                                {pagamentos
+                                    .filter(pagamento =>
+                                        pagamento.clienteName.toLowerCase().includes(searchTerm.toLowerCase()))
+                                    .map((pagamento) => (
+                                        <div key={pagamento._id} className="mb-4 grid grid-cols-2 justify-center items-center border-blue-700 border-4 font-bold rounded-xl">
+                                            <p className="text-blue-700 text-lg mx-2 text-center">
+                                                Cliente: {pagamento.clienteName}
+                                            </p>
+                                            <p className="text-blue-700 text-lg mx-2 text-center">
+                                                Telefone: {pagamento.clientePhone}
+                                            </p>
+                                            <p className="text-blue-700 text-lg mx-2 text-center">
+                                                Valor: R$ {pagamento.paymentAmount.toFixed(2)}
+                                            </p>
+                                            <p className="text-blue-700 text-lg mx-2 text-center">
+                                                Método: {pagamento.paymentMethod}
+                                            </p>
+                                            <p className="text-blue-700 text-lg mx-2 text-center">
+                                                Data/Hora: {moment.tz(pagamento.createdAt, 'America/Sao_Paulo').format('YYYY-MM-DD HH:mm:ss')}
+                                            </p>
+                                            <p className="text-blue-700 text-lg mx-2 text-center mb-2">
+                                                CPF: {pagamento.clienteCPF}
+                                            </p>
+                                            <p className="text-blue-700 text-lg mx-2 text-center mb-2">
+                                                ID: {pagamento._id}
+                                            </p>
+                                        </div>
+                                    ))}
                             </div>
                         </div>
                     </div>

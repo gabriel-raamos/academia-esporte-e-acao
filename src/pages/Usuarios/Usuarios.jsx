@@ -103,7 +103,7 @@ export default function Usuarios() {
                         placeholder="Buscar usuários pelo nome"
                         value={searchTerm}
                         onChange={e => setSearchTerm(e.target.value)}
-                        className="mb-4 border-4 border-blue-700 rounded-xl p-2 text-lg"
+                        className="mb-4 border-4 border-blue-700 rounded-xl p-2 text-lg w-72"
                     />
                     <div>
                         <div className="md:grid md:grid-cols-2 gap-4">
