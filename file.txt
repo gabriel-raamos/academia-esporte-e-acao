@@ -26,8 +26,8 @@
   
 }
 
-• adicionar campo de busca de cliente filtrando por nome e cargo
 • corrigir sessão jwt
+• adicionar campo de busca de cliente filtrando por nome e cargo - FEITO
 • mudar cadastro de treinos para uma lista - FEITO
 • botão pra abrir tela com todos os pagamentos já cadastrados - FEITO
 • passar o cliente para ativo após pagamento ser efetuado - FEITO

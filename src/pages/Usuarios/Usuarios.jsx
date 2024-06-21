@@ -5,8 +5,6 @@ import axios from "axios";
 
 export default function Usuarios() {
 
-    // const role = JSON.parse(localStorage.getItem('json-data')).role
-
     const id = JSON.parse(localStorage.getItem('json-data')).id
 
     const [data, setData] = useState([])
@@ -18,25 +16,21 @@ export default function Usuarios() {
 
     const [isAdmin, setIsAdmin] = useState(null)
 
+    const [searchTerm, setSearchTerm] = useState('')
+
     const fetchData = async () => {
         try {
             const response = await axios.get('https://pi-academia.vercel.app/api/cliente/clientealfabetico')
             setData(response.data.clientes)
-            // setLoading(false)
-        }
-
-        catch (error) {
+        } catch (error) {
             setError(error)
             setLoading(false)
         }
     }
 
-    const fetchRole = async() => {
+    const fetchRole = async () => {
         try {
-            // alert(id)
             const response = await axios.get(`https://pi-academia.vercel.app/api/cliente/findbyid/${id}`)
-
-            // alert(JSON.stringify(response.data))
 
             if (!response) {
                 alert('Cliente não foi encontrado.')
@@ -48,9 +42,7 @@ export default function Usuarios() {
 
             setIsAdmin(response.data.role)
             setLoading(false)
-        }
-
-        catch (error) {
+        } catch (error) {
             alert('Ocorreu um erro: ' + error)
             setLoading(false)
             setError(error)
@@ -58,7 +50,7 @@ export default function Usuarios() {
     }
 
     useEffect(() => {
-        fetchRole(),
+        fetchRole()
         fetchData()
     }, [])
 
@@ -74,18 +66,19 @@ export default function Usuarios() {
 
     const salvarCliente = async (clienteAtualizado) => {
         try {
-            // const response = await axios.put(`https://pi-academia.vercel.app/api/cliente/${clienteAtualizado.email}`, clienteAtualizado)
             const response = await axios.put('https://pi-academia.vercel.app/api/cliente/atualizarcliente', clienteAtualizado)
 
             setData(data.map(cliente => (cliente._id === response.data._id ? response.data : cliente)))
 
             handleFecharModal()
-        }
-
-        catch (error) {
+        } catch (error) {
             alert('erro ao atualizar cliente: ', error)
         }
     }
+
+    const filteredData = data.filter(cliente => 
+        cliente.name.toLowerCase().includes(searchTerm.toLowerCase())
+    )
 
     if (loading) {
         return (
@@ -103,13 +96,20 @@ export default function Usuarios() {
 
     return (
         <section>
-            {isAdmin == 'admin' ? (
-                <div className="flex justify-center items-center mt-5" >
+            {isAdmin === 'admin' ? (
+                <div className="flex flex-col justify-center items-center mt-5">
+                    <input
+                        type="text"
+                        placeholder="Buscar usuários pelo nome"
+                        value={searchTerm}
+                        onChange={e => setSearchTerm(e.target.value)}
+                        className="mb-4 border-4 border-blue-700 rounded-xl p-2 text-lg"
+                    />
                     <div>
-                        <div className="md:grid md:grid-cols-2 gap-4" >
-                            {data.map((cliente) => (
-                                <div key={cliente._id} className="mb-4 grid grid-cols-2 justify-center items-center border-blue-700 border-4 font-bold rounded-xl" >
-                                    <p className="text-blue-700 text-lg mx-2 text-center" >{cliente.name.length > 10 ? `${cliente.name.substring(0,10)}...` : cliente.name}</p>
+                        <div className="md:grid md:grid-cols-2 gap-4">
+                            {filteredData.map((cliente) => (
+                                <div key={cliente._id} className="mb-4 grid grid-cols-2 justify-center items-center border-blue-700 border-4 font-bold rounded-xl">
+                                    <p className="text-blue-700 text-lg mx-2 text-center">{cliente.name.length > 10 ? `${cliente.name.substring(0, 10)}...` : cliente.name}</p>
 
                                     <button
                                         className="bg-blue-700 text-white rounded-full p-3 my-5 mx-2 text-lg transition hover:bg-blue-500 hover:-translate-y-1 duration-500"
@@ -129,16 +129,15 @@ export default function Usuarios() {
                         </div>
                     </div>
                 </div>
-
             ) : (
-                <div className="justify-center items-center" >
-                    <div className="flex justify-center items-center" >
-                        <p className="bg-blue-700 text-white rounded-full font-bold p-5 my-5 text-xl" >Essa página só deve ser acessada por pessoas com permissão</p>
+                <div className="justify-center items-center">
+                    <div className="flex justify-center items-center">
+                        <p className="bg-blue-700 text-white rounded-full font-bold p-5 my-5 text-xl">Essa página só deve ser acessada por pessoas com permissão</p>
                     </div>
 
-                    <div className="flex justify-center items-center" >
-                        <Link to='../' >
-                            <button className="bg-blue-700 text-white rounded-full font-bold p-5 my-5 text-xl transition hover:bg-blue-500 hover:-translate-y-1 duration-500" >
+                    <div className="flex justify-center items-center">
+                        <Link to='../'>
+                            <button className="bg-blue-700 text-white rounded-full font-bold p-5 my-5 text-xl transition hover:bg-blue-500 hover:-translate-y-1 duration-500">
                                 Clique aqui para voltar para a home page.
                             </button>
                         </Link>
