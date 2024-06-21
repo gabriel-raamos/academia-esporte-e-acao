@@ -190,9 +190,9 @@ export default function Treinos() {
                     </div>
                 </section>
             ) : (
-                <p className="bg-blue-700 text-white rounded-full font-bold p-5 my-5 text-xl">
-                    Não há treinos disponíveis.
-                </p>
+                <div className="grid grid-rows-2 justify-center items-center text-lg">
+                    <p className="bg-blue-700 text-white rounded-full font-bold p-5 my-5 text-xl">Não há treinos disponíveis.</p>
+                </div>
             )}
         </div>
     );
