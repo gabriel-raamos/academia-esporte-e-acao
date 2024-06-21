@@ -22,12 +22,12 @@ export default function Form() {
     const onSave = async (e) => {
         e.preventDefault()
 
-        if (password != confirmPassword) {
-            return alert('senha diferente')
+        if (password !== confirmPassword) {
+            return alert('As senhas não coincidem');
         }
 
-        const active = false
-        const role = 'cliente'
+        const active = false;
+        const role = 'cliente';
 
         const userData = {
             name,
@@ -43,32 +43,47 @@ export default function Form() {
             active
         };
 
-        // alert(name+email+password+confirmPassword+date+phone+cpf+cep+height+weight)
-        // alert(userData.active)
+        console.log('Dados do usuário antes do envio:', userData);
 
         try {
-            await axios.post("https://pi-academia.vercel.app/api/cliente/register", userData);
-            alert('Registro efetuado com sucesso.')
+            const response = await axios.post("https://pi-academia.vercel.app/api/cliente/register", userData, {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            console.log(response)
+            alert('Registro efetuado com sucesso.');
 
             // Resetar os campos após o envio bem-sucedido
-            // setName('')
-            // setEmail('')
-            // setPassword('')
-            // setConfirmPassword('')
-            // setDate('')
+            setName('');
+            setEmail('');
+            setPassword('');
+            setConfirmPassword('');
+            setDate('');
 
-            // setPhone('')
-            // setCpf('')
-            // setCep('')
-            // setHeight('')
-            // setWeight('')
+            setPhone('');
+            setCpf('');
+            setCep('');
+            setHeight('');
+            setWeight('');
 
-            window.location.reload()
-
-            setCurrentPage(1);  // blueefinir para a primeira página se necessário
+            window.location.reload();
+            setCurrentPage(1);  // Redefinir para a primeira página se necessário
 
         } catch (error) {
-            alert('Error:', error);
+            if (error.response) {
+                // O servidor retornou um código de status fora do intervalo 2xx
+                console.error('Erro na resposta do servidor:', error.response.data);
+                alert(`Erro: ${error.response.data.message || 'Erro ao registrar.'}`);
+            } else if (error.request) {
+                // A requisição foi feita mas não houve resposta
+                console.error('Erro na requisição:', error.request);
+                alert('Erro na comunicação com o servidor. Tente novamente mais tarde.');
+            } else {
+                // Algo aconteceu na configuração da requisição que disparou um erro
+                console.error('Erro:', error.message);
+                alert('Ocorreu um erro inesperado. Tente novamente.');
+            }
         }
     }
 
@@ -81,7 +96,7 @@ export default function Form() {
     };
 
     return (
-        <form className="rounded-xl p-5 my-5 border-4 border-blue-700" onSubmit={onSave} >
+        <form className="rounded-xl p-5 my-5 border-4 border-blue-700" onSubmit={onSave}>
 
             <h1 className="text-center text-blue-700 font-bold text-lg">Ainda não tem uma conta? <br /> Cadastre-se aqui!</h1>
 
@@ -118,28 +133,22 @@ export default function Form() {
             )}
 
             <div className="justify-center items-center flex">
-
                 {currentPage === 1 && (
-                    <div className="flex flex-col md:flex-row justify-center items-center" >
+                    <div className="flex flex-col md:flex-row justify-center items-center">
                         <button
+                            type="button"
                             onClick={nextPage}
                             className="p-5 px-10 bg-blue-700 m-3 text-white text-xl rounded-xl transition hover:bg-blue-500 hover:-translate-y-3 duration-500"
                         >
                             Próximo
                         </button>
-
-                        {/* <button
-                            disabled
-                            className="p-5 px-10 bg-blue-400 m-3 text-white text-xl rounded-xl transition hover:bg-blue-300 hover:-translate-y-3 duration-500"
-                        >
-                            Enviar
-                        </button> */}
                     </div>
                 )}
 
                 {currentPage === 2 && (
-                    <div className="flex flex-col md:flex-row justify-center items-center" >
+                    <div className="flex flex-col md:flex-row justify-center items-center">
                         <button
+                            type="button"
                             onClick={prevPage}
                             className="p-5 px-10 bg-blue-700 m-3 text-white text-xl rounded-xl transition hover:bg-blue-500 hover:-translate-y-3 duration-500"
                         >
@@ -148,18 +157,14 @@ export default function Form() {
 
                         <Button text="Enviar" />
                     </div>
-
                 )}
             </div>
-
-
         </form>
     )
 }
 
 function FormBox1(prop) {
     return (
-
         <div>
             <Textbox
                 obrigatorio={true}
@@ -200,16 +205,12 @@ function FormBox1(prop) {
                 tipo={"date"}
                 whenChanged={valor => prop.setDate(valor)}
             />
-
         </div>
-
     )
 }
 
 function FormBox2(prop) {
-
     return (
-
         <div>
             <Textbox
                 obrigatorio={true}
@@ -251,7 +252,5 @@ function FormBox2(prop) {
                 whenChanged={valor => prop.setWeight(valor)}
             />
         </div>
-
     )
-
 }
