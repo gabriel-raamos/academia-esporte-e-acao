@@ -128,12 +128,12 @@ export default function Form() {
                             Próximo
                         </button>
 
-                        <button
+                        {/* <button
                             disabled
                             className="p-5 px-10 bg-blue-400 m-3 text-white text-xl rounded-xl transition hover:bg-blue-300 hover:-translate-y-3 duration-500"
                         >
                             Enviar
-                        </button>
+                        </button> */}
                     </div>
                 )}
 
