@@ -74,13 +74,10 @@ router.post('/logarcliente', async (req, res) => {
             return res.status(400).json({ message: 'Invalid credentials' });
         }
 
-        const accessToken = jwt.sign({ email: cliente.email, password: cliente.password }, process.env.ACCESS_TOKEN_SECRET);
+        const accessToken = jwt.sign({ id: cliente._id, email: cliente.email }, process.env.ACCESS_TOKEN_SECRET);
 
         const clienteData = {
-            id: cliente._id,
-            name: cliente.name,
-            email: cliente.email,
-            role: cliente.role
+            id: cliente._id
         }
 
         return res.json({ message: 'Login efetuado com sucesso.', accessToken, clienteData });
@@ -90,39 +87,6 @@ router.post('/logarcliente', async (req, res) => {
         return res.status(500).json({ message: 'Internal server error' });
     }
 });
-
-function authenticateToken(req, res, next) {
-    // const authHeader = req.headers['authorization']
-
-    const token = localStorage.getItem('authorization')
-
-    // console.log(authHeader)
-    // const token = authHeader && authHeader.split(' ')[1]
-
-    if (token == null) {
-        return res.sendStatus(401)
-    }
-
-    jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
-        if (err) {
-            return res.sendStatus(403)
-        }
-
-        req.user = user
-
-        // res.send(authHeader)
-
-        next()
-    })
-}
-
-router.get('/protected', authenticateToken, (req, res) => {
-    res.send('JWT: ' + req.headers['authorization'])
-})
-
-router.get('/protected2', (req, res) => {
-    res.send('JWT: ' + req.headers['authorization'])
-})
 
 router.get('/clienteemail/:email', async (req, res) => {
     const email = req.params.email
@@ -208,6 +172,38 @@ router.put('/updateActive/:id', async (req,res) => {
     } catch (error) {
         res.status(500).json({ message: 'Erro ao atualizar cliente', error });
     }
+})
+
+// .
+// TESTING JWT
+// .
+
+function authenticateToken(req, res, next) {
+    // const authHeader = req.headers['authorization']
+
+    const token = localStorage.getItem('authorization')
+
+    if (token === null) {
+        return res.send('TOKEN NULL')
+    }
+
+    jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
+        if (err) {
+            return res.sendStatus(403)
+        }
+
+        req.user = user
+
+        next()
+    })
+}
+
+router.get('/protected', authenticateToken, (req, res) => {
+    res.send('JWT: ' + req.headers['authorization'])
+})
+
+router.get('/protected2', (req, res) => {
+    res.send('JWT: ' + req.headers['authorization'])
 })
 
 export default router

@@ -27,6 +27,7 @@
 }
 
 • corrigir sessão jwt
+• o usuário não pode acessar os treinos se não estiver marcado como desativado - FEITO
 • adicionar campo de busca de cliente filtrando por nome e cargo - FEITO
 • mudar cadastro de treinos para uma lista - FEITO
 • botão pra abrir tela com todos os pagamentos já cadastrados - FEITO
