@@ -10,6 +10,8 @@ export default function Treinos() {
     const [error, setError] = useState(null);
     const [role, setRole] = useState('');
 
+    const [active, setActive] = useState(false)
+
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -32,6 +34,7 @@ export default function Treinos() {
                     setWorkouts(filteredWorkouts);
                 }
 
+                setActive(fetchedData.active)
                 setRole(fetchedData.role);
                 setLoading(false);
             } catch (error) {
@@ -125,88 +128,97 @@ export default function Treinos() {
 
     return (
         <div>
-            {role === 'admin' && (
-                <div className="grid grid-rows-2 justify-center items-center">
-                    <div className="flex justify-center">
-                        <Link to="../usuarios">
-                            <button
-                                className="bg-blue-700 text-white rounded-full font-bold p-5 my-5 text-xl transition hover:bg-blue-500 hover:-translate-y-1 duration-500"
-                            >
-                                Ir para Usuários.
-                            </button>
-                        </Link>
-                    </div>
-
-                    <div className="flex justify-center">
-                        <Link to="../pagamentolista">
-                            <button
-                                className="bg-blue-700 text-white rounded-full font-bold p-5 my-5 text-xl transition hover:bg-blue-500 hover:-translate-y-1 duration-500"
-                            >
-                                Ir para histórico de pagamentos.
-                            </button>
-                        </Link>
-                    </div>
-                </div>
-            )}
-            {workouts.length > 0 ? (
-                <section className="mb-5">
-                    <div className="flex justify-center items-center">
-                        <h2 className="bg-blue-700 text-white rounded-full font-bold p-5 my-5 text-xl">
-                            Informação sobre os treinos:
-                        </h2>
-                    </div>
-
-                    <div className="flex justify-center">
-                        <div className="border-4 border-blue-700 rounded-xl">
-                            <div className="flex justify-center text-blue-700 font-bold my-5 text-lg">
-                                <p>Treino {currentWorkoutIndex + 1} de {workouts.length}</p>
+            {active ? (
+                <div>
+                    {role === 'admin' && (
+                        <div className="grid grid-rows-2 justify-center items-center">
+                            <div className="flex justify-center">
+                                <Link to="../usuarios">
+                                    <button
+                                        className="bg-blue-700 text-white rounded-full font-bold p-5 my-5 text-xl transition hover:bg-blue-500 hover:-translate-y-1 duration-500"
+                                    >
+                                        Ir para Usuários.
+                                    </button>
+                                </Link>
                             </div>
-                            <div className="flex justify-center text-lg rounded-xl p-5 my-5 mx-3 border-4 text-blue-700 border-blue-700 font-bold md:m-5 whitespace-pre-line overflow-y-auto">
-                                <div className="fixed-width md:fixed-lg-width">
-                                    <div className="flex justify-center items-center mb-4">
-                                        <p>Série {currentSerieIndex + 1} de 5</p>
+
+                            <div className="flex justify-center">
+                                <Link to="../pagamentolista">
+                                    <button
+                                        className="bg-blue-700 text-white rounded-full font-bold p-5 my-5 text-xl transition hover:bg-blue-500 hover:-translate-y-1 duration-500"
+                                    >
+                                        Ir para histórico de pagamentos.
+                                    </button>
+                                </Link>
+                            </div>
+                        </div>
+                    )}
+                    {workouts.length > 0 ? (
+                        <section className="mb-5">
+                            <div className="flex justify-center items-center">
+                                <h2 className="bg-blue-700 text-white rounded-full font-bold p-5 my-5 text-xl">
+                                    <p>{active}</p>
+                                    Informação sobre os treinos:
+                                </h2>
+                            </div>
+
+                            <div className="flex justify-center">
+                                <div className="border-4 border-blue-700 rounded-xl">
+                                    <div className="flex justify-center text-blue-700 font-bold my-5 text-lg">
+                                        <p>Treino {currentWorkoutIndex + 1} de {workouts.length}</p>
                                     </div>
-                                    <div className="flex items-center justify-center border-blue-700 border-4 m-2 p-5 rounded-lg">
-                                        <p className="justify-center flex">{renderSerie()}</p>
+                                    <div className="flex justify-center text-lg rounded-xl p-5 my-5 mx-3 border-4 text-blue-700 border-blue-700 font-bold md:m-5 whitespace-pre-line overflow-y-auto">
+                                        <div className="fixed-width md:fixed-lg-width">
+                                            <div className="flex justify-center items-center mb-4">
+                                                <p>Série {currentSerieIndex + 1} de 5</p>
+                                            </div>
+                                            <div className="flex items-center justify-center border-blue-700 border-4 m-2 p-5 rounded-lg">
+                                                <p className="justify-center flex">{renderSerie()}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div className="flex justify-center mt-4">
+                                        <button
+                                            onClick={debouncedPrevSerie}
+                                            className="bg-blue-700 active:bg-blue-900 text-white rounded-full font-bold p-3 mx-2 my-5 transition hover:bg-blue-500 hover:-translate-y-1 duration-500"
+                                        >
+                                            Série Anterior
+                                        </button>
+                                        <button
+                                            onClick={debouncedNextSerie}
+                                            className="bg-blue-700 active:bg-blue-900 text-white rounded-full font-bold p-3 mx-2 my-5 transition hover:bg-blue-500 hover:-translate-y-1 duration-500"
+                                        >
+                                            Próxima Série
+                                        </button>
                                     </div>
                                 </div>
                             </div>
 
                             <div className="flex justify-center mt-4">
                                 <button
-                                    onClick={debouncedPrevSerie}
-                                    className="bg-blue-700 active:bg-blue-900 text-white rounded-full font-bold p-3 mx-2 my-5 transition hover:bg-blue-500 hover:-translate-y-1 duration-500"
+                                    onClick={debouncedPrevWorkout}
+                                    className="bg-blue-700 active:bg-blue-900 text-white rounded-full font-bold p-3 mx-2 transition hover:bg-blue-500 hover:-translate-y-1 duration-500"
                                 >
-                                    Série Anterior
+                                    Treino Anterior
                                 </button>
                                 <button
-                                    onClick={debouncedNextSerie}
-                                    className="bg-blue-700 active:bg-blue-900 text-white rounded-full font-bold p-3 mx-2 my-5 transition hover:bg-blue-500 hover:-translate-y-1 duration-500"
+                                    onClick={debouncedNextWorkout}
+                                    className="bg-blue-700 active:bg-blue-900 text-white rounded-full font-bold p-3 mx-2 transition hover:bg-blue-500 hover:-translate-y-1 duration-500"
                                 >
-                                    Próxima Série
+                                    Próximo Treino
                                 </button>
                             </div>
+                        </section>
+                    ) : (
+                        <div className="grid grid-rows-2 justify-center items-center text-lg">
+                            <p className="bg-blue-700 text-white rounded-full font-bold p-5 my-5 text-xl">Não há treinos disponíveis.</p>
                         </div>
-                    </div>
-
-                    <div className="flex justify-center mt-4">
-                        <button
-                            onClick={debouncedPrevWorkout}
-                            className="bg-blue-700 active:bg-blue-900 text-white rounded-full font-bold p-3 mx-2 transition hover:bg-blue-500 hover:-translate-y-1 duration-500"
-                        >
-                            Treino Anterior
-                        </button>
-                        <button
-                            onClick={debouncedNextWorkout}
-                            className="bg-blue-700 active:bg-blue-900 text-white rounded-full font-bold p-3 mx-2 transition hover:bg-blue-500 hover:-translate-y-1 duration-500"
-                        >
-                            Próximo Treino
-                        </button>
-                    </div>
-                </section>
+                    )}
+                </div>
             ) : (
                 <div className="grid grid-rows-2 justify-center items-center text-lg">
-                    <p className="bg-blue-700 text-white rounded-full font-bold p-5 my-5 text-xl">Não há treinos disponíveis.</p>
+                    <p className="bg-blue-700 text-white rounded-full font-bold p-5 my-5 text-xl">Usuário sem plano mensal para exercícios.</p>
                 </div>
             )}
         </div>
