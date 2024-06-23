@@ -6,6 +6,9 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        'comicneue': [ 'Comic Neue', 'cursive' ]
+      },
       backgroundImage: {
         'gym': "url('./src/assets/images/invictus_go_Almaty_gym_zone_2022.jpeg')",
         'gym-bg': "url('./public/academia_widelg.jpg')",

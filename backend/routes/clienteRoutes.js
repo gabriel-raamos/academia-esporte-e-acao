@@ -4,6 +4,8 @@ import jwt from 'jsonwebtoken'
 import bcrypt from 'bcryptjs'
 import Cliente from '../models/Cliente.js'
 
+
+
 const router = express.Router()
 
 // test
@@ -181,7 +183,8 @@ router.put('/updateActive/:id', async (req,res) => {
 function authenticateToken(req, res, next) {
     // const authHeader = req.headers['authorization']
 
-    const token = localStorage.getItem('authorization')
+    // const token = localStorage.getItem('authorization')
+    const token = req.headers['authorization']
 
     if (token === null) {
         return res.send('TOKEN NULL')
@@ -189,7 +192,8 @@ function authenticateToken(req, res, next) {
 
     jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
         if (err) {
-            return res.sendStatus(403)
+            // return res.sendStatus(403)
+            return res.send("Token inválido")
         }
 
         req.user = user
@@ -199,11 +203,16 @@ function authenticateToken(req, res, next) {
 }
 
 router.get('/protected', authenticateToken, (req, res) => {
-    res.send('JWT: ' + req.headers['authorization'])
+    res.send('o teste funcionou')
 })
 
 router.get('/protected2', (req, res) => {
     res.send('JWT: ' + req.headers['authorization'])
+})
+
+router.get('/mostrarclientestoken', authenticateToken, async (req, res) => {
+    const response = await Cliente.find({});
+    res.send(response)
 })
 
 export default router
