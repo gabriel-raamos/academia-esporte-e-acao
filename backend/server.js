@@ -12,10 +12,10 @@ const port = 5000
 import indexRoutes from './routes/indexRoutes.js'
 
 app.use(cors({
-    origin: '*', // Permite todas as origens - use com cautela
+    origin: '*',
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'],
-    credentials: true // Habilita o uso de cookies e cabeçalhos de autorização
+    credentials: true
 }));
 
 app.use((req, res, next) => {

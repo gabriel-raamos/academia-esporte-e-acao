@@ -36,6 +36,8 @@ export default function NavBar() {
     const logout = async () => {
 
         try {
+            document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; SameSite=None; Secure";
+
             localStorage.removeItem('authorization')
             localStorage.removeItem('json-data')
             window.location.href = '/'
