@@ -43,7 +43,7 @@ router.use(cookieParser())
 router.post('/register', async (req, res) => {
 
     const { name, email, password, date, phone, cpf, cep, height, weight, role, active } = req.body
-    
+
     if (!role) {
         return res.status(400).json({ message: 'O campo role é obrigatório' });
     }
@@ -134,7 +134,7 @@ router.get('/findbyid/:id', async (req, res) => {
 
 })
 
-router.get('/findworkoutsbyid/:id', async (req,res) => {
+router.get('/findworkoutsbyid/:id', async (req, res) => {
 
     const _id = req.params.id
 
@@ -152,7 +152,7 @@ router.put('/atualizarcliente', async (req, res) => {
     const { _id, name, email, phone, cpf, cep, height, weight, active, role } = req.body
 
     try {
-        const cliente = await Cliente.findOneAndUpdate({_id}, {name, email, phone, cpf, cep, height, weight, active, role}, {new:true})
+        const cliente = await Cliente.findOneAndUpdate({ _id }, { name, email, phone, cpf, cep, height, weight, active, role }, { new: true })
 
         if (!cliente) {
             return res.status(404).json({ message: 'Cliente não encontrado.' })
@@ -167,8 +167,8 @@ router.put('/atualizarcliente', async (req, res) => {
 
 })
 
-router.get('/clientealfabetico', async (req,res) => {
-    
+router.get('/clientealfabetico', async (req, res) => {
+
     try {
         const clientes = await Cliente.find({}).collation({ locale: 'pt', strength: 1 }).sort({ name: 1 });
         res.json({ clientes });
@@ -179,14 +179,14 @@ router.get('/clientealfabetico', async (req,res) => {
 
 })
 
-router.put('/updateActive/:id', async (req,res) => {
+router.put('/updateActive/:id', async (req, res) => {
     const _id = req.params.id;
     const active = req.body.active;
 
     console.log('ID do usuário: ' + _id)
 
     try {
-        const cliente = await Cliente.findByIdAndUpdate({_id}, { active }, { new: true });
+        const cliente = await Cliente.findByIdAndUpdate({ _id }, { active }, { new: true });
 
         if (!cliente) {
             return res.status(404).json({ message: 'Cliente não encontrado' });
@@ -259,12 +259,17 @@ router.get('/protected2', authenticateTokenAdmin, (req, res) => {
 })
 
 router.get('/mostrarclientestoken', authenticateTokenAdmin, async (req, res) => {
-    const response = await Cliente.find({});
-    res.send(response)
+    try {
+        const response = await Cliente.find({});
+        res.send(response)
+    } catch (error) {
+        console.error('Erro ao buscar clientes:', error);
+        res.status(500).json({ error: 'Erro ao buscar clientes' });
+    }
 })
 
-router.get('/clientealfabeticotoken', authenticateTokenAdmin, async (req,res) => {
-    
+router.get('/clientealfabeticotoken', authenticateTokenAdmin, async (req, res) => {
+
     try {
         const clientes = await Cliente.find({}).collation({ locale: 'pt', strength: 1 }).sort({ name: 1 });
         res.json({ clientes });
