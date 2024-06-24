@@ -1,27 +1,43 @@
 import express from 'express'
-import mongoose from 'mongoose'
+// import mongoose from 'mongoose'
 import jwt from 'jsonwebtoken'
 import bcrypt from 'bcryptjs'
 import Cliente from '../models/Cliente.js'
+// import cors from 'cors'
 
 import cookieParser from 'cookie-parser'
 
 const router = express.Router()
 router.use(cookieParser())
 
+// const allowedOrigins = ['http://localhost:5173', 'http://localhost:5000', 'https://pi-academia.vercel.app'];
+// const corsOptions = {
+//     origin: function (origin, callback) {
+//         if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+//             callback(null, true);
+//         } else {
+//             callback(new Error('Not allowed by CORS'));
+//         }
+//     },
+//     methods: ['GET', 'POST', 'PUT', 'DELETE'],
+//     allowedHeaders: ['Content-Type', 'Authorization'],
+//     credentials: true
+// };
+// router.use(cors(corsOptions))
+
 // test
-router.get('/test', async (req, res) => {
-    res.send(process.env.MONGO_URL)
+// router.get('/test', async (req, res) => {
+//     res.send(process.env.MONGO_URL)
 
-    try {
-        await mongoose.connect(process.env.MONGO_URL);
-        console.log(`MongoDB conectado`);
-    } catch (err) {
-        console.error(`Error: ${err.message}`);
-        process.exit(1); // Exit process with failure
-    }
+//     try {
+//         await mongoose.connect(process.env.MONGO_URL);
+//         console.log(`MongoDB conectado`);
+//     } catch (err) {
+//         console.error(`Error: ${err.message}`);
+//         process.exit(1); // Exit process with failure
+//     }
 
-})
+// })
 
 // registrar
 router.post('/register', async (req, res) => {
@@ -51,13 +67,13 @@ router.post('/register', async (req, res) => {
 })
 
 // Rota para testar a conexão com o MongoDB
-router.get('/test-mongodb-connection', (req, res) => {
-    if (mongoose.connection.readyState === 1) {
-        res.send('Conexão com o MongoDB estabelecida com sucesso');
-    } else {
-        res.status(500).send('Erro ao conectar ao MongoDB');
-    }
-});
+// router.get('/test-mongodb-connection', (req, res) => {
+//     if (mongoose.connection.readyState === 1) {
+//         res.send('Conexão com o MongoDB estabelecida com sucesso');
+//     } else {
+//         res.status(500).send('Erro ao conectar ao MongoDB');
+//     }
+// });
 
 router.get('/mostrarclientes', async (req, res) => {
     const response = await Cliente.find({});
