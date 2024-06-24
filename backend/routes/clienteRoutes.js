@@ -108,7 +108,7 @@ router.post('/logarcliente', async (req, res) => {
 });
 
 router.post('/logout', (req, res) => {
-    res.cookie('token', '', { httpOnly: true, secure: true, sameSite: 'none', expires: new Date(0) });
+    res.clearCookie('token', { httpOnly: true, sameSite: 'lax' });
     return res.json({ message: 'Logout efetuado com sucesso.' });
 });
 

@@ -40,6 +40,10 @@ body,
     /* Ensure child elements stack vertically */
 }
 
+.h-50vh {
+    min-height: 50vh;
+}
+
 .h-90vh {
     min-height: 90vh;
 }
