@@ -36,7 +36,7 @@ export default function NavBar() {
     const logout = async () => {
 
         try {
-            await axios.post('http://localhost:5000/api/cliente/logout')
+            await axios.post('https://pi-academia.vercel.app/api/cliente/logout')
 
             localStorage.removeItem('authorization')
             localStorage.removeItem('json-data')
