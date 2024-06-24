@@ -36,7 +36,7 @@ export default function NavBar() {
     const logout = async () => {
 
         try {
-            document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; SameSite=None; Secure";
+            // await axios.post('http://localhost:5000/api/cliente/logout')
 
             localStorage.removeItem('authorization')
             localStorage.removeItem('json-data')

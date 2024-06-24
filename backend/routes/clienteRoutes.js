@@ -81,11 +81,9 @@ router.post('/logarcliente', async (req, res) => {
 
         res.cookie('token', accessToken, { httpOnly: true, secure: true, sameSite: 'none' });
 
-        const clienteData = {
-            id: cliente._id
-        };
+        const clienteData = { id: cliente._id };
 
-        return res.json({ message: 'Login efetuado com sucesso.', accessToken, clienteData });
+        return res.json({ message: 'Login efetuado com sucesso.', clienteData });
 
     } catch (error) {
         console.error('Erro ao fazer login:', error);
@@ -93,6 +91,10 @@ router.post('/logarcliente', async (req, res) => {
     }
 });
 
+router.post('/logout', (req, res) => {
+    res.cookie('token', '', { httpOnly: true, secure: true, sameSite: 'none', expires: new Date(0) });
+    return res.json({ message: 'Logout efetuado com sucesso.' });
+});
 
 router.get('/clienteemail/:email', async (req, res) => {
     const email = req.params.email

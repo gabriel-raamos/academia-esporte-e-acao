@@ -3,36 +3,36 @@ import Textbox from "../Textbox/Textbox";
 import Button from "../Button/Button";
 import axios from "axios";
 
+// axios.defaults.withCredentials = true;
+
 export default function LoginForm() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
     const onSave = async (e) => {
         e.preventDefault();
-
+    
         const userData = {
             email,
             password
         };
-
+    
         try {
-            const response = await axios.post("http://localhost:5000/api/cliente/logarcliente", userData);
-
+            const response = await axios.post("https://pi-academia.vercel.app/api/cliente/logarcliente", userData);
+    
             localStorage.setItem('authorization', response.data.accessToken)
             localStorage.setItem('json-data', JSON.stringify(response.data.clienteData))
             // alert(response.data.clienteData.id)
-
+    
             // alert("ID do usuário: " + response.data.clienteData.id)
             // alert("Header -> authorization: " + localStorage.getItem('authorization'))
             // alert(response.data.cliente.name)
-
+    
             // const testName = JSON.parse(localStorage.getItem('json-header'))
             // alert(testName.name)
-
+    
             // alert('Login efetuado com sucesso.');
             // alert(response.data.message)
-
-            // window.location.reload()
             window.location.href = '/'
         } catch (error) {
             alert("Error: " + error.message);
