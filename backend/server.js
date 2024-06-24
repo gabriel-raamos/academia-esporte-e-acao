@@ -14,7 +14,8 @@ import indexRoutes from './routes/indexRoutes.js'
 app.use(cors({
     origin: '*', // Permite todas as origens - use com cautela
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type', 'Authorization']
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true // Habilita o uso de cookies e cabeçalhos de autorização
 }));
 
 app.use((req, res, next) => {

@@ -4,9 +4,10 @@ import jwt from 'jsonwebtoken'
 import bcrypt from 'bcryptjs'
 import Cliente from '../models/Cliente.js'
 
-
+import cookieParser from 'cookie-parser'
 
 const router = express.Router()
+router.use(cookieParser())
 
 // test
 router.get('/test', async (req, res) => {
@@ -78,9 +79,11 @@ router.post('/logarcliente', async (req, res) => {
 
         const accessToken = jwt.sign({ id: cliente._id, email: cliente.email }, process.env.ACCESS_TOKEN_SECRET);
 
+        res.cookie('token', accessToken, { httpOnly: true, secure: false });
+
         const clienteData = {
             id: cliente._id
-        }
+        };
 
         return res.json({ message: 'Login efetuado com sucesso.', accessToken, clienteData });
 
@@ -89,6 +92,7 @@ router.post('/logarcliente', async (req, res) => {
         return res.status(500).json({ message: 'Internal server error' });
     }
 });
+
 
 router.get('/clienteemail/:email', async (req, res) => {
     const email = req.params.email
@@ -184,11 +188,13 @@ function authenticateToken(req, res, next) {
     // const authHeader = req.headers['authorization']
 
     // const token = localStorage.getItem('authorization')
-    const token = req.headers['authorization']
+    const token = req.cookies.token
 
     if (token === null) {
         return res.send('TOKEN NULL')
     }
+
+    // res.send('token recebido')
 
     jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
         if (err) {
@@ -197,22 +203,60 @@ function authenticateToken(req, res, next) {
         }
 
         req.user = user
+        console.log(user)
 
         next()
     })
+}
+
+const authenticateTokenAdmin = async (req, res, next) => {
+    const token = req.cookies.token
+
+    if (!token) {
+        return res.send('Sem token')
+    }
+
+    const usuario = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET)
+    console.log(usuario)
+    const email = usuario.email
+
+    const user = await Cliente.findOne({ email })
+    console.log(user)
+
+    if (!user || user.role !== "admin") {
+        return res.status(403).send('Usuário não tem as credenciais necessárias');
+    }
+
+    req.user = usuario
+
+    next()
 }
 
 router.get('/protected', authenticateToken, (req, res) => {
     res.send('o teste funcionou')
 })
 
-router.get('/protected2', (req, res) => {
-    res.send('JWT: ' + req.headers['authorization'])
+router.get('/protected2', authenticateTokenAdmin, (req, res) => {
+    res.send('o teste funcionou')
 })
 
-router.get('/mostrarclientestoken', authenticateToken, async (req, res) => {
+router.get('/mostrarclientestoken', authenticateTokenAdmin, async (req, res) => {
     const response = await Cliente.find({});
     res.send(response)
 })
+
+// ------------------------------------------------
+
+router.get('/set-cookie', (req, res) => {
+    res.cookie('token', 'whatsapp', { httpOnly: true, secure: false });
+    res.send('Cookie has been set');
+});
+
+// Rota para ler o cookie
+router.get('/read-cookie', (req, res) => {
+    const token = req.cookies.token;
+    console.log('Token:', token);
+    res.send('Token value: ' + token);
+});
 
 export default router
