@@ -269,18 +269,20 @@ router.get('/mostrarclientestoken', authenticateTokenAdmin, async (req, res) => 
 })
 
 router.get('/clientealfabeticotoken', authenticateTokenAdmin, async (req, res) => {
-
     try {
         const clientes = await Cliente.find({}).collation({ locale: 'pt', strength: 1 }).sort({ name: 1 });
-        res.json({ clientes });
+        res.send(clientes);
     } catch (error) {
         console.error('Erro ao buscar clientes:', error);
         res.status(500).json({ error: 'Erro ao buscar clientes' });
     }
-
 })
 
+
+
 // ------------------------------------------------
+
+
 
 router.get('/set-cookie', (req, res) => {
     res.cookie('token', 'whatsapp', { httpOnly: true, secure: false });
