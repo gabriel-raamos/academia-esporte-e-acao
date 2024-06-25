@@ -95,7 +95,7 @@ router.post('/logarcliente', async (req, res) => {
 
         const accessToken = jwt.sign({ id: cliente._id, email: cliente.email }, process.env.ACCESS_TOKEN_SECRET);
 
-        res.cookie('token', accessToken, { httpOnly: true, secure: true, sameSite: 'lax' });
+        res.cookie('token', accessToken, { httpOnly: true, secure: false, sameSite: 'lax' });
 
         const clienteData = { id: cliente._id };
 
