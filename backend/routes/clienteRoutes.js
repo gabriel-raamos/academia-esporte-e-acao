@@ -258,7 +258,17 @@ router.get('/protected2', authenticateTokenAdmin, (req, res) => {
     res.send('o teste funcionou')
 })
 
-router.get('/mostrarclientestoken', authenticateTokenAdmin, async (req, res) => {
+router.get('/mostrarclientestoken', authenticateToken, async (req, res) => {
+    try {
+        const response = await Cliente.find({});
+        res.send(response)
+    } catch (error) {
+        console.error('Erro ao buscar clientes:', error);
+        res.status(500).json({ error: 'Erro ao buscar clientes' });
+    }
+})
+
+router.get('/mostrarclientestokenadmin', authenticateTokenAdmin, async (req, res) => {
     try {
         const response = await Cliente.find({});
         res.send(response)
@@ -271,7 +281,7 @@ router.get('/mostrarclientestoken', authenticateTokenAdmin, async (req, res) => 
 router.get('/clientealfabeticotoken', authenticateTokenAdmin, async (req, res) => {
     try {
         const clientes = await Cliente.find({}).collation({ locale: 'pt', strength: 1 }).sort({ name: 1 });
-        res.send(clientes);
+        res.json({ clientes });
     } catch (error) {
         console.error('Erro ao buscar clientes:', error);
         res.status(500).json({ error: 'Erro ao buscar clientes' });

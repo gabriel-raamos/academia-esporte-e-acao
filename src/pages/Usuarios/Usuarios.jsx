@@ -20,8 +20,13 @@ export default function Usuarios() {
 
     const fetchData = async () => {
         try {
-            const response = await axios.get('https://pi-academia.vercel.app/api/cliente/clientealfabetico')
-            setData(response.data.clientes)
+            const response = await axios.get('https://pi-academia.vercel.app/api/cliente/clientealfabeticotoken', {withCredentials: true})
+            if (response.data && response.data.clientes) {
+                setData(response.data.clientes)
+            } else {
+                throw new Error('Dados de clientes não encontrados')
+            }
+            setLoading(false)
         } catch (error) {
             setError(error)
             setLoading(false)
@@ -32,15 +37,15 @@ export default function Usuarios() {
         try {
             const response = await axios.get(`https://pi-academia.vercel.app/api/cliente/findbyid/${id}`)
 
-            if (!response) {
-                alert('Cliente não foi encontrado.')
+            if (!response || !response.data) {
+                throw new Error('Cliente não foi encontrado.')
             }
 
-            if (response.data.role == '') {
-                return setIsAdmin('cliente')
+            if (response.data.role === '') {
+                setIsAdmin('cliente')
+            } else {
+                setIsAdmin(response.data.role)
             }
-
-            setIsAdmin(response.data.role)
             setLoading(false)
         } catch (error) {
             alert('Ocorreu um erro: ' + error)
@@ -50,8 +55,7 @@ export default function Usuarios() {
     }
 
     useEffect(() => {
-        fetchRole()
-        fetchData()
+        fetchRole().then(() => fetchData())
     }, [])
 
     const handleAbrirModal = (cliente) => {
