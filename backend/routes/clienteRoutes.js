@@ -3,27 +3,11 @@ import express from 'express'
 import jwt from 'jsonwebtoken'
 import bcrypt from 'bcryptjs'
 import Cliente from '../models/Cliente.js'
-// import cors from 'cors'
 
 import cookieParser from 'cookie-parser'
 
 const router = express.Router()
 router.use(cookieParser())
-
-// const allowedOrigins = ['http://localhost:5173', 'http://localhost:5000', 'https://pi-academia.vercel.app'];
-// const corsOptions = {
-//     origin: function (origin, callback) {
-//         if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
-//             callback(null, true);
-//         } else {
-//             callback(new Error('Not allowed by CORS'));
-//         }
-//     },
-//     methods: ['GET', 'POST', 'PUT', 'DELETE'],
-//     allowedHeaders: ['Content-Type', 'Authorization'],
-//     credentials: true
-// };
-// router.use(cors(corsOptions))
 
 // test
 // router.get('/test', async (req, res) => {
@@ -279,6 +263,7 @@ router.get('/mostrarclientestokenadmin', authenticateTokenAdmin, async (req, res
 })
 
 router.get('/clientealfabeticotoken', authenticateTokenAdmin, async (req, res) => {
+
     try {
         const clientes = await Cliente.find({}).collation({ locale: 'pt', strength: 1 }).sort({ name: 1 });
         res.json({ clientes });
@@ -286,6 +271,7 @@ router.get('/clientealfabeticotoken', authenticateTokenAdmin, async (req, res) =
         console.error('Erro ao buscar clientes:', error);
         res.status(500).json({ error: 'Erro ao buscar clientes' });
     }
+
 })
 
 
