@@ -211,7 +211,8 @@ function authenticateToken(req, res, next) {
     })
 }
 
-const authenticateTokenAdmin = async (req, res, next) => {
+// const authenticateTokenAdmin = async (req, res, next) => {
+async function authenticateTokenAdmin(req, res, next) {
     const token = req.cookies.token
 
     if (!token) {
@@ -272,6 +273,44 @@ router.get('/clientealfabeticotoken', authenticateTokenAdmin, async (req, res) =
         res.status(500).json({ error: 'Erro ao buscar clientes' });
     }
 
+})
+
+router.put('/atualizarclientetoken', async (req, res) => {
+    const { _id, name, email, phone, cpf, cep, height, weight, active, role } = req.body
+
+    try {
+        const cliente = await Cliente.findOneAndUpdate({ _id }, { name, email, phone, cpf, cep, height, weight, active, role }, { new: true })
+
+        if (!cliente) {
+            return res.status(404).json({ message: 'Cliente não encontrado.' })
+        }
+
+        res.json(cliente)
+    }
+
+    catch (error) {
+        res.status(500).json({ message: 'Erro interno no servidor: ', error })
+    }
+
+})
+
+router.put('/updateActiveToken/:id', authenticateTokenAdmin, async (req, res) => {
+    const _id = req.params.id;
+    const active = req.body.active;
+
+    console.log('ID do usuário: ' + _id)
+
+    try {
+        const cliente = await Cliente.findByIdAndUpdate({ _id }, { active }, { new: true });
+
+        if (!cliente) {
+            return res.status(404).json({ message: 'Cliente não encontrado' });
+        }
+
+        res.json(cliente);
+    } catch (error) {
+        res.status(500).json({ message: 'Erro ao atualizar cliente', error });
+    }
 })
 
 
