@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import ModalSeries from '../ModalSeries/ModalSeries';
+import ModalExercicios from '../ModalExercicios/ModalExercicios';
 
 function TreinosModal({ clienteID, isOpen, onClose }) {
     const [treinos, setTreinos] = useState([]);
-    const [newTreino, setNewTreino] = useState({ treino1: '', treino2: '', treino3: '', treino4: '', treino5: '', visibility: true });
+    const [newTreino, setNewTreino] = useState({ treino: '', visibility: true });
 
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
@@ -13,20 +13,15 @@ function TreinosModal({ clienteID, isOpen, onClose }) {
     const [editIndex, setEditIndex] = useState(null)
 
     const fetchTreinos = async () => {
-
         try {
             const response = await axios.get(`https://pi-academia.vercel.app/api/treino/buscarporcliente/${clienteID}`)
-
             const fetchedTreinos = response.data.map(treino => ({
                 ...treino,
                 visibility: treino.visibility !== undefined ? treino.visibility : true
             }));
-
             setTreinos(fetchedTreinos)
             setLoading(false)
-        }
-
-        catch (error) {
+        } catch (error) {
             alert('Ocorreu um erro ao puxar os dados do cliente: ' + error)
             setError(error)
             setLoading(false)
@@ -39,14 +34,6 @@ function TreinosModal({ clienteID, isOpen, onClose }) {
         }
     }, [isOpen, clienteID])
 
-    // const handleChange = (e) => {
-    //     const { name, value } = e.target;
-    //     setNewTreino({
-    //         ...newTreino,
-    //         [name]: value
-    //     });
-    // };
-
     const handleAddTreino = async () => {
         const dadosParaEnviar = { ...newTreino, clienteID };
         console.log('Dados para enviar:', dadosParaEnviar);
@@ -54,7 +41,7 @@ function TreinosModal({ clienteID, isOpen, onClose }) {
         try {
             const response = await axios.post('https://pi-academia.vercel.app/api/treino/registrartreino', dadosParaEnviar);
             setTreinos([...treinos, response.data]);
-            setNewTreino({ treino1: '', treino2: '', treino3: '', treino4: '', treino5: '', visibility: true });
+            setNewTreino({ treino: '', visibility: true });
         } catch (error) {
             if (error.response) {
                 console.error('Erro na resposta:', error.response.data);
@@ -67,27 +54,19 @@ function TreinosModal({ clienteID, isOpen, onClose }) {
     };
 
     const handleDeleteTreino = async (treinoID) => {
-
         try {
             await axios.delete(`https://pi-academia.vercel.app/api/treino/deletartreino/${treinoID}`)
             setTreinos(treinos.filter(treino => treino._id !== treinoID))
-            // alert('Treino deletado com sucesso')
-        }
-
-        catch (error) {
+        } catch (error) {
             alert('Ocorreu um erro ao deletar o treino.')
         }
-
     }
-
 
     const handleCheckboxChange = async (index) => {
         try {
             const updatedTreinos = [...treinos];
             updatedTreinos[index].visibility = !updatedTreinos[index].visibility;
             setTreinos(updatedTreinos);
-            // alert(JSON.stringify(treinos[index].visibility))
-
             await axios.put(`https://pi-academia.vercel.app/api/treino/atualizartreino/${updatedTreinos[index]._id}`, updatedTreinos[index]);
         } catch (error) {
             alert('Error updating treino', error);
@@ -98,16 +77,23 @@ function TreinosModal({ clienteID, isOpen, onClose }) {
         setEditIndex(index)
     }
 
-    const handleSaveEdit = (updatedTreino) => {
-        const updatedTreinos = [...treinos]
-        updatedTreinos[editIndex] = updatedTreino
-        setEditIndex(null)
-    }
+    // const handleSaveEdit = (updatedTreino) => {
+    //     const updatedTreinos = [...treinos]
+    //     updatedTreinos[editIndex] = updatedTreino
+    //     setEditIndex(null)
+    // }
 
     const handleModalClose = () => {
-        setNewTreino({ treino1: '', treino2: '', treino3: '', treino4: '', treino5: '', visibility: true })
+        setNewTreino({ treino: '', visibility: true })
         setEditIndex(null)
         onClose()
+    }
+
+    const handleSaveExercises = (updatedExercises) => {
+        const updatedTreinos = [...treinos];
+        updatedTreinos[editIndex].treino = updatedExercises;
+        setTreinos(updatedTreinos);
+        setEditIndex(null);
     }
 
     if (!isOpen) {
@@ -181,9 +167,10 @@ function TreinosModal({ clienteID, isOpen, onClose }) {
             </div>
 
             {editIndex !== null && (
-                <ModalSeries 
-                    treino={treinos[editIndex]}
-                    onSave={handleSaveEdit}
+                <ModalExercicios 
+                    treino={treinos[editIndex].treino}
+                    id={treinos[editIndex]._id}
+                    onSave={handleSaveExercises}
                     onClose={() => setEditIndex(null)}
                 />
             )}

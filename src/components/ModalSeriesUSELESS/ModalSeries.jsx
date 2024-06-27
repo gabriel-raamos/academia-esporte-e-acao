@@ -1,33 +1,24 @@
 import { useEffect, useState } from "react";
 import propTypes from 'prop-types';
 import axios from "axios";
-import ModalExercicios from "../ModalExercicios/ModalExercicios"; // Importar o ModalExercicios aqui
+import ModalExercicios from "../ModalExercicios/ModalExercicios";
 
-function ModalSeries({ treino, onClose }) {
+function ModalSeries({ treino, onClose, onSave }) {
     const [editedTreino, setEditedTreino] = useState({
-        treino1: treino.treino1 || [],
-        treino2: treino.treino2 || [],
-        treino3: treino.treino3 || [],
-        treino4: treino.treino4 || [],
-        treino5: treino.treino5 || []
+        treino: treino.treino || []
     });
 
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const [currentTreino, setCurrentTreino] = useState(null); // Estado para controlar o treino atual sendo editado
+    const [currentTreino, setCurrentTreino] = useState(null);
 
     useEffect(() => {
         setLoading(true);
         const fetchTreino = async () => {
             try {
                 const response = await axios.get(`https://pi-academia.vercel.app/api/treino/mostrartreinos/${treino._id}`);
-
                 setEditedTreino({
-                    treino1: response.data.treino1 || [],
-                    treino2: response.data.treino2 || [],
-                    treino3: response.data.treino3 || [],
-                    treino4: response.data.treino4 || [],
-                    treino5: response.data.treino5 || []
+                    treino: response.data.treino || []
                 });
                 setLoading(false);
             } catch (error) {
@@ -38,12 +29,21 @@ function ModalSeries({ treino, onClose }) {
         fetchTreino();
     }, [treino._id]);
 
-    const handleOpenModalExercicios = (treinoKey) => {
-        setCurrentTreino(treinoKey);
+    const handleOpenModalExercicios = (serieIndex) => {
+        setCurrentTreino(serieIndex);
     };
 
     const handleCloseModalExercicios = () => {
         setCurrentTreino(null);
+    };
+
+    const handleSaveModalExercicios = (updatedExercises) => {
+        setEditedTreino((prev) => {
+            const newTreino = [...prev.treino];
+            newTreino[currentTreino] = updatedExercises;
+            return { ...prev, treino: newTreino };
+        });
+        handleCloseModalExercicios();
     };
 
     return (
@@ -64,7 +64,7 @@ function ModalSeries({ treino, onClose }) {
                             </button>
                         </div>
                         <div>
-                            {Object.keys(editedTreino).map((treinoKey, index) => (
+                            {editedTreino.treino.map((_, index) => (
                                 <div key={index}>
                                     <div className="my-3">
                                         <div className="my-2 flex items-center justify-center">
@@ -74,7 +74,7 @@ function ModalSeries({ treino, onClose }) {
                                             <button
                                                 type="button"
                                                 className="bg-blue-700 text-white rounded-3xl p-2 md:my-0 text-lg font-bold hover:bg-blue-500 hover:-translate-y-1 duration-500 col-span-2"
-                                                onClick={() => handleOpenModalExercicios(treinoKey)}
+                                                onClick={() => handleOpenModalExercicios(index)}
                                             >
                                                 Adicionar/Editar Exercícios
                                             </button>
@@ -86,20 +86,13 @@ function ModalSeries({ treino, onClose }) {
                     </div>
                 )}
             </div>
-            {currentTreino && (
+            {currentTreino !== null && (
                 <ModalExercicios
-                    treino={editedTreino[currentTreino]} // Passar o treino específico para o ModalExercicios
+                    treino={editedTreino.treino[currentTreino]}
                     onClose={handleCloseModalExercicios}
-                    onSave={(updatedExercises) => {
-                        // Atualizar o estado dos exercícios após salvar no ModalExercicios
-                        setEditedTreino((prev) => ({
-                            ...prev,
-                            [currentTreino]: updatedExercises
-                        }));
-                        handleCloseModalExercicios();
-                    }}
+                    onSave={handleSaveModalExercicios}
                     id={treino._id}
-                    currentTreino={currentTreino} // Passar currentTreino para o ModalExercicios
+                    currentTreino={currentTreino}
                 />
             )}
         </div>

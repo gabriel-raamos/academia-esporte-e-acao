@@ -1,10 +1,19 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import PropTypes from 'prop-types';
 import axios from "axios";
 
-function ModalExercicios({ treino, id, currentTreino, onSave, onClose }) {
-    const [editedTreino, setEditedTreino] = useState([...treino]); // Receber apenas o treino específico
+function ModalExercicios({ treino, id, onSave, onClose }) {
+    const [editedTreino, setEditedTreino] = useState([]);
     const [newExercise, setNewExercise] = useState('');
+
+    useEffect(() => {
+        // console.log('Recebido treino:', treino); // Log para depuração
+        if (treino && Array.isArray(treino)) {
+            setEditedTreino([...treino]);
+        } else {
+            setEditedTreino([]);
+        }
+    }, [treino]);
 
     const handleChange = (exerciseIndex, value) => {
         const updatedExercises = [...editedTreino];
@@ -27,11 +36,12 @@ function ModalExercicios({ treino, id, currentTreino, onSave, onClose }) {
 
     const handleSave = async () => {
         try {
-            const response = await axios.put(`https://pi-academia.vercel.app/api/treino/atualizartreino/${id}`, {
-                [currentTreino]: editedTreino // Atualizar apenas o treino específico
+            // console.log('Salvando exercícios:', editedTreino); // Log para depuração
+            await axios.put(`https://pi-academia.vercel.app/api/treino/atualizartreino/${id}`, {
+                treino: editedTreino
             });
 
-            onSave(response.data[currentTreino]);
+            onSave(editedTreino);
             onClose();
         } catch (error) {
             console.error('Erro ao salvar exercícios:', error);
@@ -50,35 +60,39 @@ function ModalExercicios({ treino, id, currentTreino, onSave, onClose }) {
                     </button>
                 </div>
                 <section>
-                    <div className="" >
+                    <div>
                         <div className="mb-3 overflow-y-auto h-96 border-2 border-blue-700 rounded-xl">
-                            {editedTreino.map((exercise, exerciseIndex) => (
-                                <div key={exerciseIndex} className="m-3">
-                                    <div className="flex md:grid md:grid-cols-10 justify-between items-center mb-2">
-                                        <div className="md:col-span-7" >
-                                            <div className="items-center justify-center">
-                                                <label className="">{`Exercício ${exerciseIndex + 1}:`}</label>
+                            {editedTreino.length === 0 ? (
+                                <div className="m-3">Nenhum exercício disponível.</div>
+                            ) : (
+                                editedTreino.map((exercise, exerciseIndex) => (
+                                    <div key={exerciseIndex} className="m-3">
+                                        <div className="flex md:grid md:grid-cols-10 justify-between items-center mb-2">
+                                            <div className="md:col-span-7">
+                                                <div className="items-center justify-center">
+                                                    <label>{`Exercício ${exerciseIndex + 1}:`}</label>
+                                                </div>
+                                                <input
+                                                    type="text"
+                                                    name={`exercicio${exerciseIndex + 1}`}
+                                                    placeholder={`Exercício ${exerciseIndex + 1}`}
+                                                    value={exercise}
+                                                    onChange={(e) => handleChange(exerciseIndex, e.target.value)}
+                                                    className="border-2 border-blue-700 rounded-xl p-2 m-1 md:my-3 md:mr-3"
+                                                />
                                             </div>
-                                            <input
-                                                type="text"
-                                                name={`exercicio${exerciseIndex + 1}`}
-                                                placeholder={`Exercício ${exerciseIndex + 1}`}
-                                                value={exercise}
-                                                onChange={(e) => handleChange(exerciseIndex, e.target.value)}
-                                                className="border-2 border-blue-700 rounded-xl p-2 m-1 md:my-3 md:mr-3"
-                                            />
-                                        </div>
-                                        <div className="flex justify-center items-baseline md:col-span-3" >
-                                            <button
-                                                onClick={() => handleDelete(exerciseIndex)}
-                                                className="bg-red-700 text-white rounded-full p-2 ml-2 hover:bg-red-500 font-bold hover:-translate-y-1 duration-500"
-                                            >
-                                                Deletar
-                                            </button>
+                                            <div className="flex justify-center items-baseline md:col-span-3">
+                                                <button
+                                                    onClick={() => handleDelete(exerciseIndex)}
+                                                    className="bg-red-700 text-white rounded-full p-2 ml-2 hover:bg-red-500 font-bold hover:-translate-y-1 duration-500"
+                                                >
+                                                    Deletar
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            ))}
+                                ))
+                            )}
                         </div>
                         <div className="flex justify-center mb-4">
                             <input
@@ -99,7 +113,7 @@ function ModalExercicios({ treino, id, currentTreino, onSave, onClose }) {
                             onClick={handleSave}
                             className="bg-blue-700 text-white rounded-full p-3 md:my-0 text-lg font-bold hover:bg-blue-500 hover:-translate-y-1 duration-500"
                         >
-                            Salvar Exercícios
+                            Salvar exercícios
                         </button>
                     </div>
                 </section>
@@ -109,9 +123,8 @@ function ModalExercicios({ treino, id, currentTreino, onSave, onClose }) {
 }
 
 ModalExercicios.propTypes = {
-    treino: PropTypes.array.isRequired, // Agora recebe um array
+    treino: PropTypes.array,
     id: PropTypes.string.isRequired,
-    currentTreino: PropTypes.string.isRequired, // Adicionamos currentTreino como uma prop
     onSave: PropTypes.func.isRequired,
     onClose: PropTypes.func.isRequired
 };

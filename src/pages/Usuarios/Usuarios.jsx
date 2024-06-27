@@ -20,7 +20,7 @@ export default function Usuarios() {
 
     const fetchData = async () => {
         try {
-            const response = await axios.get('https://pi-academia.vercel.app/api/cliente/clientealfabeticotoken', {withCredentials: true})
+            const response = await axios.get('https://pi-academia.vercel.app/api/cliente/clientealfabetico', {withCredentials: true})
             if (response.data && response.data.clientes) {
                 setData(response.data.clientes)
             } else {

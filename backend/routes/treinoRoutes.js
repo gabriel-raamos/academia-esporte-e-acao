@@ -6,7 +6,7 @@ const router = express.Router()
 
 router.post('/registrartreino', async (req, res) => {
 
-    const { treino1, treino2, treino3, treino4, treino5, visibility, clienteID } = req.body
+    const { treino, visibility, clienteID } = req.body
 
     try {
 
@@ -21,7 +21,7 @@ router.post('/registrartreino', async (req, res) => {
             await cliente.save()
         }
 
-        const newTreino = new Treino({ treino1, treino2, treino3, treino4, treino5, visibility, clienteID })
+        const newTreino = new Treino({ treino, visibility, clienteID })
         await newTreino.save()
 
         cliente.workouts.push(newTreino._id)
@@ -66,10 +66,10 @@ router.get('/buscarporcliente/:clienteID', async (req, res) => {
 router.put('/atualizartreino/:id', async (req, res) => {
     const _id = req.params.id
 
-    const { treino1, treino2, treino3, treino4, treino5, visibility } = req.body
+    const { treino, visibility } = req.body
 
     try {
-        const updatedTreino = await Treino.findByIdAndUpdate({ _id }, { treino1, treino2, treino3, treino4, treino5, visibility }, { new: true })
+        const updatedTreino = await Treino.findByIdAndUpdate({ _id }, { treino, visibility }, { new: true })
 
         if (!updatedTreino) {
             return res.status(404).json({ message: 'Treino não encontrado.' })
