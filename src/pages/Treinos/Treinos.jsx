@@ -10,7 +10,7 @@ export default function Treinos() {
     const [currentWorkoutIndex, setCurrentWorkoutIndex] = useState(0);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const [role, setRole] = useState('');
+    // const [role, setRole] = useState('');
     const [active, setActive] = useState(false);
 
     useEffect(() => {
@@ -36,7 +36,7 @@ export default function Treinos() {
                 }
 
                 setActive(fetchedData.active);
-                setRole(fetchedData.role);
+                // setRole(fetchedData.role);
                 setLoading(false);
             } catch (error) {
                 setError(error);
@@ -100,7 +100,7 @@ export default function Treinos() {
         <div>
             {active ? (
                 <div>
-                    {role === 'admin' && (
+                    {/* {role === 'admin' && (
                         <div className="flex flex-col justify-center items-center">
                             <div className="flex justify-center">
                                 <Link to="../usuarios">
@@ -122,7 +122,7 @@ export default function Treinos() {
                                 </Link>
                             </div>
                         </div>
-                    )}
+                    )} */}
                     {workouts.length > 0 ? (
                         <section className="mb-5">
                             <div className="flex justify-center items-center">
