@@ -109,7 +109,7 @@ export default function NavBar() {
                 </button>
                 {isMenuOpen && (
                   <ul
-                    className="absolute translate-y-12 md:translate-y-8 z-10 w-48 mt-2 py-2 rounded-md font-bold text-xl shadow-lg origin-top-right right-0 transition duration-300 bg-gray-500 transform scale-100 opacity-100"
+                    className="absolute translate-y-12 z-10 w-48 mt-2 py-2 rounded-md font-bold text-xl shadow-lg origin-top-right right-0 transition duration-300 bg-gray-500 transform scale-100 opacity-100"
                     role="menu"
                     aria-orientation="vertical"
                     aria-labelledby="menu-button"
