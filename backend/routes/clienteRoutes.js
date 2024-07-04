@@ -23,6 +23,33 @@ router.use(cookieParser())
 
 // })
 
+// admin authentication
+
+
+// const authenticateTokenAdmin = async (req, res, next) => {
+async function authenticateTokenAdmin(req, res, next) {
+    const token = req.cookies.token
+
+    if (!token) {
+        return res.send('Sem token')
+    }
+
+    const usuario = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET)
+    console.log(usuario)
+    const email = usuario.email
+
+    const user = await Cliente.findOne({ email })
+    console.log(user)
+
+    if (!user || user.role !== "admin") {
+        return res.status(403).send('Usuário não tem as credenciais necessárias');
+    }
+
+    req.user = usuario
+
+    next()
+}
+
 // registrar
 router.post('/register', async (req, res) => {
 
@@ -118,7 +145,8 @@ router.get('/findbyid/:id', async (req, res) => {
 
 })
 
-router.get('/findworkoutsbyid/:id', async (req, res) => {
+// added admin token verification
+router.get('/findworkoutsbyid/:id', authenticateTokenAdmin, async (req, res) => {
 
     const _id = req.params.id
 
@@ -209,30 +237,6 @@ function authenticateToken(req, res, next) {
 
         next()
     })
-}
-
-// const authenticateTokenAdmin = async (req, res, next) => {
-async function authenticateTokenAdmin(req, res, next) {
-    const token = req.cookies.token
-
-    if (!token) {
-        return res.send('Sem token')
-    }
-
-    const usuario = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET)
-    console.log(usuario)
-    const email = usuario.email
-
-    const user = await Cliente.findOne({ email })
-    console.log(user)
-
-    if (!user || user.role !== "admin") {
-        return res.status(403).send('Usuário não tem as credenciais necessárias');
-    }
-
-    req.user = usuario
-
-    next()
 }
 
 router.get('/protected', authenticateToken, (req, res) => {
