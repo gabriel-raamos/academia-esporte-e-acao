@@ -150,7 +150,7 @@ router.get('/clienteemail/:email', async (req, res) => {
     res.send(cliente);
 })
 
-router.get('/findbyid/:id', authenticateToken, async (req, res) => {
+router.get('/findbyid/:id', async (req, res) => {
 
     const _id = req.params.id
 
