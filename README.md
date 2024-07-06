@@ -11,7 +11,7 @@ Para que a aplicação funcione, deverão ser seguidas algumas etapas:
 Primeiro, você precisa clonar o repositório para o seu ambiente local. Para isso, utilize o seguinte comando:
 
 ```bash
-git clone git@github.com:gabriel-raamos/pi-academia.git
+git clone git@github.com:gabriel-raamos/academia-esporte-e-acao.git
 ```
 
 Agora utilize um editor de código que seja de sua preferência.
