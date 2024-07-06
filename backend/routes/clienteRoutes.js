@@ -140,6 +140,16 @@ router.get('/findbyid/', authenticateToken, async (req, res) => {
 
 })
 
+router.get('/findbyid/:id', authenticateToken, async (req, res) => {
+
+    const _id = req.params.id
+
+    const cliente = await Cliente.findOne({ _id })
+
+    res.json(cliente)
+
+})
+
 // added admin token verification
 router.get('/findworkoutsbyid', authenticateToken, async (req, res) => {
 
@@ -155,7 +165,7 @@ router.get('/findworkoutsbyid', authenticateToken, async (req, res) => {
 
 })
 
-router.put('/atualizarcliente',async (req, res) => {
+router.put('/atualizarcliente', authenticateTokenAdmin, async (req, res) => {
     const { _id, name, email, phone, cpf, cep, height, weight, active, role } = req.body
 
     try {

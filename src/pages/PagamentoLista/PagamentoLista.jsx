@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 
 export default function PagamentoLista() {
-    const id = JSON.parse(localStorage.getItem('json-data')).id
+    // const id = JSON.parse(localStorage.getItem('json-data')).id
 
     const [role, setRole] = useState('')
     const [pagamentos, setPagamentos] = useState([])
@@ -15,7 +15,7 @@ export default function PagamentoLista() {
     const fetchRole = async () => {
         try {
             // alert(id)
-            const response = await axios.get(`https://academia-esporte-e-acao.vercel.app/api/cliente/findbyid/${id}`)
+            const response = await axios.get(`https://academia-esporte-e-acao.vercel.app/api/cliente/findbyid/`)
             setRole(response.data.role)
             // setLoading(false)
         }
