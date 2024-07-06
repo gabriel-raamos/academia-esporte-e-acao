@@ -18,10 +18,10 @@ export default function Home() {
 
 
     const fetchName = async () => {
-        const id = JSON.parse(localStorage.getItem('json-data')).id
+        // const id = JSON.parse(localStorage.getItem('json-data')).id
 
         try {
-            const response = await axios.get(`https://academia-esporte-e-acao.vercel.app/api/cliente/findbyid/${id}`)
+            const response = await axios.get(`https://academia-esporte-e-acao.vercel.app/api/cliente/findbyid/`)
 
             const name = response.data.name
             setName(name)
