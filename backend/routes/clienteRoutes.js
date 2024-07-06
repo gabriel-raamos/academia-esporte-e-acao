@@ -9,24 +9,7 @@ import cookieParser from 'cookie-parser'
 const router = express.Router()
 router.use(cookieParser())
 
-// test
-// router.get('/test', async (req, res) => {
-//     res.send(process.env.MONGO_URL)
-
-//     try {
-//         await mongoose.connect(process.env.MONGO_URL);
-//         console.log(`MongoDB conectado`);
-//     } catch (err) {
-//         console.error(`Error: ${err.message}`);
-//         process.exit(1); // Exit process with failure
-//     }
-
-// })
-
 // admin authentication
-
-
-// const authenticateTokenAdmin = async (req, res, next) => {
 async function authenticateTokenAdmin(req, res, next) {
     const token = req.cookies.token
 
@@ -51,9 +34,6 @@ async function authenticateTokenAdmin(req, res, next) {
 }
 
 // token authentication
-
-
-
 function authenticateToken(req, res, next) {
     const token = req.cookies.token
 
@@ -101,10 +81,10 @@ router.post('/register', async (req, res) => {
 
 })
 
-router.get('/mostrarclientes', async (req, res) => {
-    const response = await Cliente.find({});
-    res.send(response)
-})
+// router.get('/mostrarclientes', async (req, res) => {
+//     const response = await Cliente.find({});
+//     res.send(response)
+// })
 
 router.post('/logarcliente', async (req, res) => {
     const { email, password } = req.body;
@@ -121,7 +101,7 @@ router.post('/logarcliente', async (req, res) => {
 
         const accessToken = jwt.sign({ id: cliente._id, email: cliente.email }, process.env.ACCESS_TOKEN_SECRET);
 
-        res.cookie('token', accessToken, { httpOnly: true, secure: false, sameSite: 'lax' });
+        res.cookie('token', accessToken, { httpOnly: true, secure: false });
 
         const clienteData = { id: cliente._id };
 
