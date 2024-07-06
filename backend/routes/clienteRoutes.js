@@ -150,9 +150,9 @@ router.get('/clienteemail/:email', async (req, res) => {
     res.send(cliente);
 })
 
-router.get('/findbyid/:id', async (req, res) => {
+router.get('/findbyid/', authenticateToken, async (req, res) => {
 
-    const _id = req.params.id
+    const _id = req.user.id
 
     const cliente = await Cliente.findOne({ _id })
 
