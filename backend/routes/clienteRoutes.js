@@ -163,7 +163,7 @@ router.get('/findbyid/:id', async (req, res) => {
 // added admin token verification
 router.get('/findworkoutsbyid', authenticateToken, async (req, res) => {
 
-    const _id = req.params.id
+    const _id = req.user.id
 
     const cliente = await Cliente.findById({ _id }).populate('workouts')
 

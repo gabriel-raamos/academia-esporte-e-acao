@@ -19,7 +19,7 @@ export default function Treinos() {
                 const response = await axios.get(`https://academia-esporte-e-acao.vercel.app/api/cliente/findworkoutsbyid/`, {withCredentials: true});
                 const fetchedData = response.data;
 
-                console.log('Fetched Data:', fetchedData);
+                // console.log('Fetched Data:', fetchedData);
 
                 if (fetchedData.workouts) {
                     const filteredWorkouts = fetchedData.workouts
