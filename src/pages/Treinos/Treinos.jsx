@@ -169,7 +169,7 @@ export default function Treinos() {
                                         </a>
                                     </div>
                                     <div className="flex justify-center text-lg rounded-xl p-5 my-5 mx-3 border-4 text-white border-blue-700 bg-blue-700 font-bold md:m-5 whitespace-pre-line overflow-y-auto">
-                                        <div className="fixed-width md:fixed-lg-width">
+                                        <div className="fixed-width md:fixed-lg-width border-white">
                                             {renderSeries()}
                                         </div>
                                     </div>
