@@ -14,7 +14,7 @@ function TreinosModal({ clienteID, isOpen, onClose }) {
 
     const fetchTreinos = async () => {
         try {
-            const response = await axios.get(`https://pi-academia.vercel.app/api/treino/buscarporcliente/${clienteID}`)
+            const response = await axios.get(`https://academia-esporte-e-acao.vercel.app/api/treino/buscarporcliente/${clienteID}`)
             const fetchedTreinos = response.data.map(treino => ({
                 ...treino,
                 visibility: treino.visibility !== undefined ? treino.visibility : true
@@ -39,7 +39,7 @@ function TreinosModal({ clienteID, isOpen, onClose }) {
         console.log('Dados para enviar:', dadosParaEnviar);
 
         try {
-            const response = await axios.post('https://pi-academia.vercel.app/api/treino/registrartreino', dadosParaEnviar);
+            const response = await axios.post('https://academia-esporte-e-acao.vercel.app/api/treino/registrartreino', dadosParaEnviar);
             setTreinos([...treinos, response.data]);
             setNewTreino({ treino: '', visibility: true });
         } catch (error) {
@@ -55,7 +55,7 @@ function TreinosModal({ clienteID, isOpen, onClose }) {
 
     const handleDeleteTreino = async (treinoID) => {
         try {
-            await axios.delete(`https://pi-academia.vercel.app/api/treino/deletartreino/${treinoID}`)
+            await axios.delete(`https://academia-esporte-e-acao.vercel.app/api/treino/deletartreino/${treinoID}`)
             setTreinos(treinos.filter(treino => treino._id !== treinoID))
         } catch (error) {
             alert('Ocorreu um erro ao deletar o treino.')
@@ -67,7 +67,7 @@ function TreinosModal({ clienteID, isOpen, onClose }) {
             const updatedTreinos = [...treinos];
             updatedTreinos[index].visibility = !updatedTreinos[index].visibility;
             setTreinos(updatedTreinos);
-            await axios.put(`https://pi-academia.vercel.app/api/treino/atualizartreino/${updatedTreinos[index]._id}`, updatedTreinos[index]);
+            await axios.put(`https://academia-esporte-e-acao.vercel.app/api/treino/atualizartreino/${updatedTreinos[index]._id}`, updatedTreinos[index]);
         } catch (error) {
             alert('Error updating treino', error);
         }

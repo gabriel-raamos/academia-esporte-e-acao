@@ -46,7 +46,7 @@ export default function Form() {
         console.log('Dados do usuário antes do envio:', userData);
 
         try {
-            const response = await axios.post("https://pi-academia.vercel.app/api/cliente/register", userData, {
+            const response = await axios.post("https://academia-esporte-e-acao.vercel.app/api/cliente/register", userData, {
                 headers: {
                     'Content-Type': 'application/json'
                 }

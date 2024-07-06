@@ -20,7 +20,7 @@ export default function Usuarios() {
 
     const fetchData = async () => {
         try {
-            const response = await axios.get('https://pi-academia.vercel.app/api/cliente/clientealfabetico', {withCredentials: true})
+            const response = await axios.get('https://academia-esporte-e-acao.vercel.app/api/cliente/clientealfabetico', {withCredentials: true})
             if (response.data && response.data.clientes) {
                 setData(response.data.clientes)
             } else {
@@ -35,7 +35,7 @@ export default function Usuarios() {
 
     const fetchRole = async () => {
         try {
-            const response = await axios.get(`https://pi-academia.vercel.app/api/cliente/findbyid/${id}`)
+            const response = await axios.get(`https://academia-esporte-e-acao.vercel.app/api/cliente/findbyid/${id}`)
 
             if (!response || !response.data) {
                 throw new Error('Cliente não foi encontrado.')
@@ -70,7 +70,7 @@ export default function Usuarios() {
 
     const salvarCliente = async (clienteAtualizado) => {
         try {
-            const response = await axios.put('https://pi-academia.vercel.app/api/cliente/atualizarcliente', clienteAtualizado)
+            const response = await axios.put('https://academia-esporte-e-acao.vercel.app/api/cliente/atualizarcliente', clienteAtualizado)
 
             setData(data.map(cliente => (cliente._id === response.data._id ? response.data : cliente)))
 

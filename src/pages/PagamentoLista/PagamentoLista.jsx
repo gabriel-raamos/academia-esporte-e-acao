@@ -15,7 +15,7 @@ export default function PagamentoLista() {
     const fetchRole = async () => {
         try {
             // alert(id)
-            const response = await axios.get(`https://pi-academia.vercel.app/api/cliente/findbyid/${id}`)
+            const response = await axios.get(`https://academia-esporte-e-acao.vercel.app/api/cliente/findbyid/${id}`)
             setRole(response.data.role)
             // setLoading(false)
         }

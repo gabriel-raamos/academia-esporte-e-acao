@@ -16,7 +16,7 @@ export default function Treinos() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`https://pi-academia.vercel.app/api/cliente/findworkoutsbyid/`, {withCredentials: true});
+                const response = await axios.get(`https://academia-esporte-e-acao.vercel.app/api/cliente/findworkoutsbyid/`, {withCredentials: true});
                 const fetchedData = response.data;
 
                 console.log('Fetched Data:', fetchedData);

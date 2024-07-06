@@ -25,7 +25,7 @@ function Pagamento() {
     const fetchData = async () => {
 
         try {
-            const response = await axios.get(`https://pi-academia.vercel.app/api/cliente/findbyid/${id}`)
+            const response = await axios.get(`https://academia-esporte-e-acao.vercel.app/api/cliente/findbyid/${id}`)
             // alert(response.data.cpf)
             setClienteCPF(response.data.cpf)
             setClienteCEP(response.data.cep)
@@ -78,9 +78,9 @@ function Pagamento() {
                 updatedAt: brasiliaDate
             };
 
-            await axios.post('https://pi-academia.vercel.app/api/pagamento/registrarpagamento', updatedFormData)
+            await axios.post('https://academia-esporte-e-acao.vercel.app/api/pagamento/registrarpagamento', updatedFormData)
 
-            await axios.put(`https://pi-academia.vercel.app/api/cliente/updateActive/${id}`, { active: true })
+            await axios.put(`https://academia-esporte-e-acao.vercel.app/api/cliente/updateActive/${id}`, { active: true })
 
             window.location.href = '/'
         }

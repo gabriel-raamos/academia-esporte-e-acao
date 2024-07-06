@@ -14,7 +14,7 @@ export default function NavBar() {
 
   const fetchName = async () => {
     try {
-      const response = await axios.get(`https://pi-academia.vercel.app/api/cliente/findbyid/${JSON.parse(localStorage.getItem('json-data')).id}`);
+      const response = await axios.get(`https://academia-esporte-e-acao.vercel.app/api/cliente/findbyid/${JSON.parse(localStorage.getItem('json-data')).id}`);
       const name = response.data.name;
       const role1 = response.data.role;
 
@@ -30,7 +30,7 @@ export default function NavBar() {
 
   const logout = async () => {
     try {
-      await axios.post('https://pi-academia.vercel.app/api/cliente/logout');
+      await axios.post('https://academia-esporte-e-acao.vercel.app/api/cliente/logout');
       localStorage.removeItem('authorization');
       localStorage.removeItem('json-data');
       window.location.href = '/';

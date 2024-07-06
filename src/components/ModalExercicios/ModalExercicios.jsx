@@ -37,7 +37,7 @@ function ModalExercicios({ treino, id, onSave, onClose }) {
     const handleSave = async () => {
         try {
             // console.log('Salvando exercícios:', editedTreino); // Log para depuração
-            await axios.put(`https://pi-academia.vercel.app/api/treino/atualizartreino/${id}`, {
+            await axios.put(`https://academia-esporte-e-acao.vercel.app/api/treino/atualizartreino/${id}`, {
                 treino: editedTreino
             });
 
