@@ -5,7 +5,7 @@ import axios from "axios";
 
 export default function Usuarios() {
 
-    const id = JSON.parse(localStorage.getItem('json-data')).id
+    // const id = JSON.parse(localStorage.getItem('json-data')).id
 
     const [data, setData] = useState([])
     const [loading, setLoading] = useState(true)
@@ -35,7 +35,7 @@ export default function Usuarios() {
 
     const fetchRole = async () => {
         try {
-            const response = await axios.get(`https://academia-esporte-e-acao.vercel.app/api/cliente/findbyid/${id}`)
+            const response = await axios.get(`https://academia-esporte-e-acao.vercel.app/api/cliente/findbyid/`)
 
             if (!response || !response.data) {
                 throw new Error('Cliente não foi encontrado.')
