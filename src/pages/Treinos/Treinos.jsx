@@ -16,9 +16,7 @@ export default function Treinos() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(
-                    `https://pi-academia.vercel.app/api/cliente/findworkoutsbyid/${JSON.parse(localStorage.getItem('json-data')).id}`
-                );
+                const response = await axios.get(`https://pi-academia.vercel.app/api/cliente/findworkoutsbyid/`, {withCredentials: true});
                 const fetchedData = response.data;
 
                 console.log('Fetched Data:', fetchedData);
@@ -36,6 +34,7 @@ export default function Treinos() {
                 }
 
                 setActive(fetchedData.active);
+                console.log(active)
                 // setRole(fetchedData.role);
                 setLoading(false);
             } catch (error) {

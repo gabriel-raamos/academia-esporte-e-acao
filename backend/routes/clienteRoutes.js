@@ -50,6 +50,30 @@ async function authenticateTokenAdmin(req, res, next) {
     next()
 }
 
+// token authentication
+
+
+
+function authenticateToken(req, res, next) {
+    const token = req.cookies.token
+
+    if (token === null) {
+        return res.send('TOKEN NULL')
+    }
+
+    jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
+        if (err) {
+            // return res.sendStatus(403)
+            return res.send("Token inválido")
+        }
+
+        req.user = user
+        console.log(user)
+
+        next()
+    })
+}
+
 // registrar
 router.post('/register', async (req, res) => {
 
@@ -76,15 +100,6 @@ router.post('/register', async (req, res) => {
     }
 
 })
-
-// Rota para testar a conexão com o MongoDB
-// router.get('/test-mongodb-connection', (req, res) => {
-//     if (mongoose.connection.readyState === 1) {
-//         res.send('Conexão com o MongoDB estabelecida com sucesso');
-//     } else {
-//         res.status(500).send('Erro ao conectar ao MongoDB');
-//     }
-// });
 
 router.get('/mostrarclientes', async (req, res) => {
     const response = await Cliente.find({});
@@ -135,7 +150,7 @@ router.get('/clienteemail/:email', async (req, res) => {
     res.send(cliente);
 })
 
-router.get('/findbyid/:id', async (req, res) => {
+router.get('/findbyid/:id', authenticateToken, async (req, res) => {
 
     const _id = req.params.id
 
@@ -146,7 +161,7 @@ router.get('/findbyid/:id', async (req, res) => {
 })
 
 // added admin token verification
-router.get('/findworkoutsbyid/:id', authenticateTokenAdmin, async (req, res) => {
+router.get('/findworkoutsbyid', authenticateToken, async (req, res) => {
 
     const _id = req.params.id
 
@@ -160,7 +175,7 @@ router.get('/findworkoutsbyid/:id', authenticateTokenAdmin, async (req, res) => 
 
 })
 
-router.put('/atualizarcliente', async (req, res) => {
+router.put('/atualizarcliente',async (req, res) => {
     const { _id, name, email, phone, cpf, cep, height, weight, active, role } = req.body
 
     try {
@@ -179,7 +194,7 @@ router.put('/atualizarcliente', async (req, res) => {
 
 })
 
-router.get('/clientealfabetico', async (req, res) => {
+router.get('/clientealfabetico', authenticateTokenAdmin, async (req, res) => {
 
     try {
         const clientes = await Cliente.find({}).collation({ locale: 'pt', strength: 1 }).sort({ name: 1 });
@@ -191,7 +206,7 @@ router.get('/clientealfabetico', async (req, res) => {
 
 })
 
-router.put('/updateActive/:id', async (req, res) => {
+router.put('/updateActive/:id', authenticateTokenAdmin, async (req, res) => {
     const _id = req.params.id;
     const active = req.body.active;
 
@@ -213,31 +228,6 @@ router.put('/updateActive/:id', async (req, res) => {
 // .
 // TESTING JWT
 // .
-
-function authenticateToken(req, res, next) {
-    // const authHeader = req.headers['authorization']
-
-    // const token = localStorage.getItem('authorization')
-    const token = req.cookies.token
-
-    if (token === null) {
-        return res.send('TOKEN NULL')
-    }
-
-    // res.send('token recebido')
-
-    jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
-        if (err) {
-            // return res.sendStatus(403)
-            return res.send("Token inválido")
-        }
-
-        req.user = user
-        console.log(user)
-
-        next()
-    })
-}
 
 router.get('/protected', authenticateToken, (req, res) => {
     res.send('o teste funcionou')
@@ -279,7 +269,7 @@ router.get('/clientealfabeticotoken', authenticateTokenAdmin, async (req, res) =
 
 })
 
-router.put('/atualizarclientetoken', async (req, res) => {
+router.put('/atualizarclientetoken', authenticateTokenAdmin, async (req, res) => {
     const { _id, name, email, phone, cpf, cep, height, weight, active, role } = req.body
 
     try {
@@ -323,16 +313,16 @@ router.put('/updateActiveToken/:id', authenticateTokenAdmin, async (req, res) =>
 
 
 
-router.get('/set-cookie', (req, res) => {
-    res.cookie('token', 'whatsapp', { httpOnly: true, secure: false });
-    res.send('Cookie has been set');
-});
+// router.get('/set-cookie', (req, res) => {
+//     res.cookie('token', 'whatsapp', { httpOnly: true, secure: false });
+//     res.send('Cookie has been set');
+// });
 
-// Rota para ler o cookie
-router.get('/read-cookie', (req, res) => {
-    const token = req.cookies.token;
-    console.log('Token:', token);
-    res.send('Token value: ' + token);
-});
+// // Rota para ler o cookie
+// router.get('/read-cookie', (req, res) => {
+//     const token = req.cookies.token;
+//     console.log('Token:', token);
+//     res.send('Token value: ' + token);
+// });
 
 export default router
