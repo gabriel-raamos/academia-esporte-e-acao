@@ -56,7 +56,7 @@ router.get('/mostrartreinos/:id', authenticateToken, async (req, res) => {
 
 })
 
-router.get('/buscarporcliente/:clienteID', authenticateToken, async (req, res) => {
+router.get('/buscarporcliente/:clienteID', authenticateTokenAdmin, async (req, res) => {
     const clienteID = req.params.clienteID
 
     const treino = await Treino.find({ clienteID })
