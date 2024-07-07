@@ -1,10 +1,11 @@
 import express from 'express'
 import Treino from '../models/Treino.js'
 import Cliente from '../models/Cliente.js'
+import { authenticateToken, authenticateTokenAdmin } from './auth.js'
 
 const router = express.Router()
 
-router.post('/registrartreino', async (req, res) => {
+router.post('/registrartreino', authenticateTokenAdmin, async (req, res) => {
 
     const { treino, visibility, clienteID } = req.body
 
@@ -38,14 +39,14 @@ router.post('/registrartreino', async (req, res) => {
 
 })
 
-router.get('/mostrartreinos', async (req, res) => {
+router.get('/mostrartreinos', authenticateToken, async (req, res) => {
 
     const response = await Treino.find({})
     res.send(response)
 
 })
 
-router.get('/mostrartreinos/:id', async (req, res) => {
+router.get('/mostrartreinos/:id', authenticateToken, async (req, res) => {
 
     const _id = req.params.id
 
@@ -55,7 +56,7 @@ router.get('/mostrartreinos/:id', async (req, res) => {
 
 })
 
-router.get('/buscarporcliente/:clienteID', async (req, res) => {
+router.get('/buscarporcliente/:clienteID', authenticateToken, async (req, res) => {
     const clienteID = req.params.clienteID
 
     const treino = await Treino.find({ clienteID })
@@ -63,7 +64,7 @@ router.get('/buscarporcliente/:clienteID', async (req, res) => {
     res.json(treino)
 })
 
-router.put('/atualizartreino/:id', async (req, res) => {
+router.put('/atualizartreino/:id', authenticateTokenAdmin, async (req, res) => {
     const _id = req.params.id
 
     const { treino, visibility } = req.body
@@ -84,7 +85,7 @@ router.put('/atualizartreino/:id', async (req, res) => {
 
 })
 
-router.delete('/deletartreino/:id', async (req,res) => {
+router.delete('/deletartreino/:id', authenticateTokenAdmin, async (req,res) => {
     const _id = req.params.id
 
     try {

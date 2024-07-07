@@ -1,5 +1,6 @@
 import express from 'express'
 import Pagamento from '../models/Pagamento.js'
+import { authenticateToken, authenticateTokenAdmin } from './auth.js'
 // import moment from 'moment-timezone'
 
 const router = express.Router()
@@ -8,7 +9,7 @@ router.get('/teste', (req, res) => {
     res.json('teste')
 })
 
-router.post('/registrarpagamento', async (req, res) => {
+router.post('/registrarpagamento', authenticateToken, async (req, res) => {
     const { clienteID, paymentAmount, paymentMethod, paymentStatus, transactionID, payerAccountNumber, approvalCode } = req.body;
 
     // var date = moment.utc().format('YYYY-MM-DD HH:mm:ss');
@@ -41,13 +42,13 @@ router.post('/registrarpagamento', async (req, res) => {
 });
 
 
-router.get('/mostrarpagamentos', async (req, res) => {
+router.get('/mostrarpagamentos', authenticateTokenAdmin, async (req, res) => {
     const response = await Pagamento.find({})
 
     res.json(response)
 })
 
-router.get('/mostrarpagamentosreverso', async (req, res) => {
+router.get('/mostrarpagamentosreverso', authenticateTokenAdmin, async (req, res) => {
     try {
         // Alteração aqui: ordenando por createdAt de forma descendente
         const response = await Pagamento.find({}).sort({ createdAt: -1 });
