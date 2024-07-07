@@ -20,6 +20,12 @@ const corsOptions = {
     credentials: true
 };
 
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*"); // Permite todas as origens. Para permitir uma origem específica, substitua o '*' pela URL da origem permitida.
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
+
 app.use(cors(corsOptions))
 
 // app.use((req, res, next) => {

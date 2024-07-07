@@ -52,7 +52,7 @@ router.get('/mostrarpagamentos', authenticateTokenAdmin, async (req, res) => {
 
 router.get('/mostrarpagamentosreverso', authenticateTokenAdmin, async (req, res) => {
     try {
-        // Alteração aqui: ordenando por createdAt de forma descendente
+        // ordenando por createdAt de forma descendente
         const response = await Pagamento.find({}).sort({ createdAt: -1 });
 
         res.json(response);
