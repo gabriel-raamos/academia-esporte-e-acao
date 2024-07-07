@@ -3,7 +3,10 @@ import Treino from '../models/Treino.js'
 import Cliente from '../models/Cliente.js'
 import { authenticateToken, authenticateTokenAdmin } from './auth.js'
 
+import cookieParser from 'cookie-parser'
+
 const router = express.Router()
+router.use(cookieParser())
 
 router.post('/registrartreino', authenticateTokenAdmin, async (req, res) => {
 

@@ -1,9 +1,11 @@
 import express from 'express'
 import Pagamento from '../models/Pagamento.js'
 import { authenticateToken, authenticateTokenAdmin } from './auth.js'
-// import moment from 'moment-timezone'
+
+import cookieParser from 'cookie-parser'
 
 const router = express.Router()
+router.use(cookieParser())
 
 router.get('/teste', (req, res) => {
     res.json('teste')
