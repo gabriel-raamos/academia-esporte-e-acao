@@ -16,7 +16,7 @@ export default function Treinos() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`https://academia-esporte-e-acao.vercel.app/api/cliente/findworkoutsbyid/`, {withCredentials: true});
+                const response = await axios.get(`https://academia-esporte-e-acao.vercel.app/api/cliente/findworkoutsbyid/`, { withCredentials: true });
                 const fetchedData = response.data;
 
                 // console.log('Fetched Data:', fetchedData);
@@ -140,12 +140,12 @@ export default function Treinos() {
                                         >
                                             <FaArrowAltCircleLeft/>
                                         </button> */}
-                                        
+
                                         <a
                                             onClick={prevWorkout}
                                             className="items-center flex text-blue-700  active:text-blue-900 rounded-full font-bold mx-2 text-5xl transition hover:scale-105 hover:-translate-y-1 duration-500"
                                         >
-                                            <FaArrowAltCircleLeft/>
+                                            <FaArrowAltCircleLeft />
                                         </a>
 
                                         <div className="flex justify-center font-bold my-5 text-lg">
@@ -154,23 +154,18 @@ export default function Treinos() {
                                             </p>
                                         </div>
 
-                                        {/* <button
-                                            onClick={nextWorkout}
-                                            className="bg-blue-700 active:bg-blue-900 text-white rounded-full font-bold p-3 mx-2 text-5xl transition hover:bg-blue-500 hover:-translate-y-1 duration-500"
-                                        >
-                                            <FaArrowAltCircleRight/>
-                                        </button> */}
-                                        
                                         <a
                                             onClick={nextWorkout}
                                             className="items-center flex text-blue-700  active:text-blue-900 rounded-full font-bold mx-2 text-5xl transition hover:scale-105 hover:-translate-y-1 duration-500"
                                         >
-                                            <FaArrowAltCircleRight/>
+                                            <FaArrowAltCircleRight />
                                         </a>
                                     </div>
-                                    <div className="flex justify-center text-lg rounded-xl p-5 my-5 mx-3 border-4 text-white border-blue-700 bg-blue-700 font-bold md:m-5 whitespace-pre-line overflow-y-auto">
-                                        <div className="fixed-width md:fixed-lg-width border-white">
-                                            {renderSeries()}
+                                    <div className='flex justify-center items-center' >
+                                        <div className="flex justify-center text-lg rounded-xl p-5 my-5 mx-3 border-4 text-white border-blue-700 bg-blue-700 font-bold md:m-5 w-72 md:w-96 whitespace-pre-line overflow-y-auto">
+                                            <div className="fixed-width md:fixed-lg-width border-white border-4 rounded-xl p-5">
+                                                {renderSeries()}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
