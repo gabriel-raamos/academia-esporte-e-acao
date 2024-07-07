@@ -4,55 +4,57 @@ import jwt from 'jsonwebtoken'
 import bcrypt from 'bcryptjs'
 import Cliente from '../models/Cliente.js'
 
+import { authenticateToken, authenticateTokenAdmin } from './auth.js'
+
 import cookieParser from 'cookie-parser'
 
 const router = express.Router()
 router.use(cookieParser())
 
 // admin authentication
-async function authenticateTokenAdmin(req, res, next) {
-    const token = req.cookies.token
+// async function authenticateTokenAdmin(req, res, next) {
+//     const token = req.cookies.token
 
-    if (!token) {
-        return res.send('Sem token')
-    }
+//     if (!token) {
+//         return res.send('Sem token')
+//     }
 
-    const usuario = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET)
-    console.log(usuario)
-    const email = usuario.email
+//     const usuario = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET)
+//     console.log(usuario)
+//     const email = usuario.email
 
-    const user = await Cliente.findOne({ email })
-    console.log(user)
+//     const user = await Cliente.findOne({ email })
+//     console.log(user)
 
-    if (!user || user.role !== "admin") {
-        return res.status(403).send('Usuário não tem as credenciais necessárias');
-    }
+//     if (!user || user.role !== "admin") {
+//         return res.status(403).send('Usuário não tem as credenciais necessárias');
+//     }
 
-    req.user = usuario
+//     req.user = usuario
 
-    next()
-}
+//     next()
+// }
 
 // token authentication
-function authenticateToken(req, res, next) {
-    const token = req.cookies.token
+// function authenticateToken(req, res, next) {
+//     const token = req.cookies.token
 
-    if (token === null) {
-        return res.send('TOKEN NULL')
-    }
+//     if (token === null) {
+//         return res.send('TOKEN NULL')
+//     }
 
-    jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
-        if (err) {
-            // return res.sendStatus(403)
-            return res.send("Token inválido")
-        }
+//     jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
+//         if (err) {
+//             // return res.sendStatus(403)
+//             return res.send("Token inválido")
+//         }
 
-        req.user = user
-        console.log(user)
+//         req.user = user
+//         console.log(user)
 
-        next()
-    })
-}
+//         next()
+//     })
+// }
 
 // registrar
 router.post('/register', async (req, res) => {
