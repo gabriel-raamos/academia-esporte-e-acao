@@ -40,37 +40,31 @@ export default function PagamentoLista() {
                             const clienteResponse = await axios.get(`https://academia-esporte-e-acao.vercel.app/api/cliente/findbycpf/${pagamento.clienteCPF}`);
                             const cliente = clienteResponse.data;
 
-                            // console.log('Dados do cliente:', cliente);
-
                             if (!cliente) {
-                                // console.warn('Cliente não encontrado para ID:', pagamento.clienteID);
                                 return {
                                     ...pagamento,
                                     paymentAmount: parseFloat(pagamento.paymentAmount.$numberDecimal),
-                                    clienteName: 'Cliente deletado',
-                                    clienteEmail: '',
-                                    clientePhone: '',
+                                    clienteName: pagamento.clienteNome,
+                                    clientePhone: pagamento.clientePhone,
                                     clienteCPF: pagamento.clienteCPF,
-                                    statusDeletado: 'Deletado'
+                                    statusDeletado: 'Cliente deletado'
                                 };
                             }
 
                             return {
                                 ...pagamento,
                                 paymentAmount: parseFloat(pagamento.paymentAmount.$numberDecimal),
-                                clienteName: cliente.name,
-                                clienteEmail: cliente.email,
-                                clientePhone: cliente.phone,
-                                clienteCPF: cliente.cpf,
+                                clienteName: pagamento.clienteNome,
+                                clientePhone: pagamento.clientePhone,
+                                clienteCPF: pagamento.clienteCPF,
                                 statusDeletado: ''
                             };
                         } catch (error) {
-                            console.error(`Erro ao buscar dados do cliente para ID ${pagamento.clienteID}:`, error);
+                            // console.error(`Erro ao buscar dados do cliente para ID ${pagamento.clienteID}:`, error);
                             return {
                                 ...pagamento,
                                 paymentAmount: parseFloat(pagamento.paymentAmount.$numberDecimal),
                                 clienteName: 'Erro ao buscar cliente',
-                                clienteEmail: '',
                                 clientePhone: '',
                                 clienteCPF: '',
                                 statusDeletado: ''
@@ -138,7 +132,7 @@ export default function PagamentoLista() {
                                     .map((pagamento) => (
                                         <div key={pagamento._id} className="mb-4 grid grid-cols-2 justify-center items-center text-gray-400 bg-gray-900 border-gray-700 border-4 font-bold rounded-xl">
                                             <p className="text-lg mx-2 text-center">
-                                                Cliente: {pagamento.clienteNome}
+                                                Cliente: {pagamento.clienteName}
                                             </p>
                                             <p className="text-lg mx-2 text-center">
                                                 Telefone: {pagamento.clientePhone}
@@ -157,6 +151,9 @@ export default function PagamentoLista() {
                                             </p>
                                             <p className="text-lg mx-2 text-center mb-2">
                                                 ID: {pagamento._id}
+                                            </p>
+                                            <p className="text-lg mx-2 text-center mb-2 text-red-700 -translate-y-5 md:-translate-y-0">
+                                                {pagamento.statusDeletado}
                                             </p>
                                         </div>
                                     ))}

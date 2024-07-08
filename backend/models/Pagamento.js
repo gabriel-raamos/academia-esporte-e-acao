@@ -9,7 +9,8 @@ const PagamentoSchema = new mongoose.Schema({
     payerAccountNumber: { type: String },
     approvalCode: { type: String },
     clienteNome: { type: String },
-    clienteCPF: { type: String }
+    clienteCPF: { type: String },
+    clientePhone: { type: String }
 }, 
 { timestamps: true })
 

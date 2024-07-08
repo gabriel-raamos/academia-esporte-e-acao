@@ -12,7 +12,7 @@ router.get('/teste', (req, res) => {
 })
 
 router.post('/registrarpagamento', authenticateToken, async (req, res) => {
-    const { paymentAmount, paymentMethod, paymentStatus, transactionID, payerAccountNumber, approvalCode, clienteNome, clienteCPF } = req.body;
+    const { paymentAmount, paymentMethod, paymentStatus, transactionID, payerAccountNumber, approvalCode, clienteNome, clienteCPF, clientePhone } = req.body;
 
     try {
 
@@ -24,7 +24,8 @@ router.post('/registrarpagamento', authenticateToken, async (req, res) => {
             payerAccountNumber,
             approvalCode,
             clienteNome,
-            clienteCPF
+            clienteCPF,
+            clientePhone
         });
 
         const savedPagamento = await newPagamento.save();

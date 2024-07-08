@@ -12,6 +12,7 @@ function Pagamento() {
     const [clienteCPF, setClienteCPF] = useState('')
     const [clienteCEP, setClienteCEP] = useState('')
     const [clienteNome, setClienteNome] = useState('')
+    const [clientePhone, setClientePhone] = useState('')
     const [isModalOpen, setIsModalOpen] = useState(false)
     const [formData, setFormData] = useState({
         clienteID: id,
@@ -21,8 +22,9 @@ function Pagamento() {
         transactionID: '',
         payerAccountNumber: '',
         approvalCode: '',
-        clienteNome: clienteNome,
-        clienteCPF: clienteCPF
+        clienteNome: '',
+        clienteCPF: '',
+        clientePhone: ''
     })
 
     const fetchData = async () => {
@@ -32,7 +34,8 @@ function Pagamento() {
             // alert(response.data.cpf)
             setClienteCPF(response.data.cpf)
             setClienteCEP(response.data.cep)
-            setClienteNome(response.data.nome)
+            setClienteNome(response.data.name)
+            setClientePhone(response.data.phone)
 
         }
 
@@ -75,6 +78,9 @@ function Pagamento() {
 
             const updatedFormData = {
                 ...formData,
+                clienteNome: clienteNome,
+                clienteCPF: clienteCPF,
+                clientePhone: clientePhone,
                 transactionID: generateTransactionID(),
                 approvalCode: generateApprovalCode(),
                 paymentStatus: 'completed',
@@ -113,6 +119,15 @@ function Pagamento() {
     useEffect(() => {
         fetchData()
     }, [])
+
+    useEffect(() => {
+        setFormData((prevData) => ({
+            ...prevData,
+            clienteNome: clienteNome,
+            clienteCPF: clienteCPF,
+            clientePhone: clientePhone
+        }))
+    }, [clienteNome, clienteCPF, clientePhone])
 
     return (
         <section>
