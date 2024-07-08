@@ -25,8 +25,6 @@ router.post('/registrarpagamento', authenticateToken, async (req, res) => {
             approvalCode,
             clienteNome,
             clienteCPF
-            // createdAt,
-            // updatedAt
         });
 
         const savedPagamento = await newPagamento.save();

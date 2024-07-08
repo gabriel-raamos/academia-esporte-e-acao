@@ -198,11 +198,11 @@ router.get('/clientealfabetico', authenticateTokenAdmin, async (req, res) => {
 
 })
 
-router.put('/updateActive/:id', authenticateTokenAdmin, async (req, res) => {
+router.put('/updateActive/:id', authenticateToken, async (req, res) => {
     const _id = req.params.id;
     const active = req.body.active;
 
-    console.log('ID do usuário: ' + _id)
+    // console.log('ID do usuário: ' + _id)
 
     try {
         const cliente = await Cliente.findByIdAndUpdate({ _id }, { active }, { new: true });
@@ -294,7 +294,7 @@ router.delete('/deletarcliente/:id', authenticateTokenAdmin, async (req, res) =>
 
 })
 
-router.put('/updateActiveToken/:id', authenticateTokenAdmin, async (req, res) => {
+router.put('/updateActiveToken/:id', authenticateToken, async (req, res) => {
     const _id = req.params.id;
     const active = req.body.active;
 
