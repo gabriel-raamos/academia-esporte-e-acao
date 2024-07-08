@@ -1,32 +1,4 @@
-{
-  "version": 2,
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@vercel/static-build"
-    },
-    {
-      "src": "/backend/server.js",
-      "use": "@vercel/node"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "/backend/server.js"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/$1"
-    }
-  ],
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/" }
-  ]
-  
-}
-
-• corrigir sessão jwt
+• corrigir sessão jwt - FEITO PRA CARALHO (FOI DIFICIL)
 • o usuário não pode acessar os treinos se não estiver marcado como desativado - FEITO
 • adicionar campo de busca de cliente filtrando por nome e cargo - FEITO
 • mudar cadastro de treinos para uma lista - FEITO

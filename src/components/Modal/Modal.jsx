@@ -1,11 +1,13 @@
 import PropTypes from 'prop-types'
 import { useEffect, useState } from 'react'
 import ModalTreinos from '../ModalTreinos/ModalTreinos'
+import ModalConfirmDelete from '../ModalConfirmDelete/ModalConfirmDelete'
 
 function Modal({ isOpen, onClose, cliente, onSave, deleteUser }) {
 
     const [formData, setFormData] = useState({})
     const [isTreinosModalOpen, setIsTreinosModalOpen] = useState(false)
+    const [isConfirmDeleteModalOpen, setIsConfirmDeleteModalOpen] = useState(false);
 
     useEffect(() => {
         if (cliente) {
@@ -36,6 +38,20 @@ function Modal({ isOpen, onClose, cliente, onSave, deleteUser }) {
 
     const handleCloseTreinosModal = () => {
         setIsTreinosModalOpen(false);
+    };
+
+    const handleOpenConfirmDeleteModal = () => {
+        setIsConfirmDeleteModalOpen(true);
+    };
+
+    const handleCloseConfirmDeleteModal = () => {
+        setIsConfirmDeleteModalOpen(false);
+    }
+
+    const handleConfirmDelete = () => {
+        deleteUser(cliente);
+        handleCloseConfirmDeleteModal();
+        onClose();
     };
 
     if (!isOpen) {
@@ -184,7 +200,7 @@ function Modal({ isOpen, onClose, cliente, onSave, deleteUser }) {
                         </div>
                     </div>
 
-                    <div className='flex justify-between' >
+                    <div className='flex justify-between mt-3' >
 
                         <button
                             type="submit"
@@ -196,7 +212,7 @@ function Modal({ isOpen, onClose, cliente, onSave, deleteUser }) {
                         <button
                             type="button"
                             className="bg-red-700 text-white rounded-full p-3 text-lg font-bold transition hover:bg-red-500 hover:-translate-y-1 duration-500"
-                            onClick={() => {deleteUser(cliente)}}
+                            onClick={handleOpenConfirmDeleteModal}
                         >
                             Deletar
                         </button>
@@ -219,6 +235,13 @@ function Modal({ isOpen, onClose, cliente, onSave, deleteUser }) {
                     clienteID={cliente._id}
                     isOpen={isTreinosModalOpen}
                     onClose={handleCloseTreinosModal}
+                />
+            )}
+            {isConfirmDeleteModalOpen && (
+                <ModalConfirmDelete
+                    isOpen={isConfirmDeleteModalOpen}
+                    onClose={handleCloseConfirmDeleteModal}
+                    onConfirm={handleConfirmDelete}
                 />
             )}
 
