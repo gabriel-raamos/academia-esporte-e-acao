@@ -47,6 +47,14 @@ export default function NavBar() {
     }
   };
 
+  function sliceName(name) {
+    if (name.length >= 10) {
+      return name.slice(0, 10) + '...';
+    } else {
+      return name
+    }
+  }
+
   useEffect(() => {
     if (authHeader) {
       fetchName();
@@ -105,7 +113,7 @@ export default function NavBar() {
                   onClick={toggleMenu}
                   className="select-none text-white bg-gray-900 text-sm md:text-xl py-2 md:py-5 px-2 mt-7 md:mt-0 rounded-full font-bold transition duration-500 hover:bg-blue-700 hover:text-white focus:bg-blue-700 hover:shadow-[0px_0px_20px_10px] hover:shadow-[#1d4ed8]"
                 >
-                  {name}
+                  {sliceName(name)}
                 </button>
                 {isMenuOpen && (
                   <ul
@@ -145,7 +153,7 @@ export default function NavBar() {
               </div>
             ) : (
               <div className="flex justify-center items-center h-2/3 w-2/3 pl-6 md:pl-0">
-                <NavButton title={name} link="treinos" />
+                <NavButton title={sliceName(name)} link="treinos" />
               </div>
             )}
           </div>

@@ -110,7 +110,7 @@ export default function Usuarios() {
                         className="mb-4 border-4 border-blue-700 rounded-xl p-2 text-lg w-72"
                     />
                     <div>
-                        <div className="md:grid md:grid-cols-2 gap-4">
+                        <div className="md:grid md:grid-cols-3 gap-4">
                             {filteredData.map((cliente) => (
                                 <div key={cliente._id} className="mb-4 grid grid-cols-2 justify-center items-center border-blue-700 border-4 font-bold rounded-xl">
                                     <p className="text-blue-700 text-lg mx-2 text-center">{cliente.name.length > 10 ? `${cliente.name.substring(0, 10)}...` : cliente.name}</p>
