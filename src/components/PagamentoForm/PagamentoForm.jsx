@@ -8,6 +8,11 @@ function Pagamento() {
 
     const id = JSON.parse(localStorage.getItem('json-data')).id
 
+    const [selectedPlan, setSelectedPlan] = useState('')
+    const [clienteCPF, setClienteCPF] = useState('')
+    const [clienteCEP, setClienteCEP] = useState('')
+    const [clienteNome, setClienteNome] = useState('')
+    const [isModalOpen, setIsModalOpen] = useState(false)
     const [formData, setFormData] = useState({
         clienteID: id,
         paymentAmount: '',
@@ -19,11 +24,6 @@ function Pagamento() {
         clienteNome: clienteNome,
         clienteCPF: clienteCPF
     })
-    const [selectedPlan, setSelectedPlan] = useState('')
-    const [clienteCPF, setClienteCPF] = useState('')
-    const [clienteCEP, setClienteCEP] = useState('')
-    const [clienteNome, setClienteNome] = useState('')
-    const [isModalOpen, setIsModalOpen] = useState(false)
 
     const fetchData = async () => {
 
