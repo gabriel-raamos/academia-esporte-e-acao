@@ -50,7 +50,8 @@ export default function PagamentoLista() {
                                     clienteName: 'Cliente deletado',
                                     clienteEmail: '',
                                     clientePhone: '',
-                                    clienteCPF: ''
+                                    clienteCPF: pagamento.clienteCPF,
+                                    statusDeletado: 'Deletado'
                                 };
                             }
 
@@ -60,7 +61,8 @@ export default function PagamentoLista() {
                                 clienteName: cliente.name,
                                 clienteEmail: cliente.email,
                                 clientePhone: cliente.phone,
-                                clienteCPF: cliente.cpf
+                                clienteCPF: cliente.cpf,
+                                statusDeletado: ''
                             };
                         } catch (error) {
                             console.error(`Erro ao buscar dados do cliente para ID ${pagamento.clienteID}:`, error);
@@ -70,7 +72,8 @@ export default function PagamentoLista() {
                                 clienteName: 'Erro ao buscar cliente',
                                 clienteEmail: '',
                                 clientePhone: '',
-                                clienteCPF: ''
+                                clienteCPF: '',
+                                statusDeletado: ''
                             };
                         }
                     })
@@ -135,7 +138,7 @@ export default function PagamentoLista() {
                                     .map((pagamento) => (
                                         <div key={pagamento._id} className="mb-4 grid grid-cols-2 justify-center items-center text-gray-400 bg-gray-900 border-gray-700 border-4 font-bold rounded-xl">
                                             <p className="text-lg mx-2 text-center">
-                                                Cliente: {pagamento.clienteName}
+                                                Cliente: {pagamento.clienteNome}
                                             </p>
                                             <p className="text-lg mx-2 text-center">
                                                 Telefone: {pagamento.clientePhone}
