@@ -12,7 +12,7 @@ router.get('/teste', (req, res) => {
 })
 
 router.post('/registrarpagamento', authenticateToken, async (req, res) => {
-    const { clienteID, paymentAmount, paymentMethod, paymentStatus, transactionID, payerAccountNumber, approvalCode } = req.body;
+    const { paymentAmount, paymentMethod, paymentStatus, transactionID, payerAccountNumber, approvalCode, clienteNome, clienteCPF } = req.body;
 
     // var date = moment.utc().format('YYYY-MM-DD HH:mm:ss');
 
@@ -23,13 +23,14 @@ router.post('/registrarpagamento', authenticateToken, async (req, res) => {
         // const updatedAt = stillUtc
 
         const newPagamento = new Pagamento({
-            clienteID,
             paymentAmount,
             paymentMethod,
             paymentStatus,
             transactionID,
             payerAccountNumber,
             approvalCode,
+            clienteNome,
+            clienteCPF
             // createdAt,
             // updatedAt
         });

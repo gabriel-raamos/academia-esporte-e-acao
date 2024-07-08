@@ -15,20 +15,24 @@ function Pagamento() {
         paymentStatus: 'pending',
         transactionID: '',
         payerAccountNumber: '',
-        approvalCode: ''
+        approvalCode: '',
+        clienteNome: clienteNome,
+        clienteCPF: clienteCPF
     })
     const [selectedPlan, setSelectedPlan] = useState('')
     const [clienteCPF, setClienteCPF] = useState('')
     const [clienteCEP, setClienteCEP] = useState('')
+    const [clienteNome, setClienteNome] = useState('')
     const [isModalOpen, setIsModalOpen] = useState(false)
 
     const fetchData = async () => {
 
         try {
-            const response = await axios.get(`https://academia-esporte-e-acao.vercel.app/api/cliente/findbyid/${id}`)
+            const response = await axios.get(`https://academia-esporte-e-acao.vercel.app/api/cliente/findbyid/`)
             // alert(response.data.cpf)
             setClienteCPF(response.data.cpf)
             setClienteCEP(response.data.cep)
+            setClienteNome(response.data.nome)
 
         }
 

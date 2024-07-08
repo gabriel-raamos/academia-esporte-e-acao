@@ -29,40 +29,65 @@ export default function PagamentoLista() {
     const fetchPagamentos = async () => {
         try {
             const response = await axios.get(`https://academia-esporte-e-acao.vercel.app/api/pagamento/mostrarpagamentosreverso`, { withCredentials: true });
-            // console.log("Dados da API de pagamentos:", response.data); // Adicionando log para ver os dados
-
             const pagamentosData = response.data;
 
-            // Verifique se pagamentosData é um array
             if (Array.isArray(pagamentosData)) {
                 const pagamentosConvertidos = await Promise.all(
                     pagamentosData.map(async (pagamento) => {
-                        const clienteResponse = await axios.get(`https://academia-esporte-e-acao.vercel.app/api/cliente/findbyid/${pagamento.clienteID}`);
-                        const cliente = clienteResponse.data;
+                        // console.log('clienteID:', pagamento.clienteID);
 
-                        return {
-                            ...pagamento,
-                            paymentAmount: parseFloat(pagamento.paymentAmount.$numberDecimal),
-                            clienteName: cliente.name,
-                            clienteEmail: cliente.email,
-                            clientePhone: cliente.phone,
-                            clienteCPF: cliente.cpf
-                        };
+                        try {
+                            const clienteResponse = await axios.get(`https://academia-esporte-e-acao.vercel.app/api/cliente/findbyid/${pagamento.clienteID}`);
+                            const cliente = clienteResponse.data;
+
+                            // console.log('Dados do cliente:', cliente);
+
+                            if (!cliente) {
+                                // console.warn('Cliente não encontrado para ID:', pagamento.clienteID);
+                                return {
+                                    ...pagamento,
+                                    paymentAmount: parseFloat(pagamento.paymentAmount.$numberDecimal),
+                                    clienteName: 'Cliente deletado',
+                                    clienteEmail: '',
+                                    clientePhone: '',
+                                    clienteCPF: ''
+                                };
+                            }
+
+                            return {
+                                ...pagamento,
+                                paymentAmount: parseFloat(pagamento.paymentAmount.$numberDecimal),
+                                clienteName: cliente.name,
+                                clienteEmail: cliente.email,
+                                clientePhone: cliente.phone,
+                                clienteCPF: cliente.cpf
+                            };
+                        } catch (error) {
+                            console.error(`Erro ao buscar dados do cliente para ID ${pagamento.clienteID}:`, error);
+                            return {
+                                ...pagamento,
+                                paymentAmount: parseFloat(pagamento.paymentAmount.$numberDecimal),
+                                clienteName: 'Erro ao buscar cliente',
+                                clienteEmail: '',
+                                clientePhone: '',
+                                clienteCPF: ''
+                            };
+                        }
                     })
                 );
 
                 setPagamentos(pagamentosConvertidos);
-                setLoading(false)
+                setLoading(false);
             } else {
                 throw new Error("Resposta da API de pagamentos não é um array");
             }
-            setLoading(false);
         } catch (error) {
             setError(error);
             setLoading(false);
             alert('Ocorreu um erro ao puxar os pagamentos: ' + error.message);
         }
     };
+
 
     const [searchTerm, setSearchTerm] = useState('');
 

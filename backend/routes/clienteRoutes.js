@@ -120,7 +120,7 @@ router.post('/logout', (req, res) => {
     return res.json({ message: 'Logout efetuado com sucesso.' });
 });
 
-router.get('/clienteemail/:email', async (req, res) => {
+router.get('/clienteemail/:email', authenticateToken, async (req, res) => {
     const email = req.params.email
 
     const cliente = await Cliente.findOne({ email }).populate('workouts')
