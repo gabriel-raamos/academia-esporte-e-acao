@@ -20,7 +20,7 @@ export default function Usuarios() {
 
     const fetchData = async () => {
         try {
-            const response = await axios.get('https://academia-esporte-e-acao.vercel.app/api/cliente/clientealfabetico', {withCredentials: true})
+            const response = await axios.get('https://academia-esporte-e-acao.vercel.app/api/cliente/clientealfabetico', { withCredentials: true })
             if (response.data && response.data.clientes) {
                 setData(response.data.clientes)
             } else {
@@ -80,7 +80,17 @@ export default function Usuarios() {
         }
     }
 
-    const filteredData = data.filter(cliente => 
+    async function deletarUser(cliente) {
+        try {
+            await axios.delete(`http://localhost:5000/api/cliente/deletarcliente/${cliente._id}`)
+
+            window.location.reload()
+        } catch (error) {
+            alert('erro ao deletar cliente: ' + error)
+        }
+    }
+
+    const filteredData = data.filter(cliente =>
         cliente.name.toLowerCase().includes(searchTerm.toLowerCase())
     )
 
@@ -129,6 +139,7 @@ export default function Usuarios() {
                                 onClose={handleFecharModal}
                                 cliente={clienteSelecionado}
                                 onSave={salvarCliente}
+                                deleteUser={deletarUser}
                             />
                         </div>
                     </div>

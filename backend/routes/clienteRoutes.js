@@ -280,6 +280,20 @@ router.put('/atualizarclientetoken', authenticateTokenAdmin, async (req, res) =>
 
 })
 
+router.delete('/deletarcliente/:id', authenticateTokenAdmin, async (req,res) => {
+    const _id = req.params.id
+
+    try {
+        await Cliente.deleteOne({ _id })
+
+        res.json({ message: 'Cliente excluído com sucesso.' })
+
+    } catch (error) {
+        res.json({ message: 'Erro interno no servidor: ', error })
+    }
+
+})
+
 router.put('/updateActiveToken/:id', authenticateTokenAdmin, async (req, res) => {
     const _id = req.params.id;
     const active = req.body.active;

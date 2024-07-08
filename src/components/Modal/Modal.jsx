@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import { useEffect, useState } from 'react'
 import ModalTreinos from '../ModalTreinos/ModalTreinos'
 
-function Modal({ isOpen, onClose, cliente, onSave }) {
+function Modal({ isOpen, onClose, cliente, onSave, deleteUser }) {
 
     const [formData, setFormData] = useState({})
     const [isTreinosModalOpen, setIsTreinosModalOpen] = useState(false)
@@ -195,6 +195,14 @@ function Modal({ isOpen, onClose, cliente, onSave }) {
 
                         <button
                             type="button"
+                            className="bg-red-700 text-white rounded-full p-3 text-lg font-bold transition hover:bg-red-500 hover:-translate-y-1 duration-500"
+                            onClick={() => {deleteUser(cliente)}}
+                        >
+                            Deletar
+                        </button>
+
+                        <button
+                            type="button"
                             onClick={handleOpenTreinosModal}
                             className="bg-blue-700 text-white rounded-full p-3 text-lg font-bold transition hover:bg-blue-500 hover:-translate-y-1 duration-500"
                         >
@@ -223,7 +231,8 @@ Modal.propTypes = {
     isOpen: PropTypes.bool.isRequired,
     onClose: PropTypes.func.isRequired,
     cliente: PropTypes.object,
-    onSave: PropTypes.func.isRequired
+    onSave: PropTypes.func.isRequired,
+    deleteUser: PropTypes.func.isRequired
 }
 
 export default Modal

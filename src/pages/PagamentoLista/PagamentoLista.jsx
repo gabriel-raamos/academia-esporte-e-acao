@@ -100,7 +100,7 @@ export default function PagamentoLista() {
                                     placeholder="Buscar por nome do cliente"
                                     value={searchTerm}
                                     onChange={(e) => setSearchTerm(e.target.value)}
-                                    className="mb-4 border-4 border-blue-700 rounded-xl p-2 text-lg w-72"
+                                    className="mb-4 border-4 border-gray-700 rounded-xl p-2 text-lg w-72"
                                 />
                             </div>
                             <div className="md:grid md:grid-cols-2 gap-4 mx-5">
@@ -108,7 +108,7 @@ export default function PagamentoLista() {
                                     .filter(pagamento =>
                                         pagamento.clienteName.toLowerCase().includes(searchTerm.toLowerCase()))
                                     .map((pagamento) => (
-                                        <div key={pagamento._id} className="mb-4 grid grid-cols-2 justify-center items-center text-white bg-blue-950 border-blue-900 border-4 font-bold rounded-xl">
+                                        <div key={pagamento._id} className="mb-4 grid grid-cols-2 justify-center items-center text-gray-400 bg-gray-900 border-gray-700 border-4 font-bold rounded-xl">
                                             <p className="text-lg mx-2 text-center">
                                                 Cliente: {pagamento.clienteName}
                                             </p>
