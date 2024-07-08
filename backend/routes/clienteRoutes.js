@@ -280,7 +280,7 @@ router.put('/atualizarclientetoken', authenticateTokenAdmin, async (req, res) =>
 
 })
 
-router.delete('/deletarcliente/:id', authenticateTokenAdmin, async (req,res) => {
+router.delete('/deletarcliente/:id', authenticateTokenAdmin, async (req, res) => {
     const _id = req.params.id
 
     try {
@@ -313,7 +313,19 @@ router.put('/updateActiveToken/:id', authenticateTokenAdmin, async (req, res) =>
     }
 })
 
+router.get('/findbycpf/:cpf', authenticateTokenAdmin, async (req, res) => {
+    const cpf = req.params.cpf
 
+    try {
+        const cliente = await Cliente.findOne({ cpf })
+
+        res.json(cliente)
+
+    } catch (error) {
+        res.status(500).json({ message: 'Erro interno no servidor: ', error })
+        
+    }
+})
 
 // ------------------------------------------------
 

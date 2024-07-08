@@ -37,7 +37,7 @@ export default function PagamentoLista() {
                         // console.log('clienteID:', pagamento.clienteID);
 
                         try {
-                            const clienteResponse = await axios.get(`https://academia-esporte-e-acao.vercel.app/api/cliente/findbyid/${pagamento.clienteID}`);
+                            const clienteResponse = await axios.get(`https://academia-esporte-e-acao.vercel.app/api/cliente/findbycpf/${pagamento.clienteCPF}`);
                             const cliente = clienteResponse.data;
 
                             // console.log('Dados do cliente:', cliente);
