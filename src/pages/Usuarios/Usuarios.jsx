@@ -82,7 +82,7 @@ export default function Usuarios() {
 
     async function deletarUser(cliente) {
         try {
-            await axios.delete(`http://localhost:5000/api/cliente/deletarcliente/${cliente._id}`)
+            await axios.delete(`https://academia-esporte-e-acao.vercel.app/api/cliente/deletarcliente/${cliente._id}`)
 
             window.location.reload()
         } catch (error) {
