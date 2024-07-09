@@ -5,7 +5,7 @@ import { GiSmartphone } from "react-icons/gi";
 import { AiFillEnvironment } from "react-icons/ai";
 import { MdEmail } from "react-icons/md";
 
-export default function FaleConosco() {
+export default function Contato() {
     return (
         <section className="flex flex-col justify-center items-center mt-5" >
 

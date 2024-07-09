@@ -85,7 +85,7 @@ export default function NavBar() {
         </div>
 
         <div className="pl-3 md:pl-0 flex justify-center">
-          <NavButton title="Fale conosco" link="faleconosco" />
+          <NavButton title="Contato" link="contato" />
         </div>
 
         {!authHeader ? (
