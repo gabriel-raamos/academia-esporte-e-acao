@@ -41,10 +41,12 @@ export default function LoginForm() {
 
     return (
         <form
-            className="rounded-xl p-5 my-5 border-4 text-blue-700 border-blue-700"
+            className="rounded-xl my-5 bg-gray-800"
             onSubmit={onSave}
         >
-            <h1 className="text-center text-lg font-bold">Faça seu login aqui!</h1>
+            <h1 className="text-center pt-5 pb-2 text-white text-lg font-bold bg-gray-700 rounded-xl">
+                Faça seu login aqui!
+            </h1>
 
             <Textbox
                 obrigatorio={true}
@@ -67,7 +69,7 @@ export default function LoginForm() {
                 <h3>Manter-se conectado</h3>
             </div> */}
 
-            <div className="flex justify-center items-center my-2 font-bold">
+            <div className="flex justify-center items-center my-2 font-bold text-white">
                 <button type="button">Esqueci minha senha</button>
             </div>
 

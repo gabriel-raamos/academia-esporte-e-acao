@@ -96,13 +96,9 @@ export default function Form() {
     };
 
     return (
-        <form className="rounded-xl my-5 bg-gray-800" onSubmit={onSave}>
+        <form className="rounded-xl my-5 border-4 border-blue-700" onSubmit={onSave}>
 
-            <h1 className="rounded-xl text-center pt-5 pb-2 bg-gray-700 text-white font-bold text-lg">
-                Ainda não tem uma conta? 
-                <br /> 
-                Cadastre-se aqui!
-            </h1>
+            <h1 className="text-center pt-5 text-blue-700 font-bold text-lg">Ainda não tem uma conta? <br /> Cadastre-se aqui!</h1>
 
             {currentPage === 1 && (
                 <FormBox1
@@ -142,7 +138,7 @@ export default function Form() {
                         <button
                             type="button"
                             onClick={nextPage}
-                            className="p-5 px-10 font-bold bg-gray-700 m-3 text-white text-xl rounded-xl transition hover:bg-gray-500 hover:-translate-y-3 duration-500"
+                            className="p-5 px-10 bg-blue-700 m-3 text-white text-xl rounded-xl transition hover:bg-blue-500 hover:-translate-y-3 duration-500"
                         >
                             Próximo
                         </button>
@@ -154,7 +150,7 @@ export default function Form() {
                         <button
                             type="button"
                             onClick={prevPage}
-                            className="p-5 px-10 font-bold bg-gray-700 m-3 text-white text-xl rounded-xl transition hover:bg-gray-500 hover:-translate-y-3 duration-500"
+                            className="p-5 px-10 bg-blue-700 m-3 text-white text-xl rounded-xl transition hover:bg-blue-500 hover:-translate-y-3 duration-500"
                         >
                             Anterior
                         </button>

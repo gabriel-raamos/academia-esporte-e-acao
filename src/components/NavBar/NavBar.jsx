@@ -47,6 +47,10 @@ export default function NavBar() {
     }
   };
 
+  const handleMenuItemClick = () => {
+    setIsMenuOpen(false);
+  };
+
   function sliceName(name) {
     if (name.length >= 10) {
       return name.slice(0, 10) + '...';
@@ -70,7 +74,7 @@ export default function NavBar() {
   };
 
   return (
-    <section className="content-between flex justify-center bg-gray-900 shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)]" ref={menuRef}>
+    <section className="content-between flex justify-center items-center bg-gray-900 shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)]">
       <nav className="grid grid-cols-5 -space-x-3 md:space-x-5 items-center mb-5 md:my-5 gap-5 pl-5 md:pl-0">
         <div className="pl-2 md:pl-0 flex justify-center">
           <NavButton title="Início" link="" />
@@ -87,7 +91,7 @@ export default function NavBar() {
         {!authHeader ? (
           <div className="flex justify-center items-center h-2/3 w-2/3 pl-8 md:pl-0">
             <button
-              className="text-white text-sm md:text-xl py-2 md:py-5 px-2 mt-7 md:mt-0 rounded-full font-bold transition duration-500 hover:bg-blue-300 focus:bg-blue-300 hover:shadow-[0px_0px_20px_10px] hover:shadow-[#1d4ed8]"
+              className="text-white text-sm md:text-xl py-2 md:py-5 px-2 mt-7 md:mt-0 rounded-full font-bold transition duration-500 hover:bg-blue-300 focus:bg-blue-300"
               disabled
             >
               Treinos
@@ -96,7 +100,7 @@ export default function NavBar() {
         ) : loading ? (
           <div className="flex justify-center items-center h-2/3 w-2/3">
             <div className="flex justify-center items-center h-2/3 w-2/3 pl-3 md:pl-0">
-              <button className="text-white text-sm md:text-xl py-2 md:py-5 px-2 mt-7 md:mt-0 rounded-full font-bold transition duration-500 hover:bg-blue-700 hover:text-white focus:bg-blue-700 hover:shadow-[0px_0px_20px_10px] hover:shadow-[#1d4ed8]">
+              <button className="text-white text-sm md:text-xl py-2 md:py-5 px-2 mt-7 md:mt-0 rounded-full font-bold transition duration-500 hover:bg-blue-700 hover:text-white focus:bg-blue-700">
                 Carregando
               </button>
             </div>
@@ -106,12 +110,12 @@ export default function NavBar() {
             <p>{error}</p>
           </div>
         ) : (
-          <div>
+          <div ref={menuRef}>
             {role === 'admin' ? (
               <div className="relative flex justify-center">
                 <button
                   onClick={toggleMenu}
-                  className="select-none text-white bg-gray-900 text-sm md:text-xl py-2 md:py-5 px-2 mt-7 md:mt-0 rounded-full font-bold transition duration-500 hover:bg-blue-700 hover:text-white focus:bg-blue-700 hover:shadow-[0px_0px_20px_10px] hover:shadow-[#1d4ed8]"
+                  className="select-none text-white bg-gray-900 text-sm md:text-xl py-2 md:py-5 px-2 mt-7 md:mt-0 rounded-full font-bold transition duration-500 hover:bg-blue-700 hover:text-white focus:bg-blue-700"
                 >
                   {sliceName(name)}
                 </button>
@@ -122,7 +126,7 @@ export default function NavBar() {
                     aria-orientation="vertical"
                     aria-labelledby="menu-button"
                   >
-                    <Link to="treinos">
+                    <Link to="treinos" onClick={handleMenuItemClick}>
                       <li
                         className="block px-4 py-2 text-sm text-white bg-gray-900 hover:bg-gray-700 duration-500 transition"
                         role="menuitem"
@@ -131,7 +135,7 @@ export default function NavBar() {
                       </li>
                     </Link>
 
-                    <Link to="usuarios">
+                    <Link to="usuarios" onClick={handleMenuItemClick}>
                       <li
                         className="block px-4 py-2 text-sm text-white bg-gray-900 hover:bg-gray-700 duration-500 transition"
                         role="menuitem"
@@ -140,7 +144,7 @@ export default function NavBar() {
                       </li>
                     </Link>
 
-                    <Link to="pagamentolista">
+                    <Link to="pagamentolista" onClick={handleMenuItemClick}>
                       <li
                         className="block px-4 py-2 text-sm text-white bg-gray-900 hover:bg-gray-700 duration-500 transition"
                         role="menuitem"
@@ -169,7 +173,7 @@ export default function NavBar() {
           <div className="flex justify-center items-center h-2/3 w-2/3">
             <button
               onClick={logout}
-              className="text-white text-sm md:text-xl py-2 md:py-5 px-2 mt-7 md:mt-0 rounded-full font-bold transition hover:bg-blue-700 focus:bg-blue-700 hover:white duration-500 hover:shadow-[0px_0px_20px_10px] hover:shadow-[#1d4ed8]"
+              className="text-white text-sm md:text-xl py-2 md:py-5 px-2 mt-7 md:mt-0 rounded-full font-bold transition hover:bg-blue-700 focus:bg-blue-700 hover:white duration-500"
             >
               Logout
             </button>
