@@ -198,6 +198,12 @@ router.get('/clientealfabetico', authenticateTokenAdmin, async (req, res) => {
 
 })
 
+function calculateExpirationDate() {
+    const expirationDate = new Date();
+    expirationDate.setDate(expirationDate.getDate() + 30); // 30 dias no futuro
+    return expirationDate;
+}
+
 router.put('/updateActive/:id', authenticateToken, async (req, res) => {
     const _id = req.params.id;
     const active = req.body.active;
@@ -205,7 +211,10 @@ router.put('/updateActive/:id', authenticateToken, async (req, res) => {
     // console.log('ID do usuário: ' + _id)
 
     try {
-        const cliente = await Cliente.findByIdAndUpdate({ _id }, { active }, { new: true });
+        const expirationDate = calculateExpirationDate();
+        const updateFields = { active, expirationDate };
+
+        const cliente = await Cliente.findByIdAndUpdate({ _id }, { $set: updateFields }, { new: true });
 
         if (!cliente) {
             return res.status(404).json({ message: 'Cliente não encontrado' });
@@ -323,7 +332,7 @@ router.get('/findbycpf/:cpf', authenticateTokenAdmin, async (req, res) => {
 
     } catch (error) {
         res.status(500).json({ message: 'Erro interno no servidor: ', error })
-        
+
     }
 })
 
