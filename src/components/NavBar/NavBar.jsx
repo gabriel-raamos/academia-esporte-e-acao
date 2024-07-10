@@ -91,7 +91,7 @@ export default function NavBar() {
         {!authHeader ? (
           <div className="flex justify-center items-center h-2/3 w-2/3 pl-8 md:pl-0">
             <button
-              className="text-white text-sm md:text-xl py-2 md:py-5 px-2 mt-7 md:mt-0 rounded-full font-bold transition duration-500 hover:bg-blue-300 focus:bg-blue-300"
+              className="text-white text-sm md:text-xl p-2 mt-7 md:mt-0 rounded-3xl font-bold transition duration-500 hover:bg-blue-700 focus:bg-blue-700"
               disabled
             >
               Treinos
@@ -100,7 +100,7 @@ export default function NavBar() {
         ) : loading ? (
           <div className="flex justify-center items-center h-2/3 w-2/3">
             <div className="flex justify-center items-center h-2/3 w-2/3 pl-3 md:pl-0">
-              <button className="text-white text-sm md:text-xl py-2 md:py-5 px-2 mt-7 md:mt-0 rounded-full font-bold transition duration-500 hover:bg-blue-700 hover:text-white focus:bg-blue-700">
+              <button className="text-white text-sm md:text-xl p-2 mt-7 md:mt-0 rounded-3xl font-bold transition duration-500 hover:bg-blue-700 hover:text-white focus:bg-blue-700">
                 Carregando
               </button>
             </div>
@@ -115,7 +115,7 @@ export default function NavBar() {
               <div className="relative flex justify-center">
                 <button
                   onClick={toggleMenu}
-                  className="select-none text-white bg-gray-900 text-sm md:text-xl py-2 md:py-5 px-2 mt-7 md:mt-0 rounded-full font-bold transition duration-500 hover:bg-blue-700 hover:text-white focus:bg-blue-700"
+                  className="select-none text-white bg-gray-900 text-sm md:text-xl p-2 mt-7 md:mt-0 rounded-3xl font-bold transition duration-500 hover:bg-blue-700 hover:text-white focus:bg-blue-700"
                 >
                   {sliceName(name)}
                 </button>
@@ -165,7 +165,7 @@ export default function NavBar() {
 
         {!authHeader && (
           <div className="pl-3 md:pl-0 justify-center">
-            <NavButton title="Login" link="login" />
+            <NavButton title="Entrar" link="login" />
           </div>
         )}
 
@@ -173,9 +173,9 @@ export default function NavBar() {
           <div className="flex justify-center items-center h-2/3 w-2/3">
             <button
               onClick={logout}
-              className="text-white text-sm md:text-xl py-2 md:py-5 px-2 mt-7 md:mt-0 rounded-full font-bold transition hover:bg-blue-700 focus:bg-blue-700 hover:white duration-500"
+              className="text-white text-sm md:text-xl p-2 mt-7 md:mt-0 rounded-3xl font-bold transition hover:bg-blue-700 focus:bg-blue-700 hover:white duration-500"
             >
-              Logout
+              Sair
             </button>
           </div>
         )}

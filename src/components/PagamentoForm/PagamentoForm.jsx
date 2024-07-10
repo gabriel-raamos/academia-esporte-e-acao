@@ -132,7 +132,7 @@ function Pagamento() {
     return (
         <section>
             <form
-                className="p-3 border-4 border-blue-700 rounded-xl text-xl text-blue-700 mx-2 mb-5 md:mx-0"
+                className="p-3 rounded-xl text-xl text-white bg-blue-700 mx-2 mb-5 md:mx-0"
                 onSubmit={handleSubmit}
             >
                 <div className="my-3" >
@@ -146,7 +146,7 @@ function Pagamento() {
                         </div>
 
                         <select
-                            className="border-4 border-blue-700 p-3 rounded-xl mt-5 md:mt-0 bg-white"
+                            className="text-blue-700 p-3 rounded-xl mt-5 md:mt-0 bg-white"
                             name="paymentAmount"
                             value={selectedPlan}
                             onChange={handlePlanChange}
@@ -167,7 +167,7 @@ function Pagamento() {
                     <input
                         type='text'
                         placeholder="CPF"
-                        className="border-4 border-blue-700 p-3 rounded-xl max-w-full"
+                        className="text-blue-700 p-3 rounded-xl max-w-full my-3"
                         value={clienteCPF}
                         disabled
                     />
@@ -213,7 +213,7 @@ function Pagamento() {
                                         <button
                                             type="button"
                                             onClick={handleModalOpen}
-                                            className="p-5 px-10 bg-blue-700 my-3 text-white text-xl rounded-xl transition hover:bg-blue-500 hover:-translate-y-1 duration-500"
+                                            className="p-5 px-10 bg-white my-3 text-blue-700 text-xl rounded-xl transition hover:-translate-y-1 duration-500"
                                         >
                                             Gerar QR code
                                         </button>
@@ -223,7 +223,7 @@ function Pagamento() {
                                         <button
                                             type="button"
                                             onClick={handleModalOpen}
-                                            className="p-5 px-10 bg-blue-700 my-3 text-white text-xl rounded-xl transition hover:bg-blue-500 hover:-translate-y-1 duration-500"
+                                            className="p-5 px-10 bg-white my-3 text-blue-700 text-xl rounded-xl transition hover:-translate-y-1 duration-500"
                                         >
                                             Gerar QR code
                                         </button>
@@ -233,7 +233,7 @@ function Pagamento() {
                                         <button
                                             type="button"
                                             onClick={handleModalOpen}
-                                            className="p-5 px-10 bg-blue-700 my-3 text-white text-xl rounded-xl transition hover:bg-blue-500 hover:-translate-y-1 duration-500"
+                                            className="p-5 px-10 bg-white my-3 text-blue-700 text-xl rounded-xl transition hover:-translate-y-1 duration-500"
                                         >
                                             Gerar QR code
                                         </button>
@@ -262,10 +262,11 @@ function Pagamento() {
                                             <input
                                                 placeholder="Número do cartão"
                                                 type="number"
-                                                className="border-4 border-blue-700 p-3 rounded-xl max-w-full my-3 md:w-96"
+                                                className="text-blue-700 p-3 rounded-xl max-w-full my-3 md:w-96"
                                                 name="payerAccountNumber"
                                                 value={formData.payerAccountNumber}
                                                 onChange={handleChange}
+                                                required
                                             />
                                         </div>
 
@@ -273,7 +274,8 @@ function Pagamento() {
                                             <input
                                                 placeholder="Código de segurança"
                                                 type="number"
-                                                className="border-4 border-blue-700 p-3 rounded-xl max-w-full my-3 md:w-96"
+                                                className="text-blue-700 p-3 rounded-xl max-w-full my-3 md:w-96"
+                                                required
                                             />
                                         </div>
 
@@ -282,7 +284,8 @@ function Pagamento() {
                                             <input
                                                 type="date"
                                                 placeholder="Data de validade"
-                                                className="border-4 border-blue-700 p-3 rounded-xl max-w-full my-3"
+                                                className="text-blue-700 p-3 rounded-xl max-w-full my-3"
+                                                required
                                             />
                                         </div>
 
@@ -292,7 +295,7 @@ function Pagamento() {
                                                 type="number"
                                                 placeholder="CEP"
                                                 value={clienteCEP}
-                                                className="border-4 border-blue-700 p-3 rounded-xl max-w-full my-3"
+                                                className="text-blue-700 p-3 rounded-xl max-w-full my-3"
                                                 disabled
                                             />
                                         </div>
@@ -302,7 +305,8 @@ function Pagamento() {
                                             <input
                                                 type="number"
                                                 placeholder="Número"
-                                                className="border-4 border-blue-700 p-3 rounded-xl max-w-full my-3 w-1/2"
+                                                className="text-blue-700 p-3 rounded-xl max-w-full my-3 w-1/2"
+                                                required
                                             />
                                         </div>
                                     </div>
@@ -310,7 +314,7 @@ function Pagamento() {
                                     <div className="flex justify-center" >
                                         <button
                                             type="submit"
-                                            className="p-5 px-10 bg-blue-700 my-3 text-white text-xl rounded-xl transition hover:bg-blue-500 hover:-translate-y-1 duration-500"
+                                            className="p-5 px-10 bg-white my-3 text-blue-700 text-xl rounded-xl transition hover:-translate-y-1 duration-500"
                                         // onClick={handleSubmit}
                                         >
                                             Pagar
@@ -321,7 +325,7 @@ function Pagamento() {
 
                         </section>
                     ) : (
-                        <div className="justify-center flex" >
+                        <div className="justify-center flex my-8" >
                             <p>
                                 Escolha o método de pagamento para prosseguir.
                             </p>
