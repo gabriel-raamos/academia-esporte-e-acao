@@ -32,26 +32,38 @@ export default function Planos() {
         fetchData()
     }, [])
 
-    if (loading) {
-        return (
-            <div className="grid grid-rows-1 justify-center items-center text-lg">
-                <p className="bg-blue-700 text-white rounded-full font-bold p-5 my-5 text-xl">Carregando...</p>
-            </div>
-        )
-    } else if (error) {
-        return (
-            <div className="grid grid-rows-1 justify-center items-center text-lg">
-                <p className="bg-blue-700 text-white rounded-full font-bold p-5 my-5 text-xl">Ocorreu um erro ao tentar puxar os dados: {error.message}</p>
-            </div>
-        )
-    }
+    // if (loading) {
+    //     return (
+    //         <div className="grid grid-rows-1 justify-center items-center text-lg">
+    //             <p className="bg-blue-700 text-white rounded-full font-bold p-5 my-5 text-xl">Carregando...</p>
+    //         </div>
+    //     )
+    // } else if (error) {
+    //     return (
+    //         <div className="grid grid-rows-1 justify-center items-center text-lg">
+    //             <p className="bg-blue-700 text-white rounded-full font-bold p-5 my-5 text-xl">Ocorreu um erro ao tentar puxar os dados: {error.message}</p>
+    //         </div>
+    //     )
+    // }
 
     return (
         <div className="md:grid mt-5" >
 
             {id ? (
                 <div>
-                    {active == false ? (
+                    {loading ? (
+                        <div>
+                            <div className="grid grid-rows-1 justify-center items-center text-lg">
+                                <p className="bg-blue-700 text-white rounded-full font-bold p-5 my-5 text-xl">Carregando...</p>
+                            </div>
+                        </div>
+                    ) : error ? (
+                        <div>
+                            <div className="grid grid-rows-1 justify-center items-center text-lg">
+                                <p className="bg-blue-700 text-white rounded-full font-bold p-5 my-5 text-xl">Ocorreu um erro ao tentar puxar os dados: {error.message}</p>
+                            </div>
+                        </div>
+                    ) : active == false ? (
                         <div className="flex justify-center items-center" >
                             <Link to="../pagamento">
                                 <button
