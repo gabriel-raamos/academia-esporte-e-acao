@@ -136,13 +136,13 @@ export default function Form() {
                 />
             )}
 
-            <div className="justify-center items-center flex">
+            <div className="pb-3 justify-center items-center flex">
                 {currentPage === 1 && (
                     <div className="flex flex-col md:flex-row justify-center items-center">
                         <button
                             type="button"
                             onClick={nextPage}
-                            className="p-5 px-10 font-bold bg-gray-700 m-3 text-white text-xl rounded-xl transition hover:bg-gray-500 hover:-translate-y-3 duration-500"
+                            className="p-5 px-10 font-bold bg-gray-700 m-3 text-white text-xl rounded-xl transition hover:bg-gray-500 hover:-translate-y-1 duration-500"
                         >
                             Próximo
                         </button>
@@ -154,7 +154,7 @@ export default function Form() {
                         <button
                             type="button"
                             onClick={prevPage}
-                            className="p-5 px-10 font-bold bg-gray-700 m-3 text-white text-xl rounded-xl transition hover:bg-gray-500 hover:-translate-y-3 duration-500"
+                            className="p-5 px-10 font-bold bg-gray-700 m-3 text-white text-xl rounded-xl transition hover:bg-gray-500 hover:-translate-y-1 duration-500"
                         >
                             Anterior
                         </button>

@@ -41,7 +41,7 @@ export default function LoginForm() {
 
     return (
         <form
-            className="rounded-xl my-5 bg-gray-800"
+            className="pb-3 rounded-xl my-5 bg-gray-800"
             onSubmit={onSave}
         >
             <h1 className="text-center pt-5 pb-2 text-white text-lg font-bold bg-gray-700 rounded-xl">
