@@ -75,7 +75,7 @@ export default function NavBar() {
 
   return (
     <section className="content-between flex justify-center items-center bg-gray-900 shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)]">
-      <nav className="grid grid-cols-5 -space-x-3 md:space-x-5 items-center mb-5 md:my-5 gap-5 pl-5 md:pl-0">
+      <nav className="grid grid-cols-5 -space-x-3 md:space-x-5 items-center mb-5 md:my-5 pl-5 md:pl-0">
         <div className="pl-2 md:pl-0 flex justify-center">
           <NavButton title="Início" link="" />
         </div>
@@ -98,9 +98,9 @@ export default function NavBar() {
             </button>
           </div>
         ) : loading ? (
-          <div className="flex justify-center items-center h-2/3 w-2/3">
-            <div className="flex justify-center items-center h-2/3 w-2/3 pl-3 md:pl-0">
-              <button className="text-white text-sm md:text-xl p-2 mt-7 md:mt-0 rounded-3xl font-bold transition duration-500 hover:bg-blue-700 hover:text-white focus:bg-blue-700">
+          <div className="flex justify-center items-center">
+            <div className="flex justify-center items-center pl-3 md:pl-0">
+              <button className="text-white absolute text-sm md:text-xl p-2 mt-7 md:mt-0 rounded-3xl font-bold transition duration-500 hover:bg-blue-700 hover:text-white focus:bg-blue-700">
                 Carregando
               </button>
             </div>
@@ -156,7 +156,7 @@ export default function NavBar() {
                 )}
               </div>
             ) : (
-              <div className="flex justify-center items-center h-2/3 w-2/3 pl-6 md:pl-0">
+              <div className="flex justify-center items-center pl-6 md:pl-0">
                 <NavButton title={sliceName(name)} link="treinos" />
               </div>
             )}
@@ -170,7 +170,7 @@ export default function NavBar() {
         )}
 
         {authHeader && (
-          <div className="flex justify-center items-center h-2/3 w-2/3">
+          <div className="flex justify-center items-center w-2/3 md:w-1/3">
             <button
               onClick={logout}
               className="text-white text-sm md:text-xl p-2 mt-7 md:mt-0 rounded-3xl font-bold transition hover:bg-blue-700 focus:bg-blue-700 hover:white duration-500"
